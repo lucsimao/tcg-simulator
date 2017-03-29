@@ -7,7 +7,7 @@ import dm.exceptions.ZoneOccupedException;
 
 public class CardZone {
 	private DuelCard[] cards;
-	private static final int ZONE_SIZE = 5;
+	protected static final int ZONE_SIZE = 5;
 	
 	public CardZone(){
 		cards = new DuelCard[ZONE_SIZE];
@@ -34,7 +34,7 @@ public class CardZone {
 	}
 	
 	public  DuelCard remove(int index) {
-		 DuelCard card;
+		DuelCard card;
 		if(cards[index]!=null)
 		{
 			card = cards[index];

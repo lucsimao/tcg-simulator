@@ -54,11 +54,18 @@ public class FieldTests{
 		assertEquals(2,field.countMonsters());
 	}
 	
-//	@Test
-//	public void sendToGraveyardMonster(){
-//		field.sendToGraveyard(monsterCard);
-//		field.sendToGraveyard(2);
-//	}
+	@Test
+	public void sendToGraveyardMonster(){
+		field.summonMonster(monsterCard);
+		assertEquals(1,field.countMonsters());
+		field.summonMonster(monsterCard,2);
+		assertEquals(2,field.countMonsters());
+		field.sendToGraveyard(monsterCard);
+		assertEquals(1,field.countMonsters());
+		field.sendToGraveyard(2);
+		assertEquals(0,field.countMonsters());
+	}
+	
 //	@Test
 //	public void returnToHandMonster(){
 //		field.returnToHand(monsterCard);

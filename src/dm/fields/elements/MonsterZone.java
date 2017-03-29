@@ -1,7 +1,9 @@
 package dm.fields.elements;
 
 import constants.CardState;
+import dm.cards.DuelCard;
 import dm.cards.DuelMonsterCard;
+import dm.exceptions.CardNotFoundException;
 import dm.exceptions.ZoneOccupedException;
 
 public class MonsterZone extends CardZone {
@@ -36,6 +38,16 @@ public class MonsterZone extends CardZone {
 				return;
 			}
 		throw new ZoneOccupedException("We can't add more cards in the field");
+	}
+
+	public DuelCard remove(DuelMonsterCard monsterCard) {
+		for(int i=0;i<ZONE_SIZE;i++)
+			if(getCards()[i].equals(monsterCard))
+			{
+				remove(i);
+				return getCards()[i];
+			}
+		throw new CardNotFoundException("Card was not found");
 	}
 	
 }

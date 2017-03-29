@@ -1,5 +1,6 @@
 package dm.fields;
 
+import dm.cards.DuelCard;
 import dm.cards.DuelMonsterCard;
 import dm.fields.elements.DuelExtraDeck;
 import dm.fields.elements.DuelNormalDeck;
@@ -50,29 +51,22 @@ public class Field {
 		monsterZone.setMonster(monsterCard);
 	}
 
-	public void summonMonster(DuelMonsterCard monsterCard) {
-		monsterZone.summonMonster(monsterCard);		
-	}
-
 	public void summonMonster(DuelMonsterCard monsterCard, int index) {
 		monsterZone.summonMonster(monsterCard,index);		
 	}
 	
-//	public void summonMonster(DuelMonsterCard monsterCard) {
-//		monsterZone.summonMonster(monsterCard);
-//	}
-//
-//
-//	public void summonMonster(DuelMonsterCard monsterCard, int index) {
-//		monsterZone.summonMonster(monsterCard,index);
-//	}
-//
-//
+	public void summonMonster(DuelMonsterCard monsterCard) {
+		monsterZone.summonMonster(monsterCard);
+	}
 
-//
-//
-//	public void sendToGraveyard(DuelMonsterCard monsterCard) {
-//		monsterZone.remove(monsterCard);		
-//		graveyard.putCard(monsterCard);
-//	}
+	public void sendToGraveyard(DuelMonsterCard monsterCard) {
+		DuelCard card = monsterZone.remove(monsterCard);		
+		graveyard.putCard(card);
+	}
+	
+	public void sendToGraveyard(int index) {
+		DuelCard card = monsterZone.remove(index);		
+		graveyard.putCard(card);
+	}
+	
 }
