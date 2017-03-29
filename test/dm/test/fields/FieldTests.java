@@ -66,11 +66,22 @@ public class FieldTests{
 		assertEquals(0,field.countMonsters());
 	}
 	
-//	@Test
-//	public void returnToHandMonster(){
-//		field.returnToHand(monsterCard);
-//		field.returnToHand(2);
-//	}
+	public void setCardsOnMonsterField(){
+		field.setMonster(monsterCard);
+		field.setMonster(monsterFusionCard);
+		field.setMonster(monsterEffectCard);
+		field.setMonster(monsterCard);
+		field.setMonster(monsterFusionCard);
+		assertEquals(5,field.countMonsters());
+	}
+	
+	@Test
+	public void returnToHandMonster(){
+		setCardsOnMonsterField();
+		field.returnToHand(monsterCard);
+		field.returnToHand(2);
+	}
+	
 //	@Test
 //	public void returnToDeckMonster(){
 //		field.returnToDeck(monsterCard);

@@ -68,5 +68,16 @@ public class Field {
 		DuelCard card = monsterZone.remove(index);		
 		graveyard.putCard(card);
 	}
+
+	public void returnToHand(DuelMonsterCard monsterCard) {
+		DuelCard card = monsterZone.remove(monsterCard);		
+		hand.putCard(card);
+		
+	}
+
+	public void returnToHand(int index) {
+		DuelCard card = monsterZone.remove(index);		
+		hand.putCard(card);
+	}
 	
 }
