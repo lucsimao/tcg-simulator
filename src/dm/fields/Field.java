@@ -1,8 +1,10 @@
 package dm.fields;
 
+import cards.NormalDeckCard;
 import dm.cards.DuelCard;
 import dm.cards.DuelMonsterCard;
 import dm.fields.elements.DuelExtraDeck;
+import dm.fields.elements.DuelHand;
 import dm.fields.elements.DuelNormalDeck;
 import dm.fields.elements.Graveyard;
 import dm.fields.elements.MonsterZone;
@@ -20,21 +22,21 @@ public class Field {
 	private DuelExtraDeck extraDeck;
 	
 	public Field(){
+		this.hand = new DuelHand();
 		this.graveyard = new Graveyard();
 		this.monsterZone = new MonsterZone();
 		this.spellTrapZone = new SpellTrapZone();
 		this.removeFromPlay = new RemoveFromPlay();
-		this.hand = new DuelHand();
 		this.deck = new DuelNormalDeck();
 		this.extraDeck = new DuelExtraDeck();
 	}
 	
 	public Field(DuelNormalDeck deck, DuelExtraDeck extraDeck){
+		this.hand = new DuelHand();
 		this.graveyard = new Graveyard();
 		this.monsterZone = new MonsterZone();
 		this.spellTrapZone = new SpellTrapZone();
 		this.removeFromPlay = new RemoveFromPlay();
-		this.hand = new DuelHand();
 		this.deck = deck;
 		this.extraDeck = extraDeck;
 	}
@@ -69,15 +71,27 @@ public class Field {
 		graveyard.putCard(card);
 	}
 
-	public void returnToHand(DuelMonsterCard monsterCard) {
-		DuelCard card = monsterZone.remove(monsterCard);		
+	public void returnToHand(NormalDeckCard monsterCard) {
+		NormalDeckCard card = monsterZone.remove(monsterCard);
 		hand.putCard(card);
-		
 	}
 
 	public void returnToHand(int index) {
 		DuelCard card = monsterZone.remove(index);		
-		hand.putCard(card);
+		hand.putCard((NormalDeckCard) card);
+	}
+
+	public int countHandCards() {
+		return hand.size();
+	}
+
+	public int countGraveCards() {
+		return graveyard.size();
+	}
+
+	public void returnToDeck(NormalDeckCard monsterCard) {
+		NormalDeckCard card = (NormalDeckCard) monsterZone.remove((DuelMonsterCard) monsterCard);
+		deck.putCard(card);
 	}
 	
 }

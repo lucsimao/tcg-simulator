@@ -56,6 +56,7 @@ public class FieldTests{
 	
 	@Test
 	public void sendToGraveyardMonster(){
+		int graveSize = field.countGraveCards();
 		field.summonMonster(monsterCard);
 		assertEquals(1,field.countMonsters());
 		field.summonMonster(monsterCard,2);
@@ -64,6 +65,7 @@ public class FieldTests{
 		assertEquals(1,field.countMonsters());
 		field.sendToGraveyard(2);
 		assertEquals(0,field.countMonsters());
+		assertEquals(graveSize+2,field.countGraveCards());
 	}
 	
 	public void setCardsOnMonsterField(){
@@ -78,19 +80,23 @@ public class FieldTests{
 	@Test
 	public void returnToHandMonster(){
 		setCardsOnMonsterField();
+		int zoneSize = field.countMonsters();
+		int handSize = field.countHandCards();
 		field.returnToHand(monsterCard);
-		field.returnToHand(2);
+		field.returnToHand(monsterEffectCard);
+		assertEquals(zoneSize-2, field.countMonsters());
+		assertEquals(handSize+2, field.countHandCards());
 	}
 	
-//	@Test
-//	public void returnToDeckMonster(){
-//		field.returnToDeck(monsterCard);
-//		field.returnToDeck(2);
-//	}
-//	@Test
-//	public void removeFromPlayMonster(){
-//		field.removeFromPlay(monsterCard);
-//		field.removeFromPlay(2);
-//	}
+	@Test
+	public void returnToDeckMonster(){
+		field.returnToDeck(monsterCard);
+		field.returnToDeck(2);
+	}
+	@Test
+	public void removeFromPlayMonster(){
+		field.removeFromPlay(monsterCard);
+		field.removeFromPlay(2);
+	}
 	
 }

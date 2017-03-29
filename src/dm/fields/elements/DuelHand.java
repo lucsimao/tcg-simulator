@@ -1,8 +1,9 @@
 package dm.fields.elements;
 
+import cards.NormalDeckCard;
 import dm.cards.DuelCard;
 
-public class DuelHand  extends DuelDeck<DuelCard>{
+public class DuelHand  extends DuelDeck<NormalDeckCard>{
 
 	private final int MAX_CARDS = 7;
 	
@@ -15,7 +16,8 @@ public class DuelHand  extends DuelDeck<DuelCard>{
 	}
 	
 	@Override
-	public void putCard(DuelCard card) {
+	public void putCard(NormalDeckCard card) {
+		System.out.println("Colocou a carta");
 		getCards().push(card);
 		if(getCards().size()<=maxCards)
 			isHandPlayable = true;
@@ -24,7 +26,7 @@ public class DuelHand  extends DuelDeck<DuelCard>{
 	}
 
 	@Override
-	public DuelCard drawCard() {
+	public NormalDeckCard drawCard() {
 		if(getCards().size()<=maxCards)
 			isHandPlayable = false;
 		else

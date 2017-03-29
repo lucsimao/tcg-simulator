@@ -42,10 +42,9 @@ public class MonsterZone extends CardZone {
 
 	public DuelCard remove(DuelMonsterCard monsterCard) {
 		for(int i=0;i<ZONE_SIZE;i++)
-			if(getCards()[i].equals(monsterCard))
-			{
-				remove(i);
-				return getCards()[i];
+			if(monsterCard.equals(getCards()[i]))
+			{	
+				return remove(i);
 			}
 		throw new CardNotFoundException("Card was not found");
 	}

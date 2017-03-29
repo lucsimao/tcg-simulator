@@ -13,7 +13,6 @@ import dm.cards.DuelSpellCard;
 import dm.cards.DuelTrapCard;
 import dm.cards.Effect;
 import dm.exceptions.CardsOutException;
-import dm.exceptions.MaxDeckSizeException;
 import dm.fields.elements.DuelHand;
 
 public class DuelHandTests {
