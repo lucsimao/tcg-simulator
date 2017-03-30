@@ -1,23 +1,23 @@
 package dm.fields.elements.zones;
 
-import dm.cards.abstracts.DuelCard;
+import dm.cards.abstracts.Card;
 import dm.constants.CardState;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.ZoneOccupedException;
 
 public class CardZone {
-	private DuelCard[] cards;
+	private Card[] cards;
 	protected static final int ZONE_SIZE = 5;
 	
 	public CardZone(){
-		cards = new DuelCard[ZONE_SIZE];
+		cards = new Card[ZONE_SIZE];
 	}
 	
-	protected  DuelCard[] getCards(){
+	protected  Card[] getCards(){
 		return cards;
 	}
 	
-	public DuelCard getCard(int index)
+	public Card getCard(int index)
 	{
 		if(cards[index]!= null)
 			return cards[index];
@@ -25,7 +25,7 @@ public class CardZone {
 			throw new CardNotFoundException("Card is not found in this deck");
 	}
 	
-	public void putCard(DuelCard card, int index)
+	public void putCard(Card card, int index)
 	{
 		if(cards[index] == null)
 			cards[index] = card;
@@ -33,8 +33,8 @@ public class CardZone {
 			throw new ZoneOccupedException("The zone that you want to put a card is already in use");
 	}
 	
-	public  DuelCard remove(int index) {
-		DuelCard card;
+	public  Card remove(int index) {
+		Card card;
 		if(cards[index]!=null)
 		{
 			card = cards[index];

@@ -6,6 +6,7 @@ import org.junit.Test;
 import dm.cards.DuelMonsterEffectCard;
 import dm.cards.Effect;
 import dm.exceptions.EffectMonsterWithNoEffectException;
+import dm.tests.cards.abstracts.CardMonsterTests;
 
 public class CardMonsterEffectTests extends CardMonsterTests {
 	
@@ -15,14 +16,10 @@ public class CardMonsterEffectTests extends CardMonsterTests {
 		setCard(new DuelMonsterEffectCard(name, description, null, type, atribute, originalAttack, originalDefense,new Effect(), copies_number));
 	}
 	
-	@Test
+	@Test(expected=EffectMonsterWithNoEffectException.class)
 	public void checkIfEffectIsNotNull(){
 		/**Uma carta monstro normal não pode ter um efeito definido.*/
-		setCard(null);
-		try{
-			setCard(new DuelMonsterEffectCard(name, description, null, type, atribute, originalAttack, originalDefense,null, copies_number));
-		}catch (EffectMonsterWithNoEffectException e) {
-//			System.out.println(getCard());
-		}
+		setCard(new DuelMonsterEffectCard(name, description, null, type, atribute, originalAttack, originalDefense,null, copies_number));
+
 	}
 }

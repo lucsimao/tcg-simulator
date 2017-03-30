@@ -2,12 +2,12 @@ package dm.cards;
 
 import java.awt.Image;
 
-import cards.NormalDeckCard;
-import dm.cards.abstracts.DuelMonsterCard;
+import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
 import dm.exceptions.EffectMonsterWithNoEffectException;
+import dm.interfaces.NormalDeckCard;
 
-public class DuelMonsterEffectCard extends DuelMonsterCard implements  NormalDeckCard  {
+public class DuelMonsterEffectCard extends MonsterCard implements  NormalDeckCard  {
 
 	public DuelMonsterEffectCard(String name, String description, Image picture,
 			int type, int atribute, int originalAttack, int originalDeffense,

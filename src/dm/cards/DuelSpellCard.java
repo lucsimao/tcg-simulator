@@ -2,12 +2,13 @@ package dm.cards;
 
 import java.awt.Image;
 
-import cards.NormalDeckCard;
-import dm.cards.abstracts.DuelNonMonsterCard;
+import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardType;
 import dm.constants.ColorPicture;
+import dm.interfaces.NormalDeckCard;
 
-public class DuelSpellCard extends DuelNonMonsterCard implements  NormalDeckCard  {
+public class DuelSpellCard extends NonMonsterCard implements  NormalDeckCard  {
+	
 	/*Classe carta mágica*/
 	public int type;
 

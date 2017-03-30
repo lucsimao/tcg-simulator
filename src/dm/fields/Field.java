@@ -1,45 +1,47 @@
 package dm.fields;
 
-import cards.ExtraDeckCard;
-import cards.NormalDeckCard;
 import dm.cards.DuelMonsterFusionCard;
-import dm.cards.abstracts.DuelCard;
-import dm.cards.abstracts.DuelMonsterCard;
-import dm.fields.elements.DuelHand;
+import dm.cards.abstracts.Card;
+import dm.cards.abstracts.MonsterCard;
+import dm.cards.abstracts.NonMonsterCard;
 import dm.fields.elements.Graveyard;
+import dm.fields.elements.Hand;
 import dm.fields.elements.RemoveFromPlay;
-import dm.fields.elements.decks.DuelExtraDeck;
-import dm.fields.elements.decks.DuelNormalDeck;
+import dm.fields.elements.decks.ExtraDeck;
+import dm.fields.elements.decks.NormalDeck;
 import dm.fields.elements.zones.MonsterZone;
 import dm.fields.elements.zones.SpellTrapZone;
+import dm.interfaces.ExtraDeckCard;
+import dm.interfaces.NormalDeckCard;
 
 public class Field {
 
 	/**
 	 * Classe campo para inserir as cartas
+	 * Obs: ClasseNonMonsterCard está relacionada às SpellTrapCards
 	 * */
 	
-	private DuelHand hand;//Mão do jogador
+	private Hand hand;//Mão do jogador
 	private Graveyard graveyard;//Cemitério do jogador
 	private MonsterZone monsterZone;//Zona de monstros do jogador
 	private SpellTrapZone spellTrapZone;//Zone de cartas mágicas ou armadilhas
 	private RemoveFromPlay removeFromPlay;//Monstros removidos de jogo
-	private DuelNormalDeck deck;//Deck do jogador
-	private DuelExtraDeck extraDeck;//Extra deck do jogador
+	private NormalDeck deck;//Deck do jogador
+	private ExtraDeck extraDeck;//Extra deck do jogador
 	
 	//Métodos contrutores
 	public Field(){
-		this.hand = new DuelHand();
+		this.hand = new Hand();
 		this.graveyard = new Graveyard();
 		this.monsterZone = new MonsterZone();
 		this.spellTrapZone = new SpellTrapZone();
 		this.removeFromPlay = new RemoveFromPlay();
-		this.deck = new DuelNormalDeck();
-		this.extraDeck = new DuelExtraDeck();
+		this.deck = new NormalDeck();
+		this.extraDeck = new ExtraDeck();
 	}
 	
-	public Field(DuelNormalDeck deck, DuelExtraDeck extraDeck){
-		this.hand = new DuelHand();
+	public Field(NormalDeck deck, ExtraDeck extraDeck){
+		this.hand = new Hand();
 		this.graveyard = new Graveyard();
 		this.monsterZone = new MonsterZone();
 		this.spellTrapZone = new SpellTrapZone();
@@ -50,72 +52,97 @@ public class Field {
 	
 	//Setar uma carta qualquer virada para baixo, nós teremos duas sobrecargas
 	//Uma com os monstros e outra com as armadilhas ou traps.
-	public void setCard(DuelMonsterCard monsterCard, int index) {
+	public void setCard(MonsterCard monsterCard, int index) {
 		monsterZone.setMonster(monsterCard,index);
 	}
 
-	public void setCard(DuelMonsterCard monsterCard) {
+	public void setCard(MonsterCard monsterCard) {
 		monsterZone.setMonster(monsterCard);
 	}
 
-	public void setCard(DuelCard spellTrapCard, int index) {
+	public void setCard(Card spellTrapCard, int index) {
 		spellTrapZone.setCard(spellTrapCard,index);
 	}
 	
-	public void setCard(DuelCard spellTrapCard) {
+	public void setCard(Card spellTrapCard) {
 		spellTrapZone.setCard(spellTrapCard);
 	}
 	
 	//Métodos para summonar um monstro em modo de ataque
-	public void summonMonster(DuelMonsterCard monsterCard, int index) {
+	public void summonMonster(MonsterCard monsterCard, int index) {
 		monsterZone.summonMonster(monsterCard,index);		
 	}
 	
-	public void summonMonster(DuelMonsterCard monsterCard) {
+	public void summonMonster(MonsterCard monsterCard) {
 		monsterZone.summonMonster(monsterCard);
 	}
 
 	//Métodos para enviar uma carta ao cemitério	
-	public void sendToGraveyard(DuelMonsterCard monsterCard) {
-		DuelCard card = monsterZone.remove(monsterCard);		
+	public void sendToGraveyard(MonsterCard monsterCard) {
+		Card card = monsterZone.remove(monsterCard);		
 		graveyard.putCard(card);
 	}
 	
-	public void sendToGraveyard(int index) {
-		DuelCard card = monsterZone.remove(index);		
+	public void sendToGraveyard(NonMonsterCard spellTrapCard) {
+		Card card = spellTrapZone.remove(spellTrapCard);		
 		graveyard.putCard(card);
 	}
-
-	public void returnToHand(DuelMonsterCard monsterCard) {
-		DuelCard card = monsterZone.remove(monsterCard);
+	
+	//Métodos para enviar uma carta à mão
+	public void returnToHand(MonsterCard monsterCard) {
+		Card card = monsterZone.remove(monsterCard);
 		hand.putCard(card);
 	}
 
-	public void returnToHand(int index) {
-		DuelCard card = monsterZone.remove(index);		
+	public void returnToHand(NonMonsterCard monsterCard) {
+		Card card = spellTrapZone.remove(monsterCard);
 		hand.putCard(card);
 	}
+	
+	public void returnToHand(DuelMonsterFusionCard monsterCard) {
+		Card card = monsterZone.remove(monsterCard);
+		extraDeck.putCard((ExtraDeckCard) card);
+	}
 
-	public void returnMonsterToDeck(DuelMonsterCard monsterCard) {
-		NormalDeckCard card = (NormalDeckCard) monsterZone.remove((DuelMonsterCard) monsterCard);
+	//Métodos para enviar uma carta ao deck
+	public void returnToDeck(MonsterCard monsterCard) {
+		NormalDeckCard card = (NormalDeckCard) monsterZone.remove((MonsterCard) monsterCard);
 		deck.putCard(card);
 	}
 	
-	public void returnMonsterToDeck(DuelMonsterFusionCard monsterCard) {
-		ExtraDeckCard card = (ExtraDeckCard ) monsterZone.remove((DuelMonsterCard) monsterCard);
+	public void returnToDeck(NonMonsterCard spellTrapCard) {
+		NormalDeckCard card =  (NormalDeckCard) spellTrapZone.remove(spellTrapCard);
+		deck.putCard(card);
+	}
+	
+	public void returnToDeck(DuelMonsterFusionCard monsterCard) {
+		ExtraDeckCard card = (ExtraDeckCard ) monsterZone.remove((MonsterCard) monsterCard);
 		extraDeck.putCard(card);
 	}
 	
-	public void returnSpellOrTrapToDeck(NormalDeckCard monsterCard) {
-		NormalDeckCard card = (NormalDeckCard) spellTrapZone.remove((DuelMonsterCard) monsterCard);
-		deck.putCard(card);
+	/*Métodos para remover de jogo*/
+	public void removeFromPlay(MonsterCard monsterCard) {
+		Card card = monsterZone.remove(monsterCard);
+		removeFromPlay.putCard(card);
 	}
-
+	
+	public void removeFromPlay(NonMonsterCard spellCard) {
+		Card card = spellTrapZone.remove(spellCard);
+		removeFromPlay.putCard(card);
+	}
+	
 	/*Métodos de Contagem:*/
 	public int countMonsters() {return monsterZone.countCards();}
 	public int countDeckCards() {return deck.size();}
 	public int countExtraDeckCards() {return extraDeck.size();}
 	public int countHandCards() {return hand.size();}
 	public int countGraveCards() {return graveyard.size();}
+	public int countRemovedFromPlayCards() {return removeFromPlay.size();}
+	public int countNonMonsters() {return spellTrapZone.countCards();}
 	/*Métodos de Contagem:*/
+
+
+
+
+	
 }

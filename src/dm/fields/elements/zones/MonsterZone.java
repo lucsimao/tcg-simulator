@@ -1,19 +1,19 @@
 package dm.fields.elements.zones;
 
-import dm.cards.abstracts.DuelCard;
-import dm.cards.abstracts.DuelMonsterCard;
+import dm.cards.abstracts.Card;
+import dm.cards.abstracts.MonsterCard;
 import dm.constants.CardState;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.ZoneOccupedException;
 
 public class MonsterZone extends CardZone {
 
-	public void setMonster(DuelMonsterCard monsterCard, int index) {
+	public void setMonster(MonsterCard monsterCard, int index) {
 		putCard(monsterCard, index);	
 		monsterCard.setState(CardState.FACE_DOWN);
 	}
 
-	public void setMonster(DuelMonsterCard monsterCard) {
+	public void setMonster(MonsterCard monsterCard) {
 		for(int i=0;i<5;i++)
 			if(this.getCards()[i]==null)
 			{
@@ -24,12 +24,12 @@ public class MonsterZone extends CardZone {
 		throw new ZoneOccupedException("We can't add more cards in the field");
 	}
 
-	public void summonMonster(DuelMonsterCard monsterCard,int index) {
+	public void summonMonster(MonsterCard monsterCard,int index) {
 		putCard(monsterCard, index);	
 		monsterCard.setState(CardState.FACE_UP_ATTACK);
 	}
 	
-	public void summonMonster(DuelMonsterCard monsterCard) {
+	public void summonMonster(MonsterCard monsterCard) {
 		for(int i=0;i<5;i++)
 			if(this.getCards()[i]==null)
 			{
@@ -40,7 +40,7 @@ public class MonsterZone extends CardZone {
 		throw new ZoneOccupedException("We can't add more cards in the field");
 	}
 
-	public DuelCard remove(DuelMonsterCard monsterCard) {
+	public Card remove(MonsterCard monsterCard) {
 		for(int i=0;i<ZONE_SIZE;i++)
 			if(monsterCard.equals(getCards()[i]))
 			{	

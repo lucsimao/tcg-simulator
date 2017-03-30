@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.DuelMonsterNormalCard;
+import dm.tests.cards.abstracts.CardMonsterTests;
 
 public class CardMonsterNormalTests extends CardMonsterTests {
 	

@@ -1,16 +1,16 @@
 package dm.fields.elements;
 
-import dm.cards.abstracts.DuelCard;
+import dm.cards.abstracts.Card;
 import dm.exceptions.CardNotFoundException;
-import dm.fields.elements.decks.DuelDeck;
+import dm.fields.elements.decks.Deck;
 
-public class RemoveFromPlay extends DuelDeck<DuelCard> {
+public class RemoveFromPlay extends Deck<Card> {
 	@Override
-	public void putCard(DuelCard card) {
+	public void putCard(Card card) {
 		getCards().push(card);
 	}
 	
-	public DuelCard remove(DuelCard card)
+	public Card remove(Card card)
 	{
 		if(getCards().contains(card))
 		{
@@ -20,7 +20,7 @@ public class RemoveFromPlay extends DuelDeck<DuelCard> {
 		throw new CardNotFoundException("This card does not exist in this deck");
 	}
 	
-	public DuelCard remove(int index)
+	public Card remove(int index)
 	{
 		try{
 			return getCards().remove(index);
