@@ -1,5 +1,5 @@
 package cards;
 
-public interface NormalDeckCard extends Card{
+public interface NormalDeckCard{
 	int getCopiesNumber();
 }
