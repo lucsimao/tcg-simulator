@@ -11,7 +11,7 @@ import dm.cards.DuelSpellCard;
 import dm.cards.DuelTrapCard;
 import dm.cards.Effect;
 import dm.exceptions.ZoneOccupedException;
-import dm.fields.elements.CardZone;
+import dm.fields.elements.zones.CardZone;
 
 public class DuelCardZoneTests {
 

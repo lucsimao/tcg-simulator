@@ -3,7 +3,8 @@ package dm.cards;
 import java.awt.Image;
 
 import cards.NormalDeckCard;
-import constants.ColorPicture;
+import dm.cards.abstracts.DuelMonsterCard;
+import dm.constants.ColorPicture;
 import dm.exceptions.EffectMonsterWithNoEffectException;
 
 public class DuelMonsterEffectCard extends DuelMonsterCard implements  NormalDeckCard  {

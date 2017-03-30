@@ -7,11 +7,11 @@ import java.awt.Image;
 import org.junit.Before;
 import org.junit.Test;
 
-import constants.CardType;
-import constants.ColorPicture;
-import constants.TrapType;
 import dm.cards.DuelSpellCard;
 import dm.cards.Effect;
+import dm.constants.CardType;
+import dm.constants.ColorPicture;
+import dm.constants.TrapType;
 
 public abstract class CardTrapTests extends CardTests<DuelSpellCard> {
 

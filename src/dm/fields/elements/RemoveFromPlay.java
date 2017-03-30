@@ -1,7 +1,8 @@
 package dm.fields.elements;
 
-import dm.cards.DuelCard;
+import dm.cards.abstracts.DuelCard;
 import dm.exceptions.CardNotFoundException;
+import dm.fields.elements.decks.DuelDeck;
 
 public class RemoveFromPlay extends DuelDeck<DuelCard> {
 	@Override

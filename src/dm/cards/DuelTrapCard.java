@@ -3,11 +3,12 @@ package dm.cards;
 import java.awt.Image;
 
 import cards.NormalDeckCard;
-import constants.CardType;
-import constants.ColorPicture;
+import dm.cards.abstracts.DuelNonMonsterCard;
+import dm.constants.CardType;
+import dm.constants.ColorPicture;
 
-public class DuelTrapCard extends DuelCard implements  NormalDeckCard  {
-
+public class DuelTrapCard extends DuelNonMonsterCard implements  NormalDeckCard  {
+	/*Classe carta armadilha*/
 	public int type;
 
 	public DuelTrapCard(String name, String description, Image picture, Effect effect,

@@ -12,7 +12,7 @@ import dm.cards.DuelMonsterNormalCard;
 import dm.exceptions.CardsOutException;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
-import dm.fields.elements.DuelNormalDeck;
+import dm.fields.elements.decks.DuelNormalDeck;
 
 public class DuelDeckTests {
 

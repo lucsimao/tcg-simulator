@@ -11,7 +11,7 @@ import dm.cards.DuelMonsterFusionCard;
 import dm.exceptions.CardsOutException;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
-import dm.fields.elements.DuelExtraDeck;
+import dm.fields.elements.decks.DuelExtraDeck;
 
 public class DuelExtraDeckTests {
 

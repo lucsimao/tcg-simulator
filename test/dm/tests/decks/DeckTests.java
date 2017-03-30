@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import dm.exceptions.CardsOutException;
-import dm.fields.elements.DuelDeck;
+import dm.fields.elements.decks.DuelDeck;
 
 public abstract class DeckTests<GenericCard> {
 

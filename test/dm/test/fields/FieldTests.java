@@ -5,17 +5,17 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import constants.MonsterAttribute;
-import constants.MonsterType;
-import constants.SpellType;
-import constants.TrapType;
-import dm.cards.DuelMonsterCard;
 import dm.cards.DuelMonsterEffectCard;
 import dm.cards.DuelMonsterFusionCard;
 import dm.cards.DuelMonsterNormalCard;
 import dm.cards.DuelSpellCard;
 import dm.cards.DuelTrapCard;
 import dm.cards.Effect;
+import dm.cards.abstracts.DuelMonsterCard;
+import dm.constants.MonsterAttribute;
+import dm.constants.MonsterType;
+import dm.constants.SpellType;
+import dm.constants.TrapType;
 import dm.fields.Field;
 
 public class FieldTests{
@@ -41,9 +41,9 @@ public class FieldTests{
 	
 	@Test
 	public void setMonster(){
-		field.setMonster(monsterCard);
+		field.setCard(monsterCard);
 		assertEquals(1,field.countMonsters());
-		field.setMonster(monsterCard,2);
+		field.setCard(monsterCard,2);
 		assertEquals(2,field.countMonsters());
 	}
 	
@@ -70,11 +70,11 @@ public class FieldTests{
 	}
 	
 	public void setCardsOnMonsterField(){
-		field.setMonster(monsterCard);
-		field.setMonster(monsterFusionCard);
-		field.setMonster(monsterEffectCard);
-		field.setMonster(monsterCard);
-		field.setMonster(monsterFusionCard);
+		field.setCard(monsterCard);
+		field.setCard(monsterFusionCard);
+		field.setCard(monsterEffectCard);
+		field.setCard(monsterCard);
+		field.setCard(monsterFusionCard);
 		assertEquals(5,field.countMonsters());
 	}
 	

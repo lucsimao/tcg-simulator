@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import constants.CardType;
-import constants.MonsterAttribute;
-import constants.MonsterType;
-import dm.cards.DuelMonsterCard;
 import dm.cards.Effect;
+import dm.cards.abstracts.DuelMonsterCard;
+import dm.constants.CardType;
+import dm.constants.MonsterAttribute;
+import dm.constants.MonsterType;
 
 public abstract class CardMonsterTests extends CardTests<DuelMonsterCard> {
 

@@ -2,27 +2,32 @@ package dm.fields;
 
 import cards.ExtraDeckCard;
 import cards.NormalDeckCard;
-import dm.cards.DuelCard;
-import dm.cards.DuelMonsterCard;
 import dm.cards.DuelMonsterFusionCard;
-import dm.fields.elements.DuelExtraDeck;
+import dm.cards.abstracts.DuelCard;
+import dm.cards.abstracts.DuelMonsterCard;
 import dm.fields.elements.DuelHand;
-import dm.fields.elements.DuelNormalDeck;
 import dm.fields.elements.Graveyard;
-import dm.fields.elements.MonsterZone;
 import dm.fields.elements.RemoveFromPlay;
-import dm.fields.elements.SpellTrapZone;
+import dm.fields.elements.decks.DuelExtraDeck;
+import dm.fields.elements.decks.DuelNormalDeck;
+import dm.fields.elements.zones.MonsterZone;
+import dm.fields.elements.zones.SpellTrapZone;
 
 public class Field {
+
+	/**
+	 * Classe campo para inserir as cartas
+	 * */
 	
-	private DuelHand hand;
-	private Graveyard graveyard;
-	private MonsterZone monsterZone;
-	private SpellTrapZone spellTrapZone;
-	private RemoveFromPlay removeFromPlay;
-	private DuelNormalDeck deck;
-	private DuelExtraDeck extraDeck;
+	private DuelHand hand;//Mão do jogador
+	private Graveyard graveyard;//Cemitério do jogador
+	private MonsterZone monsterZone;//Zona de monstros do jogador
+	private SpellTrapZone spellTrapZone;//Zone de cartas mágicas ou armadilhas
+	private RemoveFromPlay removeFromPlay;//Monstros removidos de jogo
+	private DuelNormalDeck deck;//Deck do jogador
+	private DuelExtraDeck extraDeck;//Extra deck do jogador
 	
+	//Métodos contrutores
 	public Field(){
 		this.hand = new DuelHand();
 		this.graveyard = new Graveyard();
@@ -43,18 +48,25 @@ public class Field {
 		this.extraDeck = extraDeck;
 	}
 	
-	public int countMonsters() {
-		return monsterZone.countCards();
-	}
-	
-	public void setMonster(DuelMonsterCard monsterCard, int index) {
+	//Setar uma carta qualquer virada para baixo, nós teremos duas sobrecargas
+	//Uma com os monstros e outra com as armadilhas ou traps.
+	public void setCard(DuelMonsterCard monsterCard, int index) {
 		monsterZone.setMonster(monsterCard,index);
 	}
 
-	public void setMonster(DuelMonsterCard monsterCard) {
+	public void setCard(DuelMonsterCard monsterCard) {
 		monsterZone.setMonster(monsterCard);
 	}
 
+	public void setCard(DuelCard spellTrapCard, int index) {
+		spellTrapZone.setCard(spellTrapCard,index);
+	}
+	
+	public void setCard(DuelCard spellTrapCard) {
+		spellTrapZone.setCard(spellTrapCard);
+	}
+	
+	//Métodos para summonar um monstro em modo de ataque
 	public void summonMonster(DuelMonsterCard monsterCard, int index) {
 		monsterZone.summonMonster(monsterCard,index);		
 	}
@@ -63,6 +75,7 @@ public class Field {
 		monsterZone.summonMonster(monsterCard);
 	}
 
+	//Métodos para enviar uma carta ao cemitério	
 	public void sendToGraveyard(DuelMonsterCard monsterCard) {
 		DuelCard card = monsterZone.remove(monsterCard);		
 		graveyard.putCard(card);
@@ -83,14 +96,6 @@ public class Field {
 		hand.putCard(card);
 	}
 
-	public int countHandCards() {
-		return hand.size();
-	}
-
-	public int countGraveCards() {
-		return graveyard.size();
-	}
-
 	public void returnMonsterToDeck(DuelMonsterCard monsterCard) {
 		NormalDeckCard card = (NormalDeckCard) monsterZone.remove((DuelMonsterCard) monsterCard);
 		deck.putCard(card);
@@ -106,12 +111,11 @@ public class Field {
 		deck.putCard(card);
 	}
 
-	public int countDeckCards() {
-		return deck.size();
-	}
-
-	public int countExtraDeckCards() {
-		return extraDeck.size();
-	}
-	
+	/*Métodos de Contagem:*/
+	public int countMonsters() {return monsterZone.countCards();}
+	public int countDeckCards() {return deck.size();}
+	public int countExtraDeckCards() {return extraDeck.size();}
+	public int countHandCards() {return hand.size();}
+	public int countGraveCards() {return graveyard.size();}
+	/*Métodos de Contagem:*/
 }

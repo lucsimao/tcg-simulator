@@ -3,11 +3,12 @@ package dm.cards;
 import java.awt.Image;
 
 import cards.NormalDeckCard;
-import constants.CardType;
-import constants.ColorPicture;
+import dm.cards.abstracts.DuelNonMonsterCard;
+import dm.constants.CardType;
+import dm.constants.ColorPicture;
 
-public class DuelSpellCard extends DuelCard implements  NormalDeckCard  {
-
+public class DuelSpellCard extends DuelNonMonsterCard implements  NormalDeckCard  {
+	/*Classe carta mágica*/
 	public int type;
 
 	public DuelSpellCard(String name, String description, Image picture, Effect effect,
@@ -19,7 +20,5 @@ public class DuelSpellCard extends DuelCard implements  NormalDeckCard  {
 	public int getType() {
 		return type;
 	}
-	
-	
 	
 }
