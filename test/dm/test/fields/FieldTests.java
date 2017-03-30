@@ -80,23 +80,25 @@ public class FieldTests{
 	@Test
 	public void returnToHandMonster(){
 		setCardsOnMonsterField();
+
 		int zoneSize = field.countMonsters();
 		int handSize = field.countHandCards();
 		field.returnToHand(monsterCard);
 		field.returnToHand(monsterEffectCard);
+
 		assertEquals(zoneSize-2, field.countMonsters());
 		assertEquals(handSize+2, field.countHandCards());
 	}
 	
-	@Test
-	public void returnToDeckMonster(){
-		field.returnToDeck(monsterCard);
-		field.returnToDeck(2);
-	}
-	@Test
-	public void removeFromPlayMonster(){
-		field.removeFromPlay(monsterCard);
-		field.removeFromPlay(2);
-	}
+//	@Test
+//	public void returnToDeckMonster(){
+//		field.returnToDeck(monsterCard);
+//		field.returnToDeck(2);
+//	}
+//	@Test
+//	public void removeFromPlayMonster(){
+//		field.removeFromPlay(monsterCard);
+//		field.removeFromPlay(2);
+//	}
 	
 }

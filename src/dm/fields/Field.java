@@ -71,14 +71,14 @@ public class Field {
 		graveyard.putCard(card);
 	}
 
-	public void returnToHand(NormalDeckCard monsterCard) {
-		NormalDeckCard card = monsterZone.remove(monsterCard);
+	public void returnToHand(DuelMonsterCard monsterCard) {
+		DuelCard card = monsterZone.remove(monsterCard);
 		hand.putCard(card);
 	}
 
 	public void returnToHand(int index) {
 		DuelCard card = monsterZone.remove(index);		
-		hand.putCard((NormalDeckCard) card);
+		hand.putCard(card);
 	}
 
 	public int countHandCards() {
@@ -89,8 +89,13 @@ public class Field {
 		return graveyard.size();
 	}
 
-	public void returnToDeck(NormalDeckCard monsterCard) {
+	public void returnMonsterToDeck(NormalDeckCard monsterCard) {
 		NormalDeckCard card = (NormalDeckCard) monsterZone.remove((DuelMonsterCard) monsterCard);
+		deck.putCard(card);
+	}
+	
+	public void returnSpellOrTrapToDeck(NormalDeckCard monsterCard) {
+		NormalDeckCard card = (NormalDeckCard) spellTrapZone.remove((DuelMonsterCard) monsterCard);
 		deck.putCard(card);
 	}
 	
