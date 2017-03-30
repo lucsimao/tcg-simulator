@@ -1,6 +1,6 @@
 package dm.fields;
 
-import dm.cards.DuelMonsterFusionCard;
+import dm.cards.MonsterFusionCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
@@ -99,7 +99,7 @@ public class Field {
 		hand.putCard(card);
 	}
 	
-	public void returnToHand(DuelMonsterFusionCard monsterCard) {
+	public void returnToHand(MonsterFusionCard monsterCard) {
 		Card card = monsterZone.remove(monsterCard);
 		extraDeck.putCard((ExtraDeckCard) card);
 	}
@@ -115,7 +115,7 @@ public class Field {
 		deck.putCard(card);
 	}
 	
-	public void returnToDeck(DuelMonsterFusionCard monsterCard) {
+	public void returnToDeck(MonsterFusionCard monsterCard) {
 		ExtraDeckCard card = (ExtraDeckCard ) monsterZone.remove((MonsterCard) monsterCard);
 		extraDeck.putCard(card);
 	}
@@ -141,8 +141,19 @@ public class Field {
 	public int countNonMonsters() {return spellTrapZone.countCards();}
 	/*Métodos de Contagem:*/
 
+	public NormalDeck getDeck() {
+		NormalDeck deck = this.deck;
+		return deck;
+	}
+	
+	public ExtraDeck getExtraDeck() {
+		ExtraDeck extraDeck = this.extraDeck;
+		return extraDeck;
+	}
 
-
-
+	public void draw() {
+		NormalDeckCard card = deck.drawCard();
+		hand.putCard((Card) card);		
+	}
 	
 }

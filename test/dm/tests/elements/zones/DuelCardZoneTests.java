@@ -5,10 +5,10 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.DuelMonsterEffectCard;
-import dm.cards.DuelMonsterFusionCard;
-import dm.cards.DuelSpellCard;
-import dm.cards.DuelTrapCard;
+import dm.cards.MonsterEffectCard;
+import dm.cards.MonsterFusionCard;
+import dm.cards.SpellCard;
+import dm.cards.TrapCard;
 import dm.cards.Effect;
 import dm.exceptions.ZoneOccupedException;
 import dm.fields.elements.zones.CardZone;
@@ -16,18 +16,18 @@ import dm.fields.elements.zones.CardZone;
 public class DuelCardZoneTests {
 
 	private CardZone zone;
-	private DuelMonsterFusionCard fusionCard;
-	private DuelMonsterEffectCard effectCard;
-	private DuelSpellCard spellCard;
-	private DuelTrapCard trapCard;
+	private MonsterFusionCard fusionCard;
+	private MonsterEffectCard effectCard;
+	private SpellCard spellCard;
+	private TrapCard trapCard;
 	
 	@Before
 	public void initGraveyard() {
 		zone = new CardZone();
-		fusionCard = new DuelMonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
-		effectCard = new DuelMonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
-		spellCard = new DuelSpellCard(null, null, null, null, 0, 3);
-		trapCard = new DuelTrapCard(null, null, null, null, 0, 3);
+		fusionCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
+		effectCard = new MonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
+		spellCard = new SpellCard(null, null, null, null, 0, 3);
+		trapCard = new TrapCard(null, null, null, null, 0, 3);
 	}
 		
 	@Test

@@ -17,7 +17,6 @@ public class Hand  extends Deck<Card>{
 	
 	@Override
 	public void putCard(Card card) {
-		System.out.println("Colocou a carta");
 		getCards().push(card);
 		if(getCards().size()<=maxCards)
 			isHandPlayable = true;

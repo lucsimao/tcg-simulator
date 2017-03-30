@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.DuelMonsterFusionCard;
+import dm.cards.MonsterFusionCard;
 import dm.exceptions.CardsOutException;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
@@ -24,10 +24,10 @@ public class DuelExtraDeckTests {
 	@Before
 	public void initDeck() {
 		deck = new ExtraDeck();
-		unlimitedCard = new DuelMonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
-		semiLimitedCard = new DuelMonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 2);
-		limitedCard = new DuelMonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 1);
-		forbbidenCard = new DuelMonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 0);
+		unlimitedCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
+		semiLimitedCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 2);
+		limitedCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 1);
+		forbbidenCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 0);
 	}
 	
 	@Test
@@ -39,7 +39,7 @@ public class DuelExtraDeckTests {
 	@Test(expected= MaxDeckSizeException.class)
 	public void isDeckPlayable(){
 		for(int i=0;i<70;i++){
-			deck.putCard(new DuelMonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3));
+			deck.putCard(new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3));
 //			if(i<39)
 //				assertFalse(deck.isPlayable());
 //			else if(i<60)
@@ -66,7 +66,7 @@ public class DuelExtraDeckTests {
 	
 	private void fillDeck(){
 		for(int i = 0; i< deck.getMaxCards(); i++)
-			deck.putCard(new DuelMonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3));
+			deck.putCard(new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3));
 	}
 	
 	@Test

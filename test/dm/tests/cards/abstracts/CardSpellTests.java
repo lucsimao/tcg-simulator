@@ -7,13 +7,13 @@ import java.awt.Image;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.DuelSpellCard;
+import dm.cards.SpellCard;
 import dm.cards.Effect;
 import dm.constants.CardType;
 import dm.constants.ColorPicture;
 import dm.constants.SpellType;
 
-public abstract class CardSpellTests extends CardTests<DuelSpellCard> {
+public abstract class CardSpellTests extends CardTests<SpellCard> {
 
 	protected static String name = "Dark Hole";
 	protected static String description = "The ultimate wizard in terms of attack and defense";
@@ -28,7 +28,7 @@ public abstract class CardSpellTests extends CardTests<DuelSpellCard> {
 	@Override
 	@Before
 	public void initCard(){
-		setCard(new DuelSpellCard(name, description, picture, effect,type, copies_number));
+		setCard(new SpellCard(name, description, picture, effect,type, copies_number));
 	}
 	
 	@Test

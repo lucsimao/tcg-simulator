@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.DuelSpellCard;
-import dm.cards.DuelTrapCard;
+import dm.cards.SpellCard;
+import dm.cards.TrapCard;
 import dm.cards.Effect;
 import dm.constants.SpellType;
 import dm.constants.TrapType;
@@ -16,14 +16,14 @@ public class FieldSpellTrapTests{
 	
 	private Field field;
 	
-	private DuelSpellCard spellCard;
-	private DuelTrapCard trapCard;
+	private SpellCard spellCard;
+	private TrapCard trapCard;
 
 
 	@Before
 	public void initCards(){
-		spellCard = new DuelSpellCard("Dark Hole","Destroy all monster on the field",null,new Effect(),SpellType.NORMAL, 3);
-		trapCard = new DuelTrapCard("Mirror Force","Destroy all attacking monsters",null,new Effect(),TrapType.NORMAL, 3);
+		spellCard = new SpellCard("Dark Hole","Destroy all monster on the field",null,new Effect(),SpellType.NORMAL, 3);
+		trapCard = new TrapCard("Mirror Force","Destroy all attacking monsters",null,new Effect(),TrapType.NORMAL, 3);
 		field = new Field();
 	}
 	

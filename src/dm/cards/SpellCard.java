@@ -7,12 +7,12 @@ import dm.constants.CardType;
 import dm.constants.ColorPicture;
 import dm.interfaces.NormalDeckCard;
 
-public class DuelSpellCard extends NonMonsterCard implements  NormalDeckCard  {
+public class SpellCard extends NonMonsterCard implements  NormalDeckCard  {
 	
 	/*Classe carta mágica*/
 	public int type;
 
-	public DuelSpellCard(String name, String description, Image picture, Effect effect,
+	public SpellCard(String name, String description, Image picture, Effect effect,
 			int type,int copies_number) {
 		super(name, description,CardType.SPELL, ColorPicture.SPELL, picture, effect,copies_number);
 		this.type = type;

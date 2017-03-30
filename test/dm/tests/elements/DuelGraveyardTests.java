@@ -6,11 +6,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.DuelMonsterEffectCard;
-import dm.cards.DuelMonsterFusionCard;
-import dm.cards.DuelMonsterNormalCard;
-import dm.cards.DuelSpellCard;
-import dm.cards.DuelTrapCard;
+import dm.cards.MonsterEffectCard;
+import dm.cards.MonsterFusionCard;
+import dm.cards.MonsterNormalCard;
+import dm.cards.SpellCard;
+import dm.cards.TrapCard;
 import dm.cards.Effect;
 import dm.exceptions.CardsOutException;
 import dm.fields.elements.Graveyard;
@@ -18,20 +18,20 @@ import dm.fields.elements.Graveyard;
 public class DuelGraveyardTests {
 
 	private Graveyard deck;
-	private DuelMonsterFusionCard fusionCard;
-	private DuelMonsterNormalCard normalCard;
-	private DuelMonsterEffectCard effectCard;
-	private DuelSpellCard spellCard;
-	private DuelTrapCard trapCard;
+	private MonsterFusionCard fusionCard;
+	private MonsterNormalCard normalCard;
+	private MonsterEffectCard effectCard;
+	private SpellCard spellCard;
+	private TrapCard trapCard;
 	
 	@Before
 	public void initGraveyard() {
 		deck = new Graveyard();
-		fusionCard = new DuelMonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
-		normalCard = new DuelMonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 0);
-		effectCard = new DuelMonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
-		spellCard = new DuelSpellCard(null, null, null, null, 0, 3);
-		trapCard = new DuelTrapCard(null, null, null, null, 0, 3);
+		fusionCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
+		normalCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 0);
+		effectCard = new MonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
+		spellCard = new SpellCard(null, null, null, null, 0, 3);
+		trapCard = new TrapCard(null, null, null, null, 0, 3);
 		pushCards();
 	}
 		

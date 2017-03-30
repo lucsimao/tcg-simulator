@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.DuelMonsterEffectCard;
-import dm.cards.DuelMonsterFusionCard;
-import dm.cards.DuelMonsterNormalCard;
+import dm.cards.MonsterEffectCard;
+import dm.cards.MonsterFusionCard;
+import dm.cards.MonsterNormalCard;
 import dm.cards.Effect;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.MonsterAttribute;
@@ -19,15 +19,15 @@ public class FieldMonsterTests{
 	private Field field;
 	
 	private MonsterCard monsterCard;
-	private DuelMonsterFusionCard monsterFusionCard;
+	private MonsterFusionCard monsterFusionCard;
 	private MonsterCard monsterEffectCard;
 
 
 	@Before
 	public void initCards(){
-		monsterCard = new DuelMonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
-		monsterFusionCard = new DuelMonsterFusionCard("Gaia, The Dragon Champion", "The gaia dragon",null,MonsterType.WARRIOR,MonsterAttribute.EARTH,2600,2100,0,null, 3);
-		monsterEffectCard =  new DuelMonsterEffectCard("Penguin Soldier", "[FLIP] return one card to your hand",null,MonsterType.AQUA,MonsterAttribute.WATER,500,300,new Effect(), 3);
+		monsterCard = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
+		monsterFusionCard = new MonsterFusionCard("Gaia, The Dragon Champion", "The gaia dragon",null,MonsterType.WARRIOR,MonsterAttribute.EARTH,2600,2100,0,null, 3);
+		monsterEffectCard =  new MonsterEffectCard("Penguin Soldier", "[FLIP] return one card to your hand",null,MonsterType.AQUA,MonsterAttribute.WATER,500,300,new Effect(), 3);
 		field = new Field();
 	}
 	
