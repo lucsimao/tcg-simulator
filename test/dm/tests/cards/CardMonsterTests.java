@@ -1,13 +1,12 @@
 package dm.tests.cards;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import constants.CardType;
 import constants.MonsterAttribute;
-import constants.ColorPicture;
 import constants.MonsterType;
 import dm.cards.DuelMonsterCard;
 import dm.cards.Effect;

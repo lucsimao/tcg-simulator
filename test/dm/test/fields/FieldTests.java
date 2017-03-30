@@ -10,6 +10,7 @@ import constants.MonsterType;
 import constants.SpellType;
 import constants.TrapType;
 import dm.cards.DuelMonsterCard;
+import dm.cards.DuelMonsterEffectCard;
 import dm.cards.DuelMonsterFusionCard;
 import dm.cards.DuelMonsterNormalCard;
 import dm.cards.DuelSpellCard;
@@ -22,7 +23,7 @@ public class FieldTests{
 	private Field field;
 	
 	private DuelMonsterCard monsterCard;
-	private DuelMonsterCard monsterFusionCard;
+	private DuelMonsterFusionCard monsterFusionCard;
 	private DuelMonsterCard monsterEffectCard;
 	private DuelSpellCard spellCard;
 	private DuelTrapCard trapCard;
@@ -32,7 +33,7 @@ public class FieldTests{
 	public void initCards(){
 		monsterCard = new DuelMonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
 		monsterFusionCard = new DuelMonsterFusionCard("Gaia, The Dragon Champion", "The gaia dragon",null,MonsterType.WARRIOR,MonsterAttribute.EARTH,2600,2100,0,null, 3);
-		monsterEffectCard =  new DuelMonsterFusionCard("Penguin Soldier", "[FLIP] return one card to your hand",null,MonsterType.AQUA,MonsterAttribute.WATER,500,300,0,new Effect(), 3);
+		monsterEffectCard =  new DuelMonsterEffectCard("Penguin Soldier", "[FLIP] return one card to your hand",null,MonsterType.AQUA,MonsterAttribute.WATER,500,300,new Effect(), 3);
 		spellCard = new DuelSpellCard("Dark Hole","Destroy all monster on the field",null,new Effect(),SpellType.NORMAL, 3);
 		trapCard = new DuelTrapCard("Mirror Force","Destroy all attacking monsters",null,new Effect(),TrapType.NORMAL, 3);
 		field = new Field();
@@ -90,11 +91,21 @@ public class FieldTests{
 		assertEquals(handSize+2, field.countHandCards());
 	}
 	
-//	@Test
-//	public void returnToDeckMonster(){
-//		field.returnToDeck(monsterCard);
-//		field.returnToDeck(2);
-//	}
+	@Test
+	public void returnToDeckMonster(){
+		setCardsOnMonsterField();
+		int zoneSize = field.countMonsters();
+		int deckSize = field.countDeckCards();
+		int extraDeckSize = field.countExtraDeckCards();
+		
+		field.returnMonsterToDeck(monsterCard);
+		field.returnMonsterToDeck(monsterEffectCard);
+		field.returnMonsterToDeck(monsterFusionCard);
+		assertEquals(zoneSize - 3, field.countMonsters());
+		assertEquals(deckSize + 2, field.countDeckCards());
+		assertEquals(extraDeckSize + 1, field.countExtraDeckCards());
+	}
+	
 //	@Test
 //	public void removeFromPlayMonster(){
 //		field.removeFromPlay(monsterCard);

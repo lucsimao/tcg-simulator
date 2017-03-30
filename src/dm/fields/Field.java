@@ -1,8 +1,10 @@
 package dm.fields;
 
+import cards.ExtraDeckCard;
 import cards.NormalDeckCard;
 import dm.cards.DuelCard;
 import dm.cards.DuelMonsterCard;
+import dm.cards.DuelMonsterFusionCard;
 import dm.fields.elements.DuelExtraDeck;
 import dm.fields.elements.DuelHand;
 import dm.fields.elements.DuelNormalDeck;
@@ -89,14 +91,27 @@ public class Field {
 		return graveyard.size();
 	}
 
-	public void returnMonsterToDeck(NormalDeckCard monsterCard) {
+	public void returnMonsterToDeck(DuelMonsterCard monsterCard) {
 		NormalDeckCard card = (NormalDeckCard) monsterZone.remove((DuelMonsterCard) monsterCard);
 		deck.putCard(card);
+	}
+	
+	public void returnMonsterToDeck(DuelMonsterFusionCard monsterCard) {
+		ExtraDeckCard card = (ExtraDeckCard ) monsterZone.remove((DuelMonsterCard) monsterCard);
+		extraDeck.putCard(card);
 	}
 	
 	public void returnSpellOrTrapToDeck(NormalDeckCard monsterCard) {
 		NormalDeckCard card = (NormalDeckCard) spellTrapZone.remove((DuelMonsterCard) monsterCard);
 		deck.putCard(card);
+	}
+
+	public int countDeckCards() {
+		return deck.size();
+	}
+
+	public int countExtraDeckCards() {
+		return extraDeck.size();
 	}
 	
 }
