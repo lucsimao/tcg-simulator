@@ -2,7 +2,6 @@ package dm.cards.abstracts;
 
 import java.awt.Image;
 
-import cards.Card;
 import dm.cards.Effect;
 
 public abstract class DuelCard {
