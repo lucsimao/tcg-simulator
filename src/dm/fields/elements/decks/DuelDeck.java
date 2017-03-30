@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Stack;
 
-import cards.Deck;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.CardsOutException;
 
