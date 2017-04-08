@@ -6,6 +6,12 @@ import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
 import dm.interfaces.NormalDeckCard;
 
+/*From @Simao
+ * Classe Monstro normal, representa monstros sem efeito.
+ * Sua cor é amarelada.
+ * Ela não contém efeitos no construtor, portanto, seu efeito sempre será null.
+ * */
+
 public class MonsterNormalCard extends MonsterCard implements NormalDeckCard  {
 
 	public MonsterNormalCard(String name, String description, Image picture,

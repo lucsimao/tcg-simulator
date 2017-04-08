@@ -4,32 +4,45 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Stack;
 
-import dm.cards.abstracts.Card;
 import dm.exceptions.CardNotFoundException;
+import dm.exceptions.CardsOutException;
 
+/*From @Simao
+ * SuperClasse abstrata Elemento de Campo, ela é a mãe de todos os elementos.
+ * Possui os métodos padrão que todos os elementos devem ter.
+ * */
 public abstract class FieldElement<GenericCard>{
-	private Stack<GenericCard> cards;
+	
+	//Atributos
+	private Stack<GenericCard> cards;//Uma pilha que representas as cartas contidas nesse elemento
+	
+	//Construtor básico de inicialização
 	public FieldElement(){
 		cards = new Stack<>();
 	}
 	
-	//Retorna a lista de cartas do deck. 
-	//Ele é protegido, pois somente filhos pode acessá-la
+	//Retorna a lista de cartas da pilha. 
+	//Ele é protegido, pois somente filhos pode acessá-la.
 	protected Stack<GenericCard> getCards() {
 		return cards;
 	}
 	
-	// Embaralha o deck
+	// Mostra a carta no topo da pilha
+	public GenericCard top() {
+		return getCards().peek();
+	}
+	
+	// Embaralha a pilha
 	public void shuffle() {
 		Collections.shuffle(getCards());
 	}
 	
-	// Retorna o tamanho do deck
+	// Retorna o tamanho da pilha
 	public int size() {
 		return getCards().size();
 	}
 
-	// Verifica se o deck está vazio
+	// Verifica se a pilha está vazia
 	public boolean isEmpty() {
 		return getCards().isEmpty();
 	}
@@ -45,6 +58,7 @@ public abstract class FieldElement<GenericCard>{
 		return number;
 	}
 	
+	//Método que utiliza remove e push para levar uma carta qualquer para o topo da pilha
 	public void moveCardToTop(GenericCard card)
 	{
 		Stack<GenericCard> cards = this.getCards();
@@ -57,6 +71,7 @@ public abstract class FieldElement<GenericCard>{
 			throw new CardNotFoundException("Card not found on this deck");
 	}
 	
+	//Método que remove uma carta qualquer da pilha
 	public GenericCard remove(GenericCard card)
 	{
 		if(getCards().contains(card))
@@ -67,6 +82,16 @@ public abstract class FieldElement<GenericCard>{
 		throw new CardNotFoundException("This card does not exist in this deck");
 	}
 	
+	// Método que remove uma carta do início da pilha (pop)
+	public GenericCard removeFromTop() {
+		if(getCards().size()==0)
+			throw new CardsOutException("Empty deck.");
+		else
+		return getCards().pop();
+	}
+	
+	//Método abstrato que representa colocar uma carta na pilha, cada classe deve
+	//implementá-la de forma diferente.
 	public abstract void putCard(GenericCard card);
 	
 }

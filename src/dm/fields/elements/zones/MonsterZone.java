@@ -6,6 +6,11 @@ import dm.constants.CardState;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.ZoneOccupedException;
 
+/*From @Simao
+ * Zona de Monstros. 
+ * Ela é uma zona de cartas que somente aceita monstros.
+ * Logo, ela pode special summon, normal summon, set ou mudar para o modo de defesa.*/
+
 public class MonsterZone extends CardZone {
 
 	public void setMonster(MonsterCard monsterCard, int index) {

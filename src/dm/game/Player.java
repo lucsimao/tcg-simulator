@@ -5,7 +5,10 @@ import java.awt.Image;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
-
+/*
+ * From @Simao
+ * Classe jogador. Ela possui os pontos de vida do jogados e gerencia o campo do jogador.
+ * */
 public class Player {
 
 	private static final int INIT_LIFE_POINTS = 8000;

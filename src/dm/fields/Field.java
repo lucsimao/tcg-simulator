@@ -14,11 +14,15 @@ import dm.fields.elements.zones.SpellTrapZone;
 import dm.interfaces.ExtraDeckCard;
 import dm.interfaces.NormalDeckCard;
 
+/*From @Simao
+ * Classe campo, nele irão conter os elementos e os métodos de gerenciamento dos mesmos.*/
+
 public class Field {
 
 	/**
 	 * Classe campo para inserir as cartas
 	 * Obs: ClasseNonMonsterCard está relacionada às SpellTrapCards
+	 * O campo possui removedfromplay, graveyard, zones, deck e hand
 	 * */
 	
 	private Hand hand;//Mão do jogador

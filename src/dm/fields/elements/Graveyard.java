@@ -1,9 +1,11 @@
 package dm.fields.elements;
 
 import dm.cards.abstracts.Card;
-import dm.exceptions.CardNotFoundException;
 import dm.fields.elements.decks.Deck;
 
+/*From @Simao
+ * Classe cemitério, ela não possui nada de diferente em sua estrutura, porém, deve ser 
+ * diferenciada por conta de seu uso.*/
 public class Graveyard extends Deck<Card>{
 
 	@Override
@@ -11,13 +13,4 @@ public class Graveyard extends Deck<Card>{
 		getCards().push(card);
 	}
 		
-	public Card remove(int index)
-	{
-		try{
-			return getCards().remove(index);
-		}catch (ArrayIndexOutOfBoundsException  e) {
-			throw new CardNotFoundException("This card does not exist in this deck");
-		}
-	}
-	
 }

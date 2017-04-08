@@ -2,12 +2,17 @@ package dm.fields.elements.zones;
 
 import dm.cards.abstracts.Card;
 import dm.constants.CardState;
+import dm.constants.RulesConstants;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.ZoneOccupedException;
 
+/*From @Simao
+ * Zona de Cartas, super classe que contém as cartas em campo.
+ * Existem Zonas de cartas armadilhas e mágicas.*/
+
 public class CardZone {
 	private Card[] cards;
-	protected static final int ZONE_SIZE = 5;
+	protected static final int ZONE_SIZE = RulesConstants.ZONE_SIZE;
 	
 	public CardZone(){
 		cards = new Card[ZONE_SIZE];

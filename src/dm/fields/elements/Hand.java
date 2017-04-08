@@ -1,9 +1,14 @@
 package dm.fields.elements;
 
 import dm.cards.abstracts.Card;
-import dm.fields.elements.decks.Deck;
+import dm.fields.elements.decks.FieldElement;
 
-public class Hand  extends Deck<Card>{
+/*From @Simao
+ * Classe mão.
+ * Ela pode ter um número máximo de cartas na mão.
+ * Possui funções de descatar, adicionar e remover cartas.*/
+
+public class Hand  extends FieldElement<Card>{
 
 	private final int MAX_CARDS = 7;
 	
@@ -24,13 +29,12 @@ public class Hand  extends Deck<Card>{
 			isHandPlayable = false;
 	}
 
-	@Override
-	public Card drawCard() {
+	public Card discard(Card card) {
 		if(getCards().size()<=maxCards)
 			isHandPlayable = false;
 		else
 			isHandPlayable = true;
-		return super.drawCard();
+		return remove(card);
 	}
 	
 	public boolean isHandPlayable(){
@@ -44,6 +48,15 @@ public class Hand  extends Deck<Card>{
 	public int getMaxCards()
 	{
 		return this.maxCards;
+	}
+
+	public Card discardFirst() {
+		if(getCards().size()<=maxCards)
+			isHandPlayable = false;
+		else
+			isHandPlayable = true;
+		return removeFromTop();
+
 	}
 	
 }

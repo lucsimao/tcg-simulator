@@ -5,6 +5,9 @@ import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
 import dm.interfaces.NormalDeckCard;
 
+/*From @Simao
+ * Deck normal, ele diferencia pois aceita cartas de diversos tipos, menos cartas de extra deck.
+ * */
 public class NormalDeck extends Deck<NormalDeckCard> {
 	private static final int MAX_CARDS = 60;
 	private static final int MIN_CARDS = 40;

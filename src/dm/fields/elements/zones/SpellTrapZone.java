@@ -6,6 +6,12 @@ import dm.constants.CardState;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.ZoneOccupedException;
 
+/*
+ * From @Simao
+ * Zona de cartas mágicas, ela é uma zona que aceita cartas mágicas.
+ * Pode-se setar ou ativar cartas nela.
+ * */
+
 public class SpellTrapZone extends CardZone{
 	
 	public void setCard(Card spellTrapCard, int index) {

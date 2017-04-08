@@ -1,10 +1,18 @@
 package dm.cards;
 
 import java.awt.Image;
-
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
 import dm.interfaces.ExtraDeckCard;
+
+/*
+ * From @Simao
+ * Classe Monstro de Fusão. Representa os monstros de fusão. 
+ * Eles diferenciam o tipo genérico e somente o extradeck poderá contê-los.
+ * Sua cor será roxa.
+ * Eles podem conter efeito nulo, caso sejam monstros normais e podem conter efeitos, caso 
+ * sejam de efeito.
+ * */
 
 public class MonsterFusionCard extends MonsterCard implements ExtraDeckCard {
 

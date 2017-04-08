@@ -3,6 +3,13 @@ package dm.cards.abstracts;
 import java.awt.Image;
 
 import dm.cards.Effect;
+import dm.constants.CardState;
+import dm.constants.RulesConstants;
+
+/*
+ * From @Simao
+ * Classe abstrata Card, ela contém contrutor e métodos que toda carta deverá conter.
+ * */
 
 public abstract class Card {
 	
@@ -23,11 +30,12 @@ public abstract class Card {
 		this.colorPicture = colorPicture;
 		this.picture = picture;
 		this.effect = effect;
-		if(copies_number>=3)
-			this.copies_number = 3;
+		//Esse pedaço de código protege de ter mais cópias do que o permitido nas regras do jogo.
+		if(copies_number>=RulesConstants.MAX_CARDS_REPEATED)
+			this.copies_number = RulesConstants.MAX_CARDS_REPEATED;
 		else
 			this.copies_number = copies_number;
-		this.state = 0;
+		this.state = CardState.NONE;//Diz que a carta não está no campo ainda.
 	}
 
 	//Getters and Setters

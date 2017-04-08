@@ -49,14 +49,9 @@ public class DuelHandTests {
 	@Test(expected=CardsOutException.class)
 	public void discardCardsUntilDeckout() {
 		while(true)
-			hand.drawCard();
+			hand.discardFirst();
 	}
 	
-	@Test(expected=CardsOutException.class)
-	public void removeCardsUntilDeckout() {
-		while(true)
-			hand.drawCard();
-	}
 	
 	@Test
 	public void pushCardsUntilMax(){

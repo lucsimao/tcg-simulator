@@ -5,6 +5,10 @@ import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
 import dm.interfaces.ExtraDeckCard;
 
+/*From @Simao
+ * Deck Extra, diferente do deck comum, ela só pode receber monstros de extra deck.
+ * */
+
 public class ExtraDeck extends Deck<ExtraDeckCard>{
 
 	private static final int MAX_CARDS = 15;

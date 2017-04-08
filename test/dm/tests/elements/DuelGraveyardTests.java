@@ -17,7 +17,7 @@ import dm.fields.elements.Graveyard;
 
 public class DuelGraveyardTests {
 
-	private Graveyard deck;
+	private Graveyard graveyard;
 	private MonsterFusionCard fusionCard;
 	private MonsterNormalCard normalCard;
 	private MonsterEffectCard effectCard;
@@ -26,7 +26,7 @@ public class DuelGraveyardTests {
 	
 	@Before
 	public void initGraveyard() {
-		deck = new Graveyard();
+		graveyard = new Graveyard();
 		fusionCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
 		normalCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 0);
 		effectCard = new MonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
@@ -42,66 +42,66 @@ public class DuelGraveyardTests {
 		}catch(Exception e) {
 
 		}
-		assertTrue(deck.isEmpty());
-		assertEquals(0, deck.size());
+		assertTrue(graveyard.isEmpty());
+		assertEquals(0, graveyard.size());
 	}
 	
 	@Test(expected=CardsOutException.class)
 	public void drawCardsUntilDeckout() {
 		while(true)
-			deck.drawCard();
+			graveyard.drawCard();
 	}
 	
 	@Test(expected=CardsOutException.class)
 	public void removeCardsUntilDeckout() {
 		while(true)
-			deck.drawCard();
+			graveyard.drawCard();
 	}
 	
 	@Test
 	public void pushCards() {
-		int size = deck.size();
-		deck.putCard(fusionCard);
-		assertEquals(size + 1, deck.size());
-		assertEquals(fusionCard, deck.top());
+		int size = graveyard.size();
+		graveyard.putCard(fusionCard);
+		assertEquals(size + 1, graveyard.size());
+		assertEquals(fusionCard, graveyard.top());
 		
-		size = deck.size();
-		deck.putCard(normalCard);
-		assertEquals(size + 1, deck.size());
-		assertEquals(normalCard, deck.top());
+		size = graveyard.size();
+		graveyard.putCard(normalCard);
+		assertEquals(size + 1, graveyard.size());
+		assertEquals(normalCard, graveyard.top());
 		
-		size = deck.size();
-		deck.putCard(effectCard);
-		assertEquals(size + 1, deck.size());
-		assertEquals(effectCard, deck.top());
+		size = graveyard.size();
+		graveyard.putCard(effectCard);
+		assertEquals(size + 1, graveyard.size());
+		assertEquals(effectCard, graveyard.top());
 		
-		size = deck.size();
-		deck.putCard(spellCard);
-		assertEquals(size + 1, deck.size());
-		assertEquals(spellCard, deck.top());
+		size = graveyard.size();
+		graveyard.putCard(spellCard);
+		assertEquals(size + 1, graveyard.size());
+		assertEquals(spellCard, graveyard.top());
 		
-		size = deck.size();
-		deck.putCard(trapCard);
-		assertEquals(size + 1, deck.size());
-		assertEquals(trapCard, deck.top());
+		size = graveyard.size();
+		graveyard.putCard(trapCard);
+		assertEquals(size + 1, graveyard.size());
+		assertEquals(trapCard, graveyard.top());
 	}
 	
 	@Test
 	public void moveToTopCard(){
-		deck.moveCardToTop(fusionCard);
-		assertEquals(fusionCard,deck.top());
+		graveyard.moveCardToTop(fusionCard);
+		assertEquals(fusionCard,graveyard.top());
 		
-		deck.moveCardToTop(normalCard);
-		assertEquals(normalCard,deck.top());
+		graveyard.moveCardToTop(normalCard);
+		assertEquals(normalCard,graveyard.top());
 		
-		deck.moveCardToTop(effectCard);
-		assertEquals(effectCard,deck.top());
+		graveyard.moveCardToTop(effectCard);
+		assertEquals(effectCard,graveyard.top());
 		
-		deck.moveCardToTop(spellCard);
-		assertEquals(spellCard,deck.top());
+		graveyard.moveCardToTop(spellCard);
+		assertEquals(spellCard,graveyard.top());
 
-		deck.moveCardToTop(trapCard);
-		assertEquals(trapCard,deck.top());		
+		graveyard.moveCardToTop(trapCard);
+		assertEquals(trapCard,graveyard.top());		
 	}
 	
 }

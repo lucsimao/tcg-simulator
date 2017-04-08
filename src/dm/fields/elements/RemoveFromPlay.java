@@ -1,21 +1,17 @@
 package dm.fields.elements;
 
 import dm.cards.abstracts.Card;
-import dm.exceptions.CardNotFoundException;
 import dm.fields.elements.decks.Deck;
+
+/*From @Simao
+ * Uma classe para tratar os monstros removidos de jogo.
+ * Ele não tem nada de especial, mas é diferenciada por conta de seu uso.
+ * */
 
 public class RemoveFromPlay extends Deck<Card> {
 	@Override
 	public void putCard(Card card) {
 		getCards().push(card);
 	}
-		
-	public Card remove(int index)
-	{
-		try{
-			return getCards().remove(index);
-		}catch (ArrayIndexOutOfBoundsException  e) {
-			throw new CardNotFoundException("This card does not exist in this deck");
-		}
-	}
+
 }
