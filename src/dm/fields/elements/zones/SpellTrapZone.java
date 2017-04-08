@@ -1,9 +1,11 @@
 package dm.fields.elements.zones;
 
+import dm.cards.SpellCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardState;
 import dm.exceptions.CardNotFoundException;
+import dm.exceptions.NoEffectException;
 import dm.exceptions.ZoneOccupedException;
 
 /*
@@ -14,6 +16,21 @@ import dm.exceptions.ZoneOccupedException;
 
 public class SpellTrapZone extends CardZone{
 	
+	public SpellTrapZone(int number){
+		for(int i=0;i<number;i++)
+		{
+			try {
+				putCard(new SpellCard(3),i);
+			} catch (NoEffectException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public SpellTrapZone() {
+		super();
+	}
+
 	public void setCard(Card spellTrapCard, int index) {
 		putCard(spellTrapCard, index);	
 		spellTrapCard.setState(CardState.FACE_DOWN);

@@ -21,6 +21,14 @@ public abstract class FieldElement<GenericCard>{
 		cards = new Stack<>();
 	}
 	
+	public FieldElement(int number,GenericCard card) {
+		cards = new Stack<>();
+		for(int i=0;i<number;i++)
+		{
+			putCard(card);
+		}
+	}
+
 	//Retorna a lista de cartas da pilha. 
 	//Ele é protegido, pois somente filhos pode acessá-la.
 	protected Stack<GenericCard> getCards() {

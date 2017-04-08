@@ -7,6 +7,14 @@ package dm.fields.elements.decks;
 
 public abstract class Deck<GenericCard> extends FieldElement<GenericCard>{
 
+	public Deck(int number, GenericCard card) {
+		super(number, card);
+	}
+
+	public Deck() {
+		super();
+	}
+
 	// Verifica se o deck está vazio
 	public boolean isDeckout() {
 		return isEmpty();

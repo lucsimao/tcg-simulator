@@ -17,7 +17,7 @@ public class CardZone {
 	public CardZone(){
 		cards = new Card[ZONE_SIZE];
 	}
-	
+
 	protected  Card[] getCards(){
 		return cards;
 	}

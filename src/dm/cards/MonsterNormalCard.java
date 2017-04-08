@@ -20,4 +20,9 @@ public class MonsterNormalCard extends MonsterCard implements NormalDeckCard  {
 		super(name, description,ColorPicture.NORMAL, picture, type, atribute, originalAttack, originalDeffense,
 			 null,copies_number);
 	}
+
+	public MonsterNormalCard(int copies_number) {
+		super(null, null,ColorPicture.NORMAL,null, 0, 0, 0, 0,
+				 null,copies_number);
+	}
 }

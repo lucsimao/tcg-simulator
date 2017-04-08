@@ -35,15 +35,15 @@ public class Field {
 	
 	//Métodos contrutores
 	public Field(){
-		this.hand = new Hand();
-		this.graveyard = new Graveyard();
-		this.monsterZone = new MonsterZone();
-		this.spellTrapZone = new SpellTrapZone();
-		this.removeFromPlay = new RemoveFromPlay();
-		this.deck = new NormalDeck();
-		this.extraDeck = new ExtraDeck();
+		this.hand = new Hand(5);
+		this.graveyard = new Graveyard(10);
+		this.monsterZone = new MonsterZone(2);
+		this.spellTrapZone = new SpellTrapZone(2);
+		this.removeFromPlay = new RemoveFromPlay(5);
+		this.deck = new NormalDeck(50);
+		this.extraDeck = new ExtraDeck(10);
 	}
-	
+		
 	public Field(NormalDeck deck, ExtraDeck extraDeck){
 		this.hand = new Hand();
 		this.graveyard = new Graveyard();

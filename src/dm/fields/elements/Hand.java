@@ -1,5 +1,8 @@
 package dm.fields.elements;
 
+import dm.cards.Effect;
+import dm.cards.MonsterEffectCard;
+import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.fields.elements.decks.FieldElement;
 
@@ -18,6 +21,13 @@ public class Hand  extends FieldElement<Card>{
 	public Hand() {
 		this.maxCards = MAX_CARDS;
 		isHandPlayable = true;
+	}
+	
+	public Hand(int number) {
+		super(number, new MonsterNormalCard(3));
+		this.maxCards = MAX_CARDS;
+		isHandPlayable = true;
+		
 	}
 	
 	@Override

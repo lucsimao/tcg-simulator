@@ -1,5 +1,6 @@
 package dm.fields.elements.zones;
 
+import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.CardState;
@@ -12,6 +13,17 @@ import dm.exceptions.ZoneOccupedException;
  * Logo, ela pode special summon, normal summon, set ou mudar para o modo de defesa.*/
 
 public class MonsterZone extends CardZone {
+
+	public MonsterZone(int number) {
+		for(int i=0;i<number;i++)
+		{
+			putCard(new MonsterNormalCard(3),i);
+		}
+	}
+
+	public MonsterZone() {
+		super();
+	}
 
 	public void setMonster(MonsterCard monsterCard, int index) {
 		putCard(monsterCard, index);	

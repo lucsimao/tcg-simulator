@@ -1,5 +1,6 @@
 package dm.fields.elements.decks;
 
+import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
@@ -9,8 +10,20 @@ import dm.interfaces.NormalDeckCard;
  * Deck normal, ele diferencia pois aceita cartas de diversos tipos, menos cartas de extra deck.
  * */
 public class NormalDeck extends Deck<NormalDeckCard> {
+
 	private static final int MAX_CARDS = 60;
 	private static final int MIN_CARDS = 40;
+
+	
+	public NormalDeck(int number){
+		for(int i = 0; i<number;i++){
+			putCard(new MonsterNormalCard(3));
+		}
+	}
+	
+	public NormalDeck() {
+		super();
+	}
 
 	// Adiciona uma carta ao deck
 	@Override

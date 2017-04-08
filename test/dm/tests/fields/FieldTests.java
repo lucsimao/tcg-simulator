@@ -40,5 +40,5 @@ public class FieldTests{
 		assertEquals(deckSize-1,field.countDeckCards());
 		assertEquals(handSize+1,field.countHandCards());
 	}
-
+	
 }

@@ -21,32 +21,31 @@ public class FieldMonsterTests{
 	private MonsterCard monsterCard;
 	private MonsterFusionCard monsterFusionCard;
 	private MonsterCard monsterEffectCard;
+	private int deckSize;
+	private int handSize;
 
-
+	private int monstersSize;
+	
 	@Before
 	public void initCards(){
 		monsterCard = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
 		monsterFusionCard = new MonsterFusionCard("Gaia, The Dragon Champion", "The gaia dragon",null,MonsterType.WARRIOR,MonsterAttribute.EARTH,2600,2100,0,null, 3);
 		monsterEffectCard =  new MonsterEffectCard("Penguin Soldier", "[FLIP] return one card to your hand",null,MonsterType.AQUA,MonsterAttribute.WATER,500,300,new Effect(), 3);
 		field = new Field();
+		deckSize = field.countDeckCards();
+		handSize = field.countHandCards();
+		monstersSize = field.countMonsters();
 	}
-	
-	@Test
-	public void setMonster(){
-		field.setCard(monsterCard);
-		assertEquals(1,field.countMonsters());
-		field.setCard(monsterCard,2);
-		assertEquals(2,field.countMonsters());
-	}
-	
+			
 	@Test
 	public void summonMonster(){
 		field.summonMonster(monsterCard);
-		assertEquals(1,field.countMonsters());
-		field.summonMonster(monsterCard,2);
-		assertEquals(2,field.countMonsters());
+		assertEquals(monstersSize + 1,field.countMonsters());
+		field.summonMonster(monsterCard);
+		assertEquals(monstersSize + 2,field.countMonsters());
 	}
 	
+
 	@Test
 	public void sendToGraveyardMonster(){
 		setCardsOnMonsterField();
@@ -83,6 +82,15 @@ public class FieldMonsterTests{
 		assertEquals(zoneSize-3, field.countMonsters());
 		assertEquals(extraDeckSize+1, field.countExtraDeckCards());
 		assertEquals(handSize+2, field.countHandCards());
+	}
+	
+	@Test
+	public void setMonster(){
+		System.out.println(monstersSize);
+		field.setCard(monsterCard);
+		assertEquals(monstersSize+1,field.countMonsters());
+//		field.setCard(monsterCard);
+//		assertEquals(monstersSize+2,field.countMonsters());
 	}
 	
 	@Test

@@ -22,4 +22,10 @@ public class MonsterFusionCard extends MonsterCard implements ExtraDeckCard {
 		super(name, description,ColorPicture.FUSION, picture, type, atribute, originalAttack, originalDeffense,
 				 effect,copies_number);
 	}
+	
+	public MonsterFusionCard(int copies_number){
+		super(null, null,ColorPicture.FUSION,null, 0, 0, 0, 0,
+					 null,copies_number);
+	}
+	
 }

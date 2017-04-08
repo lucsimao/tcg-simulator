@@ -5,6 +5,7 @@ import java.awt.Image;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardType;
 import dm.constants.ColorPicture;
+import dm.constants.SpellType;
 import dm.exceptions.NoEffectException;
 import dm.interfaces.NormalDeckCard;
 
@@ -24,6 +25,11 @@ public class SpellCard extends NonMonsterCard implements  NormalDeckCard  {
 		this.type = type;
 	}
 
+	public SpellCard(int copies_number) throws NoEffectException{
+		super(null, null,CardType.SPELL, ColorPicture.SPELL, null, new Effect(),copies_number);
+		this.type = SpellType.NORMAL;
+	}
+	
 	public int getType() {
 		return type;
 	}

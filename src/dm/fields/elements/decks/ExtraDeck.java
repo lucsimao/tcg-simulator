@@ -1,5 +1,7 @@
 package dm.fields.elements.decks;
 
+import dm.cards.MonsterFusionCard;
+import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
@@ -12,6 +14,16 @@ import dm.interfaces.ExtraDeckCard;
 public class ExtraDeck extends Deck<ExtraDeckCard>{
 
 	private static final int MAX_CARDS = 15;
+	
+	public ExtraDeck(int number){
+		for(int i = 0; i<number;i++){
+			putCard(new MonsterFusionCard(3));
+		}
+	}
+	
+	public ExtraDeck() {
+		super();
+	}
 
 	// Adiciona uma carta ao deck
 	@Override
