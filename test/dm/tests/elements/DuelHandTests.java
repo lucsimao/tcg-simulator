@@ -13,6 +13,7 @@ import dm.cards.SpellCard;
 import dm.cards.TrapCard;
 import dm.cards.Effect;
 import dm.exceptions.CardsOutException;
+import dm.exceptions.NoEffectException;
 import dm.fields.elements.Hand;
 
 public class DuelHandTests {
@@ -25,13 +26,13 @@ public class DuelHandTests {
 	private TrapCard trapCard;
 	
 	@Before
-	public void initGraveyard() {
+	public void initGraveyard() throws NoEffectException {
 		hand = new Hand();
 		fusionCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
 		normalCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 0);
 		effectCard = new MonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
-		spellCard = new SpellCard(null, null, null, null, 0, 3);
-		trapCard = new TrapCard(null, null, null, null, 0, 3);
+		spellCard = new SpellCard(null, null, null, new Effect(), 0, 3);
+		trapCard = new TrapCard(null, null, null, new Effect(), 0, 3);
 		pushCards();
 	}
 		

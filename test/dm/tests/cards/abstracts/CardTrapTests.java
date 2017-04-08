@@ -12,6 +12,7 @@ import dm.cards.Effect;
 import dm.constants.CardType;
 import dm.constants.ColorPicture;
 import dm.constants.TrapType;
+import dm.exceptions.NoEffectException;
 
 public abstract class CardTrapTests extends CardTests<SpellCard> {
 
@@ -29,7 +30,11 @@ public abstract class CardTrapTests extends CardTests<SpellCard> {
 	@Override
 	@Before
 	public void initCard(){
-		setCard(new SpellCard(name, description, picture, effect,type, copies_number));
+		try {
+			setCard(new SpellCard(name, description, picture, effect,type, copies_number));
+		} catch (NoEffectException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test

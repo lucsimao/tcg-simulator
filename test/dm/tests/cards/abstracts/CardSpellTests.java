@@ -7,11 +7,12 @@ import java.awt.Image;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.SpellCard;
 import dm.cards.Effect;
+import dm.cards.SpellCard;
 import dm.constants.CardType;
 import dm.constants.ColorPicture;
 import dm.constants.SpellType;
+import dm.exceptions.NoEffectException;
 
 public abstract class CardSpellTests extends CardTests<SpellCard> {
 
@@ -19,7 +20,7 @@ public abstract class CardSpellTests extends CardTests<SpellCard> {
 	protected static String description = "The ultimate wizard in terms of attack and defense";
 	protected static int type = SpellType.NORMAL;
 	protected static int copies_number = 3;
-	protected static Effect effect = null;
+	protected static Effect effect = new Effect();
 	protected static Image picture = null;
 	
 	protected static int cardType = CardType.SPELL;
@@ -28,7 +29,10 @@ public abstract class CardSpellTests extends CardTests<SpellCard> {
 	@Override
 	@Before
 	public void initCard(){
-		setCard(new SpellCard(name, description, picture, effect,type, copies_number));
+		try {
+			setCard(new SpellCard(name, description, picture, effect,type, copies_number));
+		} catch (NoEffectException e) {
+		}
 	}
 	
 	@Test

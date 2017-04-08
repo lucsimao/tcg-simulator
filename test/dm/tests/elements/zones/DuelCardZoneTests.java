@@ -10,6 +10,7 @@ import dm.cards.MonsterFusionCard;
 import dm.cards.SpellCard;
 import dm.cards.TrapCard;
 import dm.cards.Effect;
+import dm.exceptions.NoEffectException;
 import dm.exceptions.ZoneOccupedException;
 import dm.fields.elements.zones.CardZone;
 
@@ -22,12 +23,12 @@ public class DuelCardZoneTests {
 	private TrapCard trapCard;
 	
 	@Before
-	public void initGraveyard() {
+	public void initGraveyard() throws NoEffectException {
 		zone = new CardZone();
 		fusionCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
 		effectCard = new MonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
-		spellCard = new SpellCard(null, null, null, null, 0, 3);
-		trapCard = new TrapCard(null, null, null, null, 0, 3);
+		spellCard = new SpellCard(null, null, null, new Effect(), 0, 3);
+		trapCard = new TrapCard(null, null, null, new Effect(), 0, 3);
 	}
 		
 	@Test

@@ -10,6 +10,7 @@ import dm.cards.TrapCard;
 import dm.cards.Effect;
 import dm.constants.SpellType;
 import dm.constants.TrapType;
+import dm.exceptions.NoEffectException;
 import dm.fields.Field;
 
 public class FieldSpellTrapTests{
@@ -21,7 +22,7 @@ public class FieldSpellTrapTests{
 
 
 	@Before
-	public void initCards(){
+	public void initCards() throws NoEffectException{
 		spellCard = new SpellCard("Dark Hole","Destroy all monster on the field",null,new Effect(),SpellType.NORMAL, 3);
 		trapCard = new TrapCard("Mirror Force","Destroy all attacking monsters",null,new Effect(),TrapType.NORMAL, 3);
 		field = new Field();
