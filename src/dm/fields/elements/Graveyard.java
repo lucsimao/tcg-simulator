@@ -10,17 +10,7 @@ public class Graveyard extends Deck<Card>{
 	public void putCard(Card card) {
 		getCards().push(card);
 	}
-	
-	public Card remove(Card card)
-	{
-		if(getCards().contains(card))
-		{
-			getCards().remove(card);
-			return card;
-		}
-		throw new CardNotFoundException("This card does not exist in this deck");
-	}
-	
+		
 	public Card remove(int index)
 	{
 		try{

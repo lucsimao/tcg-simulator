@@ -32,7 +32,7 @@ public class DuelExtraDeckTests {
 	
 	@Test
 	public void deckout() {
-		assertTrue(deck.isDeckout());
+		assertTrue(deck.isEmpty());
 		assertEquals(0, deck.size());
 	}
 

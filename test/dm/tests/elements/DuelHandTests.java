@@ -42,7 +42,7 @@ public class DuelHandTests {
 		}catch(Exception e) {
 
 		}
-		assertTrue(hand.isDeckout());
+		assertTrue(hand.isEmpty());
 		assertEquals(0, hand.size());
 	}
 	
