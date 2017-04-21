@@ -159,5 +159,9 @@ public class Field {
 		NormalDeckCard card = deck.drawCard();
 		hand.putCard((Card) card);		
 	}
+
+	public Card getCard(int index) {
+		return monsterZone.getCard(index);
+	}
 	
 }

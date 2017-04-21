@@ -1,7 +1,6 @@
 package dm.fields.elements.decks;
 
 import dm.cards.MonsterFusionCard;
-import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;

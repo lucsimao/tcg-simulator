@@ -1,7 +1,5 @@
 package dm.fields.elements;
 
-import dm.cards.Effect;
-import dm.cards.MonsterEffectCard;
 import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.fields.elements.decks.FieldElement;

@@ -30,10 +30,11 @@ public class FieldSpellTrapTests{
 	
 	@Test
 	public void setSpellsAndTraps(){
+		int zoneSize = field.countNonMonsters();
 		field.setCard(spellCard);
-		assertEquals(1,field.countNonMonsters());
-		field.setCard(trapCard,2);
-		assertEquals(2,field.countNonMonsters());
+		assertEquals(zoneSize + 1,field.countNonMonsters());
+		field.setCard(trapCard);
+		assertEquals(zoneSize + 2,field.countNonMonsters());
 	}
 		
 	@Test
@@ -48,12 +49,17 @@ public class FieldSpellTrapTests{
 	}
 	
 	public void setCardsOnSpellTrapField(){
-		field.setCard(spellCard);
-		field.setCard(spellCard);
-		field.setCard(spellCard);
-		field.setCard(trapCard);
-		field.setCard(trapCard);
-		assertEquals(5,field.countNonMonsters());
+		try {
+			field.setCard(spellCard);
+			field.setCard(spellCard);
+			field.setCard(trapCard);
+			field.setCard(trapCard);
+			field.setCard(spellCard);
+			assertEquals(5,field.countNonMonsters());
+		} catch (Exception e) {
+			
+		}
+
 	}
 		
 	@Test

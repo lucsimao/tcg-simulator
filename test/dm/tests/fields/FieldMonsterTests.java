@@ -59,13 +59,18 @@ public class FieldMonsterTests{
 		assertEquals(graveSize+2,field.countGraveCards());
 	}
 	
-	public void setCardsOnMonsterField(){
-		field.setCard(monsterCard);
-		field.setCard(monsterFusionCard);
-		field.setCard(monsterEffectCard);
-		field.setCard(monsterCard);
-		field.setCard(monsterFusionCard);
-		assertEquals(5,field.countMonsters());
+	private void setCardsOnMonsterField(){
+		try {
+			field.setCard(monsterCard);
+			field.setCard(monsterFusionCard);
+			field.setCard(monsterEffectCard);
+			field.setCard(monsterCard);
+			field.setCard(monsterFusionCard);
+			assertEquals(5,field.countMonsters());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 	}
 		
 	@Test
