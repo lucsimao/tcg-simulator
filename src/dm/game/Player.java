@@ -119,5 +119,10 @@ public class Player {
 		field.changeToDefense(monsterCard);
 		
 	}
+
+	public void changeToAttack(MonsterCard monsterCard) {
+		field.changeToAttack(monsterCard);
+		
+	}
 	
 }

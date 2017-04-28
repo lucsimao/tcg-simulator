@@ -76,7 +76,12 @@ public class MonsterZone extends CardZone {
 	}
 	
 	public void changeToAttack(MonsterCard monsterCard) {
-		//TODO
+		for(Card card : this.getCards())
+		{
+			if(monsterCard.equals(card)){
+				monsterCard.setState(CardState.FACE_UP_ATTACK);
+			}
+		}
 	}
 	
 

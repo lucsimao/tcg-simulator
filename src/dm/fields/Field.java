@@ -173,5 +173,10 @@ public class Field {
 		monsterZone.changeToDefense(monsterCard);
 		
 	}
+
+	public void changeToAttack(MonsterCard monsterCard) {
+		monsterZone.changeToAttack(monsterCard);
+		
+	}
 	
 }
