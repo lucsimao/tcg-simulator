@@ -30,6 +30,14 @@ public class CardZone {
 			throw new CardNotFoundException("Card is not found in this deck");
 	}
 	
+	public int getCardIndex(Card card) throws CardNotFoundException {
+		for(int i= 0;i<ZONE_SIZE;i++){
+			if(cards[i]!=null && cards[i].equals(card))
+				return i;
+		}
+		throw new CardNotFoundException("This card does not exist on the field.");
+	}
+	
 	public void putCard(Card card, int index)
 	{
 		if(cards[index] == null)
@@ -67,3 +75,5 @@ public class CardZone {
 	}
 	
 }
+		
+		

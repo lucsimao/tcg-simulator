@@ -1,4 +1,4 @@
-package dm.game.tests;
+package dm.tests.game;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,6 +10,7 @@ import org.junit.Test;
 import dm.cards.MonsterNormalCard;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
+import dm.exceptions.CardNotFoundException;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
@@ -17,7 +18,7 @@ import dm.game.Player;
 public class PlayerTests {
 
 	private Player player;
-	
+	private Player player2;
 	private static final String name = "Seto Kaiba";
 	private static final Image avatar = null;
 	private NormalDeck deck = new NormalDeck();
@@ -27,6 +28,7 @@ public class PlayerTests {
 	public void initPlayers() {
 		initDeck();
 		player = new Player(name,avatar,deck,extraDeck);
+		player2 = new Player(name,avatar,deck,extraDeck);
 		assertEquals(name,player.getName());
 		assertEquals(avatar,player.getAvatar());
 		assertEquals(deck,player.getDeck());
@@ -67,11 +69,16 @@ public class PlayerTests {
 		assertEquals(deckSize -1,player.countDeckCards());
 	}
 		
-//	@Test
-//	public void attackAndWin(){
-//		MonsterNormalCard card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
-//		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2000,2100,0,3);
-//		player.attack(index_attacking, new Player, index_attacked);
-//	}
+	@Test(expected=CardNotFoundException.class)
+	public void attackAndWin(){
+		MonsterNormalCard card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
+		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2000,2100,0,3);
+		int lp2 = player2.getLP();
+		player.summon(card);
+		player2.summon(card2);
+		player.attack(card, player2, card2);
+		assertEquals(lp2 - (card.getCurrentAttack() - card2.getCurrentAttack()),player2.getLP());
+		player2.getMonsterCardIndex(card2);
+	}
 	
 }

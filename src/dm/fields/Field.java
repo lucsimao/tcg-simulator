@@ -4,6 +4,7 @@ import dm.cards.MonsterFusionCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
+import dm.exceptions.CardNotFoundException;
 import dm.fields.elements.Graveyard;
 import dm.fields.elements.Hand;
 import dm.fields.elements.RemoveFromPlay;
@@ -160,8 +161,12 @@ public class Field {
 		hand.putCard((Card) card);		
 	}
 
-	public Card getMonsterCard(int index) {
-		return monsterZone.getCard(index);
+	public MonsterCard getMonsterCard(int index) {
+		return (MonsterCard) monsterZone.getCard(index);
+	}
+
+	public int getMonsterCardIndex(Card card) throws CardNotFoundException {
+		return monsterZone.getCardIndex(card);
 	}
 	
 }

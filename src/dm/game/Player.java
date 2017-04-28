@@ -2,7 +2,12 @@ package dm.game;
 
 import java.awt.Image;
 
+import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
+import dm.cards.abstracts.MonsterCard;
+import dm.cards.abstracts.NonMonsterCard;
+import dm.constants.CardState;
+import dm.exceptions.CardNotFoundException;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -55,13 +60,59 @@ public class Player {
 
 	public void attack(int index_attacking,Player player, int index_attacked) {
 		
-		Card attacking = getMonsterCard(index_attacking);
-		Card attacked = player.getMonsterCard(index_attacked);
-		
+		MonsterCard attacking = getMonsterCard(index_attacking);
+		MonsterCard attacked = player.getMonsterCard(index_attacked);
+		if(attacked.getState()==CardState.FACE_UP_DEFENSE_POS||attacked.getState()<CardState.FACE_DOWN)
+		{
+			if(attacking.getCurrentAttack()>attacked.getCurrentDefense()){
+				player.destroy(attacked);
+			}
+			else
+				if(attacking.getCurrentAttack()<attacked.getCurrentDefense())
+					decreaseLp(attacked.getCurrentDefense()- attacking.getCurrentAttack());
+		}
+		else
+			if(attacked.getState()==CardState.FACE_UP_ATTACK){
+				if(attacking.getCurrentAttack()>attacked.getCurrentAttack()){
+					player.destroy(attacked);
+					player.decreaseLp(attacking.getCurrentAttack()-attacked.getCurrentAttack());
+				}
+				else
+					if(attacking.getCurrentAttack()<attacked.getCurrentAttack()){
+						decreaseLp(attacked.getCurrentAttack()- attacking.getCurrentAttack());
+						destroy(attacking);
+					}
+					else{
+						destroy(attacking);
+						player.destroy(attacked);
+					}
+						
+			}
+	}
+	
+	public void destroy(MonsterCard monsterCard) {
+		field.sendToGraveyard(monsterCard);
 	}
 
-	private Card getMonsterCard(int index) {
+	public void destroy(NonMonsterCard spellTrapCard) {
+		field.sendToGraveyard(spellTrapCard);
+	}
+	
+	public void attack(MonsterCard attacking,Player player,MonsterCard attacked)throws CardNotFoundException {	
+ 		attack(field.getMonsterCardIndex(attacking), player, player.getMonsterCardIndex(attacked));
+	}
+	
+	public int getMonsterCardIndex(MonsterCard card) {
+		return field.getMonsterCardIndex(card);	
+	}
+	
+	public MonsterCard getMonsterCard(int index) {
 		return field.getMonsterCard(index);	
+	}
+
+	public void summon(MonsterNormalCard card) {
+		field.summonMonster(card);
+		
 	}
 	
 }

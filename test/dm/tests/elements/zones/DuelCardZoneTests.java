@@ -9,7 +9,9 @@ import dm.cards.MonsterEffectCard;
 import dm.cards.MonsterFusionCard;
 import dm.cards.SpellCard;
 import dm.cards.TrapCard;
+import dm.cards.abstracts.Card;
 import dm.cards.Effect;
+import dm.exceptions.CardNotFoundException;
 import dm.exceptions.NoEffectException;
 import dm.exceptions.ZoneOccupedException;
 import dm.fields.elements.zones.CardZone;
@@ -23,7 +25,7 @@ public class DuelCardZoneTests {
 	private TrapCard trapCard;
 	
 	@Before
-	public void initGraveyard() throws NoEffectException {
+	public void initZone() throws NoEffectException {
 		zone = new CardZone();
 		fusionCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
 		effectCard = new MonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
@@ -81,6 +83,14 @@ public class DuelCardZoneTests {
 		putCards();
 		zone.removeAll();
 		assertEquals(0, zone.countCards());
+	}
+	
+	@Test(expected= CardNotFoundException.class)
+	public void getMonstersIndex(){
+		putCards();
+		Card c = new MonsterEffectCard(1);
+		assertEquals(0,zone.getCardIndex(fusionCard));
+		zone.getCardIndex(c);
 	}
 	
 }
