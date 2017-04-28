@@ -119,4 +119,17 @@ public class PlayerTests {
 		player.getMonsterCardIndex(card2);
 	}
 	
+	@Test
+	public void attackASettedAndLose(){
+		MonsterNormalCard card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
+		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2000,2100,0,3);
+		int lp = player.getLP();
+		player.summon(card2);
+		player2.set(card);
+		player2.changeToDefense(card);
+		player.attack(card2, player2, card);
+		assertEquals(lp - (card.getCurrentDefense() - card2.getCurrentAttack()),player.getLP());
+		player.getMonsterCardIndex(card2);
+	}
+	
 }

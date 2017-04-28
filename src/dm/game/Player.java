@@ -109,11 +109,19 @@ public class Player {
 		return field.getMonsterCard(index);	
 	}
 
-	public void summon(MonsterNormalCard card) {
-		field.summonMonster(card);
+	public void summon(MonsterNormalCard monsterCard) {
+		field.summonMonster(monsterCard);
 		
 	}
+	
+	public void set(MonsterNormalCard monsterCard){
+		field.setCard(monsterCard);
+	}
 
+	public void set(NonMonsterCard nonMonsterCard){
+		field.setCard(nonMonsterCard);
+	}
+	
 	public void changeToDefense(MonsterCard monsterCard) {
 		field.changeToDefense(monsterCard);
 		
