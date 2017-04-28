@@ -168,5 +168,10 @@ public class Field {
 	public int getMonsterCardIndex(Card card) throws CardNotFoundException {
 		return monsterZone.getCardIndex(card);
 	}
+
+	public void changeToDefense(MonsterCard monsterCard) {
+		monsterZone.changeToDefense(monsterCard);
+		
+	}
 	
 }

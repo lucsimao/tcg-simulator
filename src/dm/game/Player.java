@@ -114,5 +114,10 @@ public class Player {
 		field.summonMonster(card);
 		
 	}
+
+	public void changeToDefense(MonsterCard monsterCard) {
+		field.changeToDefense(monsterCard);
+		
+	}
 	
 }

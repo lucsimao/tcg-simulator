@@ -66,6 +66,20 @@ public class MonsterZone extends CardZone {
 		throw new CardNotFoundException("Card was not found");
 	}
 
+	public void changeToDefense(MonsterCard monsterCard) {
+		for(Card card : this.getCards())
+		{
+			if(monsterCard.equals(card)){
+				monsterCard.setState(CardState.FACE_UP_DEFENSE_POS);
+			}
+		}
+	}
+	
+	public void changeToAttack(MonsterCard monsterCard) {
+		//TODO
+	}
+	
+
 
 	
 }
