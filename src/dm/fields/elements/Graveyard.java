@@ -4,15 +4,16 @@ import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.fields.elements.decks.Deck;
 
-/*From @Simao
- * Classe cemitério, ela não possui nada de diferente em sua estrutura, porém, deve ser 
- * diferenciada por conta de seu uso.*/
-public class Graveyard extends Deck<Card>{
+/** Classe cemitério, ela não possui nada de diferente em sua estrutura, porém, deve ser 
+ * diferenciada por conta de seu uso.
+ * @author Simão
+ * */
+public class Graveyard extends Deck<Card> {
 
-	public Graveyard(int number){
+	public Graveyard(int number) {
 		super(number, new MonsterNormalCard(3));
 	}
-	
+
 	public Graveyard() {
 		super();
 	}
@@ -21,7 +22,5 @@ public class Graveyard extends Deck<Card>{
 	public void putCard(Card card) {
 		getCards().push(card);
 	}
-		
 
-	
 }

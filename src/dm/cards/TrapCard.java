@@ -15,17 +15,18 @@ import dm.interfaces.NormalDeckCard;
  * Ela não pode ter efeito nulo.
  */
 
-public class TrapCard extends NonMonsterCard implements  NormalDeckCard  {
+public class TrapCard extends NonMonsterCard implements NormalDeckCard {
 
 	public int type;
 
-	public TrapCard(String name, String description, Image picture, Effect effect,
-			int type,int copies_number) throws NoEffectException {
-		super(name, description,CardType.TRAP,ColorPicture.TRAP, picture, effect,copies_number);
+	public TrapCard(String name, String description, Image picture, Effect effect, int type, int copies_number)
+			throws NoEffectException {
+		super(name, description, CardType.TRAP, ColorPicture.TRAP, picture, effect, copies_number);
 		this.type = type;
 	}
-	public TrapCard(int copies_number) throws NoEffectException{
-		super(null, null,CardType.TRAP,ColorPicture.TRAP, null,new Effect(),copies_number);
+
+	public TrapCard(int copies_number) throws NoEffectException {
+		super(null, null, CardType.TRAP, ColorPicture.TRAP, null, new Effect(), copies_number);
 		this.type = TrapType.NORMAL;
 	}
 }

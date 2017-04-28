@@ -6,20 +6,20 @@ import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
 import dm.interfaces.ExtraDeckCard;
 
-/*From @Simao
- * Deck Extra, diferente do deck comum, ela só pode receber monstros de extra deck.
+/** Deck Extra, diferente do deck comum, ela só pode receber monstros de extra deck.
+ *@author Simão
  * */
 
-public class ExtraDeck extends Deck<ExtraDeckCard>{
+public class ExtraDeck extends Deck<ExtraDeckCard> {
 
 	private static final int MAX_CARDS = 15;
-	
-	public ExtraDeck(int number){
-		for(int i = 0; i<number;i++){
+
+	public ExtraDeck(int number) {
+		for (int i = 0; i < number; i++) {
 			putCard(new MonsterFusionCard(3));
 		}
 	}
-	
+
 	public ExtraDeck() {
 		super();
 	}
@@ -27,21 +27,22 @@ public class ExtraDeck extends Deck<ExtraDeckCard>{
 	// Adiciona uma carta ao deck
 	@Override
 	public void putCard(ExtraDeckCard card) {
-		if(getCards().size()<=MAX_CARDS)
+		if (getCards().size() <= MAX_CARDS)
 			if (countCards(card) < (card).getCopiesNumber())
 				getCards().push(card);
 			else
-				throw new MaxCardCopiesException("You can only have " + ((Card) card).getCopiesNumber() + " copies of this card");
+				throw new MaxCardCopiesException(
+						"You can only have " + ((Card) card).getCopiesNumber() + " copies of this card");
 		else
-			throw new MaxDeckSizeException("You can have only " + MAX_CARDS + " cards on your deck");		
+			throw new MaxDeckSizeException("You can have only " + MAX_CARDS + " cards on your deck");
 	}
 
 	public boolean isPlayable() {
-		return (this.size()<= MAX_CARDS);
+		return (this.size() <= MAX_CARDS);
 	}
 
 	public int getMaxCards() {
 		return MAX_CARDS;
 	}
-	
+
 }

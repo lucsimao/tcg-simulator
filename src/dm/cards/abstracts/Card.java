@@ -6,23 +6,24 @@ import dm.cards.Effect;
 import dm.constants.CardState;
 import dm.constants.RulesConstants;
 
-/*
- * From @Simao
+/**
  * Classe abstrata Card, ela contém contrutor e métodos que toda carta deverá conter.
- * */
+ * @author Simão*/
 
 public abstract class Card {
-	
+
 	private String name;
 	private String description;
-	private int cardType; // 0 for tokens, 1 for monster, 2 for spells, 3 for traps
+	private int cardType; // 0 for tokens, 1 for monster, 2 for spells, 3 for
+							// traps
 	private int colorPicture;
 	private Image picture;
 	private Effect effect;
 	private int copies_number;
 	private int state;
-	
-	public Card(String name, String description, int cardType, int colorPicture, Image picture, Effect effect, int copies_number) {
+
+	public Card(String name, String description, int cardType, int colorPicture, Image picture, Effect effect,
+			int copies_number) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -30,24 +31,54 @@ public abstract class Card {
 		this.colorPicture = colorPicture;
 		this.picture = picture;
 		this.effect = effect;
-		//Esse pedaço de código protege de ter mais cópias do que o permitido nas regras do jogo.
-		if(copies_number>=RulesConstants.MAX_CARDS_REPEATED)
+		// Esse pedaço de código protege de ter mais cópias do que o permitido
+		// nas regras do jogo.
+		if (copies_number >= RulesConstants.MAX_CARDS_REPEATED)
 			this.copies_number = RulesConstants.MAX_CARDS_REPEATED;
 		else
 			this.copies_number = copies_number;
-		this.state = CardState.NONE;//Diz que a carta não está no campo ainda.
+		this.state = CardState.NONE;// Diz que a carta não está no campo ainda.
 	}
 
-	//Getters and Setters
-	public String getName() {return name;}
-	public int getState() {return state;}
-	public void setState(int state) {this.state = state;}
-	public int getCardType() {return cardType;}
-	public void setCardType(int cardType) {this.cardType = cardType;}
-	public String getDescription() {return description;}
-	public int getColorPicture() {return colorPicture;}
-	public Image getPicture() {return picture;}
-	public Effect getEffect() {return effect;}
-	public int getCopiesNumber() {return copies_number;}
-	
+	// Getters and Setters
+	public String getName() {
+		return name;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+	public int getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(int cardType) {
+		this.cardType = cardType;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public int getColorPicture() {
+		return colorPicture;
+	}
+
+	public Image getPicture() {
+		return picture;
+	}
+
+	public Effect getEffect() {
+		return effect;
+	}
+
+	public int getCopiesNumber() {
+		return copies_number;
+	}
+
 }

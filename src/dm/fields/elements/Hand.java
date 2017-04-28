@@ -4,67 +4,66 @@ import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.fields.elements.decks.FieldElement;
 
-/*From @Simao
- * Classe mão.
+/** Classe mão.
  * Ela pode ter um número máximo de cartas na mão.
- * Possui funções de descatar, adicionar e remover cartas.*/
+ * Possui funções de descatar, adicionar e remover cartas.
+ * @author Simão*/
 
-public class Hand  extends FieldElement<Card>{
+public class Hand extends FieldElement<Card> {
 
 	private final int MAX_CARDS = 7;
-	
+
 	private int maxCards;
 	private boolean isHandPlayable;
-	
+
 	public Hand() {
 		this.maxCards = MAX_CARDS;
 		isHandPlayable = true;
 	}
-	
+
 	public Hand(int number) {
 		super(number, new MonsterNormalCard(3));
 		this.maxCards = MAX_CARDS;
 		isHandPlayable = true;
-		
+
 	}
-	
+
 	@Override
 	public void putCard(Card card) {
 		getCards().push(card);
-		if(getCards().size()<=maxCards)
+		if (getCards().size() <= maxCards)
 			isHandPlayable = true;
 		else
 			isHandPlayable = false;
 	}
 
 	public Card discard(Card card) {
-		if(getCards().size()<=maxCards)
+		if (getCards().size() <= maxCards)
 			isHandPlayable = false;
 		else
 			isHandPlayable = true;
 		return remove(card);
 	}
-	
-	public boolean isHandPlayable(){
+
+	public boolean isHandPlayable() {
 		return isHandPlayable;
 	}
-	
-	public void setMaxCards(int maxCards){
+
+	public void setMaxCards(int maxCards) {
 		this.maxCards = maxCards;
 	}
-	
-	public int getMaxCards()
-	{
+
+	public int getMaxCards() {
 		return this.maxCards;
 	}
 
 	public Card discardFirst() {
-		if(getCards().size()<=maxCards)
+		if (getCards().size() <= maxCards)
 			isHandPlayable = false;
 		else
 			isHandPlayable = true;
 		return removeFromTop();
 
 	}
-	
+
 }

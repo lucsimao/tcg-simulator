@@ -1,5 +1,5 @@
 package dm.interfaces;
-
-public interface ExtraDeckCard{
+/**@author Simão*/
+public interface ExtraDeckCard {
 	int getCopiesNumber();
 }
