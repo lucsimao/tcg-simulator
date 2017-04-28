@@ -67,4 +67,11 @@ public class PlayerTests {
 		assertEquals(deckSize -1,player.countDeckCards());
 	}
 		
+//	@Test
+//	public void attackAndWin(){
+//		MonsterNormalCard card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
+//		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2000,2100,0,3);
+//		player.attack(index_attacking, new Player, index_attacked);
+//	}
+	
 }

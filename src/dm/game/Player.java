@@ -2,6 +2,7 @@ package dm.game;
 
 import java.awt.Image;
 
+import dm.cards.abstracts.Card;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -51,5 +52,16 @@ public class Player {
 	public void increaseLp(int increment){this.lp += increment;}
 	public void decreaseLp(int decrement){this.lp -= decrement;}
 	public void setLp(int lp){this.lp=lp;}
+
+	public void attack(int index_attacking,Player player, int index_attacked) {
+		
+		Card attacking = getMonsterCard(index_attacking);
+		Card attacked = player.getMonsterCard(index_attacked);
+		
+	}
+
+	private Card getMonsterCard(int index) {
+		return field.getMonsterCard(index);	
+	}
 	
 }

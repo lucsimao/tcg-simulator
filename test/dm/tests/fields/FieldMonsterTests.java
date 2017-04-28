@@ -5,10 +5,10 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import dm.cards.Effect;
 import dm.cards.MonsterEffectCard;
 import dm.cards.MonsterFusionCard;
 import dm.cards.MonsterNormalCard;
-import dm.cards.Effect;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;

@@ -160,7 +160,7 @@ public class Field {
 		hand.putCard((Card) card);		
 	}
 
-	public Card getCard(int index) {
+	public Card getMonsterCard(int index) {
 		return monsterZone.getCard(index);
 	}
 	
