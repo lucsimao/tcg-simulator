@@ -3,7 +3,6 @@ package dm.game;
 import java.awt.Image;
 
 import dm.cards.MonsterNormalCard;
-import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardState;

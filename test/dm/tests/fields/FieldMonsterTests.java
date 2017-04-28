@@ -21,8 +21,8 @@ public class FieldMonsterTests{
 	private MonsterCard monsterCard;
 	private MonsterFusionCard monsterFusionCard;
 	private MonsterCard monsterEffectCard;
-	private int deckSize;
-	private int handSize;
+//	private int deckSize;
+//	private int handSize;
 
 	private int monstersSize;
 	
@@ -32,8 +32,8 @@ public class FieldMonsterTests{
 		monsterFusionCard = new MonsterFusionCard("Gaia, The Dragon Champion", "The gaia dragon",null,MonsterType.WARRIOR,MonsterAttribute.EARTH,2600,2100,0,null, 3);
 		monsterEffectCard =  new MonsterEffectCard("Penguin Soldier", "[FLIP] return one card to your hand",null,MonsterType.AQUA,MonsterAttribute.WATER,500,300,new Effect(), 3);
 		field = new Field();
-		deckSize = field.countDeckCards();
-		handSize = field.countHandCards();
+//		deckSize = field.countDeckCards();
+//		handSize = field.countHandCards();
 		monstersSize = field.countMonsters();
 	}
 			
