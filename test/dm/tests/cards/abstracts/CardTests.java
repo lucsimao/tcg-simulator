@@ -5,10 +5,10 @@ import org.junit.Before;
 public abstract class CardTests<GenericCard> {
 
 	private GenericCard card;
-	
+
 	@Before
 	public abstract void initCard();
-	
+
 	public GenericCard getCard() {
 		return card;
 	}
@@ -16,5 +16,5 @@ public abstract class CardTests<GenericCard> {
 	public void setCard(GenericCard card) {
 		this.card = card;
 	}
-	
+
 }

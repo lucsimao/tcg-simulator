@@ -2,10 +2,12 @@ package dm.fields.elements.decks;
 
 import java.io.Serializable;
 
-/** Classe abstrata deck, para ter funções especiais de todos os decks.
- * Além disso, ele herda de elemento de campo, uma vez que um campo possui um deck.
+/**
+ * Classe abstrata deck, para ter funções especiais de todos os decks. Além
+ * disso, ele herda de elemento de campo, uma vez que um campo possui um deck.
+ * 
  * @author Simão
- * */
+ */
 
 public abstract class Deck<GenericCard> extends FieldElement<GenericCard> implements Serializable {
 

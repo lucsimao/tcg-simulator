@@ -11,34 +11,62 @@ import dm.fields.elements.decks.Deck;
 public abstract class DeckTests<GenericCard> {
 
 	/*
-	 * Classe criada para ser a superclasse dos testes do Deck. Ainda implementando*/
-	
+	 * Classe criada para ser a superclasse dos testes do Deck. Ainda
+	 * implementando
+	 */
+
 	private Deck<GenericCard> deck;
 	private GenericCard unlimitedCard;
 	private GenericCard semiLimitedCard;
 	private GenericCard limitedCard;
 	private GenericCard forbbidenCard;
-	
-	
-	
-	public Deck<GenericCard> getDeck() {return deck;}
-	public void setDeck(Deck<GenericCard> deck) {this.deck = deck;}
-	public GenericCard getUnlimitedCard() {return unlimitedCard;}
-	public void setUnlimitedCard(GenericCard unlimitedCard) {this.unlimitedCard = unlimitedCard;}
-	public GenericCard getSemiLimitedCard() {return semiLimitedCard;}
-	public void setSemiLimitedCard(GenericCard semiLimitedCard) {this.semiLimitedCard = semiLimitedCard;}
-	public GenericCard getLimitedCard() {return limitedCard;}
-	public void setLimitedCard(GenericCard limitedCard) {this.limitedCard = limitedCard;}
-	public GenericCard getForbbidenCard() {return forbbidenCard;}
-	public void setForbbidenCard(GenericCard forbbidenCard) {this.forbbidenCard = forbbidenCard;}
-	
-		
+
+	public Deck<GenericCard> getDeck() {
+		return deck;
+	}
+
+	public void setDeck(Deck<GenericCard> deck) {
+		this.deck = deck;
+	}
+
+	public GenericCard getUnlimitedCard() {
+		return unlimitedCard;
+	}
+
+	public void setUnlimitedCard(GenericCard unlimitedCard) {
+		this.unlimitedCard = unlimitedCard;
+	}
+
+	public GenericCard getSemiLimitedCard() {
+		return semiLimitedCard;
+	}
+
+	public void setSemiLimitedCard(GenericCard semiLimitedCard) {
+		this.semiLimitedCard = semiLimitedCard;
+	}
+
+	public GenericCard getLimitedCard() {
+		return limitedCard;
+	}
+
+	public void setLimitedCard(GenericCard limitedCard) {
+		this.limitedCard = limitedCard;
+	}
+
+	public GenericCard getForbbidenCard() {
+		return forbbidenCard;
+	}
+
+	public void setForbbidenCard(GenericCard forbbidenCard) {
+		this.forbbidenCard = forbbidenCard;
+	}
+
 	@Test
 	public void deckout() {
 		assertTrue(deck.isEmpty());
 		assertEquals(0, deck.size());
 	}
-	
+
 	@Test
 	public void drawACard() {
 		deck.putCard(unlimitedCard);
@@ -49,15 +77,15 @@ public abstract class DeckTests<GenericCard> {
 		assertEquals(drawedCard, topCard);
 	}
 
-	@Test(expected=CardsOutException.class)
+	@Test(expected = CardsOutException.class)
 	public void drawCardsUntilDeckout() {
 		fillDeck();
-		while(true)
+		while (true)
 			deck.drawCard();
 	}
-	
+
 	protected abstract void fillDeck();
-	
+
 	@Test
 	public void pushCard() {
 		int size = deck.size();
@@ -65,7 +93,7 @@ public abstract class DeckTests<GenericCard> {
 		assertEquals(size + 1, deck.size());
 		assertEquals(unlimitedCard, deck.top());
 	}
-	
+
 	@Test
 	public void countCardsInDeck() {
 		assertEquals(0, deck.countCards(unlimitedCard));
@@ -76,5 +104,5 @@ public abstract class DeckTests<GenericCard> {
 		deck.putCard(unlimitedCard);
 		assertEquals(3, deck.countCards(unlimitedCard));
 	}
-	
+
 }

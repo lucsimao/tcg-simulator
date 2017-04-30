@@ -10,7 +10,9 @@ import dm.exceptions.CardsOutException;
 /**
  * SuperClasse abstrata Elemento de Campo, ela é a mãe de todos os elementos.
  * Possui os métodos padrão que todos os elementos devem ter.
- * @author Simão*/
+ * 
+ * @author Simão
+ */
 public abstract class FieldElement<GenericCard> {
 
 	// Atributos

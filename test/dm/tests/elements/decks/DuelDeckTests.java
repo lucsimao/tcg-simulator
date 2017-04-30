@@ -30,24 +30,24 @@ public class DuelDeckTests {
 		limitedCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 1);
 		forbbidenCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 0);
 	}
-	
+
 	@Test
 	public void deckout() {
 		assertTrue(deck.isEmpty());
 		assertEquals(0, deck.size());
 	}
 
-	@Test(expected= MaxDeckSizeException.class)
-	public void isDeckPlayable(){
-		for(int i=0;i<70;i++){
+	@Test(expected = MaxDeckSizeException.class)
+	public void isDeckPlayable() {
+		for (int i = 0; i < 70; i++) {
 			deck.putCard(new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 3));
-			if(i<39)
+			if (i < 39)
 				assertFalse(deck.isPlayable());
-			else if(i<60)
+			else if (i < 60)
 				assertTrue(deck.isPlayable());
 		}
 	}
-	
+
 	@Test
 	public void drawACard() {
 		deck.putCard(unlimitedCard);
@@ -58,18 +58,18 @@ public class DuelDeckTests {
 		assertEquals(drawedCard, topCard);
 	}
 
-	@Test(expected=CardsOutException.class)
+	@Test(expected = CardsOutException.class)
 	public void drawCardsUntilDeckout() {
 		fillDeck();
-		while(true)
+		while (true)
 			deck.drawCard();
 	}
-	
-	private void fillDeck(){
-		for(int i = 0; i< 40; i++)
+
+	private void fillDeck() {
+		for (int i = 0; i < 40; i++)
 			deck.putCard(new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 3));
 	}
-	
+
 	@Test
 	public void pushCard() {
 		int size = deck.size();
@@ -115,5 +115,5 @@ public class DuelDeckTests {
 		deck.putCard(unlimitedCard);
 		deck.putCard(unlimitedCard);
 	}
-		
+
 }

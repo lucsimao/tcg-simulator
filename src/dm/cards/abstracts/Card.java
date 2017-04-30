@@ -8,16 +8,19 @@ import dm.constants.CardState;
 import dm.constants.RulesConstants;
 
 /**
- * Classe abstrata Card, ela contém contrutor e métodos que toda carta deverá conter.
- * @author Simão*/
+ * Classe abstrata Card, ela contém contrutor e métodos que toda carta deverá
+ * conter.
+ * 
+ * @author Simão
+ */
 
-public abstract class Card implements Serializable{
-	
+public abstract class Card implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7720833260489417219L;
-	
+
 	private String name;
 	private String description;
 	private int cardType; // 0 for tokens, 1 for monster, 2 for spells, 3 for

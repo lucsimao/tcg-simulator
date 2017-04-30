@@ -2,7 +2,9 @@ package dm.constants;
 
 /**
  * Constantes com as regras do jogo
- *@author Simão */
+ * 
+ * @author Simão
+ */
 
 public class FilesConstants {
 	public static final String CARDS_DB = "cards";

@@ -22,27 +22,27 @@ public abstract class CardSpellTests extends CardTests<SpellCard> {
 	protected static int copies_number = 3;
 	protected static Effect effect = new Effect();
 	protected static Image picture = null;
-	
+
 	protected static int cardType = CardType.SPELL;
 	protected static int colorPicture = ColorPicture.SPELL;
-	
+
 	@Override
 	@Before
-	public void initCard(){
+	public void initCard() {
 		try {
-			setCard(new SpellCard(name, description, picture, effect,type, copies_number));
+			setCard(new SpellCard(name, description, picture, effect, type, copies_number));
 		} catch (NoEffectException e) {
 		}
 	}
-	
+
 	@Test
-	public void checkAttributesOnInitialCondition(){
-		assertEquals(name,getCard().getName());
-		assertEquals(description,getCard().getDescription());
-		assertEquals(type,getCard().getType());
-		assertEquals(cardType,getCard().getCardType());
-		assertEquals(colorPicture,getCard().getColorPicture());
-		assertEquals(copies_number,getCard().getCopiesNumber());
+	public void checkAttributesOnInitialCondition() {
+		assertEquals(name, getCard().getName());
+		assertEquals(description, getCard().getDescription());
+		assertEquals(type, getCard().getType());
+		assertEquals(cardType, getCard().getCardType());
+		assertEquals(colorPicture, getCard().getColorPicture());
+		assertEquals(copies_number, getCard().getCopiesNumber());
 	}
-		
+
 }

@@ -6,13 +6,13 @@ import dm.cards.Effect;
 import dm.constants.CardType;
 
 /**
- * Classe Monstro
- * Classe abstrata para tratar os monstros do jogo.
- * Eles possuem níveis, atributos e tipo.
- * Eles possuem ataque, defesa originais e correntes.
+ * Classe Monstro Classe abstrata para tratar os monstros do jogo. Eles possuem
+ * níveis, atributos e tipo. Eles possuem ataque, defesa originais e correntes.
  * O ataque e defesa correntes podem ser alterados por cartas de equipamento.
- * Eles também podem voltar o ataque e defesa para o original. 
- *@author Simão */
+ * Eles também podem voltar o ataque e defesa para o original.
+ * 
+ * @author Simão
+ */
 
 public abstract class MonsterCard extends Card {
 
@@ -20,7 +20,7 @@ public abstract class MonsterCard extends Card {
 	 * 
 	 */
 	private static final long serialVersionUID = 1160252849178277811L;
-	
+
 	private int type;
 	private int atribute;
 	private int originalAttack;

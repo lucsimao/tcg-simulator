@@ -8,7 +8,8 @@ import dm.tests.cards.abstracts.CardMonsterTests;
 public class CardMonsterFusionTests extends CardMonsterTests {
 	@Override
 	@Before
-	public void initCard(){
-		setCard(new MonsterFusionCard(name, description, null, type, atribute, originalAttack, originalDefense,0, new Effect(), copies_number));
+	public void initCard() {
+		setCard(new MonsterFusionCard(name, description, null, type, atribute, originalAttack, originalDefense, 0,
+				new Effect(), copies_number));
 	}
 }

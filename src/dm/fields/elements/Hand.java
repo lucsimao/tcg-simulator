@@ -4,10 +4,12 @@ import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.fields.elements.decks.FieldElement;
 
-/** Classe mão.
- * Ela pode ter um número máximo de cartas na mão.
- * Possui funções de descatar, adicionar e remover cartas.
- * @author Simão*/
+/**
+ * Classe mão. Ela pode ter um número máximo de cartas na mão. Possui funções de
+ * descatar, adicionar e remover cartas.
+ * 
+ * @author Simão
+ */
 
 public class Hand extends FieldElement<Card> {
 

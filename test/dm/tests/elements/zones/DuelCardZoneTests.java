@@ -23,7 +23,7 @@ public class DuelCardZoneTests {
 	private MonsterEffectCard effectCard;
 	private SpellCard spellCard;
 	private TrapCard trapCard;
-	
+
 	@Before
 	public void initZone() throws NoEffectException {
 		zone = new CardZone();
@@ -32,40 +32,40 @@ public class DuelCardZoneTests {
 		spellCard = new SpellCard(null, null, null, new Effect(), 0, 3);
 		trapCard = new TrapCard(null, null, null, new Effect(), 0, 3);
 	}
-		
+
 	@Test
 	public void putCards() {
-		zone.putCard(fusionCard,0);
+		zone.putCard(fusionCard, 0);
 		assertEquals(1, zone.countCards());
-		zone.putCard(effectCard,1);
+		zone.putCard(effectCard, 1);
 		assertEquals(2, zone.countCards());
-		zone.putCard(spellCard,2);
+		zone.putCard(spellCard, 2);
 		assertEquals(3, zone.countCards());
-		zone.putCard(trapCard,3);
+		zone.putCard(trapCard, 3);
 		assertEquals(4, zone.countCards());
-		zone.putCard(fusionCard,4);
+		zone.putCard(fusionCard, 4);
 		assertEquals(5, zone.countCards());
 	}
-	
-	@Test(expected= ZoneOccupedException.class)
+
+	@Test(expected = ZoneOccupedException.class)
 	public void putCardsOverOther() {
-		zone.putCard(fusionCard,0);
-		zone.putCard(effectCard,1);
-		zone.putCard(spellCard,2);
-		zone.putCard(trapCard,2);
+		zone.putCard(fusionCard, 0);
+		zone.putCard(effectCard, 1);
+		zone.putCard(spellCard, 2);
+		zone.putCard(trapCard, 2);
 	}
-	
-	@Test(expected= ArrayIndexOutOfBoundsException.class)
+
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void putCardsOutOfRange() {
-		zone.putCard(fusionCard,0);
-		zone.putCard(effectCard,1);
-		zone.putCard(spellCard,2);
-		zone.putCard(trapCard,3);
-		zone.putCard(fusionCard,4);
-		zone.putCard(fusionCard,5);
+		zone.putCard(fusionCard, 0);
+		zone.putCard(effectCard, 1);
+		zone.putCard(spellCard, 2);
+		zone.putCard(trapCard, 3);
+		zone.putCard(fusionCard, 4);
+		zone.putCard(fusionCard, 5);
 	}
-	
-	public void removeCards(){
+
+	public void removeCards() {
 		putCards();
 		zone.remove(0);
 		assertEquals(4, zone.countCards());
@@ -78,19 +78,19 @@ public class DuelCardZoneTests {
 		zone.remove(4);
 		assertEquals(0, zone.countCards());
 	}
-	
-	public void removeAllCards(){
+
+	public void removeAllCards() {
 		putCards();
 		zone.removeAll();
 		assertEquals(0, zone.countCards());
 	}
-	
-	@Test(expected= CardNotFoundException.class)
-	public void getMonstersIndex(){
+
+	@Test(expected = CardNotFoundException.class)
+	public void getMonstersIndex() {
 		putCards();
 		Card c = new MonsterEffectCard(1);
-		assertEquals(0,zone.getCardIndex(fusionCard));
+		assertEquals(0, zone.getCardIndex(fusionCard));
 		zone.getCardIndex(c);
 	}
-	
+
 }

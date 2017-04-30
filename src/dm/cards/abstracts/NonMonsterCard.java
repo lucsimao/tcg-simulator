@@ -6,13 +6,13 @@ import dm.cards.Effect;
 import dm.exceptions.NoEffectException;
 
 /**
- * Cartas que não são monstros, ou seja, mágicas e armadilhas.
- * Elas são obrigadas a ter efeitos.
- *@author Simão */
+ * Cartas que não são monstros, ou seja, mágicas e armadilhas. Elas são
+ * obrigadas a ter efeitos.
+ * 
+ * @author Simão
+ */
 
 public abstract class NonMonsterCard extends Card {
-
-
 
 	/**
 	 * 

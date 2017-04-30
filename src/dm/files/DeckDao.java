@@ -19,62 +19,65 @@ import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
 
 public class DeckDao {
-	
+
 	private FileOutputStream fileOutputStream;
 	private ObjectOutputStream objectOutputStream;
 	private FileInputStream fileInputStream;
 	private ObjectInputStream objectInputStream;
-	
-	
-	/**Salva o deck de um jogador em um arquivo padrão
-	 * @param player o jogador dono do deck
-	 * */
-	public void saveDeck(Player player) throws FileNotFoundException, IOException,NullPointerException {
-		if(player==null)
-		{
+
+	/**
+	 * Salva o deck de um jogador em um arquivo padrão
+	 * 
+	 * @param player
+	 *            o jogador dono do deck
+	 */
+	public void saveDeck(Player player) throws FileNotFoundException, IOException, NullPointerException {
+		if (player == null) {
 			throw new NullPointerException();
 		}
 		NormalDeck normalDeck = player.getDeck();
 		ExtraDeck extraDeck = player.getExtraDeck();
-		
-		saveNormalDeck(normalDeck,player);
-		saveExtraDeck(extraDeck,player);
-	
+
+		saveNormalDeck(normalDeck, player);
+		saveExtraDeck(extraDeck, player);
+
 	}
-	
-	private File getFile(Player player, String name) throws IOException{
-		String filename = FilesConstants.DECK + "/" + 
-				player.getName() + "/" + name + FilesConstants.EXTENSION;
+
+	private File getFile(Player player, String name) throws IOException {
+		String filename = FilesConstants.DECK + "/" + player.getName() + "/" + name + FilesConstants.EXTENSION;
 		File file = new File(filename);
 		file.getParentFile().mkdirs();
 		file.createNewFile();
-		return  file;
+		return file;
 	}
-	
-	private void saveNormalDeck(NormalDeck normalDeck, Player player) throws FileNotFoundException,IOException{
-	
-		fileOutputStream = new FileOutputStream(getFile(player,"normaldeck"));
+
+	private void saveNormalDeck(NormalDeck normalDeck, Player player) throws FileNotFoundException, IOException {
+
+		fileOutputStream = new FileOutputStream(getFile(player, "normaldeck"));
 		objectOutputStream = new ObjectOutputStream(fileOutputStream);
-		
+
 		objectOutputStream.writeObject(normalDeck);
 		objectOutputStream.flush();
 		fileOutputStream.close();
 	}
-	
-	private void saveExtraDeck(ExtraDeck extraDeck,Player player) throws FileNotFoundException,IOException{
-		fileOutputStream = new FileOutputStream(getFile(player,"extradeck"));
+
+	private void saveExtraDeck(ExtraDeck extraDeck, Player player) throws FileNotFoundException, IOException {
+		fileOutputStream = new FileOutputStream(getFile(player, "extradeck"));
 		objectOutputStream = new ObjectOutputStream(fileOutputStream);
-		
+
 		objectOutputStream.writeObject(extraDeck);
 		objectOutputStream.flush();
 		fileOutputStream.close();
 	}
-	
-	/**Lê o normaldeck de um jogador
-	 * @param player o jogador dono do deck
+
+	/**
+	 * Lê o normaldeck de um jogador
+	 * 
+	 * @param player
+	 *            o jogador dono do deck
 	 * @return o deck do jogador
-	 * */
-	public NormalDeck readNormalDeck(Player player) throws FileNotFoundException,IOException, ClassNotFoundException{
+	 */
+	public NormalDeck readNormalDeck(Player player) throws FileNotFoundException, IOException, ClassNotFoundException {
 		NormalDeck normalDeck;
 
 		fileInputStream = new FileInputStream(getFile(player, "normaldeck"));
@@ -82,24 +85,27 @@ public class DeckDao {
 		normalDeck = (NormalDeck) objectInputStream.readObject();
 		objectInputStream.close();
 		fileInputStream.close();
-		
+
 		return normalDeck;
 	}
-	
-	/**Lê o extradeck de um jogador
-	 * @param player o jogador dono do deck
+
+	/**
+	 * Lê o extradeck de um jogador
+	 * 
+	 * @param player
+	 *            o jogador dono do deck
 	 * @return o deck do jogador
-	 * */
-	public ExtraDeck readExtraDeck(Player player) throws FileNotFoundException,IOException, ClassNotFoundException{
+	 */
+	public ExtraDeck readExtraDeck(Player player) throws FileNotFoundException, IOException, ClassNotFoundException {
 		ExtraDeck extraDeck;
-		
+
 		fileInputStream = new FileInputStream(getFile(player, "extradeck"));
 		objectInputStream = new ObjectInputStream(fileInputStream);
 		extraDeck = (ExtraDeck) objectInputStream.readObject();
 		objectInputStream.close();
 		fileInputStream.close();
-		
+
 		return extraDeck;
 	}
-	
+
 }

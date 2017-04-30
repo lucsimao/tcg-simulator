@@ -4,10 +4,12 @@ import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.fields.elements.decks.Deck;
 
-/** Uma classe para tratar os monstros removidos de jogo.
- * Ele não tem nada de especial, mas é diferenciada por conta de seu uso.
-@author Simão
-*/
+/**
+ * Uma classe para tratar os monstros removidos de jogo. Ele não tem nada de
+ * especial, mas é diferenciada por conta de seu uso.
+ * 
+ * @author Simão
+ */
 
 public class RemoveFromPlay extends Deck<Card> {
 

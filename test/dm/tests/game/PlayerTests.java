@@ -23,113 +23,134 @@ public class PlayerTests {
 	private static final Image avatar = null;
 	private NormalDeck deck = new NormalDeck();
 	private final ExtraDeck extraDeck = new ExtraDeck();
-	
+
 	@Before
 	public void initPlayers() {
 		initDeck();
-		player = new Player(name,avatar,deck,extraDeck);
-		player2 = new Player(name,avatar,deck,extraDeck);
-		assertEquals(name,player.getName());
-		assertEquals(avatar,player.getAvatar());
-		assertEquals(deck,player.getDeck());
-		assertEquals(extraDeck,player.getExtraDeck());
+		player = new Player(name, avatar, deck, extraDeck);
+		player2 = new Player(name, avatar, deck, extraDeck);
+		assertEquals(name, player.getName());
+		assertEquals(avatar, player.getAvatar());
+		assertEquals(deck, player.getDeck());
+		assertEquals(extraDeck, player.getExtraDeck());
 	}
-	
+
 	private void initDeck() {
 		deck = new NormalDeck();
-		for(int i=0;i<40;i++)
-			deck.putCard(new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3));
+		for (int i = 0; i < 40; i++)
+			deck.putCard(new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",
+					null, MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500, 2100, 0, 3));
 	}
 
 	@Test
-	public void startDuel(){
+	public void startDuel() {
 		int deckSize = player.countDeckCards();
 		player.firstDraw();
-		assertEquals(5,player.countHandCards());
-		assertEquals(deckSize -5,player.countDeckCards());
+		assertEquals(5, player.countHandCards());
+		assertEquals(deckSize - 5, player.countDeckCards());
 	}
-	
+
 	@Test
-	public void setLp(){
+	public void setLp() {
 		int lp = player.getLP();
 		player.increaseLp(100);
-		assertEquals(lp+100,player.getLP());
+		assertEquals(lp + 100, player.getLP());
 		player.setLp(8000);
-		assertEquals(8000,player.getLP());
+		assertEquals(8000, player.getLP());
 		player.decreaseLp(100);
-		assertEquals(lp-100,player.getLP());
+		assertEquals(lp - 100, player.getLP());
 	}
-	
+
 	@Test
-	public void DrawPhase(){
+	public void DrawPhase() {
 		int deckSize = player.countDeckCards();
 		int handSize = player.countHandCards();
 		player.draw();
-		assertEquals(handSize+1,player.countHandCards());
-		assertEquals(deckSize -1,player.countDeckCards());
+		assertEquals(handSize + 1, player.countHandCards());
+		assertEquals(deckSize - 1, player.countDeckCards());
 	}
-		
-	@Test(expected=CardNotFoundException.class)
-	public void attackAndWin(){
-		MonsterNormalCard card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
-		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2000,2100,0,3);
+
+	@Test(expected = CardNotFoundException.class)
+	public void attackAndWin() {
+		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2500, 2100, 0, 3);
+		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2000, 2100, 0, 3);
 		int lp2 = player2.getLP();
 		player.summon(card);
 		player2.summon(card2);
 		player.attack(card, player2, card2);
-		assertEquals(lp2 - (card.getCurrentAttack() - card2.getCurrentAttack()),player2.getLP());
+		assertEquals(lp2 - (card.getCurrentAttack() - card2.getCurrentAttack()), player2.getLP());
 		player2.getMonsterCardIndex(card2);
 	}
-	
-	@Test(expected=CardNotFoundException.class)
-	public void attackAndLose(){
-		MonsterNormalCard card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
-		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2000,2100,0,3);
+
+	@Test(expected = CardNotFoundException.class)
+	public void attackAndLose() {
+		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2500, 2100, 0, 3);
+		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2000, 2100, 0, 3);
 		int lp = player.getLP();
 		player.summon(card2);
 		player2.summon(card);
 		player.attack(card2, player2, card);
-		assertEquals(lp - (card.getCurrentAttack() - card2.getCurrentAttack()),player.getLP());
+		assertEquals(lp - (card.getCurrentAttack() - card2.getCurrentAttack()), player.getLP());
 		player.getMonsterCardIndex(card2);
 	}
-	
-	@Test(expected=CardNotFoundException.class)
-	public void attackADefAndWin(){
-		MonsterNormalCard card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
-		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2000,2100,0,3);
+
+	@Test(expected = CardNotFoundException.class)
+	public void attackADefAndWin() {
+		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2500, 2100, 0, 3);
+		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2000, 2100, 0, 3);
 		int lp2 = player2.getLP();
 		player.summon(card);
 		player2.summon(card2);
 		player2.changeToDefense(card2);
 		player.attack(card, player2, card2);
-		assertEquals(lp2,player2.getLP());
+		assertEquals(lp2, player2.getLP());
 		player2.getMonsterCardIndex(card2);
 	}
-	
+
 	@Test
-	public void attackADefAndLose(){
-		MonsterNormalCard card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
-		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2000,2100,0,3);
+	public void attackADefAndLose() {
+		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2500, 2100, 0, 3);
+		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2000, 2100, 0, 3);
 		int lp = player.getLP();
 		player.summon(card2);
 		player2.summon(card);
 		player2.changeToDefense(card);
 		player.attack(card2, player2, card);
-		assertEquals(lp - (card.getCurrentDefense() - card2.getCurrentAttack()),player.getLP());
+		assertEquals(lp - (card.getCurrentDefense() - card2.getCurrentAttack()), player.getLP());
 		player.getMonsterCardIndex(card2);
 	}
-	
+
 	@Test
-	public void attackASettedAndLose(){
-		MonsterNormalCard card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2500,2100,0,3);
-		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",null,MonsterType.SPELLCASTER,MonsterAttribute.DARK,2000,2100,0,3);
+	public void attackASettedAndLose() {
+		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2500, 2100, 0, 3);
+		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
+				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
+				MonsterAttribute.DARK, 2000, 2100, 0, 3);
 		int lp = player.getLP();
 		player.summon(card2);
 		player2.set(card);
 		player2.changeToDefense(card);
 		player.attack(card2, player2, card);
-		assertEquals(lp - (card.getCurrentDefense() - card2.getCurrentAttack()),player.getLP());
+		assertEquals(lp - (card.getCurrentDefense() - card2.getCurrentAttack()), player.getLP());
 		player.getMonsterCardIndex(card2);
 	}
-	
+
 }

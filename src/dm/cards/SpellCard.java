@@ -9,10 +9,11 @@ import dm.constants.SpellType;
 import dm.exceptions.NoEffectException;
 import dm.interfaces.NormalDeckCard;
 
-/**Classe carta mágica
- * Classe de Carta mágica que serve para representar as Spells do jogo
- * Ela contém por padrão o ColorPicture.Trap, que infere que a carta seja verde.
- * Ela não pode ter efeito nulo.
+/**
+ * Classe carta mágica Classe de Carta mágica que serve para representar as
+ * Spells do jogo Ela contém por padrão o ColorPicture.Trap, que infere que a
+ * carta seja verde. Ela não pode ter efeito nulo.
+ * 
  * @author Simão
  */
 
@@ -22,7 +23,7 @@ public class SpellCard extends NonMonsterCard implements NormalDeckCard {
 	 * 
 	 */
 	private static final long serialVersionUID = 511682576858461550L;
-	
+
 	public int type;
 
 	public SpellCard(String name, String description, Image picture, Effect effect, int type, int copies_number)

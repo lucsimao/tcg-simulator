@@ -12,8 +12,11 @@ import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 
 /**
- * Classe jogador. Ela possui os pontos de vida do jogados e gerencia o campo do jogador.
- *@author Simão */
+ * Classe jogador. Ela possui os pontos de vida do jogados e gerencia o campo do
+ * jogador.
+ * 
+ * @author Simão
+ */
 public class Player {
 
 	private static final int INIT_LIFE_POINTS = 8000;

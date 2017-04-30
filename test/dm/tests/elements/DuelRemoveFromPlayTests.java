@@ -24,7 +24,7 @@ public class DuelRemoveFromPlayTests {
 	private MonsterEffectCard effectCard;
 	private SpellCard spellCard;
 	private TrapCard trapCard;
-	
+
 	@Before
 	public void initGraveyard() throws NoEffectException {
 		deck = new RemoveFromPlay();
@@ -35,74 +35,74 @@ public class DuelRemoveFromPlayTests {
 		trapCard = new TrapCard(null, null, null, new Effect(), 0, 3);
 		pushCards();
 	}
-		
+
 	@Test
 	public void deckout() {
 		try {
 			drawCardsUntilDeckout();
-		}catch(Exception e) {
+		} catch (Exception e) {
 
 		}
 		assertTrue(deck.isEmpty());
 		assertEquals(0, deck.size());
 	}
-	
-	@Test(expected=CardsOutException.class)
+
+	@Test(expected = CardsOutException.class)
 	public void drawCardsUntilDeckout() {
-		while(true)
+		while (true)
 			deck.drawCard();
 	}
-	
-	@Test(expected=CardsOutException.class)
+
+	@Test(expected = CardsOutException.class)
 	public void removeCardsUntilDeckout() {
-		while(true)
+		while (true)
 			deck.drawCard();
 	}
-	
+
 	@Test
 	public void pushCards() {
 		int size = deck.size();
 		deck.putCard(fusionCard);
 		assertEquals(size + 1, deck.size());
 		assertEquals(fusionCard, deck.top());
-		
+
 		size = deck.size();
 		deck.putCard(normalCard);
 		assertEquals(size + 1, deck.size());
 		assertEquals(normalCard, deck.top());
-		
+
 		size = deck.size();
 		deck.putCard(effectCard);
 		assertEquals(size + 1, deck.size());
 		assertEquals(effectCard, deck.top());
-		
+
 		size = deck.size();
 		deck.putCard(spellCard);
 		assertEquals(size + 1, deck.size());
 		assertEquals(spellCard, deck.top());
-		
+
 		size = deck.size();
 		deck.putCard(trapCard);
 		assertEquals(size + 1, deck.size());
 		assertEquals(trapCard, deck.top());
 	}
-	
+
 	@Test
-	public void moveToTopCard(){
+	public void moveToTopCard() {
 		deck.moveCardToTop(fusionCard);
-		assertEquals(fusionCard,deck.top());
-		
+		assertEquals(fusionCard, deck.top());
+
 		deck.moveCardToTop(normalCard);
-		assertEquals(normalCard,deck.top());
-		
+		assertEquals(normalCard, deck.top());
+
 		deck.moveCardToTop(effectCard);
-		assertEquals(effectCard,deck.top());
-		
+		assertEquals(effectCard, deck.top());
+
 		deck.moveCardToTop(spellCard);
-		assertEquals(spellCard,deck.top());
+		assertEquals(spellCard, deck.top());
 
 		deck.moveCardToTop(trapCard);
-		assertEquals(trapCard,deck.top());		
+		assertEquals(trapCard, deck.top());
 	}
-	
+
 }

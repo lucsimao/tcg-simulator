@@ -9,11 +9,12 @@ import dm.constants.TrapType;
 import dm.exceptions.NoEffectException;
 import dm.interfaces.NormalDeckCard;
 
-/**Classe carta armadilha
- * Classe de Carta armadilha que serve para representar as Traps do jogo
- * Ela contém por padrão o ColorPicture.Trap, que infere que a carta seja rosa.
- * Ela não pode ter efeito nulo.
- *@author Simão
+/**
+ * Classe carta armadilha Classe de Carta armadilha que serve para representar
+ * as Traps do jogo Ela contém por padrão o ColorPicture.Trap, que infere que a
+ * carta seja rosa. Ela não pode ter efeito nulo.
+ * 
+ * @author Simão
  */
 
 public class TrapCard extends NonMonsterCard implements NormalDeckCard {
@@ -22,7 +23,7 @@ public class TrapCard extends NonMonsterCard implements NormalDeckCard {
 	 * 
 	 */
 	private static final long serialVersionUID = -7918171498276202467L;
-	
+
 	public int type;
 
 	public TrapCard(String name, String description, Image picture, Effect effect, int type, int copies_number)

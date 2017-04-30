@@ -9,9 +9,11 @@ import dm.exceptions.NoEffectException;
 import dm.exceptions.ZoneOccupedException;
 
 /**
- * Zona de cartas mágicas, ela é uma zona que aceita cartas mágicas.
- * Pode-se setar ou ativar cartas nela.
- * @author Simão*/
+ * Zona de cartas mágicas, ela é uma zona que aceita cartas mágicas. Pode-se
+ * setar ou ativar cartas nela.
+ * 
+ * @author Simão
+ */
 
 public class SpellTrapZone extends CardZone {
 

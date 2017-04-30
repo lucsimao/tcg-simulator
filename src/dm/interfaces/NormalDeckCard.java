@@ -1,5 +1,6 @@
 package dm.interfaces;
-/**@author Simão*/
+
+/** @author Simão */
 public interface NormalDeckCard {
 	int getCopiesNumber();
 }

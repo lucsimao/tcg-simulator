@@ -4,10 +4,12 @@ import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.fields.elements.decks.Deck;
 
-/** Classe cemitério, ela não possui nada de diferente em sua estrutura, porém, deve ser 
- * diferenciada por conta de seu uso.
+/**
+ * Classe cemitério, ela não possui nada de diferente em sua estrutura, porém,
+ * deve ser diferenciada por conta de seu uso.
+ * 
  * @author Simão
- * */
+ */
 public class Graveyard extends Deck<Card> {
 
 	/**

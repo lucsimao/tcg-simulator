@@ -24,7 +24,7 @@ public class DuelHandTests {
 	private MonsterEffectCard effectCard;
 	private SpellCard spellCard;
 	private TrapCard trapCard;
-	
+
 	@Before
 	public void initGraveyard() throws NoEffectException {
 		hand = new Hand();
@@ -35,77 +35,76 @@ public class DuelHandTests {
 		trapCard = new TrapCard(null, null, null, new Effect(), 0, 3);
 		pushCards();
 	}
-		
+
 	@Test
 	public void deckout() {
 		try {
 			discardCardsUntilDeckout();
-		}catch(Exception e) {
+		} catch (Exception e) {
 
 		}
 		assertTrue(hand.isEmpty());
 		assertEquals(0, hand.size());
 	}
-	
-	@Test(expected=CardsOutException.class)
+
+	@Test(expected = CardsOutException.class)
 	public void discardCardsUntilDeckout() {
-		while(true)
+		while (true)
 			hand.discardFirst();
 	}
-	
-	
+
 	@Test
-	public void pushCardsUntilMax(){
+	public void pushCardsUntilMax() {
 		int size = hand.size();
-		assertEquals(true,hand.isHandPlayable());
+		assertEquals(true, hand.isHandPlayable());
 		hand.putCard(fusionCard);
 		assertEquals(size + 1, hand.size());
 		assertEquals(fusionCard, hand.top());
-		
+
 		size = hand.size();
 		hand.putCard(normalCard);
 		assertEquals(size + 1, hand.size());
 		assertEquals(normalCard, hand.top());
-		
+
 		size = hand.size();
 		hand.putCard(effectCard);
 		assertEquals(size + 1, hand.size());
 		assertEquals(effectCard, hand.top());
-		
+
 		size = hand.size();
 		hand.putCard(spellCard);
 		assertEquals(size + 1, hand.size());
 		assertEquals(spellCard, hand.top());
-		
+
 		size = hand.size();
 		hand.putCard(trapCard);
 		assertEquals(size + 1, hand.size());
 		assertEquals(trapCard, hand.top());
-		
-		assertEquals(false,hand.isHandPlayable());
+
+		assertEquals(false, hand.isHandPlayable());
 	}
-	
+
 	public void pushCards() {
 		int size = hand.size();
 		hand.putCard(fusionCard);
 		assertEquals(size + 1, hand.size());
 		assertEquals(fusionCard, hand.top());
-		
+
 		size = hand.size();
 		hand.putCard(normalCard);
 		assertEquals(size + 1, hand.size());
 		assertEquals(normalCard, hand.top());
-		
+
 		size = hand.size();
 		hand.putCard(effectCard);
 		assertEquals(size + 1, hand.size());
 		assertEquals(effectCard, hand.top());
-		
+
 		size = hand.size();
 		hand.putCard(spellCard);
 		assertEquals(size + 1, hand.size());
 		assertEquals(spellCard, hand.top());
-		
+
 		size = hand.size();
 		hand.putCard(trapCard);
 		assertEquals(size + 1, hand.size());

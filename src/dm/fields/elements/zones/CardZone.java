@@ -7,8 +7,9 @@ import dm.exceptions.CardNotFoundException;
 import dm.exceptions.ZoneOccupedException;
 
 /**
- * Zona de Cartas, super classe que contém as cartas em campo.
- * Existem Zonas de cartas armadilhas e mágicas.@author Simão*/
+ * Zona de Cartas, super classe que contém as cartas em campo. Existem Zonas de
+ * cartas armadilhas e mágicas.@author Simão
+ */
 
 public class CardZone {
 	private Card[] cards;
