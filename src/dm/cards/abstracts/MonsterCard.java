@@ -16,6 +16,11 @@ import dm.constants.CardType;
 
 public abstract class MonsterCard extends Card {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1160252849178277811L;
+	
 	private int type;
 	private int atribute;
 	private int originalAttack;

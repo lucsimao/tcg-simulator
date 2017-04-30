@@ -1,6 +1,7 @@
 package dm.cards.abstracts;
 
 import java.awt.Image;
+import java.io.Serializable;
 
 import dm.cards.Effect;
 import dm.constants.CardState;
@@ -10,8 +11,13 @@ import dm.constants.RulesConstants;
  * Classe abstrata Card, ela contém contrutor e métodos que toda carta deverá conter.
  * @author Simão*/
 
-public abstract class Card {
+public abstract class Card implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private String description;
 	private int cardType; // 0 for tokens, 1 for monster, 2 for spells, 3 for

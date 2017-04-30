@@ -14,6 +14,11 @@ import dm.interfaces.NormalDeckCard;
 
 public class MonsterNormalCard extends MonsterCard implements NormalDeckCard {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public MonsterNormalCard(String name, String description, Image picture, int type, int atribute, int originalAttack,
 			int originalDeffense, int state, int copies_number) {
 		super(name, description, ColorPicture.NORMAL, picture, type, atribute, originalAttack, originalDeffense, null,
