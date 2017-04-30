@@ -11,6 +11,11 @@ import dm.interfaces.NormalDeckCard;
  *@author Simão */
 public class NormalDeck extends Deck<NormalDeckCard> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1403267991951466425L;
+	
 	private static final int MAX_CARDS = 60;
 	private static final int MIN_CARDS = 40;
 

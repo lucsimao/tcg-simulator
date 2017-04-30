@@ -12,6 +12,11 @@ import dm.interfaces.ExtraDeckCard;
 
 public class ExtraDeck extends Deck<ExtraDeckCard> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8693704407689385425L;
+	
 	private static final int MAX_CARDS = 15;
 
 	public ExtraDeck(int number) {

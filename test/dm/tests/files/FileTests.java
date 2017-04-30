@@ -1,5 +1,9 @@
 package dm.tests.files;
 
+import static org.junit.Assert.*;
+
+import java.awt.Image;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -13,13 +17,24 @@ import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
+import dm.fields.elements.decks.ExtraDeck;
+import dm.fields.elements.decks.NormalDeck;
 import dm.files.CardDAO;
+import dm.files.DeckDao;
+import dm.game.Player;
 
 public class FileTests {
 
 	private CardDAO cardDAO;
 	private MonsterNormalCard monsterNormalCard;
 	private MonsterEffectCard monsterEffectCard;
+	
+	
+	private Player player;
+	private static final String name = "Seto Kaiba";
+	private static final Image avatar = null;
+	private NormalDeck deck = new NormalDeck();
+	private final ExtraDeck extraDeck = new ExtraDeck();
 	
 	@Before
 	public void init(){
@@ -30,7 +45,11 @@ public class FileTests {
 	
 	@Test
 	public void saveMonsterCard() throws FileNotFoundException, IOException, ClassNotFoundException{
-		cardDAO.saveToEndFile("cards.txt",monsterNormalCard);
+		File f = new File("cards.txt");
+		if(f.exists())
+			cardDAO.saveToFile("cards.txt",monsterNormalCard);
+		else
+			cardDAO.saveToEndFile("cards.txt",monsterNormalCard);
 		cardDAO.saveToEndFile("cards.txt",monsterEffectCard);
 		
 		Card m = (Card) cardDAO.readFile("cards.txt");
@@ -39,6 +58,17 @@ public class FileTests {
 		
 		System.out.println(m.getName());
 		System.out.println(((Card) list.get(1)).getName());
+	}
+	
+	@Test
+	public void saveDeck() throws FileNotFoundException, IOException, ClassNotFoundException{
+		DeckDao deckDao = new DeckDao();
+		player = new Player(name,avatar,deck,extraDeck);
+		deckDao.saveDeck(player);
+		NormalDeck deck = deckDao.readNormalDeck(player);
+		ExtraDeck extraDeck = deckDao.readExtraDeck(player);
+		assertEquals(deck.size(),player.getDeck().size());
+		assertEquals(extraDeck.size(),player.getExtraDeck().size());
 	}
 	
 }
