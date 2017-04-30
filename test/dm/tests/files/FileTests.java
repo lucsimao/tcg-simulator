@@ -45,19 +45,18 @@ public class FileTests {
 	
 	@Test
 	public void saveMonsterCard() throws FileNotFoundException, IOException, ClassNotFoundException{
-		File f = new File("cards.txt");
+		File f = new File("cards/cards.ygo");
 		if(f.exists())
-			cardDAO.saveToFile("cards.txt",monsterNormalCard);
+			cardDAO.saveToFile(monsterNormalCard);
 		else
-			cardDAO.saveToEndFile("cards.txt",monsterNormalCard);
-		cardDAO.saveToEndFile("cards.txt",monsterEffectCard);
+			cardDAO.saveToEndFile(monsterNormalCard);
+		cardDAO.saveToEndFile(monsterEffectCard);
 		
-		Card m = (Card) cardDAO.readFile("cards.txt");
-		List<Object> list = cardDAO.readAllFile("cards.txt");
-		
-		
-		System.out.println(m.getName());
-		System.out.println(((Card) list.get(1)).getName());
+		Card m = (Card) cardDAO.readFile("cards/cards.ygo");
+		List<Card> list = cardDAO.readAllFile("cards/cards.ygo");
+				
+		assertEquals("Dark Magician",m.getName());
+		assertEquals(list.get(1).getName(),"Dark Magician Girl");
 	}
 	
 	@Test

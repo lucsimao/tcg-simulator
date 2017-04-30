@@ -6,6 +6,7 @@
 package dm.files;
 
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,7 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dm.cards.abstracts.Card;
+import dm.constants.FilesConstants;
 
+
+/**
+ * @author Simão
+ *
+ */
 public class CardDAO {
 
 	private FileOutputStream fileOutputStream;
@@ -26,6 +33,14 @@ public class CardDAO {
 		
 	public void saveToFile(String file,Card card) throws FileNotFoundException, IOException{
 		saveToFile(file,false,card);
+	}
+	
+	public void saveToFile(Card card) throws FileNotFoundException, IOException{
+		saveToFile(getFile().getPath(),card);
+	}
+	
+	public void saveToEndFile(Card card) throws FileNotFoundException, IOException{
+		saveToEndFile(getFile().getPath(),card);
 	}
 	
 	public void saveToEndFile(String file,Card card) throws FileNotFoundException, IOException{
@@ -41,31 +56,42 @@ public class CardDAO {
 		fileOutputStream.close();
 	}
 	
-	public Object readFile(String file) throws IOException,FileNotFoundException, ClassNotFoundException{
-		Object object;
+	
+	
+	public Card readFile(String file) throws IOException,FileNotFoundException, ClassNotFoundException{
+		Card card;
 		fileInputStream = new FileInputStream(file);
 		objectInputStream = new ObjectInputStream(fileInputStream);
-		object = objectInputStream.readObject();
+		card = (Card) objectInputStream.readObject();
 		fileInputStream.close();
-		return object;
+		return card;
 	}
-	public List<Object> readAllFile(String file) throws IOException,FileNotFoundException, ClassNotFoundException{
-		Object object;
-		List<Object> list = new ArrayList<>();
+	public List<Card> readAllFile(String file) throws IOException,FileNotFoundException, ClassNotFoundException{
+		Card card;
+		List<Card> list = new ArrayList<>();
 		fileInputStream = new FileInputStream(file);
 		while(true){
 			try{
 			objectInputStream = new ObjectInputStream(fileInputStream);
-			object = objectInputStream.readObject();
-			list.add(object);
+			card = (Card) objectInputStream.readObject();
+			list.add(card);
 			}catch (EOFException e) {
 				break;
 			}
 		}
-		objectInputStream.close();
+//		objectInputStream.close();
 		fileInputStream.close();
 		return list ;
 	}
 	
+	
+	private File getFile() throws IOException{
+		String filename = FilesConstants.CARDS_DB + "/" + 
+				 "cards" + FilesConstants.EXTENSION;
+		File file = new File(filename);
+		file.getParentFile().mkdirs();
+		file.createNewFile();
+		return  file;
+	}
 	
 }
