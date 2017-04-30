@@ -12,10 +12,10 @@ import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.border.EmptyBorder;
 
 public class JImageDesktopPane extends JDesktopPane {
 	
-
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -29,7 +29,8 @@ public class JImageDesktopPane extends JDesktopPane {
 
 		Toolkit.getDefaultToolkit().sync();
 //		g.dispose();
-			
+
+		
 	}	
 	
 }
