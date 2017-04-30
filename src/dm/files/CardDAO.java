@@ -1,7 +1,8 @@
 /** 
 * @author Simão 
 * @version 0.1 - 30 de abr de 2017
-* 
+* Esta classe serve para salvar as cartas em um arquivo. Ela pode ser substituida por 
+* outro DAO se necessário.
 */
 package dm.files;
 
@@ -19,30 +20,39 @@ import java.util.List;
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
 
-
-/**
- * @author Simão
- *
- */
 public class CardDAO {
 
 	private FileOutputStream fileOutputStream;
 	private ObjectOutputStream objectOutputStream;
 	private FileInputStream fileInputStream;
 	private ObjectInputStream objectInputStream;
-		
+	/**
+	 * Salva a carta no arquivo dado, sobrescrevendo-o
+	 *@param file o caminho do arquivo
+	 *@param card a carta para ser salva
+	 * **/
 	public void saveToFile(String file,Card card) throws FileNotFoundException, IOException{
 		saveToFile(file,false,card);
 	}
-	
+	/**
+	 * Salva a carta no arquivo padrão, sobrescrevendo-o
+	 **@param card a carta para ser salva
+	 * **/
 	public void saveToFile(Card card) throws FileNotFoundException, IOException{
 		saveToFile(getFile().getPath(),card);
 	}
-	
+	/**
+	 * Salva a carta no arquivo padrão, sem sobrescrever
+	 **@param card a carta para ser salva
+	 * **/
 	public void saveToEndFile(Card card) throws FileNotFoundException, IOException{
 		saveToEndFile(getFile().getPath(),card);
 	}
-	
+	/**
+	 * Salva a carta no arquivo dado, sem sobrescrever
+	 *@param file o caminho do arquivo
+	 *@param card a carta para ser salva
+	 * **/
 	public void saveToEndFile(String file,Card card) throws FileNotFoundException, IOException{
 		saveToFile(file,true,card);
 	}
@@ -57,7 +67,11 @@ public class CardDAO {
 	}
 	
 	
-	
+	/**
+	 * Lê a carta de um arquivo.
+	 *@param file o caminho do arquivo
+	 *@return a carta que ele leu
+	 * **/
 	public Card readFile(String file) throws IOException,FileNotFoundException, ClassNotFoundException{
 		Card card;
 		fileInputStream = new FileInputStream(file);
@@ -66,6 +80,13 @@ public class CardDAO {
 		fileInputStream.close();
 		return card;
 	}
+	
+	
+	/**
+	 * Lê todas as cartas do arquivo
+	 *@param file o caminho do arquivo
+	 *@return um array com as cartas
+	 * **/
 	public List<Card> readAllFile(String file) throws IOException,FileNotFoundException, ClassNotFoundException{
 		Card card;
 		List<Card> list = new ArrayList<>();

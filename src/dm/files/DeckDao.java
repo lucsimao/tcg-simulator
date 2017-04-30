@@ -1,7 +1,7 @@
 /** 
 * @author Simão 
 * @version 0.1 - 30 de abr de 2017
-* 
+* Classe criada para salvar os objetos deck em um arquivo
 */
 package dm.files;
 
@@ -25,6 +25,10 @@ public class DeckDao {
 	private FileInputStream fileInputStream;
 	private ObjectInputStream objectInputStream;
 	
+	
+	/**Salva o deck de um jogador em um arquivo padrão
+	 * @param player o jogador dono do deck
+	 * */
 	public void saveDeck(Player player) throws FileNotFoundException, IOException,NullPointerException {
 		if(player==null)
 		{
@@ -66,6 +70,10 @@ public class DeckDao {
 		fileOutputStream.close();
 	}
 	
+	/**Lê o normaldeck de um jogador
+	 * @param player o jogador dono do deck
+	 * @return o deck do jogador
+	 * */
 	public NormalDeck readNormalDeck(Player player) throws FileNotFoundException,IOException, ClassNotFoundException{
 		NormalDeck normalDeck;
 
@@ -78,6 +86,10 @@ public class DeckDao {
 		return normalDeck;
 	}
 	
+	/**Lê o extradeck de um jogador
+	 * @param player o jogador dono do deck
+	 * @return o deck do jogador
+	 * */
 	public ExtraDeck readExtraDeck(Player player) throws FileNotFoundException,IOException, ClassNotFoundException{
 		ExtraDeck extraDeck;
 		
