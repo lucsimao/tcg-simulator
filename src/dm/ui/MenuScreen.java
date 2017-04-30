@@ -20,7 +20,7 @@ public class MenuScreen extends JPanel{
     private Graphics2D g2;
     private ImageIcon background;
     
-    private final String background_image = "/images/";
+    private final String background_image = "../images/";
     
     public MenuScreen()
     {  	
