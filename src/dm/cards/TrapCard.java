@@ -18,6 +18,11 @@ import dm.interfaces.NormalDeckCard;
 
 public class TrapCard extends NonMonsterCard implements NormalDeckCard {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7918171498276202467L;
+	
 	public int type;
 
 	public TrapCard(String name, String description, Image picture, Effect effect, int type, int copies_number)

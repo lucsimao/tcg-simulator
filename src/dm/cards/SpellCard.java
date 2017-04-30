@@ -18,6 +18,11 @@ import dm.interfaces.NormalDeckCard;
 
 public class SpellCard extends NonMonsterCard implements NormalDeckCard {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 511682576858461550L;
+	
 	public int type;
 
 	public SpellCard(String name, String description, Image picture, Effect effect, int type, int copies_number)

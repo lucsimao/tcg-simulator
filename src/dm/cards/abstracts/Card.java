@@ -12,11 +12,11 @@ import dm.constants.RulesConstants;
  * @author Simão*/
 
 public abstract class Card implements Serializable{
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7720833260489417219L;
 	
 	private String name;
 	private String description;

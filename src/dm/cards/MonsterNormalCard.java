@@ -14,10 +14,12 @@ import dm.interfaces.NormalDeckCard;
 
 public class MonsterNormalCard extends MonsterCard implements NormalDeckCard {
 
+
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2858687724595096561L;
 
 	public MonsterNormalCard(String name, String description, Image picture, int type, int atribute, int originalAttack,
 			int originalDeffense, int state, int copies_number) {

@@ -7,7 +7,6 @@ package dm.ui;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class MainScreen extends JFrame {
@@ -15,7 +14,7 @@ public class MainScreen extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	public static void main(String args[]){
-		MainScreen screen = new MainScreen();
+		new MainScreen();
 	}
 	public MainScreen()
 	{

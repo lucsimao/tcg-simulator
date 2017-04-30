@@ -14,10 +14,11 @@ import dm.interfaces.NormalDeckCard;
 
 public class MonsterEffectCard extends MonsterCard implements NormalDeckCard {
 
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 5346230125931311515L;
 
 	public MonsterEffectCard(String name, String description, Image picture, int type, int atribute, int originalAttack,
 			int originalDeffense, Effect effect, int copies_number) throws EffectMonsterWithNoEffectException {

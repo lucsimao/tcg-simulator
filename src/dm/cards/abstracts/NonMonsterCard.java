@@ -12,10 +12,12 @@ import dm.exceptions.NoEffectException;
 
 public abstract class NonMonsterCard extends Card {
 
+
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -6096715673931737766L;
 
 	public NonMonsterCard(String name, String description, int cardType, int colorPicture, Image picture, Effect effect,
 			int copies_number) throws NoEffectException {
