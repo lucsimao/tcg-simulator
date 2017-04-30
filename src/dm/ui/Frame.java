@@ -7,30 +7,35 @@ package dm.ui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JDesktopPane;
-import javax.swing.JButton;
-import java.awt.FlowLayout;
-import javax.swing.JInternalFrame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import singleinstance.SingleInstance;
 
 public class Frame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -508584232966549415L;
+	
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		SingleInstance.checkIfInstanceExists();
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					Frame frame = new Frame();
@@ -71,6 +76,28 @@ public class Frame extends JFrame {
 		
 		JButton btnStart = new JButton("Start");
 		panel.add(btnStart);
+		btnStart.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setContentPane(new JPanel());
+				JButton b = new JButton("BUTAO");
+				getContentPane().add(b);
+				b.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						setContentPane(contentPane);
+						validate();
+						
+					}
+				});
+				
+				validate();
+			}
+			
+		});
+
 		
 		JButton btnEditDeck = new JButton("EditDeck");
 		panel.add(btnEditDeck);
