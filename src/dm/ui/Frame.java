@@ -94,6 +94,10 @@ public class Frame extends JFrame {
 				});
 				
 				validate();
+//				dispose();
+////				removeAll();
+//				new Frame().setVisible(true);
+			
 			}
 			
 		});
@@ -116,4 +120,6 @@ public class Frame extends JFrame {
 		});
 	}
 
+
+	
 }

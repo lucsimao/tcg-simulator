@@ -3,8 +3,8 @@ package dm.tests.cards;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterEffectCard;
 import dm.cards.Effect;
+import dm.cards.MonsterEffectCard;
 import dm.exceptions.EffectMonsterWithNoEffectException;
 import dm.tests.cards.abstracts.CardMonsterTests;
 

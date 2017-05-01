@@ -1,7 +1,5 @@
 package dm.cards.abstracts;
 
-import java.awt.Image;
-
 import dm.cards.Effect;
 import dm.constants.CardType;
 
@@ -28,7 +26,7 @@ public abstract class MonsterCard extends Card {
 	private int currentAttack;
 	private int currentDefense;
 
-	public MonsterCard(String name, String description, int colorPicture, Image picture, int type, int atribute,
+	public MonsterCard(String name, String description, int colorPicture, String picture, int type, int atribute,
 			int originalAttack, int originalDeffense, Effect effect, int copies_number) {
 		super(name, description, CardType.MONSTER, colorPicture, picture, effect, copies_number);
 		this.type = type;

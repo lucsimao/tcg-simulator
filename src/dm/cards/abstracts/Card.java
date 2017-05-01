@@ -1,6 +1,5 @@
 package dm.cards.abstracts;
 
-import java.awt.Image;
 import java.io.Serializable;
 
 import dm.cards.Effect;
@@ -26,12 +25,12 @@ public abstract class Card implements Serializable {
 	private int cardType; // 0 for tokens, 1 for monster, 2 for spells, 3 for
 							// traps
 	private int colorPicture;
-	private Image picture;
+	private String picture;
 	private Effect effect;
 	private int copies_number;
 	private int state;
 
-	public Card(String name, String description, int cardType, int colorPicture, Image picture, Effect effect,
+	public Card(String name, String description, int cardType, int colorPicture, String picture, Effect effect,
 			int copies_number) {
 		super();
 		this.name = name;
@@ -78,7 +77,7 @@ public abstract class Card implements Serializable {
 		return colorPicture;
 	}
 
-	public Image getPicture() {
+	public String getPicture() {
 		return picture;
 	}
 

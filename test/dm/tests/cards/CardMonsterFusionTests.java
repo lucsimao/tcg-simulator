@@ -1,8 +1,9 @@
 package dm.tests.cards;
 
 import org.junit.Before;
-import dm.cards.MonsterFusionCard;
+
 import dm.cards.Effect;
+import dm.cards.MonsterFusionCard;
 import dm.tests.cards.abstracts.CardMonsterTests;
 
 public class CardMonsterFusionTests extends CardMonsterTests {

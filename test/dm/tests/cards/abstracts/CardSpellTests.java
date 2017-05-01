@@ -2,8 +2,6 @@ package dm.tests.cards.abstracts;
 
 import static org.junit.Assert.assertEquals;
 
-import java.awt.Image;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +19,7 @@ public abstract class CardSpellTests extends CardTests<SpellCard> {
 	protected static int type = SpellType.NORMAL;
 	protected static int copies_number = 3;
 	protected static Effect effect = new Effect();
-	protected static Image picture = null;
+	protected static String picture = null;
 
 	protected static int cardType = CardType.SPELL;
 	protected static int colorPicture = ColorPicture.SPELL;

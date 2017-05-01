@@ -1,6 +1,5 @@
 package dm.cards;
 
-import java.awt.Image;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
 import dm.exceptions.EffectMonsterWithNoEffectException;
@@ -22,7 +21,7 @@ public class MonsterEffectCard extends MonsterCard implements NormalDeckCard {
 	 */
 	private static final long serialVersionUID = 5346230125931311515L;
 
-	public MonsterEffectCard(String name, String description, Image picture, int type, int atribute, int originalAttack,
+	public MonsterEffectCard(String name, String description, String picture, int type, int atribute, int originalAttack,
 			int originalDeffense, Effect effect, int copies_number) throws EffectMonsterWithNoEffectException {
 		super(name, description, ColorPicture.NORMAL, picture, type, atribute, originalAttack, originalDeffense, effect,
 				copies_number);

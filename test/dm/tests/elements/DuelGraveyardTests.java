@@ -6,12 +6,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import dm.cards.Effect;
 import dm.cards.MonsterEffectCard;
 import dm.cards.MonsterFusionCard;
 import dm.cards.MonsterNormalCard;
 import dm.cards.SpellCard;
 import dm.cards.TrapCard;
-import dm.cards.Effect;
 import dm.exceptions.CardsOutException;
 import dm.exceptions.NoEffectException;
 import dm.fields.elements.Graveyard;

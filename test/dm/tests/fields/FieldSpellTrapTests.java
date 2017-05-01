@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import dm.cards.Effect;
 import dm.cards.SpellCard;
 import dm.cards.TrapCard;
-import dm.cards.Effect;
 import dm.constants.SpellType;
 import dm.constants.TrapType;
 import dm.exceptions.NoEffectException;

@@ -12,10 +12,14 @@ import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
-import javax.swing.border.EmptyBorder;
 
 public class JImageDesktopPane extends JDesktopPane {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6958316071697364420L;
+
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

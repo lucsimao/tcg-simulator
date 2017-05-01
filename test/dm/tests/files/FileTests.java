@@ -1,6 +1,6 @@
 package dm.tests.files;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.awt.Image;
 import java.io.File;
