@@ -268,6 +268,10 @@ public class Field {
 		return (MonsterCard) monsterZone.getCard(index);
 	}
 
+	public NonMonsterCard getNonMonsterCard(int index) {
+		return (NonMonsterCard) spellTrapZone.getCard(index);
+	}
+
 	/** Retorna o índice do monstro, se existir. */
 	public int getMonsterCardIndex(Card card) throws CardNotFoundException {
 		return monsterZone.getCardIndex(card);
@@ -277,6 +281,11 @@ public class Field {
 	public void changeToDefense(MonsterCard monsterCard) {
 		monsterZone.changeToDefense(monsterCard);
 
+	}
+
+	/** Retorna o índice do monstro, se existir. */
+	public int getNonMonsterCardIndex(Card card) throws CardNotFoundException {
+		return spellTrapZone.getCardIndex(card);
 	}
 
 	/** Muda a carta para o modo de ataque */

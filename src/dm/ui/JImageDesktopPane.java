@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 
 public class JImageDesktopPane extends JDesktopPane {
-	
+
 	/**
 	 * 
 	 */
@@ -23,18 +23,16 @@ public class JImageDesktopPane extends JDesktopPane {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g = g;
 		int h = getHeight();
 		int w = getWidth();
 		ImageIcon image = new ImageIcon(getClass().getResource(("/images/background.png")));
 		g.drawImage(image.getImage(), 0, 0, w, h, this);
 
-		((Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		Toolkit.getDefaultToolkit().sync();
-//		g.dispose();
+		// g.dispose();
 
-		
-	}	
-	
+	}
+
 }

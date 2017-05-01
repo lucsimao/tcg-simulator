@@ -26,7 +26,7 @@ public class Frame extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -508584232966549415L;
-	
+
 	private JPanel contentPane;
 
 	/**
@@ -57,69 +57,66 @@ public class Frame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
+
 		JImageDesktopPane desktopPane = new JImageDesktopPane();
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 		desktopPane.setLayout(new BorderLayout(0, 0));
-		desktopPane.setBorder(new EmptyBorder((getHeight()-360)/2, (getWidth()-240)/2, (getHeight()-360)/2, (getWidth()-240)/2));
-	
-		
+		desktopPane.setBorder(new EmptyBorder((getHeight() - 360) / 2, (getWidth() - 240) / 2, (getHeight() - 360) / 2,
+				(getWidth() - 240) / 2));
+
 		JPanel panel = new JPanel();
 		desktopPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(0, 1, 0, 10));
-		panel.setBorder(new EmptyBorder(10, 20,10,20));
-		
+		panel.setBorder(new EmptyBorder(10, 20, 10, 20));
+
 		JLabel lblNewLabel = new JLabel("Yu Gi OH");
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel);
-		
+
 		JButton btnStart = new JButton("Start");
 		panel.add(btnStart);
 		btnStart.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setContentPane(new JPanel());
 				JButton b = new JButton("BUTAO");
 				getContentPane().add(b);
 				b.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						setContentPane(contentPane);
 						validate();
-						
+
 					}
 				});
-				
+
 				validate();
-//				dispose();
-////				removeAll();
-//				new Frame().setVisible(true);
-			
+				// dispose();
+				//// removeAll();
+				// new Frame().setVisible(true);
+
 			}
-			
+
 		});
 
-		
 		JButton btnEditDeck = new JButton("EditDeck");
 		panel.add(btnEditDeck);
-		
+
 		JButton btnCardBuilder = new JButton("CardBuilder");
 		panel.add(btnCardBuilder);
-		
+
 		JButton btnExit = new JButton("Exit");
 		panel.add(btnExit);
 		btnExit.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);   
+				System.exit(0);
 			}
 		});
 	}
 
-
-	
 }

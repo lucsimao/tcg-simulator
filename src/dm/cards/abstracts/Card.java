@@ -26,7 +26,7 @@ public abstract class Card implements Serializable {
 	private int cardType; // 0 for tokens, 1 for monster, 2 for spells, 3 for
 							// traps
 	private int colorPicture;
-	private String picture;
+	protected String picture;
 	private Effect effect;
 	private int copies_number;
 	private int state;
@@ -79,10 +79,10 @@ public abstract class Card implements Serializable {
 	}
 
 	public String getPicture() {
-		if(picture!=null)
+		if (picture != null)
 			return picture;
 		else
-			return FilesConstants.DEFAULT_CARD_IMAGE;
+			return FilesConstants.DEFAULT_MONTER_CARD_IMAGE;
 	}
 
 	public Effect getEffect() {

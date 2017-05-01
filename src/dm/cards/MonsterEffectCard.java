@@ -21,8 +21,9 @@ public class MonsterEffectCard extends MonsterCard implements NormalDeckCard {
 	 */
 	private static final long serialVersionUID = 5346230125931311515L;
 
-	public MonsterEffectCard(String name, String description, String picture, int type, int atribute, int originalAttack,
-			int originalDeffense, Effect effect, int copies_number) throws EffectMonsterWithNoEffectException {
+	public MonsterEffectCard(String name, String description, String picture, int type, int atribute,
+			int originalAttack, int originalDeffense, Effect effect, int copies_number)
+			throws EffectMonsterWithNoEffectException {
 		super(name, description, ColorPicture.NORMAL, picture, type, atribute, originalAttack, originalDeffense, effect,
 				copies_number);
 		if (effect == null)

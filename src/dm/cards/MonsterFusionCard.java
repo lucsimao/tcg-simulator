@@ -20,8 +20,8 @@ public class MonsterFusionCard extends MonsterCard implements ExtraDeckCard {
 	 */
 	private static final long serialVersionUID = -7850575761434909539L;
 
-	public MonsterFusionCard(String name, String description, String picture, int type, int atribute, int originalAttack,
-			int originalDeffense, int state, Effect effect, int copies_number) {
+	public MonsterFusionCard(String name, String description, String picture, int type, int atribute,
+			int originalAttack, int originalDeffense, int state, Effect effect, int copies_number) {
 		super(name, description, ColorPicture.FUSION, picture, type, atribute, originalAttack, originalDeffense, effect,
 				copies_number);
 	}
