@@ -7,18 +7,20 @@ package dm.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
 import dm.cards.abstracts.Card;
-import java.awt.Font;
 
 public class CardDescriptionPanel extends JPanel {
 	
-	private JLabel lblText;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -110315107751626480L;
 	private final int height = 197;
 	private final int width =177 ;
 	
