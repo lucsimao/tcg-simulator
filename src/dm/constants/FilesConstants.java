@@ -16,4 +16,6 @@ public class FilesConstants {
 	public static final String USER_DIR = "common";
 	public static final String CARDS_IMG_DIR = "images/cards/";
 	public static final String TEXTURES_PATH = "images/textures/";
+	public static final String DEFAULT_CARD_IMAGE = "default.jpg";
+	public static final String FACE_DOWN_CARD = "facedown.png";
 }

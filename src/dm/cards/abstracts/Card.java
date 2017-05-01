@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import dm.cards.Effect;
 import dm.constants.CardState;
+import dm.constants.FilesConstants;
 import dm.constants.RulesConstants;
 
 /**
@@ -78,7 +79,10 @@ public abstract class Card implements Serializable {
 	}
 
 	public String getPicture() {
-		return picture;
+		if(picture!=null)
+			return picture;
+		else
+			return FilesConstants.DEFAULT_CARD_IMAGE;
 	}
 
 	public Effect getEffect() {

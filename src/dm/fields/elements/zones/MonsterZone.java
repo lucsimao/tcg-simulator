@@ -17,7 +17,9 @@ public class MonsterZone extends CardZone {
 
 	public MonsterZone(int number) {
 		for (int i = 0; i < number; i++) {
-			putCard(new MonsterNormalCard(3), i);
+			MonsterCard c = new MonsterNormalCard(3);
+			c.setState(CardState.FACE_UP_ATTACK);
+			putCard(c, i);
 		}
 	}
 
