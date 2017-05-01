@@ -135,7 +135,7 @@ public class Field {
 	 * @param monsterCard
 	 */
 	public void returnToDeck(MonsterCard monsterCard) {
-		NormalDeckCard card = (NormalDeckCard) monsterZone.remove((MonsterCard) monsterCard);
+		NormalDeckCard card = (NormalDeckCard) monsterZone.remove(monsterCard);
 		deck.putCard(card);
 	}
 
@@ -155,7 +155,7 @@ public class Field {
 	 * @param monsterFusionCard
 	 */
 	public void returnToDeck(MonsterFusionCard monsterFusionCard) {
-		ExtraDeckCard card = (ExtraDeckCard) monsterZone.remove((MonsterCard) monsterFusionCard);
+		ExtraDeckCard card = (ExtraDeckCard) monsterZone.remove(monsterFusionCard);
 		extraDeck.putCard(card);
 	}
 

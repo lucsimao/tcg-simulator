@@ -23,7 +23,7 @@ public class JImageDesktopPane extends JDesktopPane {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g = (Graphics2D) g;
+		g = g;
 		int h = getHeight();
 		int w = getWidth();
 		ImageIcon image = new ImageIcon(getClass().getResource(("/images/background.png")));

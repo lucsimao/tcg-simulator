@@ -54,7 +54,7 @@ public class FileTests {
 			cardDAO.saveToEndFile(monsterNormalCard);
 		cardDAO.saveToEndFile(monsterEffectCard);
 
-		Card m = (Card) cardDAO.readFile("cards/cards.ygo");
+		Card m = cardDAO.readFile("cards/cards.ygo");
 		List<Card> list = cardDAO.readAllFile("cards/cards.ygo");
 
 		assertEquals("Dark Magician", m.getName());
