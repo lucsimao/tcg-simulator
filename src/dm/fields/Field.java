@@ -35,7 +35,7 @@ public class Field {
 	// Métodos contrutores
 	public Field() {
 		this.hand = new Hand(5);
-		this.graveyard = new Graveyard(10);
+		this.graveyard = new Graveyard(20);
 		this.monsterZone = new MonsterZone(2);
 		this.spellTrapZone = new SpellTrapZone(2);
 		this.removeFromPlay = new RemoveFromPlay(5);

@@ -61,24 +61,8 @@ public class FieldView extends JPanel {
 	private Field field1;
 	private Field field2;
 
-	private JLabel lblNewLabel;
+	private JLabel lblField;
 	private ImageTransform it;
-
-	public void setField1(Field field) {
-		this.field1 = field;
-	}
-
-	public Field getField1() {
-		return this.field1;
-	}
-
-	public void setField2(Field field) {
-		this.field2 = field;
-	}
-
-	public Field getField2() {
-		return this.field2;
-	}
 
 	public static void main(String args[]) throws IOException {
 		JFrame f = new JFrame();
@@ -125,9 +109,9 @@ public class FieldView extends JPanel {
 		field1 = new Field();
 		field2 = new Field();
 		// ImageIcon image = new ImageIcon(getBufferedImage());
-		lblNewLabel = new JLabel();
-		lblNewLabel.setBounds(0, 0, width, height);
-		add(lblNewLabel);
+		lblField = new JLabel();
+		lblField.setBounds(0, 0, width, height);
+		add(lblField);
 		repaint();
 
 	}
@@ -136,12 +120,9 @@ public class FieldView extends JPanel {
 	public void paint(Graphics g) {
 
 		try {
-//			lblNewLabel.setIcon(new ImageIcon(getBufferedImage()));
-			 lblNewLabel.setIcon(new
-			 ImageIcon(it.perspectiveTransform(getBufferedImage(), 6, width,
-			 height * 3 / 5)));
+			// lblNewLabel.setIcon(new ImageIcon(getBufferedImage()));
+			lblField.setIcon(new ImageIcon(it.perspectiveTransform(getBufferedImage(), 6, width, height * 3 / 5)));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		super.paint(g);
@@ -151,17 +132,15 @@ public class FieldView extends JPanel {
 		ImageMixer im = new ImageMixer();
 
 		BufferedImage bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
-		File d_file = new File("D:/magonego.png");
+
+		bufferedImage = loadGraves(bufferedImage, im);
+		bufferedImage = loadDecks(bufferedImage, im);
 
 		bufferedImage = loadMonster1(bufferedImage, im);
 		bufferedImage = loadMonster2(bufferedImage, im);
 		bufferedImage = loadNonMonster1(bufferedImage, im);
 		bufferedImage = loadNonMonster2(bufferedImage, im);
-		bufferedImage = loadGraves(bufferedImage, im);
-		bufferedImage = loadDecks(bufferedImage, im);
 
-		// ImageIcon image = new
-		// ImageIcon(it.perspectiveTransform(bufferedImage,8,width,height*3/5));
 		return bufferedImage;
 	}
 
@@ -171,13 +150,19 @@ public class FieldView extends JPanel {
 		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x,
 				deck1_y);
 		// Deck 1
-		for (int i = 0; i < field1.getDeck().size(); i++)
-			bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x + i / 8,
-					deck1_y - i/5);
+		// for (int i = 0; i < field1.getDeck().size(); i++)
+		// bufferedImage = im.mixImages(bufferedImage, file, new
+		// Dimension(width, height), card_dim, extra_right_x + i / 8,
+		// deck1_y - i/5);
+		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
+				deck1_y);
 		// Deck 2
-		for (int i = 0; i < field1.getDeck().size(); i++)
-			bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x - i/8/2,
-				deck2_y - i / 5);
+		// for (int i = 0; i < field1.getDeck().size(); i++)
+		// bufferedImage = im.mixImages(bufferedImage, file, new
+		// Dimension(width, height), card_dim, extra_left_x - i/8/2,
+		// deck2_y - i / 5);
+		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x,
+				deck2_y);
 		// ExtraDeck 2
 		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
 				deck2_y);
@@ -195,6 +180,7 @@ public class FieldView extends JPanel {
 
 	private BufferedImage loadGraves(BufferedImage bufferedImage, ImageMixer im) throws IOException {
 		File file = new File(FilesConstants.CARDS_IMG_DIR + field1.getGraveyard().top().getPicture());
+		// for (int i = 0; i < field1.getGraveyard().size(); i++)
 		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
 				graveyard1_y);
 		new File(FilesConstants.CARDS_IMG_DIR + field2.getGraveyard().top().getPicture());
@@ -327,4 +313,20 @@ public class FieldView extends JPanel {
 		return bufferedImage;
 	}
 
+	public void setField1(Field field) {
+		this.field1 = field;
+	}
+
+	public Field getField1() {
+		return this.field1;
+	}
+
+	public void setField2(Field field) {
+		this.field2 = field;
+	}
+
+	public Field getField2() {
+		return this.field2;
+	}
+	
 }
