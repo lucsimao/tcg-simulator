@@ -294,4 +294,8 @@ public class Field {
 
 	}
 
+	public Graveyard getGraveyard() {
+		return this.graveyard;
+	}
+
 }

@@ -46,7 +46,7 @@ public class FieldView extends JPanel {
 	private static final int monster_x = 146;
 	private static final int monster2_y = 100;
 	private static final int monster1_y = 239;
-	private static final int extra_right_x = monster_x + 355;
+	private static final int extra_right_x = monster_x + 358;
 	private static final int extra_left_x = 74;
 	private static final int deck1_y = monster1_y + 95;
 	private static final int spell1_y = monster1_y + 62;
@@ -136,8 +136,10 @@ public class FieldView extends JPanel {
 	public void paint(Graphics g) {
 
 		try {
-			// lblNewLabel.setIcon(new ImageIcon(getBufferedImage()));
-			lblNewLabel.setIcon(new ImageIcon(it.perspectiveTransform(getBufferedImage(), 8, width, height * 3 / 5)));
+//			lblNewLabel.setIcon(new ImageIcon(getBufferedImage()));
+			 lblNewLabel.setIcon(new
+			 ImageIcon(it.perspectiveTransform(getBufferedImage(), 6, width,
+			 height * 3 / 5)));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -150,64 +152,87 @@ public class FieldView extends JPanel {
 
 		BufferedImage bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
 		File d_file = new File("D:/magonego.png");
-		// Monster 1
+
+		bufferedImage = loadMonster1(bufferedImage, im);
+		bufferedImage = loadMonster2(bufferedImage, im);
+		bufferedImage = loadNonMonster1(bufferedImage, im);
+		bufferedImage = loadNonMonster2(bufferedImage, im);
+		bufferedImage = loadGraves(bufferedImage, im);
+		bufferedImage = loadDecks(bufferedImage, im);
+
+		// ImageIcon image = new
+		// ImageIcon(it.perspectiveTransform(bufferedImage,8,width,height*3/5));
+		return bufferedImage;
+	}
+
+	private BufferedImage loadDecks(BufferedImage bufferedImage, ImageMixer im) throws IOException {
+		File file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
+		// Extradeck 1
+		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x,
+				deck1_y);
+		// Deck 1
+		for (int i = 0; i < field1.getDeck().size(); i++)
+			bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x + i / 8,
+					deck1_y - i/5);
+		// Deck 2
+		for (int i = 0; i < field1.getDeck().size(); i++)
+			bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x - i/8/2,
+				deck2_y - i / 5);
+		// ExtraDeck 2
+		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
+				deck2_y);
+		// Field 2
+		// bufferedImage = im.mixImages(bufferedImage, file, new
+		// Dimension(width, height), card_dim, extra_right_x,
+		// graveyard2_y);
+		// Field 1
+		// bufferedImage = im.mixImages(bufferedImage, file, new
+		// Dimension(width, height), card_dim, extra_left_x,
+		// graveyard1_y);
+
+		return bufferedImage;
+	}
+
+	private BufferedImage loadGraves(BufferedImage bufferedImage, ImageMixer im) throws IOException {
+		File file = new File(FilesConstants.CARDS_IMG_DIR + field1.getGraveyard().top().getPicture());
+		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
+				graveyard1_y);
+		new File(FilesConstants.CARDS_IMG_DIR + field2.getGraveyard().top().getPicture());
+		bufferedImage = im.mixImages(bufferedImage,
+				it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC), new Dimension(width, height),
+				card_dim, extra_left_x, graveyard2_y);
+		return bufferedImage;
+	}
+
+	private BufferedImage loadNonMonster2(BufferedImage bufferedImage, ImageMixer im) throws IOException {
+		// Spell 2
 		for (int i = 0; i < 5; i++) {
+
 			try {
 
-				MonsterCard card = field1.getMonsterCard(i);
-				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
-				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
-				System.out.println("STATE  " + card.getState());
-				if (card.getState() == CardState.FACE_UP_ATTACK)
-					bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim,
-							monster_x + 70 * i + i + 1, monster1_y);
-				else if (card.getState() == CardState.FACE_UP_DEFENSE_POS)
-					bufferedImage = im.mixImages(bufferedImage,
-							it.rotateImage(ImageIO.read(file), -90, AffineTransformOp.TYPE_BICUBIC),
-							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
-							monster1_y - defense_bias);
-				else if (card.getState() == CardState.FACE_DOWN)
-					bufferedImage = im.mixImages(bufferedImage,
-							it.rotateImage(ImageIO.read(face_down_file), -90, AffineTransformOp.TYPE_BICUBIC),
-							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
-							monster1_y - defense_bias);
-			} catch (NullPointerException e) {
-				// e.printStackTrace();
-			} catch (CardNotFoundException e2) {
-				// e2.printStackTrace();
-			}
-		}
-
-		// Monster 2
-		for (int i = 0; i < 5; i++) {
-
-			try {
-
-				MonsterCard card = field2.getMonsterCard(i);
+				NonMonsterCard card = field1.getNonMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
 					bufferedImage = im.mixImages(bufferedImage,
 							it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC),
-							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, monster2_y);
-				else if (card.getState() == CardState.FACE_UP_DEFENSE_POS)
-					bufferedImage = im.mixImages(bufferedImage,
-							it.rotateImage(ImageIO.read(d_file), 90, AffineTransformOp.TYPE_BICUBIC),
-							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
-							monster2_y - defense_bias);
+							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, spell2_y);
 				else if (card.getState() == CardState.FACE_DOWN)
 					bufferedImage = im.mixImages(bufferedImage,
-							it.rotateImage(ImageIO.read(face_down_file), 90, AffineTransformOp.TYPE_BICUBIC),
-							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
-							monster2_y - defense_bias);
+							it.rotateImage(ImageIO.read(face_down_file), 180, AffineTransformOp.TYPE_BICUBIC),
+							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, spell2_y);
+
 			} catch (NullPointerException e) {
 				// e.printStackTrace();
 			} catch (CardNotFoundException e2) {
 				// e2.printStackTrace();
 			}
 		}
+		return bufferedImage;
+	}
 
+	private BufferedImage loadNonMonster1(BufferedImage bufferedImage, ImageMixer im) throws IOException {
 		// Spell 1
 		for (int i = 0; i < 5; i++) {
 
@@ -235,52 +260,70 @@ public class FieldView extends JPanel {
 			// Dimension(width,height),
 			// card_dim, monster_x+70*i +i+1, spell1_y);
 		}
+		return bufferedImage;
+	}
 
-		// Spell 2
+	private BufferedImage loadMonster2(BufferedImage bufferedImage, ImageMixer im) throws IOException {
+		// Monster 2
 		for (int i = 0; i < 5; i++) {
 
 			try {
 
-				NonMonsterCard card = field1.getNonMonsterCard(i);
+				MonsterCard card = field2.getMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
 					bufferedImage = im.mixImages(bufferedImage,
 							it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC),
-							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, spell2_y);
+							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, monster2_y);
+				else if (card.getState() == CardState.FACE_UP_DEFENSE_POS)
+					bufferedImage = im.mixImages(bufferedImage,
+							it.rotateImage(ImageIO.read(file), 90, AffineTransformOp.TYPE_BICUBIC),
+							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
+							monster2_y - defense_bias);
 				else if (card.getState() == CardState.FACE_DOWN)
 					bufferedImage = im.mixImages(bufferedImage,
-							it.rotateImage(ImageIO.read(face_down_file), 180, AffineTransformOp.TYPE_BICUBIC),
-							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, spell2_y);
-
+							it.rotateImage(ImageIO.read(face_down_file), 90, AffineTransformOp.TYPE_BICUBIC),
+							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
+							monster2_y - defense_bias);
 			} catch (NullPointerException e) {
 				// e.printStackTrace();
 			} catch (CardNotFoundException e2) {
 				// e2.printStackTrace();
 			}
 		}
+		return bufferedImage;
+	}
 
-		bufferedImage = im.mixImages(bufferedImage, d_file, new Dimension(width, height), card_dim, extra_left_x,
-				deck1_y);
-		bufferedImage = im.mixImages(bufferedImage, d_file, new Dimension(width, height), card_dim, extra_left_x,
-				graveyard1_y);
-		bufferedImage = im.mixImages(bufferedImage, d_file, new Dimension(width, height), card_dim, extra_right_x,
-				deck1_y);
-		bufferedImage = im.mixImages(bufferedImage, d_file, new Dimension(width, height), card_dim, extra_right_x,
-				graveyard1_y);
+	private BufferedImage loadMonster1(BufferedImage bufferedImage, ImageMixer im) throws IOException {
+		// Monster 1
+		for (int i = 0; i < 5; i++) {
+			try {
 
-		bufferedImage = im.mixImages(bufferedImage, d_file, new Dimension(width, height), card_dim, extra_left_x,
-				deck2_y);
-		bufferedImage = im.mixImages(bufferedImage, d_file, new Dimension(width, height), card_dim, extra_left_x,
-				graveyard2_y);
-		bufferedImage = im.mixImages(bufferedImage, d_file, new Dimension(width, height), card_dim, extra_right_x,
-				deck2_y);
-		bufferedImage = im.mixImages(bufferedImage, d_file, new Dimension(width, height), card_dim, extra_right_x,
-				graveyard2_y);
-
-		// ImageIcon image = new
-		// ImageIcon(it.perspectiveTransform(bufferedImage,8,width,height*3/5));
+				MonsterCard card = field1.getMonsterCard(i);
+				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
+				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
+				System.out.println("STATE  " + card.getState());
+				if (card.getState() == CardState.FACE_UP_ATTACK)
+					bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim,
+							monster_x + 70 * i + i + 1, monster1_y);
+				else if (card.getState() == CardState.FACE_UP_DEFENSE_POS)
+					bufferedImage = im.mixImages(bufferedImage,
+							it.rotateImage(ImageIO.read(file), -90, AffineTransformOp.TYPE_BICUBIC),
+							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
+							monster1_y - defense_bias);
+				else if (card.getState() == CardState.FACE_DOWN)
+					bufferedImage = im.mixImages(bufferedImage,
+							it.rotateImage(ImageIO.read(face_down_file), -90, AffineTransformOp.TYPE_BICUBIC),
+							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
+							monster1_y - defense_bias);
+			} catch (NullPointerException e) {
+				// e.printStackTrace();
+			} catch (CardNotFoundException e2) {
+				// e2.printStackTrace();
+			}
+		}
 		return bufferedImage;
 	}
 
