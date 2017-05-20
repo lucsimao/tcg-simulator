@@ -8,10 +8,13 @@ package dm.ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.security.Key;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -72,7 +75,7 @@ public class FieldView extends JPanel {
 		Card card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",
 				"magonego.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500, 2100, 0, 3);
 		// card.setState(CardState.FACE_UP_DEFENSE_POS);
-		System.out.println(card.getState());
+//		System.out.println(card.getState());
 		// Card card2 = new MonsterNormalCard("Exodia", "O guerreiro proibido",
 		// "exodia.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500,
 		// 2100, 0, 3);
@@ -80,6 +83,8 @@ public class FieldView extends JPanel {
 		FieldView fv = new FieldView();
 
 		f.getContentPane().add(fv);
+		fv.setFocusable(true);
+		fv.requestFocusInWindow();
 		f.setBounds(0, 0, width, height);
 		try {
 			Thread.sleep(1000);
@@ -112,8 +117,52 @@ public class FieldView extends JPanel {
 		lblField = new JLabel();
 		lblField.setBounds(0, 0, width, height);
 		add(lblField);
+		setFocusable(true);
+		this.requestFocusInWindow();
+		addKeyListener(getKeyListener());
 		repaint();
 
+	}
+
+	private KeyListener getKeyListener() {
+		return new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+//				System.out.println("SOLTOU");
+
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_LEFT){
+					System.out.println("LEFT");
+				}
+				if(e.getKeyCode() ==KeyEvent.VK_RIGHT)
+				{
+					System.out.println("RIGHT");
+				}
+				if(e.getKeyCode() ==KeyEvent.VK_UP){
+					System.out.println("UP");
+				}
+				if(e.getKeyCode() ==KeyEvent.VK_DOWN){
+					System.out.println("DOWN");
+				}
+				if(e.getKeyCode() ==KeyEvent.VK_ENTER){
+					System.out.println("ENTER");
+				}
+				if(e.getKeyCode() ==KeyEvent.VK_BACK_SPACE){
+					System.out.println("BACK");
+				}
+			}
+		};
 	}
 
 	@Override
@@ -199,7 +248,7 @@ public class FieldView extends JPanel {
 				NonMonsterCard card = field1.getNonMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
-				System.out.println("STATE  " + card.getState());
+//				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
 					bufferedImage = im.mixImages(bufferedImage,
 							it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC),
@@ -227,7 +276,7 @@ public class FieldView extends JPanel {
 				NonMonsterCard card = field1.getNonMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
-				System.out.println("STATE  " + card.getState());
+//				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
 					bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim,
 							monster_x + 70 * i + i + 1, spell1_y);
@@ -258,7 +307,7 @@ public class FieldView extends JPanel {
 				MonsterCard card = field2.getMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
-				System.out.println("STATE  " + card.getState());
+//				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
 					bufferedImage = im.mixImages(bufferedImage,
 							it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC),
@@ -290,7 +339,7 @@ public class FieldView extends JPanel {
 				MonsterCard card = field1.getMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
-				System.out.println("STATE  " + card.getState());
+//				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
 					bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim,
 							monster_x + 70 * i + i + 1, monster1_y);
