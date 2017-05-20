@@ -16,9 +16,6 @@ import dm.interfaces.NormalDeckCard;
 
 public class MonsterEffectCard extends MonsterCard implements NormalDeckCard {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5346230125931311515L;
 
 	public MonsterEffectCard(String name, String description, String picture, int type, int atribute,

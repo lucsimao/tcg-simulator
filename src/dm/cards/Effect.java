@@ -12,9 +12,6 @@ import java.io.Serializable;
 
 public class Effect implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8589204377359710896L;
 	// TODO
 }

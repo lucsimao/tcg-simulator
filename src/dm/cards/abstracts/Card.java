@@ -16,9 +16,6 @@ import dm.constants.RulesConstants;
 
 public abstract class Card implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7720833260489417219L;
 
 	private String name;

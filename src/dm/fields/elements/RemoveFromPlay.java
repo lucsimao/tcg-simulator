@@ -12,10 +12,7 @@ import dm.fields.elements.decks.Deck;
  */
 
 public class RemoveFromPlay extends Deck<Card> {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -5203621937873970199L;
 
 	public RemoveFromPlay(int number) {

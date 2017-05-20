@@ -12,9 +12,6 @@ import dm.fields.elements.decks.Deck;
  */
 public class Graveyard extends Deck<Card> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7173474563513436801L;
 
 	public Graveyard(int number) {

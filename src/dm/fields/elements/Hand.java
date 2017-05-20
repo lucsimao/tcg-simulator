@@ -5,7 +5,7 @@ import dm.cards.abstracts.Card;
 import dm.fields.elements.decks.FieldElement;
 
 /**
- * Classe mão. Ela pode ter um número máximo de cartas na mão. Possui funções de
+ * Classe Mão. Ela pode ter um número máximo de cartas na mão. Possui funções de
  * descatar, adicionar e remover cartas.
  * 
  * @author Simão

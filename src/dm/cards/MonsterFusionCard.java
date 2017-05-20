@@ -15,9 +15,6 @@ import dm.interfaces.ExtraDeckCard;
 
 public class MonsterFusionCard extends MonsterCard implements ExtraDeckCard {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7850575761434909539L;
 
 	public MonsterFusionCard(String name, String description, String picture, int type, int atribute,
