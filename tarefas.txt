@@ -1,0 +1,1 @@
+Refatorar o código de mostrar monstros; Colocar um is selected nos monstros;

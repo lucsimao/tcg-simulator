@@ -61,6 +61,8 @@ public class FieldView extends JPanel {
 	private static final Dimension card_dim = new Dimension(56, 62);
 	private static final Dimension card_dim_deffense = new Dimension(62, 56);
 
+	protected static final int LEFT = 0;
+
 	private Field field1;
 	private Field field2;
 
@@ -143,6 +145,7 @@ public class FieldView extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_LEFT){
+					moveCursor(LEFT);
 					System.out.println("LEFT");
 				}
 				if(e.getKeyCode() ==KeyEvent.VK_RIGHT)
@@ -162,9 +165,13 @@ public class FieldView extends JPanel {
 					System.out.println("BACK");
 				}
 			}
+
+
 		};
 	}
-
+	public void moveCursor(int position) {
+		
+	}
 	@Override
 	public void paint(Graphics g) {
 
@@ -196,7 +203,7 @@ public class FieldView extends JPanel {
 	private BufferedImage loadDecks(BufferedImage bufferedImage, ImageMixer im) throws IOException {
 		File file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 		// Extradeck 1
-		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x,
+		bufferedImage = im.mixImages(true,bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x,
 				deck1_y);
 		// Deck 1
 		// for (int i = 0; i < field1.getDeck().size(); i++)
