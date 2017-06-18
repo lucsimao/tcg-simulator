@@ -64,6 +64,7 @@ public class CardView extends JPanel {
 		panel_1.add(panel2);
 
 		CardDescriptionPanel panel = new CardDescriptionPanel(card);
+		panel.setEditable(false);
 		add(panel, BorderLayout.CENTER);
 	}
 

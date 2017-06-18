@@ -19,4 +19,6 @@ public class FilesConstants {
 	public static final String DEFAULT_MONTER_CARD_IMAGE = "default.jpg";
 	public static final String FACE_DOWN_CARD = "facedown.png";
 	public static final String DEFAULT_NON_MONSTER_CARD_IMAGE = "default_nonmonster.jpg";
+	public static int CARD_WIDTH = 177;
+	public static int CARD_HEIGHT = 254;
 }
