@@ -97,7 +97,6 @@ public class Frame extends JFrame {
 				// dispose();
 				//// removeAll();
 				// new Frame().setVisible(true);
-
 			}
 
 		});

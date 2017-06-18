@@ -61,8 +61,16 @@ public class FieldView extends JPanel {
 	private static final Dimension card_dim = new Dimension(56, 62);
 	private static final Dimension card_dim_deffense = new Dimension(62, 56);
 
-	protected static final int LEFT = 0;
-
+	protected static final int LEFT = -1;
+	protected static final int RIGHT = 1;
+	protected static final int UP = 10;
+	protected static final int DOWN = -10;
+	
+	protected static final int MAX_CURSOR = 36;
+	protected static final int MIN_CURSOR = 00;
+	
+	private int cursor;
+	
 	private Field field1;
 	private Field field2;
 
@@ -146,17 +154,20 @@ public class FieldView extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_LEFT){
 					moveCursor(LEFT);
-					System.out.println("LEFT");
+//					System.out.println("LEFT");
 				}
 				if(e.getKeyCode() ==KeyEvent.VK_RIGHT)
 				{
-					System.out.println("RIGHT");
+					moveCursor(RIGHT);
+//					System.out.println("RIGHT");
 				}
 				if(e.getKeyCode() ==KeyEvent.VK_UP){
-					System.out.println("UP");
+					moveCursor(UP);
+//					System.out.println("UP");
 				}
 				if(e.getKeyCode() ==KeyEvent.VK_DOWN){
-					System.out.println("DOWN");
+					moveCursor(DOWN);
+//					System.out.println("DOWN");
 				}
 				if(e.getKeyCode() ==KeyEvent.VK_ENTER){
 					System.out.println("ENTER");
@@ -170,7 +181,11 @@ public class FieldView extends JPanel {
 		};
 	}
 	public void moveCursor(int position) {
-		
+		if(this.cursor<MIN_CURSOR||cursor>MAX_CURSOR){
+			this.cursor = 10;
+		}else if(this.cursor+ position<=MAX_CURSOR&&this.cursor + position>=MIN_CURSOR&&(this.cursor+position)%10<=7)
+				this.cursor += position;
+			System.out.println("CURSOR: " + this.cursor);
 	}
 	@Override
 	public void paint(Graphics g) {
@@ -203,24 +218,36 @@ public class FieldView extends JPanel {
 	private BufferedImage loadDecks(BufferedImage bufferedImage, ImageMixer im) throws IOException {
 		File file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 		// Extradeck 1
-		bufferedImage = im.mixImages(true,bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x,
+		boolean selected = false;
+		if(this.cursor == MIN_CURSOR)
+			selected = true;
+		bufferedImage = im.mixImages(selected,bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x,
 				deck1_y);
 		// Deck 1
 		// for (int i = 0; i < field1.getDeck().size(); i++)
 		// bufferedImage = im.mixImages(bufferedImage, file, new
 		// Dimension(width, height), card_dim, extra_right_x + i / 8,
 		// deck1_y - i/5);
-		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
+		selected = false;
+		if(this.cursor == MIN_CURSOR + 6)
+			selected = true;
+		bufferedImage = im.mixImages(selected,bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
 				deck1_y);
 		// Deck 2
 		// for (int i = 0; i < field1.getDeck().size(); i++)
 		// bufferedImage = im.mixImages(bufferedImage, file, new
 		// Dimension(width, height), card_dim, extra_left_x - i/8/2,
 		// deck2_y - i / 5);
-		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x,
+		selected = false;
+		if(this.cursor == MIN_CURSOR + 30)
+			selected = true;
+		bufferedImage = im.mixImages(selected,bufferedImage, file, new Dimension(width, height), card_dim, extra_left_x,
 				deck2_y);
 		// ExtraDeck 2
-		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
+		selected = false;
+		if(this.cursor == MIN_CURSOR + 30 + 6)
+			selected = true;
+		bufferedImage = im.mixImages(selected,bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
 				deck2_y);
 		// Field 2
 		// bufferedImage = im.mixImages(bufferedImage, file, new
@@ -237,10 +264,16 @@ public class FieldView extends JPanel {
 	private BufferedImage loadGraves(BufferedImage bufferedImage, ImageMixer im) throws IOException {
 		File file = new File(FilesConstants.CARDS_IMG_DIR + field1.getGraveyard().top().getPicture());
 		// for (int i = 0; i < field1.getGraveyard().size(); i++)
-		bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
+		boolean selected = false;
+		if(this.cursor == MIN_CURSOR + 10 + 6)
+			selected = true;
+		bufferedImage = im.mixImages(selected,bufferedImage, file, new Dimension(width, height), card_dim, extra_right_x,
 				graveyard1_y);
 		new File(FilesConstants.CARDS_IMG_DIR + field2.getGraveyard().top().getPicture());
-		bufferedImage = im.mixImages(bufferedImage,
+		selected = false;
+		if(this.cursor == MIN_CURSOR + 20)
+			selected = true;
+		bufferedImage = im.mixImages(selected,bufferedImage,
 				it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC), new Dimension(width, height),
 				card_dim, extra_left_x, graveyard2_y);
 		return bufferedImage;
@@ -251,17 +284,19 @@ public class FieldView extends JPanel {
 		for (int i = 0; i < 5; i++) {
 
 			try {
-
+				boolean selected = false;
+				if(this.cursor== 30+i+1)
+					selected = true;
 				NonMonsterCard card = field1.getNonMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 //				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
-					bufferedImage = im.mixImages(bufferedImage,
+					bufferedImage = im.mixImages(selected,bufferedImage,
 							it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC),
 							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, spell2_y);
 				else if (card.getState() == CardState.FACE_DOWN)
-					bufferedImage = im.mixImages(bufferedImage,
+					bufferedImage = im.mixImages(selected,bufferedImage,
 							it.rotateImage(ImageIO.read(face_down_file), 180, AffineTransformOp.TYPE_BICUBIC),
 							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, spell2_y);
 
@@ -279,16 +314,18 @@ public class FieldView extends JPanel {
 		for (int i = 0; i < 5; i++) {
 
 			try {
-
+				boolean selected =false;
+				if(this.cursor== MIN_CURSOR + i + 1)
+					selected = true;
 				NonMonsterCard card = field1.getNonMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 //				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
-					bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim,
+					bufferedImage = im.mixImages(selected,bufferedImage, file, new Dimension(width, height), card_dim,
 							monster_x + 70 * i + i + 1, spell1_y);
 				else if (card.getState() == CardState.FACE_DOWN)
-					bufferedImage = im.mixImages(bufferedImage, face_down_file, new Dimension(width, height), card_dim,
+					bufferedImage = im.mixImages(selected,bufferedImage, face_down_file, new Dimension(width, height), card_dim,
 							monster_x + 70 * i + i + 1, spell1_y);
 
 			} catch (NullPointerException e) {
@@ -307,25 +344,27 @@ public class FieldView extends JPanel {
 
 	private BufferedImage loadMonster2(BufferedImage bufferedImage, ImageMixer im) throws IOException {
 		// Monster 2
+		
 		for (int i = 0; i < 5; i++) {
-
+			boolean selected = false;
 			try {
-
+				if(this.cursor== MIN_CURSOR + 20 + i + 1)
+					selected = true;
 				MonsterCard card = field2.getMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 //				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
-					bufferedImage = im.mixImages(bufferedImage,
+					bufferedImage = im.mixImages(selected,bufferedImage,
 							it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC),
 							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, monster2_y);
 				else if (card.getState() == CardState.FACE_UP_DEFENSE_POS)
-					bufferedImage = im.mixImages(bufferedImage,
+					bufferedImage = im.mixImages(selected,bufferedImage,
 							it.rotateImage(ImageIO.read(file), 90, AffineTransformOp.TYPE_BICUBIC),
 							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
 							monster2_y - defense_bias);
 				else if (card.getState() == CardState.FACE_DOWN)
-					bufferedImage = im.mixImages(bufferedImage,
+					bufferedImage = im.mixImages(selected,bufferedImage,
 							it.rotateImage(ImageIO.read(face_down_file), 90, AffineTransformOp.TYPE_BICUBIC),
 							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
 							monster2_y - defense_bias);
@@ -340,23 +379,26 @@ public class FieldView extends JPanel {
 
 	private BufferedImage loadMonster1(BufferedImage bufferedImage, ImageMixer im) throws IOException {
 		// Monster 1
+		
 		for (int i = 0; i < 5; i++) {
 			try {
-
+				boolean selected = false;
+				if(this.cursor== MIN_CURSOR +10+ i + 1)
+					selected = true;
 				MonsterCard card = field1.getMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 //				System.out.println("STATE  " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
-					bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim,
+					bufferedImage = im.mixImages(selected,bufferedImage, file, new Dimension(width, height), card_dim,
 							monster_x + 70 * i + i + 1, monster1_y);
 				else if (card.getState() == CardState.FACE_UP_DEFENSE_POS)
-					bufferedImage = im.mixImages(bufferedImage,
+					bufferedImage = im.mixImages(selected,bufferedImage,
 							it.rotateImage(ImageIO.read(file), -90, AffineTransformOp.TYPE_BICUBIC),
 							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
 							monster1_y - defense_bias);
 				else if (card.getState() == CardState.FACE_DOWN)
-					bufferedImage = im.mixImages(bufferedImage,
+					bufferedImage = im.mixImages(selected,bufferedImage,
 							it.rotateImage(ImageIO.read(face_down_file), -90, AffineTransformOp.TYPE_BICUBIC),
 							new Dimension(width, height), card_dim_deffense, monster_x + 70 * i + i + 1 - defense_bias,
 							monster1_y - defense_bias);
