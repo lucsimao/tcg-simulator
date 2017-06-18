@@ -73,6 +73,14 @@ public class CardBuilder extends JPanel {
 	private JLabel lblMonsterDefense;
 	private JSpinner sp_Defense;
 	private JButton button;
+
+	private JComboBox<String> cbSpellType;
+
+	private Component lblSpellType;
+
+	private JLabel lblTrapType;
+
+	private JComboBox<String> cbTrapType;
 	
 	public static void main(String args[]){
 		JFrame f = new JFrame();
@@ -125,7 +133,7 @@ public class CardBuilder extends JPanel {
 		panel_3.add(sp,BorderLayout.CENTER);
 		
 		panel_1 = new JPanel();
-		panel_1.setLayout(new GridLayout(15, 1, 0, 0));
+		panel_1.setLayout(new GridLayout(7, 1, 25, 25));
 		add(panel_1,BorderLayout.CENTER);
 		
 		lblImage = new JLabel("Image");
@@ -158,19 +166,39 @@ public class CardBuilder extends JPanel {
 		
 		cbCardType = new JComboBox<String>();
 		panel_1.add(cbCardType);
-		cbCardType.setModel(new DefaultComboBoxModel<String>(new String[] {"TOKEN","MONSTER","SPELL","TRAP"}));
+		cbCardType.setModel(new DefaultComboBoxModel<String>(new String[] {"MONSTER","SPELL","TRAP"}));
 				
 		lblMonsterAtribute = new JLabel("Monster Atribute");
 		panel_1.add(lblMonsterAtribute);
 		
 		cbMonsterAtribute = new JComboBox<String>();
+		cbMonsterAtribute.setModel(new DefaultComboBoxModel<String>
+		(new String[] {"WATER","FIRE","LIGHT","DARK","WIND","EARTH"}));
 		panel_1.add(cbMonsterAtribute);
+		
+		lblSpellType = new JLabel("Spell Type");
+//		panel_1.add(lblSpellType);
+		
+		cbSpellType = new JComboBox<String>();
+		cbSpellType.setModel(new DefaultComboBoxModel<String>(new String[] {"NORMAL","QUICK","CONTINOUS","EQUIP","FIELD"}));
+//		panel_1.add(cbSpellType);
+		
+		lblTrapType = new JLabel("Trap Type");
+		
+//		panel_1.add(lblTrapType);
+		
+		cbTrapType = new JComboBox<String>();
+		cbTrapType.setModel(new DefaultComboBoxModel<String>(new String[] {"NORMAL","COUNTER","CONTINOUS"}));
+//		panel_1.add(cbTrapType);
+		
 		
 		lblMonsterType = new JLabel("Monster Type");
 		panel_1.add(lblMonsterType);
 		
 		cbMonsterType = new JComboBox<String>();
 		panel_1.add(cbMonsterType);
+		cbMonsterType.setModel(new DefaultComboBoxModel<String>
+		(new String[] {"SPELLCASTER","WARRIOR","FAIRY","AQUA","SEASERPENT","FIEND","DRAGON","BEAST","WINGEDBEAST","BEASTWARRIOR","PYRO"}));
 		
 		lblMonsterAttack = new JLabel("Monster Attack");
 		panel_1.add(lblMonsterAttack);
@@ -187,13 +215,13 @@ public class CardBuilder extends JPanel {
 		panel_1.add(sp_Defense);
 		
 		button = new JButton("Create");
-		panel_1.add(button);
+		add(button,BorderLayout.SOUTH);
 		button.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(cbCardType.getSelectedItem().equals("MONSTER")){
-					System.out.println("Você criou um monstro!");
+					System.out.println("Você criou um monstro!" + cbCardType.getSelectedIndex());
 				}
 				
 			}
@@ -203,12 +231,22 @@ public class CardBuilder extends JPanel {
 			
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				boolean vis = false;
+				boolean visM = false;
+				boolean visS = false;
+				boolean visT = false;
 				System.out.println(e.getItem().equals("MONSTER"));
 				if(e.getItem().toString().equals("MONSTER")){
-					vis = true;
+					visM = true;
 				}
-				setMonsterItemsVisible(vis);
+				if(e.getItem().toString().equals("SPELL")){
+					visS = true;
+				}
+				if(e.getItem().toString().equals("TRAP")){
+					visT = true;
+				}
+				setMonsterItemsVisible(visM);
+				setSpellItemsVisible(visS);
+				setTrapItemsVisible(visT);
 			}
 		});
 		btnChoose.addActionListener(new ActionListener() {
@@ -236,18 +274,64 @@ public class CardBuilder extends JPanel {
 				    }
 			}
 		});
-		setMonsterItemsVisible(false);	
+		setMonsterItemsVisible(true);	
+		setSpellItemsVisible(false);	
+		setTrapItemsVisible(false);	
 	}
 
 	public void setMonsterItemsVisible(boolean visible){
-		lblMonsterAttack.setVisible(visible);
-		lblMonsterDefense.setVisible(visible);
-		sp_Attack.setVisible(visible);
-		sp_Defense.setVisible(visible);
-		lblMonsterAtribute.setVisible(visible);
-		cbMonsterAtribute.setVisible(visible);
-		lblMonsterType.setVisible(visible);
-		cbMonsterType.setVisible(visible);
+		if(visible){		
+		panel_1.add(lblMonsterAtribute);
+		panel_1.add(cbMonsterAtribute);
+		panel_1.add(lblMonsterType);
+		panel_1.add(cbMonsterType);
+		panel_1.add(lblMonsterAttack);
+		panel_1.add(sp_Attack);
+		panel_1.add(lblMonsterDefense);
+		panel_1.add(sp_Defense);
+		}else
+		{
+			panel_1.remove(lblMonsterAttack);
+			panel_1.remove(lblMonsterDefense);
+			panel_1.remove(sp_Attack);
+			panel_1.remove(sp_Defense);
+			panel_1.remove(lblMonsterAtribute);
+			panel_1.remove(cbMonsterAtribute);
+			panel_1.remove(lblMonsterType);
+			panel_1.remove(cbMonsterType);
+		}
+		repaint();	
+//		lblMonsterAttack.setVisible(visible);
+//		lblMonsterDefense.setVisible(visible);
+//		sp_Attack.setVisible(visible);
+//		sp_Defense.setVisible(visible);
+//		lblMonsterAtribute.setVisible(visible);
+//		cbMonsterAtribute.setVisible(visible);
+//		lblMonsterType.setVisible(visible);
+//		cbMonsterType.setVisible(visible);
 	}
 
+	public void setSpellItemsVisible(boolean visible){
+		if(visible == true){
+			panel_1.add(lblSpellType);
+			panel_1.add(cbSpellType);}
+		else{
+			panel_1.remove(lblSpellType);
+			panel_1.remove(cbSpellType);
+			}
+		revalidate();
+	}
+	
+	public void setTrapItemsVisible(boolean visible){
+		if(visible == true){
+			panel_1.add(lblTrapType);
+			panel_1.add(cbTrapType);
+			}
+		else{
+			panel_1.remove(lblTrapType);
+			panel_1.remove(cbTrapType);
+			}
+		repaint();
+	}
+	
 }
