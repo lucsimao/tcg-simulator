@@ -72,4 +72,25 @@ public class FileTests {
 		assertEquals(extraDeck.size(), player.getExtraDeck().size());
 	}
 
+	
+	@Test
+	public void saveAndDeleteMonsterCard() throws FileNotFoundException, IOException, ClassNotFoundException {
+		File f = new File("cards/cards.ygo");
+		if (f.exists())
+			cardDAO.saveToFile(monsterNormalCard);
+		else
+			cardDAO.saveToEndFile(monsterNormalCard);
+		cardDAO.saveToEndFile(monsterEffectCard);
+		Card m = cardDAO.readFile("cards/cards.ygo");
+		cardDAO.deleteFile("cards/cards.ygo",m);
+		List<Card> list = cardDAO.readAllFile("cards/cards.ygo");
+//		
+		for(Card c : list)	
+			System.out.println(c);
+//		
+		assertEquals("Dark Magician", m.getName());
+		assertEquals(1,list.size());
+	}
+	
+	
 }

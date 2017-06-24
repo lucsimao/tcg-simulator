@@ -90,4 +90,13 @@ public abstract class Card implements Serializable {
 		return copies_number;
 	}
 
+	@Override
+	public boolean equals(Object card) {
+		// TODO Auto-generated method stub
+		if(this.name.equals(((Card) card).getName()))
+			return true;
+		else
+			return false;
+	}
+	
 }

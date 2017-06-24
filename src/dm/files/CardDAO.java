@@ -120,7 +120,24 @@ public class CardDAO {
 		file.createNewFile();
 		return file;
 	}
+	
+	public void deleteFile(String file, Card card) throws IOException, FileNotFoundException, ClassNotFoundException {
+		
+		List<Card> cards = readAllFile(file);
+		System.out.println(cards.contains(card));
+		System.out.println(cards.size());
+		cards.remove(card);
+		System.out.println(cards.size());
 
+		clearFile(file);
+		for(Card c : cards){
+			saveToEndFile(file,c);
+		}
+	
+		
+	}
+
+	
 	private void saveToFile(String file, boolean append, Card card) throws IOException, FileNotFoundException {
 		fileOutputStream = new FileOutputStream(file, append);
 		objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -130,4 +147,9 @@ public class CardDAO {
 		fileOutputStream.close();
 	}
 
+	public void clearFile(String file) throws IOException, FileNotFoundException {
+		fileOutputStream = new FileOutputStream(file, false);
+		fileOutputStream.close();
+	}
+	
 }
