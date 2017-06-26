@@ -44,7 +44,7 @@ import dm.constants.CardType;
 import dm.constants.FilesConstants;
 import dm.files.CardDAO;
 
-public class CardBuilder extends JPanel {
+public class ShowCards extends JPanel {
 	/**
 	 * 
 	 */
@@ -92,7 +92,7 @@ public class CardBuilder extends JPanel {
 		f.setUndecorated(true);
 		f.setVisible(true);
 
-		CardBuilder fv = new CardBuilder();
+		ShowCards fv = new ShowCards();
 
 		f.getContentPane().add(fv);
 		fv.setFocusable(true);
@@ -103,7 +103,7 @@ public class CardBuilder extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CardBuilder() {
+	public ShowCards() {
 		setLayout(new BorderLayout(10, 10));
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		// setLayout(new GridLayout(15, 1, 0, 0));

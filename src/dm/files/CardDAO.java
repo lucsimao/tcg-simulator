@@ -133,10 +133,12 @@ public class CardDAO {
 		for(Card c : cards){
 			saveToEndFile(file,c);
 		}
-	
-		
 	}
-
+	
+	public boolean contains(Card card, String file) throws FileNotFoundException, ClassNotFoundException, IOException{
+		List<Card> cards = readAllFile(file);
+		return cards.contains(card);
+	}
 	
 	private void saveToFile(String file, boolean append, Card card) throws IOException, FileNotFoundException {
 		fileOutputStream = new FileOutputStream(file, append);
@@ -150,6 +152,12 @@ public class CardDAO {
 	public void clearFile(String file) throws IOException, FileNotFoundException {
 		fileOutputStream = new FileOutputStream(file, false);
 		fileOutputStream.close();
+	}
+
+	public void saveCard(Card card) throws FileNotFoundException, ClassNotFoundException, IOException, CardExistsException {
+		if(contains(card, getFile().getPath()))
+			throw new CardExistsException("This card already exists on our database");
+		saveToEndFile(card);
 	}
 	
 }
