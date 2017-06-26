@@ -24,7 +24,7 @@ public class MonsterFusionCard extends MonsterCard implements ExtraDeckCard {
 	}
 
 	public MonsterFusionCard(int copies_number) {
-		super(null, null, ColorPicture.FUSION, null, 0, 0, 0, 0, null, copies_number);
+		super(nameGenerator(), "Texto padrão gerado", ColorPicture.FUSION, null, 0, 0, 0, 0, null, copies_number);
 	}
 
 }

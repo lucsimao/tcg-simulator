@@ -28,7 +28,7 @@ public class TrapCard extends NonMonsterCard implements NormalDeckCard {
 	}
 
 	public TrapCard(int copies_number) throws NoEffectException {
-		super(null, null, CardType.TRAP, ColorPicture.TRAP, null, new Effect(), copies_number);
+		super(nameGenerator(),"Teste de descrição", CardType.TRAP, ColorPicture.TRAP, null, new Effect(), copies_number);
 		this.type = TrapType.NORMAL;
 	}
 }

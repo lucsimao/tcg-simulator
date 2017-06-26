@@ -1,6 +1,9 @@
 package dm.cards.abstracts;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 import dm.cards.Effect;
 import dm.constants.CardState;
@@ -32,15 +35,15 @@ public abstract class Card implements Serializable {
 	public Card(String name, String description, int cardType, int colorPicture, String picture, Effect effect,
 			int copies_number) {
 		super();
-		if(name == null||name.trim().isEmpty())
+		if (name == null || name.trim().isEmpty())
 			throw new InvalidTextAttributeException("Name cannot be empty");
-		if(description == null||description.trim().isEmpty())
+		if (description == null || description.trim().isEmpty())
 			throw new InvalidTextAttributeException("Description cannot be empty");
-		if(cardType <0)
+		if (cardType < 0)
 			throw new InvalidTextAttributeException("Card Type cannot be negative");
-		if(colorPicture <0)
+		if (colorPicture < 0)
 			throw new InvalidTextAttributeException("Color Picture cannot be negative");
-		if(description == null||description.trim().isEmpty())
+		if (description == null || description.trim().isEmpty())
 			throw new InvalidTextAttributeException("Picture cannot be null");
 		this.name = name;
 		this.description = description;
@@ -104,10 +107,16 @@ public abstract class Card implements Serializable {
 	@Override
 	public boolean equals(Object card) {
 		// TODO Auto-generated method stub
-		if(this.name.equals(((Card) card).getName()))
+		if (this.name.equals(((Card) card).getName()))
 			return true;
 		else
 			return false;
 	}
-	
+
+	public static String nameGenerator(){
+		String s = "Texto padrão";
+		Random r = new Random();
+		s = s + r.nextInt();
+		return s;
+	}
 }

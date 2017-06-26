@@ -1,7 +1,10 @@
 package dm.cards;
 
+import java.util.Random;
+
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
+import dm.files.CardDAO;
 import dm.interfaces.NormalDeckCard;
 
 /**
@@ -25,6 +28,10 @@ public class MonsterNormalCard extends MonsterCard implements NormalDeckCard {
 	}
 
 	public MonsterNormalCard(int copies_number) {
-		super(null, null, ColorPicture.NORMAL, null, 0, 0, 0, 0, null, copies_number);
+		super(nameGenerator(), "Carta padrão para testes", ColorPicture.NORMAL, null, 0, 0, 0, 0, null, copies_number);
+//		System.out.println("carta criada " + nameGenerator());
 	}
+	
+
+	
 }
