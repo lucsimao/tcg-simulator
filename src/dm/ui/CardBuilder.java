@@ -140,7 +140,7 @@ public class CardBuilder extends JPanel {
 		panel_3.add(sp, BorderLayout.CENTER);
 
 		panel_1 = new JPanel();
-		panel_1.setLayout(new GridLayout(8, 1, 25, 25));
+		panel_1.setLayout(new GridLayout(7, 1, 25, 25));
 		add(panel_1, BorderLayout.CENTER);
 
 		lblImage = new JLabel("Image");
