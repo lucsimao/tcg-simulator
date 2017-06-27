@@ -47,6 +47,8 @@ public class CardView extends JPanel {
 
 	}
 
+	private Card card;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -55,7 +57,17 @@ public class CardView extends JPanel {
 		setMaximumSize(new Dimension(width, height));
 		setBackground(Color.darkGray);
 		setBorder(new EmptyBorder(10, 10, 10, 10));
-		ImageIcon icon = new ImageIcon(FilesConstants.CARDS_IMG_DIR + card.getPicture());
+		setCard(card);
+	}
+
+	public void setCard(Card card){
+		ImageIcon icon;
+		try{
+			icon = new ImageIcon(FilesConstants.CARDS_IMG_DIR + card.getPicture());
+		}
+		catch(Exception e){
+			icon = new ImageIcon(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
+		}
 		setLayout(new BorderLayout(10, 10));
 
 		JPanel panel_1 = new JPanel();
@@ -66,6 +78,7 @@ public class CardView extends JPanel {
 		CardDescriptionPanel panel = new CardDescriptionPanel(card);
 		panel.setEditable(false);
 		add(panel, BorderLayout.CENTER);
+		validate();
 	}
-
+	
 }

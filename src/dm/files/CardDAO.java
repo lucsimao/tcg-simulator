@@ -115,6 +115,10 @@ public class CardDAO {
 		return list;
 	}
 
+	public List<Card> readAllFile() throws FileNotFoundException, ClassNotFoundException, IOException {
+		return readAllFile(getFile().getPath());
+	}
+	
 	private File getFile() throws IOException {
 		String filename = FilesConstants.CARDS_DB + "/" + "cards" + FilesConstants.EXTENSION;
 		File file = new File(filename);
@@ -160,6 +164,18 @@ public class CardDAO {
 		if(contains(card, getFile().getPath()))
 			throw new CardExistsException("This card already exists on our database");
 		saveToEndFile(card);
+		
+	}
+
+	public String getId() {
+		List<Card> cards = new ArrayList<>(0);
+		try {
+			cards = readAllFile(getFile().getPath());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return ""+ cards.size();
 	}
 	
 }

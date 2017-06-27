@@ -50,7 +50,11 @@ public class CardDescriptionPanel extends JPanel {
 		// risus."
 		// + " Nulla leo magna, aliquam non bibendum sit amet, porta a orci. "
 		// + "Suspendisse venenatis turpis ut dolor fermentum accumsan.");
-		txtDescription.setText(card.getDescription());
+		try{
+			txtDescription.setText(card.getDescription());
+		}catch(Exception e){
+			txtDescription.setText("Default description");
+		}
 		txtDescription.setPreferredSize(new Dimension(width, height));
 		scrollPane.setViewportView(add(txtDescription));
 	}

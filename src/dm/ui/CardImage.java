@@ -7,6 +7,7 @@ package dm.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -18,8 +19,8 @@ public class CardImage extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 5555548043685844676L;
-	private final int height = 177;
-	private final int width = 254;
+	private final int height = 254;
+	private final int width = 177;
 
 	/**
 	 * Create the panel.
@@ -31,7 +32,10 @@ public class CardImage extends JPanel {
 		setMaximumSize(new Dimension(width, height));
 
 		JLabel lblImage = new JLabel();
-		lblImage.setIcon(icon);
+		Image img = icon.getImage();
+		img = img.getScaledInstance(width, height,Image.SCALE_DEFAULT);
+		
+		lblImage.setIcon(new ImageIcon(img));
 		add(lblImage, BorderLayout.CENTER);
 	}
 

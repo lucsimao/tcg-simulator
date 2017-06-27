@@ -10,8 +10,6 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,6 +27,10 @@ public class Frame extends JFrame {
 	 */
 	private static final long serialVersionUID = -508584232966549415L;
 
+	private static final int width = 640;
+
+	private static final int height = 480;
+
 	private JPanel contentPane;
 
 	/**
@@ -42,6 +44,7 @@ public class Frame extends JFrame {
 				try {
 					Frame frame = new Frame();
 					frame.setVisible(true);
+					frame.setBounds(100, 100, width, height);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -53,55 +56,15 @@ public class Frame extends JFrame {
 	 * Create the frame.
 	 */
 	public Frame() {
-		addWindowListener(new WindowListener() {
-			
-			@Override
-			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowClosing(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowClosed(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		
+//		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//		setUndecorated(true);
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 640, 480);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
+		setBounds(100, 100, width,height);
+		
+		contentPane = defaultContentPane();
 		setContentPane(contentPane);
 
 		JImageDesktopPane desktopPane = new JImageDesktopPane();
@@ -150,11 +113,15 @@ public class Frame extends JFrame {
 		JButton btnEditDeck = new JButton("EditDeck");
 		panel.add(btnEditDeck);
 
+		JButton btnViewCards = new JButton("ViewCards");
+		panel.add(btnViewCards);
+		
 		JButton btnCardBuilder = new JButton("CardBuilder");
 		panel.add(btnCardBuilder);
 
 		JButton btnExit = new JButton("Exit");
 		panel.add(btnExit);
+		
 		btnExit.addActionListener(new ActionListener() {
 
 			@Override
@@ -162,6 +129,57 @@ public class Frame extends JFrame {
 				System.exit(0);
 			}
 		});
+		
+		btnCardBuilder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JPanel localContentPane  = defaultContentPane();
+				setContentPane(localContentPane);
+				CardBuilder builder = new CardBuilder();
+				getContentPane().add(builder);
+				builder.addBackActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						setContentPane(contentPane);
+						validate();
+						
+					}
+				});
+				validate();
+			}
+		});
+		btnViewCards.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JPanel localContentPane  = defaultContentPane();
+				setContentPane(localContentPane);
+
+				ListCards builder = new ListCards();
+				getContentPane().add(builder);
+				builder.addBackActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						setContentPane(contentPane);
+						validate();
+						
+					}
+				});
+				validate();
+			}
+		});
+		
+		
 	}
 
+	public JPanel defaultContentPane(){
+		JPanel contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		return contentPane;
+	}
+	
 }

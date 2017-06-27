@@ -15,6 +15,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
@@ -40,7 +42,6 @@ import dm.cards.MonsterNormalCard;
 import dm.cards.SpellCard;
 import dm.cards.TrapCard;
 import dm.cards.abstracts.Card;
-import dm.constants.CardType;
 import dm.constants.FilesConstants;
 import dm.files.CardDAO;
 
@@ -54,7 +55,7 @@ public class CardBuilder extends JPanel {
 	private JLabel lblCardType;
 	private JTextArea descriptionTA;
 
-	private final static int height = 400;
+	private final static int height = 480;
 	private final static int width = 640;
 	private JComboBox<String> cardTypeCB;
 	private JLabel lblMonsterAtribute;
@@ -85,18 +86,20 @@ public class CardBuilder extends JPanel {
 	private JLabel lblTrapType;
 
 	private JComboBox<String> cbTrapType;
-
+	private JFileChooser chooser;
+	private JButton backButton;
+	
 	public static void main(String args[]) {
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		f.setUndecorated(true);
 		f.setVisible(true);
 
-		CardBuilder fv = new CardBuilder();
+		CardBuilder cardBuilder = new CardBuilder();
 
-		f.getContentPane().add(fv);
-		fv.setFocusable(true);
-		fv.requestFocusInWindow();
+		f.getContentPane().add(cardBuilder);
+		cardBuilder.setFocusable(true);
+		cardBuilder.requestFocusInWindow();
 		f.setBounds(0, 0, width, height);
 	}
 
@@ -106,6 +109,7 @@ public class CardBuilder extends JPanel {
 	public CardBuilder() {
 		setLayout(new BorderLayout(10, 10));
 		setBorder(new EmptyBorder(10, 10, 10, 10));
+		
 		// setLayout(new GridLayout(15, 1, 0, 0));
 
 		panel_2 = new JPanel();
@@ -136,7 +140,7 @@ public class CardBuilder extends JPanel {
 		panel_3.add(sp, BorderLayout.CENTER);
 
 		panel_1 = new JPanel();
-		panel_1.setLayout(new GridLayout(7, 1, 25, 25));
+		panel_1.setLayout(new GridLayout(8, 1, 25, 25));
 		add(panel_1, BorderLayout.CENTER);
 
 		lblImage = new JLabel("Image");
@@ -213,8 +217,13 @@ public class CardBuilder extends JPanel {
 		defenseSPN.setModel(new SpinnerNumberModel(0, 0, 9999, 100));
 		panel_1.add(defenseSPN);
 
+		
+		JPanel panelBotao = new JPanel(new GridLayout(1, 2,5,5));
 		createButton = new JButton("Create");
-		add(createButton, BorderLayout.SOUTH);
+		add(panelBotao, BorderLayout.SOUTH);
+		
+		panelBotao.add(createButton);
+		
 		createButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -223,6 +232,10 @@ public class CardBuilder extends JPanel {
 			}
 		});
 
+		backButton = new JButton("Voltar");
+		panelBotao.add(backButton);
+		
+		
 		cardTypeCB.addItemListener(new ItemListener() {
 
 			@Override
@@ -249,16 +262,16 @@ public class CardBuilder extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser chooser = new JFileChooser();
+				chooser = new JFileChooser();
 				FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG Images", "jpg", "png");
 				chooser.setFileFilter(filter);
 				int returnVal = chooser.showOpenDialog(getParent());
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					pictureTF.setText(chooser.getSelectedFile().getName());
 					try {
-						Image image = ImageIO.read(chooser.getSelectedFile()).getScaledInstance(
+						Image cardImage = ImageIO.read(chooser.getSelectedFile()).getScaledInstance(
 								FilesConstants.CARD_WIDTH, FilesConstants.CARD_HEIGHT, Image.SCALE_DEFAULT);
-						lblImageView.setIcon(new ImageIcon(image));
+						lblImageView.setIcon(new ImageIcon(cardImage));
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -278,7 +291,6 @@ public class CardBuilder extends JPanel {
 			Card card = null;
 			if (cardTypeCB.getSelectedItem().toString().equals("MONSTER")) {
 				System.out.println("Você criou um monstro!" + cardTypeCB.getSelectedIndex());
-				if(monsterTypeCB.getSelectedItem().toString().equals("NORMAL"))
 //				{
 					card = new MonsterNormalCard(nameTF.getText(), descriptionTA.getText(),
 							pictureTF.getText(),monsterTypeCB.getSelectedIndex(),monsterAtributeCB.getSelectedIndex(),
@@ -296,9 +308,12 @@ public class CardBuilder extends JPanel {
 				card = new TrapCard(nameTF.getText(), descriptionTA.getText(), pictureTF.getText(),
 						new Effect(), cbTrapType.getSelectedIndex(), 3);
 			}
+			//Copia a carta para a pasta de imagens
 			
 			CardDAO cardDAO = new CardDAO();
 			cardDAO.saveCard(card);
+			Files.copy(chooser.getSelectedFile().toPath(),new File(FilesConstants.CARDS_IMG_DIR + cardDAO.getId()+".jpg").toPath(),StandardCopyOption.REPLACE_EXISTING);
+	
 			JOptionPane.showMessageDialog(null,"Your have saved sucefully your card","SUUUCESSO",
 					JOptionPane.INFORMATION_MESSAGE);
 		} catch (Exception e) {
@@ -360,4 +375,8 @@ public class CardBuilder extends JPanel {
 		repaint();
 	}
 
+	public void addBackActionListener(ActionListener listener){
+		backButton.addActionListener(listener);
+	}
+	
 }
