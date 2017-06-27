@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import singleinstance.SingleInstance;
 
-public class Frame extends JFrame {
+public class MainFrame extends JFrame {
 
 	/**
 	 * 
@@ -42,7 +42,7 @@ public class Frame extends JFrame {
 			@Override
 			public void run() {
 				try {
-					Frame frame = new Frame();
+					MainFrame frame = new MainFrame();
 					frame.setVisible(true);
 					frame.setBounds(100, 100, width, height);
 				} catch (Exception e) {
@@ -55,7 +55,7 @@ public class Frame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Frame() {
+	public MainFrame() {
 		
 //		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 //		setUndecorated(true);
@@ -103,9 +103,6 @@ public class Frame extends JFrame {
 				});
 
 				validate();
-				// dispose();
-				//// removeAll();
-				// new Frame().setVisible(true);
 			}
 
 		});
