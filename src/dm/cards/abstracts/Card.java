@@ -114,7 +114,7 @@ public abstract class Card implements Serializable {
 	}
 
 	public static String nameGenerator(){
-		String s = "Texto padrão";
+		String s = "Carta - ";
 		Random r = new Random();
 		s = s + r.nextInt();
 		return s;

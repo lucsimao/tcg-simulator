@@ -8,6 +8,7 @@ package dm.ui;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,6 +43,8 @@ public class ListCards extends JPanel {
 	private CardView cardView;
 
 	private JButton backButton;
+
+	private JList list;
 	
 	public static void main(String args[]){
 		JFrame f = new JFrame();
@@ -76,7 +79,7 @@ public class ListCards extends JPanel {
 		
 		add(cardView,"West");
 		
-		JList list = new JList(new Vector<Card>(cards));
+		list = new JList(new Vector<Card>(cards));
 		list.setVisibleRowCount(10);
 		list.setCellRenderer(new DefaultListCellRenderer(){
 	           @Override
@@ -107,6 +110,14 @@ public class ListCards extends JPanel {
 	public void addBackActionListener(ActionListener actionListener) {
 		backButton.addActionListener(actionListener);
 		
+	}
+
+	public void addDoubleClickListener(MouseAdapter mouseAdapter) {
+		this.list.addMouseListener(mouseAdapter);
+	}
+
+	public Object getSelected() {
+		return list.getSelectedValue();
 	}
 
 }

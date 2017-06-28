@@ -1,7 +1,9 @@
 package dm.fields.elements.decks;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Stack;
 
 import dm.exceptions.CardNotFoundException;
@@ -37,6 +39,10 @@ public abstract class FieldElement<GenericCard> {
 		return cards;
 	}
 
+	public List<GenericCard> getCardsList() {
+		return new ArrayList<>(cards);
+	}
+	
 	// Mostra a carta no topo da pilha
 	public GenericCard top() {
 		return getCards().peek();
