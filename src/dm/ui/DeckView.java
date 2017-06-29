@@ -15,6 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
@@ -144,13 +145,19 @@ public class DeckView extends JPanel {
 				chooser.setFileFilter(filter);
 				int returnVal = chooser.showOpenDialog(getParent());
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
-					createDeckTextField.setText(chooser.getSelectedFile().getName());
+					createDeckTextField.setText(extractName(chooser.getSelectedFile().getName()));
 					loadDeck(chooser.getSelectedFile());
 					System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
 
 					repaint();
 
 				}
+			}
+
+			private String extractName(String name) {
+				StringTokenizer stringTokenizer = new StringTokenizer(name, ".");
+				name = stringTokenizer.nextToken();
+				return name;
 			}
 		});
 
