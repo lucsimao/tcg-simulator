@@ -9,12 +9,9 @@ import java.io.Serializable;
  * @author Simão
  */
 
-public abstract class Deck<GenericCard> extends FieldElement<GenericCard> implements Serializable {
+public abstract class Deck<GenericCard> extends FieldElement<GenericCard>  {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1841781835335370638L;
+
 
 	public Deck(int number, GenericCard card) {
 		super(number, card);

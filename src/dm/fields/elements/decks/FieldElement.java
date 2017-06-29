@@ -1,5 +1,6 @@
 package dm.fields.elements.decks;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -15,8 +16,12 @@ import dm.exceptions.CardsOutException;
  * 
  * @author Simão
  */
-public abstract class FieldElement<GenericCard> {
+public abstract class FieldElement<GenericCard> implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// Atributos
 	private Stack<GenericCard> cards;// Uma pilha que representas as cartas
 										// contidas nesse elemento

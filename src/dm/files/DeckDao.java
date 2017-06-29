@@ -43,6 +43,16 @@ public class DeckDao {
 
 	}
 
+	public void saveDeck(NormalDeck deck,String deckName) throws FileNotFoundException, IOException {
+		
+		fileOutputStream = new FileOutputStream(getFile(deckName));
+		objectOutputStream = new ObjectOutputStream(fileOutputStream);
+		System.out.println("INFO - Salvando Deck Tamanho: " + deck.size());
+		objectOutputStream.writeObject(deck);
+		objectOutputStream.flush();
+		fileOutputStream.close();
+	}
+	
 	private File getFile(Player player, String name) throws IOException {
 		String filename = FilesConstants.DECK + "/" + player.getName() + "/" + name + FilesConstants.EXTENSION;
 		File file = new File(filename);
@@ -51,6 +61,15 @@ public class DeckDao {
 		return file;
 	}
 
+	private File getFile(String name) throws IOException {
+		String filename = FilesConstants.DECK + "/" + name + FilesConstants.EXTENSION;
+		File file = new File(filename);
+		file.getParentFile().mkdirs();
+		file.createNewFile();
+		return file;
+	}
+
+	
 	private void saveNormalDeck(NormalDeck normalDeck, Player player) throws FileNotFoundException, IOException {
 
 		fileOutputStream = new FileOutputStream(getFile(player, "normaldeck"));
@@ -107,5 +126,21 @@ public class DeckDao {
 
 		return extraDeck;
 	}
+
+	public NormalDeck loadDeck(File deckFile) throws FileNotFoundException, IOException, ClassNotFoundException {
+		NormalDeck normalDeck;
+		fileInputStream = new FileInputStream(deckFile);
+		objectInputStream = new ObjectInputStream(fileInputStream);
+		normalDeck = (NormalDeck) objectInputStream.readObject();
+		objectInputStream.close();
+		fileInputStream.close();
+		
+		System.out.println("INFO - Deck carregado: " + normalDeck.size());
+		
+		
+		return normalDeck;
+	}
+
+
 
 }
