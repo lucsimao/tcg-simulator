@@ -25,6 +25,7 @@ import javax.swing.event.ListSelectionListener;
 
 import dm.cards.abstracts.Card;
 import dm.files.CardDAO;
+import dm.ui.subviews.CardView;
 
 public class ListCards extends JPanel {
 

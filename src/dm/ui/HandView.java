@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import dm.cards.MonsterNormalCard;
+import dm.ui.subviews.CardImage;
 
 public class HandView extends JPanel {
 	
