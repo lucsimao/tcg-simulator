@@ -46,8 +46,8 @@ public class HandView extends JPanel {
 	
 		setLayout(new GridLayout(1, 5,3,3));
 		ImageIcon icon = new ImageIcon(new MonsterNormalCard().getPicture());
-		CardImage c = new CardImage(icon);
-		add(c,100,100);
+//		CardImage c = new CardImage(icon);
+//		add(c,100,100);
 		
 	}
 	

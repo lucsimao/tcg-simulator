@@ -42,6 +42,7 @@ import dm.cards.TrapCard;
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
 import dm.files.CardDAO;
+import dm.ui.subviews.CardImage;
 
 public class CardBuilder extends JPanel {
 
@@ -54,7 +55,7 @@ public class CardBuilder extends JPanel {
 	private JLabel lblMonsterAtribute;
 	private JLabel lblMonsterType;
 	private JLabel lblImage;
-	private JCardView lblCardImage;
+	private CardImage lblCardImage;
 	private JLabel lblMonsterAttack;
 	private JLabel lblMonsterDefense;
 	private JLabel lblSpellType;
@@ -106,7 +107,7 @@ public class CardBuilder extends JPanel {
 		panelImage.setLayout(new BorderLayout(10, 10));
 		add(panelImage, BorderLayout.WEST);
 
-		lblCardImage = new JCardView(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD),FilesConstants.CARD_WIDTH,FilesConstants.CARD_HEIGHT);
+		lblCardImage = new CardImage(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD),FilesConstants.CARD_WIDTH,FilesConstants.CARD_HEIGHT);
 
 		panelImage.add(lblCardImage, BorderLayout.NORTH);
 

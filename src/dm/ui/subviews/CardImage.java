@@ -1,42 +1,51 @@
 /** 
 * @author Simão 
-* @version 0.1 - 30 de abr de 2017
+* @version 0.1 - 29 de jun de 2017
 * 
 */
 package dm.ui.subviews;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-public class CardImage extends JPanel {
+public class CardImage extends JLabel {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5555548043685844676L;
-	private final int height = 254;
-	private final int width = 177;
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the panel.
-	 */
-	public CardImage(ImageIcon icon) {
-		super();
-		setLayout(new BorderLayout(0, 0));
+	private Image cardImage;
+	
+	private int width;
+	private int height;
+	
+	public CardImage(File file,int width,int height){
 
-		setMaximumSize(new Dimension(width, height));
-
-		JLabel lblImage = new JLabel();
-		Image img = icon.getImage();
-		img = img.getScaledInstance(width, height,Image.SCALE_DEFAULT);
+		this.width = width;
+		this.height = height;
 		
-		lblImage.setIcon(new ImageIcon(img));
-		add(lblImage, BorderLayout.CENTER);
-	}
+		try {
+			cardImage = scaleImage(ImageIO.read(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
+		setIcon(new ImageIcon(cardImage));
+	}
+	
+	public void setIcon(Image image) {
+		cardImage = scaleImage(image);
+		setIcon(new ImageIcon(cardImage));
+	}
+	
+	public Image scaleImage(Image image){
+		
+		image = image.getScaledInstance(width,height, Image.SCALE_DEFAULT);
+		return image;
+		
+	}
+	
 }

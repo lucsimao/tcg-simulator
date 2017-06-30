@@ -8,6 +8,7 @@ package dm.ui.subviews;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -23,9 +24,6 @@ import dm.constants.MonsterType;
 
 public class CardView extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1929371154966471210L;
 	
 	private final static int width = 217;
@@ -36,9 +34,6 @@ public class CardView extends JPanel {
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		f.setUndecorated(true);
 		f.setVisible(true);
-//		Card card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",
-//				"magonego.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500, 2100, 0, 3);
-
 		Card card2 = new MonsterNormalCard("Exodia", "O guerreiro proibido", "exodia.jpg", MonsterType.SPELLCASTER,
 				MonsterAttribute.DARK, 2500, 2100, 0, 3);
 
@@ -59,19 +54,16 @@ public class CardView extends JPanel {
 	}
 
 	public void setCard(Card card){
-		ImageIcon icon;
-		try{
-			icon = new ImageIcon(FilesConstants.CARDS_IMG_DIR + card.getPicture());
-		}
-		catch(Exception e){
-			icon = new ImageIcon(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
-		}
 		setLayout(new BorderLayout(10, 10));
 
 		JPanel panel_1 = new JPanel();
 		add(panel_1, BorderLayout.NORTH);
-		CardImage panel2 = new CardImage(icon);
-		panel_1.add(panel2);
+		try {
+			panel_1.add(new CardImage(new File(FilesConstants.CARDS_IMG_DIR + card.getPicture()), 177, 250));
+		} catch (Exception e) {
+			panel_1.add(new CardImage(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD), 177, 250));
+		}
+		
 
 		CardDescriptionPanel panel = new CardDescriptionPanel(card);
 		panel.setEditable(false);
