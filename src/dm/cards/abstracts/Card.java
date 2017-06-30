@@ -105,15 +105,19 @@ public abstract class Card implements Serializable {
 	}
 
 	@Override
-	public boolean equals(Object card) {
-		// TODO Auto-generated method stub
-		if (this.name.equals(((Card) card).getName()))
-			return true;
-		else
+	public boolean equals(Object card) throws NullPointerException {
+		try {
+
+			if (this.name.equals(((Card) card).getName()))
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
 			return false;
+		}
 	}
 
-	public static String nameGenerator(){
+	public static String nameGenerator() {
 		String s = "Carta - ";
 		Random r = new Random();
 		s = s + r.nextInt();

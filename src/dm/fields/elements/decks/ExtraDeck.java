@@ -24,7 +24,7 @@ public class ExtraDeck extends Deck<ExtraDeckCard> {
 
 	public ExtraDeck(int number) {
 		for (int i = 0; i < number; i++) {
-			putCard(new MonsterFusionCard(3));
+			putCard(new MonsterFusionCard());
 		}
 	}
 

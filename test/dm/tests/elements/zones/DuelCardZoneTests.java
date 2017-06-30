@@ -27,10 +27,10 @@ public class DuelCardZoneTests {
 	@Before
 	public void initZone() throws NoEffectException {
 		zone = new CardZone();
-		fusionCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
-		effectCard = new MonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
-		spellCard = new SpellCard(null, null, null, new Effect(), 0, 3);
-		trapCard = new TrapCard(null, null, null, new Effect(), 0, 3);
+		fusionCard = new MonsterFusionCard();
+		effectCard = new MonsterEffectCard();
+		spellCard = new SpellCard();
+		trapCard = new TrapCard();
 	}
 
 	@Test
@@ -88,7 +88,7 @@ public class DuelCardZoneTests {
 	@Test(expected = CardNotFoundException.class)
 	public void getMonstersIndex() {
 		putCards();
-		Card c = new MonsterEffectCard(1);
+		Card c = new MonsterEffectCard();
 		assertEquals(0, zone.getCardIndex(fusionCard));
 		zone.getCardIndex(c);
 	}

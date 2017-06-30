@@ -20,7 +20,7 @@ public class SpellTrapZone extends CardZone {
 	public SpellTrapZone(int number) {
 		for (int i = 0; i < number; i++) {
 			try {
-				NonMonsterCard c = new SpellCard(3);
+				NonMonsterCard c = new SpellCard();
 				c.setState(CardState.FACE_UP_ATTACK);
 				putCard(c, i);
 			} catch (NoEffectException e) {

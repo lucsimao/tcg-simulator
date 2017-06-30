@@ -27,8 +27,8 @@ public class SpellCard extends NonMonsterCard implements NormalDeckCard {
 		this.type = type;
 	}
 
-	public SpellCard(int copies_number) throws NoEffectException {
-		super(nameGenerator(), "Carta mágica padrão para testes", CardType.SPELL, ColorPicture.SPELL, null, new Effect(), copies_number);
+	public SpellCard() throws NoEffectException {
+		super(nameGenerator(), "Carta mágica padrão para testes", CardType.SPELL, ColorPicture.SPELL, null, new Effect(), 3);
 		this.type = SpellType.NORMAL;
 	}
 

@@ -28,11 +28,11 @@ public class DuelHandTests {
 	@Before
 	public void initGraveyard() throws NoEffectException {
 		hand = new Hand();
-		fusionCard = new MonsterFusionCard(null, null, null, 0, 0, 0, 0, 0, null, 3);
-		normalCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 0);
-		effectCard = new MonsterEffectCard(null, null, null, 0, 0, 0, 0, new Effect(), 3);
-		spellCard = new SpellCard(null, null, null, new Effect(), 0, 3);
-		trapCard = new TrapCard(null, null, null, new Effect(), 0, 3);
+		fusionCard = new MonsterFusionCard();
+		normalCard = new MonsterNormalCard(0);
+		effectCard = new MonsterEffectCard();
+		spellCard = new SpellCard();
+		trapCard = new TrapCard();
 		pushCards();
 	}
 

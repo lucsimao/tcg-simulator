@@ -27,8 +27,8 @@ public class MonsterEffectCard extends MonsterCard implements NormalDeckCard {
 			throw new EffectMonsterWithNoEffectException("An effect card needs to have a effect defined");
 	}
 
-	public MonsterEffectCard(int copies_number) {
-		super(null, null, ColorPicture.NORMAL, null, 0, 0, 0, 0, new Effect(), copies_number);
+	public MonsterEffectCard() {
+		super(nameGenerator(), "Texto padrão", ColorPicture.NORMAL, null, 0, 0, 0, 0, new Effect(), 3);
 	}
 
 }

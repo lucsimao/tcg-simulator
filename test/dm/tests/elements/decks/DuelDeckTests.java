@@ -25,10 +25,10 @@ public class DuelDeckTests {
 	@Before
 	public void initDeck() {
 		deck = new NormalDeck();
-		unlimitedCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 3);
-		semiLimitedCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 2);
-		limitedCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 1);
-		forbbidenCard = new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 0);
+		unlimitedCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, 0, 0, 0, 0, 3);
+		semiLimitedCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, 0, 0, 0, 0, 2);
+		limitedCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, 0, 0, 0, 0, 1);
+		forbbidenCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, 0, 0, 0, 0, 0);
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class DuelDeckTests {
 	@Test(expected = MaxDeckSizeException.class)
 	public void isDeckPlayable() {
 		for (int i = 0; i < 70; i++) {
-			deck.putCard(new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 3));
+			deck.putCard(new MonsterNormalCard());
 			if (i < 39)
 				assertFalse(deck.isPlayable());
 			else if (i < 60)
@@ -67,7 +67,7 @@ public class DuelDeckTests {
 
 	private void fillDeck() {
 		for (int i = 0; i < 40; i++)
-			deck.putCard(new MonsterNormalCard(null, null, null, 0, 0, 0, 0, 0, 3));
+			deck.putCard(new MonsterNormalCard());
 	}
 
 	@Test

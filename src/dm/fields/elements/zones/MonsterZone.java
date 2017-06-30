@@ -17,7 +17,7 @@ public class MonsterZone extends CardZone {
 
 	public MonsterZone(int number) {
 		for (int i = 0; i < number; i++) {
-			MonsterCard c = new MonsterNormalCard(3);
+			MonsterCard c = new MonsterNormalCard();
 			c.setState(CardState.FACE_UP_ATTACK);
 			putCard(c, i);
 		}
@@ -58,10 +58,14 @@ public class MonsterZone extends CardZone {
 	}
 
 	public Card remove(MonsterCard monsterCard) {
-		for (int i = 0; i < ZONE_SIZE; i++)
+		for (int i = 0; i < ZONE_SIZE; i++) {
+			System.out.println(i + " MONSTER: " + getCards()[i] + " M " + monsterCard.getName());
 			if (monsterCard.equals(getCards()[i])) {
+				System.out.println("Igual " + i);
 				return remove(i);
 			}
+		}
+
 		throw new CardNotFoundException("Card was not found");
 	}
 

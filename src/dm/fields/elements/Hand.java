@@ -24,7 +24,7 @@ public class Hand extends FieldElement<Card> {
 	}
 
 	public Hand(int number) {
-		super(number, new MonsterNormalCard(3));
+		super(number, new MonsterNormalCard());
 		this.maxCards = MAX_CARDS;
 		isHandPlayable = true;
 

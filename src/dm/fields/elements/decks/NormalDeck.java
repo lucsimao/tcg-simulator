@@ -24,7 +24,7 @@ public class NormalDeck extends Deck<NormalDeckCard> {
 
 	public NormalDeck(int number) {
 		for (int i = 0; i < number; i++) {
-			putCard(new MonsterNormalCard(3));
+			putCard(new MonsterNormalCard());
 		}
 	}
 

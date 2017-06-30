@@ -13,6 +13,8 @@ import dm.cards.abstracts.MonsterCard;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
 import dm.fields.Field;
+import dm.fields.elements.decks.ExtraDeck;
+import dm.fields.elements.decks.NormalDeck;
 
 public class FieldMonsterTests {
 
@@ -34,7 +36,7 @@ public class FieldMonsterTests {
 				MonsterType.WARRIOR, MonsterAttribute.EARTH, 2600, 2100, 0, null, 3);
 		monsterEffectCard = new MonsterEffectCard("Penguin Soldier", "[FLIP] return one card to your hand", null,
 				MonsterType.AQUA, MonsterAttribute.WATER, 500, 300, new Effect(), 3);
-		field = new Field();
+		field = new Field(new NormalDeck(50),new ExtraDeck(10));
 		// deckSize = field.countDeckCards();
 		// handSize = field.countHandCards();
 		monstersSize = field.countMonsters();
@@ -70,7 +72,7 @@ public class FieldMonsterTests {
 			field.setCard(monsterFusionCard);
 			assertEquals(5, field.countMonsters());
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Não consegui setar os monstros");
 		}
 
 	}
@@ -106,7 +108,9 @@ public class FieldMonsterTests {
 		int zoneSize = field.countMonsters();
 		int deckSize = field.countDeckCards();
 		int extraDeckSize = field.countExtraDeckCards();
-
+		
+//		System.out.println("Field Size: " + field.countMonsters());
+		
 		field.returnToDeck(monsterCard);
 		field.returnToDeck(monsterEffectCard);
 		field.returnToDeck(monsterFusionCard);

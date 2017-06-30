@@ -27,9 +27,13 @@ public class MonsterNormalCard extends MonsterCard implements NormalDeckCard {
 				copies_number);
 	}
 
+	public MonsterNormalCard() {
+		super(nameGenerator(), "Carta padrão para testes", ColorPicture.NORMAL, null, 0, 0, 0, 0, null, 3);
+//		System.out.println("carta criada " + nameGenerator());
+	}
+
 	public MonsterNormalCard(int copies_number) {
 		super(nameGenerator(), "Carta padrão para testes", ColorPicture.NORMAL, null, 0, 0, 0, 0, null, copies_number);
-//		System.out.println("carta criada " + nameGenerator());
 	}
 	
 

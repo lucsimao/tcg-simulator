@@ -24,8 +24,8 @@ public class CardViewTests {
 
 	@Test
 	public void createCardView() throws InterruptedException {
-
-		jframe.add(new CardView(new MonsterEffectCard(3)));
-		Thread.sleep(5000);
+//
+//		jframe.add(new CardView(new MonsterEffectCard()));
+//		Thread.sleep(5000);
 	}
 }

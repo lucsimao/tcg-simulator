@@ -15,7 +15,7 @@ public class Graveyard extends Deck<Card> {
 	private static final long serialVersionUID = 7173474563513436801L;
 
 	public Graveyard(int number) {
-		super(number, new MonsterNormalCard(3));
+		super(number, new MonsterNormalCard());
 	}
 
 	public Graveyard() {

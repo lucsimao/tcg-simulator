@@ -16,7 +16,7 @@ public class RemoveFromPlay extends Deck<Card> {
 	private static final long serialVersionUID = -5203621937873970199L;
 
 	public RemoveFromPlay(int number) {
-		super(number, new MonsterNormalCard(3));
+		super(number, new MonsterNormalCard());
 	}
 
 	public RemoveFromPlay() {

@@ -36,8 +36,7 @@ public class FieldTests {
 		// Effect(), 3);
 		deck = new NormalDeck();
 		for (int i = 0; i < 40; i++)
-			deck.putCard(new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",
-					null, MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500, 2100, 0, 3));
+			deck.putCard(new MonsterNormalCard());
 		field = new Field(deck, new ExtraDeck());
 	}
 
