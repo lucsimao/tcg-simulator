@@ -140,15 +140,17 @@ public class Player {
 
 	public void summon(MonsterNormalCard monsterCard) {
 		field.summonMonster(monsterCard);
-
+		field.getHand().remove(monsterCard);
 	}
 
 	public void set(MonsterNormalCard monsterCard) {
 		field.setCard(monsterCard);
+		field.getHand().remove(monsterCard);
 	}
 
 	public void set(NonMonsterCard nonMonsterCard) {
 		field.setCard(nonMonsterCard);
+		field.getHand().remove(nonMonsterCard);
 	}
 
 	public void changeToDefense(MonsterCard monsterCard) {
@@ -161,4 +163,8 @@ public class Player {
 
 	}
 
+	public Field getField(){
+		return this.field;
+	}
+	
 }

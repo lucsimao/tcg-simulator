@@ -298,4 +298,8 @@ public class Field {
 		return this.graveyard;
 	}
 
+	public Hand getHand(){
+		return this.hand;
+	}
+	
 }

@@ -13,6 +13,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import dm.constants.FilesConstants;
+
 public class CardImage extends JLabel {
 
 	private static final long serialVersionUID = 1L;
@@ -36,6 +38,19 @@ public class CardImage extends JLabel {
 		setIcon(new ImageIcon(cardImage));
 	}
 	
+	public CardImage(int width2, int height2) {
+		this.width = width;
+		this.height = height;
+		
+		try {
+			cardImage = scaleImage(ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD)));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		setIcon(new ImageIcon(cardImage));
+	}
+
 	public void setIcon(Image image) {
 		cardImage = scaleImage(image);
 		setIcon(new ImageIcon(cardImage));
