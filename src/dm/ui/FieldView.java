@@ -93,25 +93,26 @@ public class FieldView extends JPanel {
 		// 2100, 0, 3);
 		//
 		Player player1 = new Player("teste1", null, new NormalDeck(50), new ExtraDeck());
+		Player player2 = new Player("teste2", null, new NormalDeck(50), new ExtraDeck());
 		FieldView fv = new FieldView(player1,
-				new Player("teste2", null, new NormalDeck(50), new ExtraDeck()));
+				player2);
 		HandView handView = new HandView(player1);
 		fv.add(handView,"South");
 		f.getContentPane().add(fv);
 		fv.setFocusable(true);
 		fv.requestFocusInWindow();
 		f.setBounds(0, 0, width, height);
-		try {
-			Thread.sleep(1000);
-			fv.getField1().summonMonster((MonsterCard) card);
-			Thread.sleep(1000);
-			fv.getField1().setCard((MonsterCard) card);
-			Thread.sleep(1000);
-			fv.getField1().summonMonster((MonsterCard) card);
-			fv.getField1().changeToDefense((MonsterCard) card);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(1000);
+//			fv.getField1().summonMonster((MonsterCard) card);
+//			Thread.sleep(1000);
+//			fv.getField1().setCard((MonsterCard) card);
+//			Thread.sleep(1000);
+//			fv.getField1().summonMonster((MonsterCard) card);
+//			fv.getField1().changeToDefense((MonsterCard) card);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	/**
@@ -119,7 +120,7 @@ public class FieldView extends JPanel {
 	 * 
 	 * @throws IOException
 	 */
-	public FieldView(Player player1, Player player2) throws IOException {
+	public FieldView(Player player1, Player player2){
 		super();
 		it = new ImageTransform();
 		setPreferredSize(new Dimension(width, height));

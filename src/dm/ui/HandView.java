@@ -5,6 +5,7 @@
 */
 package dm.ui;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,6 +72,9 @@ public class HandView extends JPanel {
 		player.draw();
 		player.draw();
 		player.draw();
+		player.draw();
+		player.draw();
+		player.draw();
 		this.gridLayout = new GridLayout(1,5 ,3,3);
 		setHand();
 		setLayout(gridLayout);
@@ -100,7 +104,7 @@ public class HandView extends JPanel {
 			
 		}
 		this.gridLayout = new GridLayout(1,player.getField().getHand().size() ,3,3);
-		
+
 	}
 	
 	
