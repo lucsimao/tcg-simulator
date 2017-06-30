@@ -9,12 +9,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
-import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
-
-import javaxt.io.Image;
 
 public class JImageDesktopPane extends JDesktopPane {
 

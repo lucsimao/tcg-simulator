@@ -1,10 +1,7 @@
 package dm.cards;
 
-import java.util.Random;
-
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
-import dm.files.CardDAO;
 import dm.interfaces.NormalDeckCard;
 
 /**

@@ -1,9 +1,7 @@
 package dm.cards.abstracts;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 
 import dm.cards.Effect;
 import dm.constants.CardState;

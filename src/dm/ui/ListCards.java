@@ -9,9 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -26,7 +23,6 @@ import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import dm.cards.MonsterFusionCard;
 import dm.cards.abstracts.Card;
 import dm.files.CardDAO;
 
@@ -44,7 +40,7 @@ public class ListCards extends JPanel {
 
 	private JButton backButton;
 
-	private JList list;
+	private JList<?> list;
 	
 	public static void main(String args[]){
 		JFrame f = new JFrame();
@@ -73,16 +69,17 @@ public class ListCards extends JPanel {
 		try {
 			cards = new CardDAO().readAllFile();
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
 		add(cardView,"West");
 		
-		list = new JList(new Vector<Card>(cards));
+		list = new JList<>(new Vector<Card>(cards));
 		list.setVisibleRowCount(10);
 		list.setCellRenderer(new DefaultListCellRenderer(){
-	           @Override
+			private static final long serialVersionUID = 1L;
+
+			@Override
 	            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 	                Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 	                if (renderer instanceof JLabel && value instanceof Card) {

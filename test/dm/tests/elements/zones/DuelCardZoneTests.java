@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.Effect;
 import dm.cards.MonsterEffectCard;
 import dm.cards.MonsterFusionCard;
 import dm.cards.SpellCard;

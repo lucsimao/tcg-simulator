@@ -6,9 +6,6 @@ import javax.swing.WindowConstants;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterEffectCard;
-import dm.ui.CardView;
-
 public class CardViewTests {
 
 	private JFrame jframe;

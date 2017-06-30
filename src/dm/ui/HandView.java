@@ -6,17 +6,17 @@
 package dm.ui;
 
 import java.awt.GridLayout;
-import java.io.File;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import dm.cards.MonsterNormalCard;import dm.cards.abstracts.Card;
+import dm.cards.MonsterNormalCard;
 
 public class HandView extends JPanel {
+	
+	private static final long serialVersionUID = 2661005663882276893L;
 	
 	private final static int height = 120;
 	private final static int width = 640;
@@ -37,6 +37,7 @@ public class HandView extends JPanel {
 		f.setBounds(100, 100, width, height);
 	}
 	
+	//TODO
 	private int number;
 	private int selected;
 	

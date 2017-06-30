@@ -47,8 +47,6 @@ public class CardView extends JPanel {
 
 	}
 
-	private Card card;
-	
 	/**
 	 * Create the panel.
 	 */

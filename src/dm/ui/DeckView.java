@@ -8,19 +8,15 @@ package dm.ui;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import javax.imageio.ImageIO;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -37,7 +33,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
-import dm.fields.elements.decks.Deck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.files.DeckDao;
 import dm.interfaces.NormalDeckCard;
@@ -212,6 +207,7 @@ public class DeckView extends JPanel {
 		return list.getSelectedValue();
 	}
 
+	@SuppressWarnings("deprecation")
 	public int getDeckSize() {
 		return this.list.countComponents();
 	}

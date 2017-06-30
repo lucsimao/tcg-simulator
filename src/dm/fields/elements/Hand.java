@@ -13,6 +13,8 @@ import dm.fields.elements.decks.FieldElement;
 
 public class Hand extends FieldElement<Card> {
 
+	private static final long serialVersionUID = 1L;
+
 	private final int MAX_CARDS = 7;
 
 	private int maxCards;
