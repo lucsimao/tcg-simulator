@@ -149,6 +149,27 @@ public class MainFrame extends JFrame {
 			}
 		});
 
+		btnEditDeck.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JPanel localContentPane = defaultContentPane();
+				setContentPane(localContentPane);
+				BuildDeck builder = new BuildDeck();
+				getContentPane().add(builder);
+				builder.addBackActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						setContentPane(contentPane);
+						validate();
+
+					}
+				});
+				validate();
+			}
+		});
+		
 		btnCardBuilder.addActionListener(new ActionListener() {
 
 			@Override

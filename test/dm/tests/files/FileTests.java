@@ -183,8 +183,10 @@ public class FileTests {
 	
 	@Test
 	public void saveMonsters() throws FileNotFoundException, IOException, ClassNotFoundException {
+		new CardDAO().clearFile();
 		for(Card card : cardList){
 			try{
+				
 				new CardDAO().saveCard(card);
 			}catch(Exception e){
 				e.printStackTrace();

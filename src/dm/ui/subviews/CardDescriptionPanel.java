@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
+import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 
 public class CardDescriptionPanel extends JPanel {
@@ -52,6 +53,7 @@ public class CardDescriptionPanel extends JPanel {
 		// + "Suspendisse venenatis turpis ut dolor fermentum accumsan.");
 		try {
 			txtDescription.setText(card.getDescription());
+			txtDescription.setText(txtDescription.getText() +"\n\n\nATK: "+ ((MonsterNormalCard)card).getOriginalAttack()+"DEF: "+ ((MonsterNormalCard)card).getOriginalDefense());
 		} catch (Exception e) {
 			txtDescription.setText("Default description");
 		}

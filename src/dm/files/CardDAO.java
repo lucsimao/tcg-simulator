@@ -188,4 +188,8 @@ public class CardDAO {
 		return "" + cards.size();
 	}
 
+	public void clearFile() throws FileNotFoundException, IOException {
+		clearFile(getFile().getPath());
+	}
+
 }
