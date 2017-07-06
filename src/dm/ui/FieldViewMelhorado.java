@@ -125,7 +125,7 @@ public class FieldViewMelhorado extends JPanel {
 	 * 
 	 * @throws IOException
 	 */
-	public FieldViewMelhorado(Player player1, Player player2) throws IOException{
+	public FieldViewMelhorado(Player player1, Player player2){
 		super();
 		
 		matrizCampo = new File[4][7];
@@ -138,7 +138,12 @@ public class FieldViewMelhorado extends JPanel {
 
 		field1 = player1.getField();
 		field2 = player2.getField();
-		bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
+		try {
+			bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// ImageIcon image = new ImageIcon(getBufferedImage());
 		lblField = new JLabel();

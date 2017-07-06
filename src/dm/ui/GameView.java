@@ -27,20 +27,21 @@ public class GameView extends JPanel{
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		f.setUndecorated(true);
 		f.setVisible(true);
+		f.setFocusable(true);
 
 		Player player1 = new Player("teste1", null, new NormalDeck(50), new ExtraDeck());
 		Player player2 = new Player("teste2", null, new NormalDeck(50), new ExtraDeck());
-		GameView fv = new GameView(player1,player2);
-		f.getContentPane().add(fv);
-		fv.setFocusable(true);
-		fv.requestFocusInWindow();
+		GameView gv = new GameView(player1,player2);
+		f.getContentPane().add(gv);
+		gv.setFocusable(true);
+		gv.requestFocusInWindow();
 		f.setBounds(0, 0, width, height);
 
 	}
 	
 	private Player player1;
 	private Player player2;
-	private FieldView fieldView;
+	private FieldViewMelhorado fieldView;
 	private HandView hand1;
 	private HandView hand2;
 	private JButton drawButton;
@@ -52,7 +53,7 @@ public class GameView extends JPanel{
 		this.player1 =player1;
 		this.player2 = player2;
 		
-		fieldView = new FieldView(player1, player2);
+		fieldView = new FieldViewMelhorado(player1, player2);
 
 		
 		hand1 = new HandView(player1);
@@ -71,10 +72,12 @@ public class GameView extends JPanel{
 		setLayout(new BorderLayout());
 		add(hand2, "North");
 		add(hand1, "South");
-		add(fieldView, "Center");
 		add(painelButton, "East");
+		add(fieldView, "Center");
 		fieldView.setFocusable(true);
 		fieldView.requestFocusInWindow();
-		
+//		fieldView.setFocusable(true);
+//		fieldView.requestFocusInWindow();
+		this.addKeyListener(fieldView.getKeyListeners()[0]);
 	}
 }
