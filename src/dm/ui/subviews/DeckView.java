@@ -118,6 +118,7 @@ public class DeckView extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				saveDeck(deck, createDeckTextField.getText());
+				JOptionPane.showMessageDialog(null, "Deck salvo com sucesso: Tamanho do deck: " + deck.size() + " cartas.");
 			}
 		});
 

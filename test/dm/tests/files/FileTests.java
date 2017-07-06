@@ -91,8 +91,8 @@ public class FileTests {
 				"Right Leg of the Forbidden One.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 200, 300, 1));
 		cardList.add(new MonsterNormalCard("Right Arm of the Forbidden One", "Right Arm of The most powerfull card in the game",
 				"Right Arm of the Forbidden One.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 200, 300, 1));
-		cardList.add(new MonsterNormalCard("Right Leg of the Forbidden One", "Right Leg of The most powerfull card in the game",
-				"Right Leg of the Forbidden One.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 200, 300, 1));
+		cardList.add(new MonsterNormalCard("Left Arm of the Forbidden One", "Left Arm of The most powerfull card in the game",
+				"Left Arm of the Forbidden One.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 200, 300, 1));
 		try {
 			cardList.add(new SpellCard("Change of Heart",
 					"Choose a monster of the adversary field", "Change of Heart.jpg",
