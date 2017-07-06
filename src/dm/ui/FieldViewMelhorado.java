@@ -6,6 +6,7 @@
 package dm.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -49,6 +50,7 @@ public class FieldViewMelhorado extends JPanel {
 	private final static int height = 400;
 	private final static int width = 640;
 	private final String field_path = "field.png";
+	private final String background_path = "background.jpg";
 	private static final int monster_x = 146;
 	private static final int monster2_y = 100;
 	private static final int monster1_y = 239;
@@ -83,6 +85,9 @@ public class FieldViewMelhorado extends JPanel {
 	private File[][] matrizCampo;
 
 	private BufferedImage bufferedImage;
+
+	private Player player1;
+	private Player player2;
 	
 	public static void main(String args[]) throws IOException {
 		JFrame f = new JFrame();
@@ -97,6 +102,7 @@ public class FieldViewMelhorado extends JPanel {
 		// "exodia.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500,
 		// 2100, 0, 3);
 		//
+
 		Player player1 = new Player("teste1", null, new NormalDeck(50), new ExtraDeck());
 		Player player2 = new Player("teste2", null, new NormalDeck(50), new ExtraDeck());
 		FieldViewMelhorado fv = new FieldViewMelhorado(player1,
@@ -138,8 +144,11 @@ public class FieldViewMelhorado extends JPanel {
 
 		field1 = player1.getField();
 		field2 = player2.getField();
+		this.player1 = player1;
+		this.player2 = player2;
 		try {
-			bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
+			bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + background_path));
+//			bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -152,6 +161,7 @@ public class FieldViewMelhorado extends JPanel {
 		setFocusable(true);
 		this.requestFocusInWindow();
 		addKeyListener(getKeyListener());
+	
 		repaint();
 
 	}
@@ -173,6 +183,7 @@ public class FieldViewMelhorado extends JPanel {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
+				System.out.println("Cursor " + cursor);
 				if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 					moveCursor(LEFT);
 					// System.out.println("LEFT");
@@ -190,7 +201,7 @@ public class FieldViewMelhorado extends JPanel {
 					// System.out.println("DOWN");
 				}
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					System.out.println("ENTER");
+					catchAction();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 					System.out.println("BACK");
@@ -200,6 +211,22 @@ public class FieldViewMelhorado extends JPanel {
 		};
 	}
 
+	private void catchAction() {
+		if (this.cursor > MIN_CURSOR + 10)
+			new ActionView(player1,player1.getMonsterCard(cursor-10-1));
+		System.out.println("enter");
+//			a.addDisposeListener(new DisposeListener() {
+//				
+//				@Override
+//				public void actionPerformed() {
+////					setHand();
+//					revalidate();
+//				}
+//
+//			});
+		
+	}
+	
 	public void moveCursor(int position) {
 		if (this.cursor < MIN_CURSOR || cursor > MAX_CURSOR) {
 			this.cursor = 10;
@@ -228,7 +255,9 @@ public class FieldViewMelhorado extends JPanel {
 
 //		bufferedImage = loadGraves(bufferedImage, im);
 //		bufferedImage = loadDecks(bufferedImage, im);
-
+		
+		bufferedImage = im.mixImages(bufferedImage, new File(FilesConstants.TEXTURES_PATH + field_path),new Dimension(bufferedImage.getWidth(), bufferedImage.getHeight()),new Dimension(bufferedImage.getWidth(), bufferedImage.getHeight()),0,0);
+		
 		bufferedImage = loadMonster1(bufferedImage, im);
 		bufferedImage = loadMonster2(bufferedImage, im);
 		bufferedImage = loadNonMonster1(bufferedImage, im);
