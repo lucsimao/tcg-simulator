@@ -28,46 +28,47 @@ public class HandActionView extends JFrame {
 	private JButton btnSet;
 	private JButton btnCancel;
 	private DisposeListener disposeListener;
-	public static void main(String args[]){
-		new HandActionView(new Player("teste",null, new NormalDeck(), new ExtraDeck()),new MonsterNormalCard());	
+
+	public static void main(String args[]) {
+		new HandActionView(new Player("teste", null, new NormalDeck(), new ExtraDeck()), new MonsterNormalCard());
 	}
-	
-	public HandActionView(Player player,Card card,int x, int y){
-		setLayout(new GridLayout(1,3));
+
+	public HandActionView(Player player, Card card, int x, int y) {
+		setLayout(new GridLayout(1, 3));
 		setUndecorated(true);
-		
+
 		btnCancel = new JButton("Cancel");
 		btnSet = new JButton("Set");
 		btnSummon = new JButton("Summon");
-		
+
 		setVisible(true);
 		setBounds(x, y, 300, 100);
-		
+
 		add(btnCancel);
 		add(btnSet);
 		add(btnSummon);
-		
+
 		btnSummon.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				player.summon((MonsterNormalCard)card);
+				player.summon((MonsterNormalCard) card);
 				System.out.println(player.getField().getHand().size());
 				dispose();
 			}
 		});
-		
+
 		btnSet.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				player.set((MonsterNormalCard)card);
+				player.set((MonsterNormalCard) card);
 				dispose();
 			}
 		});
-		
+
 		btnCancel.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -82,11 +83,11 @@ public class HandActionView extends JFrame {
 				dispose();
 			}
 		});
-		
+
 	}
 
 	public HandActionView(Player player, Card c) {
-		this(player, c,50,50);
+		this(player, c, 50, 50);
 	}
 
 	@Override
@@ -94,9 +95,9 @@ public class HandActionView extends JFrame {
 		super.dispose();
 		this.disposeListener.actionPerformed();
 	}
-	
+
 	public void addDisposeListener(DisposeListener actionListener) {
-		this.disposeListener = actionListener;		
+		this.disposeListener = actionListener;
 	}
-	
+
 }

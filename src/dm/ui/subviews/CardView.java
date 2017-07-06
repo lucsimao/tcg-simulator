@@ -24,7 +24,7 @@ import dm.constants.MonsterType;
 public class CardView extends JPanel {
 
 	private static final long serialVersionUID = -1929371154966471210L;
-	
+
 	private final static int width = 217;
 	private final static int height = 480;
 
@@ -34,7 +34,7 @@ public class CardView extends JPanel {
 		f.setUndecorated(true);
 		f.setVisible(true);
 		Card card2 = new MonsterNormalCard("Exodia", "O guerreiro proibido", "exodia.jpg", MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2500, 2100, 0, 3);
+				MonsterAttribute.DARK, 2500, 2100, 0);
 
 		f.getContentPane().add(new CardView(card2));
 		f.setBounds(0, 0, width, height);
@@ -52,7 +52,7 @@ public class CardView extends JPanel {
 		setCard(card);
 	}
 
-	public void setCard(Card card){
+	public void setCard(Card card) {
 		setLayout(new BorderLayout(10, 10));
 
 		JPanel panel_1 = new JPanel();
@@ -60,14 +60,14 @@ public class CardView extends JPanel {
 		try {
 			panel_1.add(new CardImage(new File(FilesConstants.CARDS_IMG_DIR + card.getPicture()), 177, 250));
 		} catch (Exception e) {
-			panel_1.add(new CardImage(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD), 177, 250));
+			panel_1.add(
+					new CardImage(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD), 177, 250));
 		}
-		
 
 		CardDescriptionPanel panel = new CardDescriptionPanel(card);
 		panel.setEditable(false);
 		add(panel, BorderLayout.CENTER);
 		validate();
 	}
-	
+
 }

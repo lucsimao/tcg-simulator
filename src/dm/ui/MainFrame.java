@@ -52,19 +52,18 @@ public class MainFrame extends JFrame {
 			}
 		});
 	}
-	
+
 	/**
 	 * Create the frame.
 	 */
 	public MainFrame() {
-		
-//		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//		setUndecorated(true);
-		
-		
+
+		// setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		// setUndecorated(true);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, width,height);
-		
+		setBounds(100, 100, width, height);
+
 		contentPane = defaultContentPane();
 		setContentPane(contentPane);
 
@@ -113,13 +112,13 @@ public class MainFrame extends JFrame {
 
 		JButton btnViewCards = new JButton("ViewCards");
 		panel.add(btnViewCards);
-		
+
 		JButton btnCardBuilder = new JButton("CardBuilder");
 		panel.add(btnCardBuilder);
 
 		JButton btnExit = new JButton("Exit");
 		panel.add(btnExit);
-		
+
 		btnExit.addActionListener(new ActionListener() {
 
 			@Override
@@ -127,57 +126,56 @@ public class MainFrame extends JFrame {
 				System.exit(0);
 			}
 		});
-		
+
 		btnCardBuilder.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JPanel localContentPane  = defaultContentPane();
+				JPanel localContentPane = defaultContentPane();
 				setContentPane(localContentPane);
 				CardBuilder builder = new CardBuilder();
 				getContentPane().add(builder);
 				builder.addBackActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						setContentPane(contentPane);
 						validate();
-						
+
 					}
 				});
 				validate();
 			}
 		});
 		btnViewCards.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JPanel localContentPane  = defaultContentPane();
+				JPanel localContentPane = defaultContentPane();
 				setContentPane(localContentPane);
 
 				ListCards builder = new ListCards();
 				getContentPane().add(builder);
 				builder.addBackActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						setContentPane(contentPane);
 						validate();
-						
+
 					}
 				});
 				validate();
 			}
 		});
-		
-		
+
 	}
 
-	public JPanel defaultContentPane(){
+	public JPanel defaultContentPane() {
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		return contentPane;
 	}
-	
+
 }

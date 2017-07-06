@@ -13,8 +13,7 @@ public class CardMonsterNormalTests extends CardMonsterTests {
 	@Override
 	@Before
 	public void initCard() {
-		setCard(new MonsterNormalCard(name, description, null, type, atribute, originalAttack, originalDefense, 0,
-				copies_number));
+		setCard(new MonsterNormalCard(name, description, null, type, atribute, originalAttack, originalDefense, 0));
 	}
 
 	@Test

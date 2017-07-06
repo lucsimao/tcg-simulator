@@ -36,7 +36,7 @@ public class CardDescriptionPanel extends JPanel {
 		scrollPane.setMinimumSize(new Dimension(width, height));
 		scrollPane.setPreferredSize(new Dimension(width, height));
 		txtDescription = new JTextPane();
-//		txtDescription.setEditable(false);
+		// txtDescription.setEditable(false);
 		txtDescription.setFont(new Font("Lucida Fax", Font.BOLD, 13));
 		// txtDescription.setText("Lorem ipsum dolor sit amet, consectetur
 		// adipiscing elit."
@@ -50,9 +50,9 @@ public class CardDescriptionPanel extends JPanel {
 		// risus."
 		// + " Nulla leo magna, aliquam non bibendum sit amet, porta a orci. "
 		// + "Suspendisse venenatis turpis ut dolor fermentum accumsan.");
-		try{
+		try {
 			txtDescription.setText(card.getDescription());
-		}catch(Exception e){
+		} catch (Exception e) {
 			txtDescription.setText("Default description");
 		}
 		txtDescription.setPreferredSize(new Dimension(width, height));
@@ -70,7 +70,7 @@ public class CardDescriptionPanel extends JPanel {
 		scrollPane.setMinimumSize(new Dimension(width, height));
 		scrollPane.setPreferredSize(new Dimension(width, height));
 		txtDescription = new JTextPane();
-//		txtDescription.setEditable(false);
+		// txtDescription.setEditable(false);
 		txtDescription.setFont(new Font("Lucida Fax", Font.BOLD, 13));
 		// txtDescription.setText("Lorem ipsum dolor sit amet, consectetur
 		// adipiscing elit."
@@ -84,14 +84,14 @@ public class CardDescriptionPanel extends JPanel {
 		// risus."
 		// + " Nulla leo magna, aliquam non bibendum sit amet, porta a orci. "
 		// + "Suspendisse venenatis turpis ut dolor fermentum accumsan.");
-//		txtDescription.setText(card.getDescription());
+		// txtDescription.setText(card.getDescription());
 		txtDescription.setPreferredSize(new Dimension(width, height));
 		scrollPane.setViewportView(add(txtDescription));
 	}
-	
+
 	public void setEditable(boolean b) {
 		this.txtDescription.setEditable(b);
-		
+
 	}
-	
+
 }

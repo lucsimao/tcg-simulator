@@ -18,7 +18,7 @@ public abstract class CardMonsterTests extends CardTests<MonsterCard> {
 	protected static int type = MonsterType.SPELLCASTER;
 	protected static int atribute = MonsterAttribute.DARK;
 	protected static int cardType = CardType.MONSTER;
-	protected static int copies_number = 3;
+	protected static int copies_number = 0;
 	protected static int originalAttack = 2500;
 	protected static int originalDefense = 2100;
 	protected static Effect effect = null;

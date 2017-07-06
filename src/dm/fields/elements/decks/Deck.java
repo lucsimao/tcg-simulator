@@ -7,7 +7,7 @@ package dm.fields.elements.decks;
  * @author Simão
  */
 
-public abstract class Deck<GenericCard> extends FieldElement<GenericCard>  {
+public abstract class Deck<GenericCard> extends FieldElement<GenericCard> {
 
 	private static final long serialVersionUID = 1L;
 

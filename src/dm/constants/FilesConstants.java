@@ -21,7 +21,7 @@ public class FilesConstants {
 	public static final String DEFAULT_NON_MONSTER_CARD_IMAGE = "default_nonmonster.jpg";
 	public static final int CARD_WIDTH = 177;
 	public static final int CARD_HEIGHT = 254;
-	public static final int HAND_CARD_HEIGHT = CARD_HEIGHT*5/9;
-	public static final int HAND_CARD_WIDTH = CARD_WIDTH*5/9;
+	public static final int HAND_CARD_HEIGHT = CARD_HEIGHT * 5 / 9;
+	public static final int HAND_CARD_WIDTH = CARD_WIDTH * 5 / 9;
 
 }

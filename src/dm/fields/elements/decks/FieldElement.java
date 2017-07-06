@@ -16,7 +16,7 @@ import dm.exceptions.CardsOutException;
  * 
  * @author Simão
  */
-public abstract class FieldElement<GenericCard> implements Serializable{
+public abstract class FieldElement<GenericCard> implements Serializable {
 
 	/**
 	 * 
@@ -47,7 +47,7 @@ public abstract class FieldElement<GenericCard> implements Serializable{
 	public List<GenericCard> getCardsList() {
 		return new ArrayList<>(cards);
 	}
-	
+
 	// Mostra a carta no topo da pilha
 	public GenericCard top() {
 		return getCards().peek();

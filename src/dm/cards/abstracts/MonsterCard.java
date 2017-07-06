@@ -35,55 +35,67 @@ public abstract class MonsterCard extends Card {
 
 	}
 
-	
 	/**
 	 * Aumenta o ataque em certa quantidade
-	 * @param increment valor a ser incrementado
+	 * 
+	 * @param increment
+	 *            valor a ser incrementado
 	 */
 	public void increaseAttack(int increment) {
 		this.currentAttack += increment;
 		if (this.currentAttack > 9999)
 			this.currentAttack = 9999;
 	}
+
 	/**
 	 * Aumenta a defesa em certa quantidade
-	 * @param increment valor a ser incrementado
+	 * 
+	 * @param increment
+	 *            valor a ser incrementado
 	 */
 	public void increaseDefense(int increment) {
 		this.currentDefense += increment;
 		if (this.currentDefense > 9999)
 			this.currentDefense = 9999;
 	}
+
 	/**
 	 * Diminui o ataque em certa quantidade
-	 * @param decrement valor a ser decrementado
+	 * 
+	 * @param decrement
+	 *            valor a ser decrementado
 	 */
 	public void decreaseAttack(int decrement) {
 		this.currentAttack -= decrement;
 		if (this.currentAttack < 0)
 			this.currentAttack = 0;
 	}
+
 	/**
 	 * Diminui a defesa em certa quantidade
-	 * @param decrement valor a ser decrementado
+	 * 
+	 * @param decrement
+	 *            valor a ser decrementado
 	 */
 	public void decreaseDefense(int increment) {
 		this.currentDefense -= increment;
 		if (this.currentDefense < 0)
 			this.currentDefense = 0;
 	}
+
 	/**
 	 * Quando o ataque de uma carta é alterada, ela é salva em currentAttack.
-	 * Mas é possível retornar ao attack original com este método, que atribui o ataque original ao
-	 * ataque atual.
+	 * Mas é possível retornar ao attack original com este método, que atribui o
+	 * ataque original ao ataque atual.
 	 */
 	public void turnBackOriginalAttack() {
 		this.currentAttack = this.originalAttack;
 	}
+
 	/**
 	 * Quando a defesa de uma carta é alterada, ela é salva em currentDefense.
-	 * Mas é possível retornar a defesa original com este método, que atribui a defesa original à
-	 * defesa atual.
+	 * Mas é possível retornar a defesa original com este método, que atribui a
+	 * defesa original à defesa atual.
 	 */
 	public void turnBackOriginalDefense() {
 		this.currentDefense = originalDefense;

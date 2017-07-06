@@ -20,15 +20,15 @@ public class CardImage extends JLabel {
 	private static final long serialVersionUID = 1L;
 
 	private Image cardImage;
-	
+
 	private int width;
 	private int height;
-	
-	public CardImage(File file,int width,int height){
+
+	public CardImage(File file, int width, int height) {
 
 		this.width = width;
 		this.height = height;
-		
+
 		try {
 			cardImage = scaleImage(ImageIO.read(file));
 		} catch (IOException e) {
@@ -37,13 +37,14 @@ public class CardImage extends JLabel {
 
 		setIcon(new ImageIcon(cardImage));
 	}
-	
+
 	public CardImage(int width2, int height2) {
 		this.width = width;
 		this.height = height;
-		
+
 		try {
-			cardImage = scaleImage(ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD)));
+			cardImage = scaleImage(
+					ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -55,12 +56,12 @@ public class CardImage extends JLabel {
 		cardImage = scaleImage(image);
 		setIcon(new ImageIcon(cardImage));
 	}
-	
-	public Image scaleImage(Image image){
-		
-		image = image.getScaledInstance(width,height, Image.SCALE_DEFAULT);
+
+	public Image scaleImage(Image image) {
+
+		image = image.getScaledInstance(width, height, Image.SCALE_DEFAULT);
 		return image;
-		
+
 	}
-	
+
 }

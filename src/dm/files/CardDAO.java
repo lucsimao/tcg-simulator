@@ -116,7 +116,7 @@ public class CardDAO {
 	public List<Card> readAllFile() throws FileNotFoundException, ClassNotFoundException, IOException {
 		return readAllFile(getFile().getPath());
 	}
-	
+
 	private File getFile() throws IOException {
 		String filename = FilesConstants.CARDS_DB + "/" + "cards" + FilesConstants.EXTENSION;
 		File file = new File(filename);
@@ -124,9 +124,9 @@ public class CardDAO {
 		file.createNewFile();
 		return file;
 	}
-	
+
 	public void deleteFile(String file, Card card) throws IOException, FileNotFoundException, ClassNotFoundException {
-		
+
 		List<Card> cards = readAllFile(file);
 		System.out.println(cards.contains(card));
 		System.out.println(cards.size());
@@ -134,16 +134,16 @@ public class CardDAO {
 		System.out.println(cards.size());
 
 		clearFile(file);
-		for(Card c : cards){
-			saveToEndFile(file,c);
+		for (Card c : cards) {
+			saveToEndFile(file, c);
 		}
 	}
-	
-	public boolean contains(Card card, String file) throws FileNotFoundException, ClassNotFoundException, IOException{
+
+	public boolean contains(Card card, String file) throws FileNotFoundException, ClassNotFoundException, IOException {
 		List<Card> cards = readAllFile(file);
 		return cards.contains(card);
 	}
-	
+
 	private void saveToFile(String file, boolean append, Card card) throws IOException, FileNotFoundException {
 		fileOutputStream = new FileOutputStream(file, append);
 		objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -158,11 +158,12 @@ public class CardDAO {
 		fileOutputStream.close();
 	}
 
-	public void saveCard(Card card) throws FileNotFoundException, ClassNotFoundException, IOException, CardExistsException {
-		if(contains(card, getFile().getPath()))
+	public void saveCard(Card card)
+			throws FileNotFoundException, ClassNotFoundException, IOException, CardExistsException {
+		if (contains(card, getFile().getPath()))
 			throw new CardExistsException("This card already exists on our database");
 		saveToEndFile(card);
-		
+
 	}
 
 	public String getId() {
@@ -172,8 +173,8 @@ public class CardDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		return ""+ cards.size();
+		}
+		return "" + cards.size();
 	}
-	
+
 }

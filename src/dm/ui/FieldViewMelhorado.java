@@ -8,6 +8,9 @@ package dm.ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.AffineTransformOp;
@@ -28,6 +31,7 @@ import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardState;
 import dm.constants.FilesConstants;
+import dm.constants.Log;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
 import dm.exceptions.CardNotFoundException;
@@ -37,7 +41,6 @@ import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
 import simao.image.ImageMixer;
 import simao.image.ImageTransform;
-
 
 public class FieldViewMelhorado extends JPanel {
 
@@ -70,8 +73,10 @@ public class FieldViewMelhorado extends JPanel {
 	protected static final int UP = 10;
 	protected static final int DOWN = -10;
 
-	protected static final int MAX_CURSOR = 36;
+	protected static final int MAX_CURSOR = 34;
 	protected static final int MIN_CURSOR = 00;
+
+	private static final String TAG = "Field";
 
 	private int cursor;
 
@@ -89,14 +94,17 @@ public class FieldViewMelhorado extends JPanel {
 	private Player player2;
 
 	private JLabel infoLabel;
-	
+
+	private MonsterCard attackingCard;
+
 	public static void main(String args[]) throws IOException {
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		f.setUndecorated(true);
 		f.setVisible(true);
+
 		Card card = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",
-				"magonego.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500, 2100, 0, 3);
+				"magonego.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500, 2100, 0);
 		// card.setState(CardState.FACE_UP_DEFENSE_POS);
 		// System.out.println(card.getState());
 		// Card card2 = new MonsterNormalCard("Exodia", "O guerreiro proibido",
@@ -106,25 +114,24 @@ public class FieldViewMelhorado extends JPanel {
 
 		Player player1 = new Player("teste1", null, new NormalDeck(50), new ExtraDeck());
 		Player player2 = new Player("teste2", null, new NormalDeck(50), new ExtraDeck());
-		FieldViewMelhorado fv = new FieldViewMelhorado(player1,
-				player2);
+		FieldViewMelhorado fv = new FieldViewMelhorado(player1, player2);
 		HandView handView = new HandView(player1);
-		fv.add(handView,"South");
+		fv.add(handView, "South");
 		f.getContentPane().add(fv);
 		fv.setFocusable(true);
 		fv.requestFocusInWindow();
 		f.setBounds(0, 0, width, height);
-//		try {
-//			Thread.sleep(1000);
-//			fv.getField1().summonMonster((MonsterCard) card);
-//			Thread.sleep(1000);
-//			fv.getField1().setCard((MonsterCard) card);
-//			Thread.sleep(1000);
-//			fv.getField1().summonMonster((MonsterCard) card);
-//			fv.getField1().changeToDefense((MonsterCard) card);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		// try {
+		// Thread.sleep(1000);
+		// fv.getField1().summonMonster((MonsterCard) card);
+		// Thread.sleep(1000);
+		// fv.getField1().setCard((MonsterCard) card);
+		// Thread.sleep(1000);
+		// fv.getField1().summonMonster((MonsterCard) card);
+		// fv.getField1().changeToDefense((MonsterCard) card);
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	/**
@@ -132,12 +139,12 @@ public class FieldViewMelhorado extends JPanel {
 	 * 
 	 * @throws IOException
 	 */
-	public FieldViewMelhorado(Player player1, Player player2){
+	public FieldViewMelhorado(Player player1, Player player2) {
 		super();
-		
+
 		matrizCampo = new File[4][7];
-		
-		
+
+		this.attackingCard = null;
 		it = new ImageTransform();
 		setPreferredSize(new Dimension(width, height));
 		setMaximumSize(new Dimension(width, height));
@@ -149,68 +156,53 @@ public class FieldViewMelhorado extends JPanel {
 		this.player2 = player2;
 		try {
 			bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + background_path));
-//			bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
+			// bufferedImage = ImageIO.read(new
+			// File(FilesConstants.TEXTURES_PATH + field_path));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		// ImageIcon image = new ImageIcon(getBufferedImage());
 		lblField = new JLabel();
 		lblField.setBounds(0, 0, width, height);
-		
+
 		this.infoLabel = new JLabel("Use as setas para mover no campo e Enter para escolher uma ação");
-		
+
 		setLayout(new BorderLayout());
-		add(infoLabel,"North");
+		add(infoLabel, "North");
 		add(lblField);
 		setFocusable(true);
 		this.requestFocusInWindow();
 		addKeyListener(getKeyListener());
-	
+
 		repaint();
 
 	}
 
 	private KeyListener getKeyListener() {
-		return new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// System.out.println("SOLTOU");
-
-			}
-
+		return new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				System.out.println("Cursor " + cursor);
-				if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_LEFT:
 					moveCursor(LEFT);
-					// System.out.println("LEFT");
-				}
-				if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+					break;
+				case KeyEvent.VK_RIGHT:
 					moveCursor(RIGHT);
-					// System.out.println("RIGHT");
-				}
-				if (e.getKeyCode() == KeyEvent.VK_UP) {
+					break;
+				case KeyEvent.VK_UP:
 					moveCursor(UP);
-					// System.out.println("UP");
-				}
-				if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+					break;
+				case KeyEvent.VK_DOWN:
 					moveCursor(DOWN);
-					// System.out.println("DOWN");
-				}
-				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					break;
+				case KeyEvent.VK_ENTER:
 					catchAction();
-				}
-				if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-					System.out.println("BACK");
+					break;
+
 				}
 			}
 
@@ -218,19 +210,77 @@ public class FieldViewMelhorado extends JPanel {
 	}
 
 	private void catchAction() {
-		if (this.cursor > MIN_CURSOR + 10)
-			new HandActionView(player1,player1.getMonsterCard(cursor-10-1));
-		System.out.println("enter");
-		
+		if (attackingCard == null) {
+			if (this.cursor > MIN_CURSOR) {
+				Player player = player2;
+				if (this.cursor / 10 <= MAX_CURSOR / 20)
+					player = player1;
+				FieldActionView fieldActionView = new FieldActionView(player, getCard(cursor));
+				fieldActionView.setAttackActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						attackingCard = (MonsterCard) fieldActionView.getCard();
+						if (fieldActionView.getPlayer().equals(player1))
+							cursor = MIN_CURSOR + 20;
+						else
+							cursor = MIN_CURSOR + 10;
+						fieldActionView.dispose();
+					}
+				});
+			}
+		} else {
+			System.out.println("atackou");
+			if (cursor == MIN_CURSOR + 20)
+				player1.attack(attackingCard, player2, (MonsterCard) getCard(cursor % 10));
+			else
+				player2.attack(attackingCard, player1, (MonsterCard) getCard(cursor % 10));
+			attackingCard = null;
+		}
+		Log.messageLog(TAG, "Enter pressed");
 	}
-	
+
 	public void moveCursor(int position) {
-		if (this.cursor < MIN_CURSOR || cursor > MAX_CURSOR) {
-			this.cursor = 10;
-		} else if (this.cursor + position <= MAX_CURSOR && this.cursor + position >= MIN_CURSOR
-				&& (this.cursor + position) % 10 <= 7)
-			this.cursor += position;
-		System.out.println("CURSOR: " + this.cursor);
+		if (attackingCard == null) {
+			if (this.cursor < MIN_CURSOR || cursor > MAX_CURSOR) {
+				this.cursor = 10;
+			} else if (this.cursor + position <= MAX_CURSOR && this.cursor + position >= MIN_CURSOR
+					&& (this.cursor + position) % 10 <= MAX_CURSOR % 10) {
+				this.cursor += position;
+				System.out.println("CURSOR: " + this.cursor);
+			}
+		} else {
+			int cursor_init = cursor / 10 * 10;
+			System.out.println(cursor_init);
+			// if (this.cursor < MIN_CURSOR+10 || cursor > MAX_CURSOR-10) {
+			// this.cursor = 10;}
+			if (this.cursor + position >= cursor_init && this.cursor + position <= (cursor_init + MAX_CURSOR % 10)) {
+				this.cursor += position;
+				System.out.println("CURSOR: " + this.cursor);
+			}
+		}
+	}
+
+	private Card getCard(int index) {
+		try {
+
+			if (this.cursor / 10 <= MAX_CURSOR / 20) {
+
+				if (cursor / 10 / 2 == 0) {
+					return player1.getMonsterCard(cursor % 10);
+
+				} else
+					return player1.getNonMonsterCard(cursor % 10);
+			} else {
+
+				if (cursor / 10 / 2 != 0) {
+					return player2.getMonsterCard(cursor % 10);
+				} else
+					return player2.getNonMonsterCard(cursor % 10);
+			}
+		} catch (ArrayIndexOutOfBoundsException | CardNotFoundException e) {
+			return null;
+		}
 	}
 
 	@Override
@@ -248,17 +298,21 @@ public class FieldViewMelhorado extends JPanel {
 	public BufferedImage getBufferedImage() throws IOException {
 		ImageMixer im = new ImageMixer();
 
-//		BufferedImage bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
+		// BufferedImage bufferedImage = ImageIO.read(new
+		// File(FilesConstants.TEXTURES_PATH + field_path));
 
-//		bufferedImage = loadGraves(bufferedImage, im);
-//		bufferedImage = loadDecks(bufferedImage, im);
-		
-		bufferedImage = im.mixImages(bufferedImage, new File(FilesConstants.TEXTURES_PATH + field_path),new Dimension(bufferedImage.getWidth(), bufferedImage.getHeight()),new Dimension(bufferedImage.getWidth(), bufferedImage.getHeight()),0,0);
-		
+		// bufferedImage = loadGraves(bufferedImage, im);
+
+		bufferedImage = im.mixImages(bufferedImage, new File(FilesConstants.TEXTURES_PATH + field_path),
+				new Dimension(bufferedImage.getWidth(), bufferedImage.getHeight()),
+				new Dimension(bufferedImage.getWidth(), bufferedImage.getHeight()), 0, 0);
+
 		bufferedImage = loadMonster1(bufferedImage, im);
 		bufferedImage = loadMonster2(bufferedImage, im);
 		bufferedImage = loadNonMonster1(bufferedImage, im);
 		bufferedImage = loadNonMonster2(bufferedImage, im);
+		bufferedImage = loadGraves(bufferedImage, im);
+		// bufferedImage = loadDecks(bufferedImage, im);
 
 		return bufferedImage;
 	}
@@ -327,7 +381,7 @@ public class FieldViewMelhorado extends JPanel {
 					it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC),
 					new Dimension(width, height), card_dim, extra_left_x, graveyard2_y);
 		} catch (Exception e) {
-			// TODO: handle exception
+			// Log.errorLog(TAG, "Graveyard: " + e.getMessage());
 		}
 		return bufferedImage;
 	}
@@ -337,13 +391,13 @@ public class FieldViewMelhorado extends JPanel {
 		for (int i = 0; i < 5; i++) {
 
 			try {
-//				boolean selected = false;
-//				if (this.cursor == 30 + i + 1)
-//					selected = true;
+				boolean selected = false;
+				if (this.cursor == 30 + i)
+					selected = true;
 				NonMonsterCard card = field1.getNonMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
-//				boolean selected = false;
+				// boolean selected = false;
 				// System.out.println("STATE " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
 					bufferedImage = im.mixImages(bufferedImage,
@@ -369,7 +423,7 @@ public class FieldViewMelhorado extends JPanel {
 
 			try {
 				boolean selected = false;
-				if (this.cursor == MIN_CURSOR + i + 1)
+				if (this.cursor == MIN_CURSOR + i)
 					selected = true;
 				NonMonsterCard card = field1.getNonMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
@@ -402,7 +456,7 @@ public class FieldViewMelhorado extends JPanel {
 		for (int i = 0; i < 5; i++) {
 			boolean selected = false;
 			try {
-				if (this.cursor == MIN_CURSOR + 20 + i + 1)
+				if (this.cursor == MIN_CURSOR + 20 + i)
 					selected = true;
 				MonsterCard card = field2.getMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
@@ -435,12 +489,10 @@ public class FieldViewMelhorado extends JPanel {
 		// Monster 1
 
 		for (int i = 0; i < 5; i++) {
-			
-			
-			
+
 			try {
 				boolean selected = false;
-				if (this.cursor == MIN_CURSOR + 10 + i + 1)
+				if (this.cursor == MIN_CURSOR + 10 + i)
 					selected = true;
 				MonsterCard card = field1.getMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());

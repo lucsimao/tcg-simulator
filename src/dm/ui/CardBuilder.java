@@ -107,7 +107,8 @@ public class CardBuilder extends JPanel {
 		panelImage.setLayout(new BorderLayout(10, 10));
 		add(panelImage, BorderLayout.WEST);
 
-		lblCardImage = new CardImage(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD),FilesConstants.CARD_WIDTH,FilesConstants.CARD_HEIGHT);
+		lblCardImage = new CardImage(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD),
+				FilesConstants.CARD_WIDTH, FilesConstants.CARD_HEIGHT);
 
 		panelImage.add(lblCardImage, BorderLayout.NORTH);
 
@@ -169,7 +170,6 @@ public class CardBuilder extends JPanel {
 				new DefaultComboBoxModel<String>(new String[] { "NORMAL", "QUICK", "CONTINOUS", "EQUIP", "FIELD" }));
 
 		lblTrapType = new JLabel("Trap Type");
-
 
 		cbTrapType = new JComboBox<String>();
 		cbTrapType.setModel(new DefaultComboBoxModel<String>(new String[] { "NORMAL", "COUNTER", "CONTINOUS" }));
@@ -252,7 +252,7 @@ public class CardBuilder extends JPanel {
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-					
+
 					System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
 					repaint();
 				}
@@ -270,7 +270,7 @@ public class CardBuilder extends JPanel {
 				System.out.println("Você criou um monstro!" + cardTypeCB.getSelectedIndex());
 				card = new MonsterNormalCard(nameTF.getText(), descriptionTA.getText(), pictureTF.getText(),
 						monsterTypeCB.getSelectedIndex(), monsterAtributeCB.getSelectedIndex(),
-						(int) attackSPN.getValue(), (int) defenseSPN.getValue(), 0, 3);
+						(int) attackSPN.getValue(), (int) defenseSPN.getValue(), 0);
 			} else if (cardTypeCB.getSelectedItem().toString().equals("SPELL")) {
 				System.out.println("Você criou uma magia!" + cardTypeCB.getSelectedIndex());
 
@@ -287,7 +287,7 @@ public class CardBuilder extends JPanel {
 			CardDAO cardDAO = new CardDAO();
 			cardDAO.saveCard(card);
 			Files.copy(chooser.getSelectedFile().toPath(),
-					new File(FilesConstants.CARDS_IMG_DIR + cardDAO.getId() + ".jpg").toPath(),
+					new File(FilesConstants.CARDS_IMG_DIR + card.getName() + ".jpg").toPath(),
 					StandardCopyOption.REPLACE_EXISTING);
 
 			JOptionPane.showMessageDialog(null, "Your have saved sucefully your card", "SUUUCESSO",

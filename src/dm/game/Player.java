@@ -7,6 +7,8 @@ import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardState;
 import dm.exceptions.CardNotFoundException;
+import dm.exceptions.InvalidDeckException;
+import dm.exceptions.InvalidTextAttributeException;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -29,9 +31,19 @@ public class Player {
 
 	public Player(String name, Image avatar, NormalDeck deck, ExtraDeck extraDeck) {
 		lp = INIT_LIFE_POINTS;
-		this.name = name;
+		if(name == null|| name.equals(""))
+			throw new InvalidTextAttributeException("Name cannot be empty");
+		else
+			this.name = name;
 		this.avatar = avatar;
+		if(deck==null||!deck.isPlayable()){
+			throw new InvalidDeckException("Deck is not valid");
+		}
 		this.field = new Field(deck, extraDeck);
+	}
+
+	public Player(String name, NormalDeck deck) {
+		this(name, null, deck, new ExtraDeck(10));
 	}
 
 	public void firstDraw() {
@@ -163,8 +175,12 @@ public class Player {
 
 	}
 
-	public Field getField(){
+	public Field getField() {
 		return this.field;
 	}
-	
+
+	public NonMonsterCard getNonMonsterCard(int index) {
+		return field.getNonMonsterCard(index);
+	}
+
 }
