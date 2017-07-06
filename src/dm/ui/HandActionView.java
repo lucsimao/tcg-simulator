@@ -21,7 +21,7 @@ import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
 
-public class ActionView extends JFrame {
+public class HandActionView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	protected static final String TAG = "ActionView: ";
 	private JButton btnSummon;
@@ -29,10 +29,10 @@ public class ActionView extends JFrame {
 	private JButton btnCancel;
 	private DisposeListener disposeListener;
 	public static void main(String args[]){
-		new ActionView(new Player("teste",null, new NormalDeck(), new ExtraDeck()),new MonsterNormalCard());	
+		new HandActionView(new Player("teste",null, new NormalDeck(), new ExtraDeck()),new MonsterNormalCard());	
 	}
 	
-	public ActionView(Player player,Card card,int x, int y){
+	public HandActionView(Player player,Card card,int x, int y){
 		setLayout(new GridLayout(1,3));
 		setUndecorated(true);
 		
@@ -85,7 +85,7 @@ public class ActionView extends JFrame {
 		
 	}
 
-	public ActionView(Player player, Card c) {
+	public HandActionView(Player player, Card c) {
 		this(player, c,50,50);
 	}
 

@@ -219,7 +219,7 @@ public class FieldViewMelhorado extends JPanel {
 
 	private void catchAction() {
 		if (this.cursor > MIN_CURSOR + 10)
-			new ActionView(player1,player1.getMonsterCard(cursor-10-1));
+			new HandActionView(player1,player1.getMonsterCard(cursor-10-1));
 		System.out.println("enter");
 		
 	}

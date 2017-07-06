@@ -100,7 +100,7 @@ public class HandView extends JPanel {
 			cardImage.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					ActionView a = new ActionView(player, c,getX()+30,getY()+30);
+					HandActionView a = new HandActionView(player, c,getX()+30,getY()+30);
 					a.addDisposeListener(new DisposeListener() {
 						
 						@Override
