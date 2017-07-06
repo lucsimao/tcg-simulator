@@ -34,8 +34,10 @@ public class CardDAO {
 	 *            o caminho do arquivo
 	 * @param card
 	 *            a carta para ser salva
+	 * @throws CardExistsException 
+	 * @throws ClassNotFoundException 
 	 **/
-	public void saveToFile(String file, Card card) throws FileNotFoundException, IOException {
+	public void saveToFile(String file, Card card) throws FileNotFoundException, IOException, ClassNotFoundException, CardExistsException {
 		saveToFile(file, false, card);
 	}
 
@@ -44,8 +46,10 @@ public class CardDAO {
 	 ** 
 	 * @param card
 	 *            a carta para ser salva
+	 * @throws CardExistsException 
+	 * @throws ClassNotFoundException 
 	 **/
-	public void saveToFile(Card card) throws FileNotFoundException, IOException {
+	public void saveToFile(Card card) throws FileNotFoundException, IOException, ClassNotFoundException, CardExistsException {
 		saveToFile(getFile().getPath(), card);
 	}
 
@@ -54,8 +58,10 @@ public class CardDAO {
 	 ** 
 	 * @param card
 	 *            a carta para ser salva
+	 * @throws CardExistsException 
+	 * @throws ClassNotFoundException 
 	 **/
-	public void saveToEndFile(Card card) throws FileNotFoundException, IOException {
+	public void saveToEndFile(Card card) throws FileNotFoundException, IOException, ClassNotFoundException, CardExistsException {
 		saveToEndFile(getFile().getPath(), card);
 	}
 
@@ -66,8 +72,10 @@ public class CardDAO {
 	 *            o caminho do arquivo
 	 * @param card
 	 *            a carta para ser salva
+	 * @throws CardExistsException 
+	 * @throws ClassNotFoundException 
 	 **/
-	public void saveToEndFile(String file, Card card) throws FileNotFoundException, IOException {
+	public void saveToEndFile(String file, Card card) throws FileNotFoundException, IOException, ClassNotFoundException, CardExistsException {
 		saveToFile(file, true, card);
 	}
 
@@ -125,7 +133,7 @@ public class CardDAO {
 		return file;
 	}
 
-	public void deleteFile(String file, Card card) throws IOException, FileNotFoundException, ClassNotFoundException {
+	public void deleteFile(String file, Card card) throws IOException, FileNotFoundException, ClassNotFoundException, CardExistsException {
 
 		List<Card> cards = readAllFile(file);
 		System.out.println(cards.contains(card));
@@ -144,10 +152,13 @@ public class CardDAO {
 		return cards.contains(card);
 	}
 
-	private void saveToFile(String file, boolean append, Card card) throws IOException, FileNotFoundException {
+	private void saveToFile(String file, boolean append, Card card) throws IOException, FileNotFoundException, CardExistsException, ClassNotFoundException {
+		if(readAllFile(file).contains(card))
+			throw new CardExistsException("This card already exists in our database");
+		
 		fileOutputStream = new FileOutputStream(file, append);
 		objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
+		
 		objectOutputStream.writeObject(card);
 		objectOutputStream.flush();
 		fileOutputStream.close();

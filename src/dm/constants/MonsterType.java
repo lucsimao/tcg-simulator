@@ -17,4 +17,6 @@ public class MonsterType {
 	public static final int WINGEDBEAST = 8;// Fera alada
 	public static final int BEASTWARRIOR = 9;// Fera guerreira
 	public static final int PYRO = 10;// Pirotécnico
+	public static final int ROCK = 11;//Pedra
+	public static final int MACHINE = 12;
 }
