@@ -110,9 +110,11 @@ public class Player {
 
 		MonsterCard attacking = getMonsterCard(index_attacking);
 		MonsterCard attacked = player.getMonsterCard(index_attacked);
-		if (attacked.getState() == CardState.FACE_UP_DEFENSE_POS || attacked.getState() < CardState.FACE_DOWN) {
+		if (attacked.getState() == CardState.FACE_UP_DEFENSE_POS || attacked.getState() == CardState.FACE_DOWN) {
+			attacked.setState(CardState.FACE_UP_DEFENSE_POS);
 			if (attacking.getCurrentAttack() > attacked.getCurrentDefense()) {
 				player.destroy(attacked);
+				System.out.println("MESSAGE: " + player.getField().getGraveyard().top().getName());
 			} else if (attacking.getCurrentAttack() < attacked.getCurrentDefense())
 				decreaseLp(attacked.getCurrentDefense() - attacking.getCurrentAttack());
 		} else if (attacked.getState() == CardState.FACE_UP_ATTACK) {
@@ -154,6 +156,10 @@ public class Player {
 		field.summonMonster(monsterCard);
 		field.getHand().remove(monsterCard);
 	}
+	public void activate(NonMonsterCard nonMonsterCard) {
+		field.activate(nonMonsterCard);
+		field.getHand().remove(nonMonsterCard);
+	}
 
 	public void set(MonsterNormalCard monsterCard) {
 		field.setCard(monsterCard);
@@ -181,6 +187,11 @@ public class Player {
 
 	public NonMonsterCard getNonMonsterCard(int index) {
 		return field.getNonMonsterCard(index);
+	}
+
+	public void shuffleDeck() {
+		this.getDeck().shuffle();
+		
 	}
 
 }

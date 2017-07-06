@@ -302,4 +302,9 @@ public class Field {
 		return this.hand;
 	}
 
+	public void activate(NonMonsterCard nonMonsterCard) {
+		spellTrapZone.activateCard(nonMonsterCard);
+		
+	}
+
 }

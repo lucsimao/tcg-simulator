@@ -7,6 +7,7 @@ package dm.ui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.TextComponent;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,9 +46,18 @@ public class PlayerBuilder extends JPanel {
 	private DeckView deckView;
 
 	private JButton btnBack;
-
+	private JButton btnStart;
+	
 	private NormalDeck deck1;
 	private NormalDeck deck2;
+
+	private GameView gameView;
+
+	private JTextField tFName1;
+
+	private JTextField tFName2;
+
+
 	
 	public static void main(String args[]) {
 		JFrame f = new JFrame();
@@ -73,8 +83,8 @@ public class PlayerBuilder extends JPanel {
 		JPanel mainPanel = new JPanel(new GridLayout(1, 2));
 		add(mainPanel,"Center");
 		add(new JLabel("Monte seus jogadores"),"North");
-		JButton btnStart = new JButton("Começar");
-		JButton btnBack = new JButton("Voltar");
+		btnStart = new JButton("Começar");
+		btnBack = new JButton("Voltar");
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 2,10,10));
 		buttonPanel.add(btnBack);
 		buttonPanel.add(btnStart);
@@ -94,9 +104,9 @@ public class PlayerBuilder extends JPanel {
 		player2Panel.add(new JLabel(""));
 		player1Panel.add(new JLabel("Nome"));
 		player2Panel.add(new JLabel("Nome"));
-		JTextField tFName1 = new JTextField();
+		tFName1 = new JTextField();
 		player1Panel.add(tFName1);
-		JTextField tFName2 = new JTextField();
+		tFName2 = new JTextField();
 		player2Panel.add(tFName2);
 		JLabel lbDeck1 = new JLabel("Deck");
 
@@ -153,25 +163,7 @@ public class PlayerBuilder extends JPanel {
 					}
 				}
 		});
-		
-
-		btnStart.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("deu certo");
-				try{
-					Player player1 = new Player(tFName1.getText(),deck1);
-					Player player2 = new Player(tFName2.getText(),deck2);
-					
-				}catch(Exception ex){
-					JOptionPane.showMessageDialog(null, ex.getMessage(), ex.getClass().getName(),
-							JOptionPane.INFORMATION_MESSAGE);
-				}
 				
-			}
-		});
-		
 
 //		setLayout(new BorderLayout());
 //		listView = new ListCards();
@@ -222,4 +214,17 @@ public class PlayerBuilder extends JPanel {
 		btnBack.addActionListener(actionListener);
 	}
 
+	
+	public GameView getGameView() {
+			Player player1 = new Player(tFName1.getText(),deck1);
+			Player player2 = new Player(tFName2.getText(),deck2);
+			gameView = new GameView(player1, player2);
+
+		return gameView;
+	}
+
+	public void addStartButtonListener(ActionListener actionListener) {
+		this.btnStart.addActionListener(actionListener);
+	}
+	
 }

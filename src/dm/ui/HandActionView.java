@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 
 import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
+import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.Log;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -52,7 +53,10 @@ public class HandActionView extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				player.summon((MonsterNormalCard) card);
+				if(card instanceof MonsterNormalCard)
+					player.summon((MonsterNormalCard) card);
+				else if(card instanceof NonMonsterCard)
+					player.activate((NonMonsterCard) card);
 				System.out.println(player.getField().getHand().size());
 				dispose();
 			}
@@ -62,7 +66,10 @@ public class HandActionView extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				player.set((MonsterNormalCard) card);
+				if(card instanceof MonsterNormalCard)
+					player.set((MonsterNormalCard) card);
+				else
+					player.set((NonMonsterCard) card);
 				dispose();
 			}
 		});

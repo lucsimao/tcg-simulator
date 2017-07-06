@@ -7,6 +7,8 @@ package dm.ui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import dm.constants.Log;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
@@ -23,6 +26,7 @@ public class GameView extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private final static int height = 640;
 	private final static int width = 720;
+	private static final String TAG = "GameView";
 
 	public static void main(String args[]) {
 		JFrame f = new JFrame();
@@ -67,15 +71,15 @@ public class GameView extends JPanel {
 		JPanel panelP1 = new JPanel(new GridLayout(2, 1));
 		JPanel panelP2 = new JPanel(new GridLayout(2, 1));
 		JLabel player1Name = new JLabel(player1.getName());
-		JLabel player2Name = new JLabel(player1.getName());
+		JLabel player2Name = new JLabel(player2.getName());
 		lp1 = new JLabel(player1.getLP() + "");
 		lp2 = new JLabel(player2.getLP() + "");
 		panelP1.add(player1Name);
 		panelP1.add(lp1);
 		panelP2.add(player2Name);
 		panelP2.add(lp2);
-		add(panelP1, "East");
-		add(panelP2, "West");
+		add(panelP1, "West");
+		add(panelP2, "East");
 		add(fieldView, "Center");
 		fieldView.setFocusable(true);
 		fieldView.requestFocusInWindow();
@@ -83,13 +87,18 @@ public class GameView extends JPanel {
 		// fieldView.requestFocusInWindow();
 		this.addKeyListener(fieldView.getKeyListeners()[0]);
 	}
-
+	
 	@Override
-	public void repaint() {
-		if (lp1 != null && lp2 != null) {
+	public void revalidate() {
+		try {
+
 			lp1.setText(player1.getLP() + "");
 			lp2.setText(player2.getLP() + "");
+			Log.messageLog(TAG,player1.getLP()+"");
+			Log.messageLog(TAG,player2.getLP()+"");
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
-		super.revalidate();
+		super.repaint();
 	}
 }

@@ -35,7 +35,7 @@ public class CardZone {
 			if (cards[i] != null && cards[i].equals(card))
 				return i;
 		}
-		throw new CardNotFoundException("This card does not exist on the field.");
+		throw new CardNotFoundException("This card does not exist on the field. " + card.getName() );
 	}
 
 	public void putCard(Card card, int index) {

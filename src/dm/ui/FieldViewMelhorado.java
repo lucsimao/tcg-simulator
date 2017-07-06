@@ -142,6 +142,8 @@ public class FieldViewMelhorado extends JPanel {
 	public FieldViewMelhorado(Player player1, Player player2) {
 		super();
 
+		player1.shuffleDeck();
+		player2.shuffleDeck();
 		matrizCampo = new File[4][7];
 
 		this.attackingCard = null;
@@ -230,12 +232,15 @@ public class FieldViewMelhorado extends JPanel {
 				});
 			}
 		} else {
-			System.out.println("atackou");
-			if (cursor == MIN_CURSOR + 20)
+			System.out.println("atacou");
+			if (cursor >= MIN_CURSOR + 20)
 				player1.attack(attackingCard, player2, (MonsterCard) getCard(cursor % 10));
 			else
 				player2.attack(attackingCard, player1, (MonsterCard) getCard(cursor % 10));
 			attackingCard = null;
+			Log.messageLog(TAG,"LP 1 - " + player1.getLP());
+			Log.messageLog(TAG,"LP 2 - " + player2.getLP());
+			repaint();
 		}
 		Log.messageLog(TAG, "Enter pressed");
 	}
@@ -367,21 +372,26 @@ public class FieldViewMelhorado extends JPanel {
 		try {
 
 			File file = new File(FilesConstants.CARDS_IMG_DIR + field1.getGraveyard().top().getPicture());
-			// for (int i = 0; i < field1.getGraveyard().size(); i++)
-			boolean selected = false;
-			if (this.cursor == MIN_CURSOR + 10 + 6)
-				selected = true;
-			bufferedImage = im.mixImages(selected, bufferedImage, file, new Dimension(width, height), card_dim,
+			
+//			boolean selected = false;
+//			if (this.cursor == MIN_CURSOR + 10 + 6)
+//				selected = true;
+			bufferedImage = im.mixImages(bufferedImage, file, new Dimension(width, height), card_dim,
 					extra_right_x, graveyard1_y);
-			new File(FilesConstants.CARDS_IMG_DIR + field2.getGraveyard().top().getPicture());
-			selected = false;
-			if (this.cursor == MIN_CURSOR + 20)
-				selected = true;
-			bufferedImage = im.mixImages(selected, bufferedImage,
-					it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC),
+		} catch (Exception e) {
+//			 Log.errorLog(TAG, "Graveyard: " + e.getMessage());
+		}
+//			new File(FilesConstants.CARDS_IMG_DIR + field2.getGraveyard().top().getPicture());
+//			selected = false;
+//			if (this.cursor == MIN_CURSOR + 20)
+//				selected = true;
+		try {
+		File file2 = new File(FilesConstants.CARDS_IMG_DIR + field2.getGraveyard().top().getPicture());
+			bufferedImage = im.mixImages(bufferedImage,
+					it.rotateImage(ImageIO.read(file2), 180, AffineTransformOp.TYPE_BICUBIC),
 					new Dimension(width, height), card_dim, extra_left_x, graveyard2_y);
 		} catch (Exception e) {
-			// Log.errorLog(TAG, "Graveyard: " + e.getMessage());
+//			 Log.errorLog(TAG, "Graveyard: " + e.getMessage());
 		}
 		return bufferedImage;
 	}
@@ -394,7 +404,7 @@ public class FieldViewMelhorado extends JPanel {
 				boolean selected = false;
 				if (this.cursor == 30 + i)
 					selected = true;
-				NonMonsterCard card = field1.getNonMonsterCard(i);
+				NonMonsterCard card = field2.getNonMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 				// boolean selected = false;

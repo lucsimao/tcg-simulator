@@ -38,6 +38,16 @@ public class SpellTrapZone extends CardZone {
 		spellTrapCard.setState(CardState.FACE_DOWN);
 	}
 
+	public void activateCard(Card spellTrapCard) {
+		for (int i = 0; i < 5; i++)
+			if (this.getCards()[i] == null) {
+				this.getCards()[i] = spellTrapCard;
+				spellTrapCard.setState(CardState.FACE_UP_ATTACK);
+				return;
+			}
+		throw new ZoneOccupedException("We can't add more cards in the field");
+	}
+	
 	public void setCard(Card spellTrapCard) {
 		for (int i = 0; i < 5; i++)
 			if (this.getCards()[i] == null) {

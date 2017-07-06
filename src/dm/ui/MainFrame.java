@@ -14,10 +14,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import dm.game.Player;
 import dm.ui.subviews.JImageDesktopPane;
 import singleinstance.SingleInstance;
 
@@ -89,10 +91,31 @@ public class MainFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setContentPane(new JPanel());
-				JButton b = new JButton("BUTAO");
-				getContentPane().add(b);
-				b.addActionListener(new ActionListener() {
+				JPanel localContentPane = defaultContentPane();
+				setContentPane(localContentPane);
+				PlayerBuilder builder = new PlayerBuilder();
+				builder.addStartButtonListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+
+						try {
+
+							JPanel localContentPane = defaultContentPane();
+							setContentPane(localContentPane);
+							GameView gameView = builder.getGameView();
+							getContentPane().add(gameView);
+							setBounds(0,0,800,660);
+							validate();
+						} catch (Exception ex) {
+							JOptionPane.showMessageDialog(null, ex.getMessage(), ex.getClass().getName(),
+									JOptionPane.INFORMATION_MESSAGE);
+						}
+					}
+
+				});
+				getContentPane().add(builder);
+				builder.addBackActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -101,7 +124,6 @@ public class MainFrame extends JFrame {
 
 					}
 				});
-
 				validate();
 			}
 
