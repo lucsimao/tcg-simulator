@@ -6,7 +6,6 @@
 package dm.ui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -88,6 +87,8 @@ public class FieldViewMelhorado extends JPanel {
 
 	private Player player1;
 	private Player player2;
+
+	private JLabel infoLabel;
 	
 	public static void main(String args[]) throws IOException {
 		JFrame f = new JFrame();
@@ -157,6 +158,11 @@ public class FieldViewMelhorado extends JPanel {
 		// ImageIcon image = new ImageIcon(getBufferedImage());
 		lblField = new JLabel();
 		lblField.setBounds(0, 0, width, height);
+		
+		this.infoLabel = new JLabel("Use as setas para mover no campo e Enter para escolher uma ação");
+		
+		setLayout(new BorderLayout());
+		add(infoLabel,"North");
 		add(lblField);
 		setFocusable(true);
 		this.requestFocusInWindow();
@@ -215,15 +221,6 @@ public class FieldViewMelhorado extends JPanel {
 		if (this.cursor > MIN_CURSOR + 10)
 			new ActionView(player1,player1.getMonsterCard(cursor-10-1));
 		System.out.println("enter");
-//			a.addDisposeListener(new DisposeListener() {
-//				
-//				@Override
-//				public void actionPerformed() {
-////					setHand();
-//					revalidate();
-//				}
-//
-//			});
 		
 	}
 	

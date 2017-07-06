@@ -19,7 +19,7 @@ import dm.game.Player;
 
 public class GameView extends JPanel{
 
-
+	private static final long serialVersionUID = 1L;
 	private final static int height = 640;
 	private final static int width = 720;
 	public static void main(String args[]){
@@ -59,20 +59,13 @@ public class GameView extends JPanel{
 		hand1 = new HandView(player1);
 		hand2 = new HandView(player2);
 		
-		drawButton = new JButton("Draw");
-		attackButton = new JButton("Attack");
-		changePositionButton = new JButton("ChangePosition");
-		
-		
-		JPanel painelButton = new JPanel(new GridLayout(3,1));
-		painelButton.add(drawButton);
-		painelButton.add(attackButton);
-		painelButton.add(changePositionButton);
+	
 		
 		setLayout(new BorderLayout());
 		add(hand2, "North");
 		add(hand1, "South");
-		add(painelButton, "East");
+//		add(new PlayerActionView(player1), "East");
+//		add(new PlayerActionView(player2), "West");
 		add(fieldView, "Center");
 		fieldView.setFocusable(true);
 		fieldView.requestFocusInWindow();

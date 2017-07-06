@@ -8,22 +8,25 @@ package dm.ui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
+import dm.constants.Log;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
 
 public class ActionView extends JFrame {
 	private static final long serialVersionUID = 1L;
+	protected static final String TAG = "ActionView: ";
 	private JButton btnSummon;
 	private JButton btnSet;
 	private JButton btnCancel;
-	private Player player;
 	private DisposeListener disposeListener;
 	public static void main(String args[]){
 		new ActionView(new Player("teste",null, new NormalDeck(), new ExtraDeck()),new MonsterNormalCard());	
@@ -67,6 +70,15 @@ public class ActionView extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+
+		this.addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				Log.messageLog(TAG, "Window Desactived");
 				dispose();
 			}
 		});
