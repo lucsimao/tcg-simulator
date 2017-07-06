@@ -19,6 +19,7 @@ import javax.swing.WindowConstants;
 
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
+import dm.constants.Log;
 import dm.fields.elements.Hand;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -31,6 +32,8 @@ public class HandView extends JPanel {
 	
 	private final static int height = 150;
 	private final static int width = 540;
+
+	protected static final String TAG = "HandView";
 	
 	public static void main(String args[]){
 		JFrame f = new JFrame();
@@ -77,13 +80,16 @@ public class HandView extends JPanel {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("LOG - COMPRANDO CARTAS");
+					Log.messageLog(TAG, "Draw a Card. Cards in hand: " + player.countHandCards());
 					player.draw();
 					setHand();
 				}
 			});		
 	}
 	
+	/**
+	 * Método criado para setar a mão na tela e revalidar, caso necessário
+	 * */
 	private void setHand() {
 		removeAll();
 		add(drawButton);
@@ -94,13 +100,12 @@ public class HandView extends JPanel {
 			cardImage.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					ActionView a = new ActionView(player, c);
+					ActionView a = new ActionView(player, c,getX()+30,getY()+30);
 					a.addDisposeListener(new DisposeListener() {
 						
 						@Override
 						public void actionPerformed() {
 							setHand();
-
 						}
 
 					});

@@ -32,7 +32,7 @@ public class ActionView extends JFrame {
 		new ActionView(new Player("teste",null, new NormalDeck(), new ExtraDeck()),new MonsterNormalCard());	
 	}
 	
-	public ActionView(Player player,Card card){
+	public ActionView(Player player,Card card,int x, int y){
 		setLayout(new GridLayout(1,3));
 		setUndecorated(true);
 		
@@ -41,7 +41,7 @@ public class ActionView extends JFrame {
 		btnSummon = new JButton("Summon");
 		
 		setVisible(true);
-		setBounds(50, 50, 300, 100);
+		setBounds(x, y, 300, 100);
 		
 		add(btnCancel);
 		add(btnSet);
@@ -83,6 +83,10 @@ public class ActionView extends JFrame {
 			}
 		});
 		
+	}
+
+	public ActionView(Player player, Card c) {
+		this(player, c,50,50);
 	}
 
 	@Override
