@@ -5,22 +5,15 @@
 */
 package dm.ui;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
 import dm.fields.elements.Hand;

@@ -120,12 +120,10 @@ public class PlayerTests {
 
 	@Test
 	public void attackADefAndLose() {
-		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
-				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2500, 2100, 0, 3);
-		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
-				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2000, 2100, 0, 3);
+		player.draw();
+		player2.draw();
+		MonsterNormalCard card = (MonsterNormalCard) player2.getField().getHand().getCardsList().get(0);
+		MonsterNormalCard card2 = (MonsterNormalCard) player.getField().getHand().getCardsList().get(0);
 		int lp = player.getLP();
 		player.summon(card2);
 		player2.summon(card);
@@ -137,12 +135,10 @@ public class PlayerTests {
 
 	@Test
 	public void attackASettedAndLose() {
-		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
-				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2500, 2100, 0, 3);
-		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
-				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2000, 2100, 0, 3);
+		player.draw();
+		player2.draw();
+		MonsterNormalCard card = (MonsterNormalCard) player2.getField().getHand().getCardsList().get(0);
+		MonsterNormalCard card2 = (MonsterNormalCard) player.getField().getHand().getCardsList().get(0);
 		int lp = player.getLP();
 		player.summon(card2);
 		player2.set(card);

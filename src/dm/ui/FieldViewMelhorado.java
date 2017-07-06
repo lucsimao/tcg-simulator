@@ -39,7 +39,7 @@ import simao.image.ImageMixer;
 import simao.image.ImageTransform;
 
 
-public class FieldView extends JPanel {
+public class FieldViewMelhorado extends JPanel {
 
 	/**
 	 * 
@@ -80,6 +80,10 @@ public class FieldView extends JPanel {
 	private JLabel lblField;
 	private ImageTransform it;
 
+	private File[][] matrizCampo;
+
+	private BufferedImage bufferedImage;
+	
 	public static void main(String args[]) throws IOException {
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -95,7 +99,7 @@ public class FieldView extends JPanel {
 		//
 		Player player1 = new Player("teste1", null, new NormalDeck(50), new ExtraDeck());
 		Player player2 = new Player("teste2", null, new NormalDeck(50), new ExtraDeck());
-		FieldView fv = new FieldView(player1,
+		FieldViewMelhorado fv = new FieldViewMelhorado(player1,
 				player2);
 		HandView handView = new HandView(player1);
 		fv.add(handView,"South");
@@ -121,8 +125,12 @@ public class FieldView extends JPanel {
 	 * 
 	 * @throws IOException
 	 */
-	public FieldView(Player player1, Player player2){
+	public FieldViewMelhorado(Player player1, Player player2) throws IOException{
 		super();
+		
+		matrizCampo = new File[4][7];
+		
+		
 		it = new ImageTransform();
 		setPreferredSize(new Dimension(width, height));
 		setMaximumSize(new Dimension(width, height));
@@ -130,6 +138,8 @@ public class FieldView extends JPanel {
 
 		field1 = player1.getField();
 		field2 = player2.getField();
+		bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
+		
 		// ImageIcon image = new ImageIcon(getBufferedImage());
 		lblField = new JLabel();
 		lblField.setBounds(0, 0, width, height);
@@ -209,10 +219,10 @@ public class FieldView extends JPanel {
 	public BufferedImage getBufferedImage() throws IOException {
 		ImageMixer im = new ImageMixer();
 
-		BufferedImage bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
+//		BufferedImage bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + field_path));
 
-		bufferedImage = loadGraves(bufferedImage, im);
-		bufferedImage = loadDecks(bufferedImage, im);
+//		bufferedImage = loadGraves(bufferedImage, im);
+//		bufferedImage = loadDecks(bufferedImage, im);
 
 		bufferedImage = loadMonster1(bufferedImage, im);
 		bufferedImage = loadMonster2(bufferedImage, im);
@@ -296,19 +306,20 @@ public class FieldView extends JPanel {
 		for (int i = 0; i < 5; i++) {
 
 			try {
-				boolean selected = false;
-				if (this.cursor == 30 + i + 1)
-					selected = true;
+//				boolean selected = false;
+//				if (this.cursor == 30 + i + 1)
+//					selected = true;
 				NonMonsterCard card = field1.getNonMonsterCard(i);
 				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
+//				boolean selected = false;
 				// System.out.println("STATE " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
-					bufferedImage = im.mixImages(selected, bufferedImage,
+					bufferedImage = im.mixImages(bufferedImage,
 							it.rotateImage(ImageIO.read(file), 180, AffineTransformOp.TYPE_BICUBIC),
 							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, spell2_y);
 				else if (card.getState() == CardState.FACE_DOWN)
-					bufferedImage = im.mixImages(selected, bufferedImage,
+					bufferedImage = im.mixImages(bufferedImage,
 							it.rotateImage(ImageIO.read(face_down_file), 180, AffineTransformOp.TYPE_BICUBIC),
 							new Dimension(width, height), card_dim, monster_x + 70 * i + i + 1, spell2_y);
 
@@ -393,6 +404,9 @@ public class FieldView extends JPanel {
 		// Monster 1
 
 		for (int i = 0; i < 5; i++) {
+			
+			
+			
 			try {
 				boolean selected = false;
 				if (this.cursor == MIN_CURSOR + 10 + i + 1)

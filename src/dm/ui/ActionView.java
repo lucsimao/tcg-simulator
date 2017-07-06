@@ -19,6 +19,7 @@ import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
 
 public class ActionView extends JFrame {
+	private static final long serialVersionUID = 1L;
 	private JButton btnSummon;
 	private JButton btnSet;
 	private JButton btnCancel;
