@@ -7,6 +7,8 @@ package dm.exceptions;
 
 public class LpZeroException extends RuntimeException {
 
+	private static final long serialVersionUID = 1L;
+
 	public LpZeroException() {
 		super();
 		// TODO Auto-generated constructor stub

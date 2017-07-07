@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import dm.game.Player;
 import dm.ui.subviews.JImageDesktopPane;
 import singleinstance.SingleInstance;
 

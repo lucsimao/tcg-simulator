@@ -38,7 +38,7 @@ public class CardImage extends JLabel {
 		setIcon(new ImageIcon(cardImage));
 	}
 
-	public CardImage(int width2, int height2) {
+	public CardImage(int width, int height) {
 		this.width = width;
 		this.height = height;
 

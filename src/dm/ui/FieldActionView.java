@@ -28,9 +28,6 @@ public class FieldActionView extends JFrame {
 	protected static final String TAG = "ActionView: ";
 	private JButton btnAttack;
 	private JButton btnChangePosition;
-	private JButton btnCancel;
-	private DisposeListener disposeListener;
-	private ActionListener attackActionListener;
 	private Player player;
 	private Card card;
 
@@ -43,11 +40,8 @@ public class FieldActionView extends JFrame {
 		setUndecorated(true);
 		this.player = player;
 		this.card = card;
-		// btnCancel = new JButton("Cancel");
 
 		btnChangePosition = new JButton("ToAttack");
-
-		// add(btnCancel);
 		add(btnChangePosition);
 
 		if (card.getState() == CardState.FACE_DOWN)
@@ -99,15 +93,12 @@ public class FieldActionView extends JFrame {
 	@Override
 	public void dispose() {
 		super.dispose();
-		// this.disposeListener.actionPerformed();
 	}
 
 	public void addDisposeListener(DisposeListener actionListener) {
-		this.disposeListener = actionListener;
 	}
 
 	public void setAttackActionListener(ActionListener actionListener) {
-		this.attackActionListener = actionListener;
 		if (btnAttack != null) {
 			btnAttack.addActionListener(actionListener);
 		}

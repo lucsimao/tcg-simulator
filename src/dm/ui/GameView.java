@@ -7,10 +7,7 @@ package dm.ui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -47,12 +44,9 @@ public class GameView extends JPanel {
 
 	private Player player1;
 	private Player player2;
-	private FieldViewMelhorado fieldView;
+	private FieldView fieldView;
 	private HandView hand1;
 	private HandView hand2;
-	private JButton drawButton;
-	private JButton attackButton;
-	private JButton changePositionButton;
 	private JLabel lp2;
 	private JLabel lp1;
 
@@ -60,7 +54,7 @@ public class GameView extends JPanel {
 		this.player1 = player1;
 		this.player2 = player2;
 
-		fieldView = new FieldViewMelhorado(player1, player2);
+		fieldView = new FieldView(player1, player2);
 
 		hand1 = new HandView(player1);
 		hand2 = new HandView(player2);

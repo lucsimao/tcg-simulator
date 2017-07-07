@@ -49,9 +49,7 @@ public class HandView extends JPanel {
 		f.setBounds(100, 100, width, height);
 	}
 
-	// TODO
-	private int number;
-	private int selected;
+
 	private Player player;
 	private GridLayout gridLayout;
 	private JButton drawButton;
