@@ -19,6 +19,7 @@ import javax.swing.WindowConstants;
 import dm.exceptions.MaxCardCopiesException;
 import dm.interfaces.NormalDeckCard;
 import dm.ui.subviews.DeckView;
+import dm.ui.subviews.ListCards;
 
 public class BuildDeck extends JPanel {
 

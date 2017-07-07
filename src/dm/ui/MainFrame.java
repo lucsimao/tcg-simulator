@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import dm.ui.subviews.JImageDesktopPane;
+import dm.ui.subviews.ListCards;
 import singleinstance.SingleInstance;
 
 public class MainFrame extends JFrame {

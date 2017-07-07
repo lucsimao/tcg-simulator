@@ -17,6 +17,8 @@ import dm.constants.Log;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
+import dm.ui.subviews.FieldView;
+import dm.ui.subviews.HandView;
 
 public class GameView extends JPanel {
 

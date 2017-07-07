@@ -3,7 +3,7 @@
 * @version 0.1 - 26 de jun de 2017
 * 
 */
-package dm.ui;
+package dm.ui.subviews;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -25,7 +25,6 @@ import javax.swing.event.ListSelectionListener;
 
 import dm.cards.abstracts.Card;
 import dm.files.CardDAO;
-import dm.ui.subviews.CardView;
 
 public class ListCards extends JPanel {
 

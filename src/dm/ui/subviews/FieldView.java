@@ -3,7 +3,7 @@
 * @version 0.1 - 1 de mai de 2017
 * 
 */
-package dm.ui;
+package dm.ui.subviews;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

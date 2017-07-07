@@ -3,7 +3,7 @@
 * @version 0.1 - 29 de jun de 2017
 * 
 */
-package dm.ui;
+package dm.ui.subviews;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -24,7 +24,7 @@ import dm.fields.elements.Hand;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
-import dm.ui.subviews.CardImage;
+import dm.interfaces.DisposeListener;
 
 public class HandView extends JPanel {
 

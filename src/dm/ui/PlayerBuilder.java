@@ -34,6 +34,7 @@ import dm.files.DeckDao;
 import dm.game.Player;
 import dm.interfaces.NormalDeckCard;
 import dm.ui.subviews.DeckView;
+import dm.ui.subviews.ListCards;
 
 public class PlayerBuilder extends JPanel {
 
