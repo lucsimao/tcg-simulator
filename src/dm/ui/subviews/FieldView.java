@@ -219,7 +219,7 @@ public class FieldView extends JPanel {
 				});
 			}
 		} else {
-			try{
+		
 			System.out.println("atacou");
 			if (cursor >= MIN_CURSOR + 20)
 				player1.attack(attackingCard, player2, (MonsterCard) getCard(cursor % 10));
@@ -227,10 +227,11 @@ public class FieldView extends JPanel {
 				player2.attack(attackingCard, player1, (MonsterCard) getCard(cursor % 10));
 			attackingCard = null;
 	
-			}catch (LpZeroException ex) {
-				JOptionPane.showMessageDialog(null, ex.getMessage(), ex.getClass().getName(),
+			if(player1.getLP()==0||player2.getLP()==0)
+				JOptionPane.showMessageDialog(null, "LP do jogador chegou a zero", 
+						"Você perdeu o jogo",
 						JOptionPane.INFORMATION_MESSAGE);
-			}
+			
 			getParent().revalidate();
 			Log.messageLog(TAG,"LP 1 - " + player1.getLP());
 			Log.messageLog(TAG,"LP 2 - " + player2.getLP());
