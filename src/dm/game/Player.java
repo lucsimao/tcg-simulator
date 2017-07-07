@@ -9,6 +9,7 @@ import dm.constants.CardState;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.InvalidDeckException;
 import dm.exceptions.InvalidTextAttributeException;
+import dm.exceptions.LpZeroException;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -99,7 +100,13 @@ public class Player {
 	}
 
 	public void decreaseLp(int decrement) {
-		this.lp -= decrement;
+		if(lp-decrement<0)
+		{
+			lp=0;
+			throw new LpZeroException("LP Chegou a zero");
+		}
+		else
+			this.lp -= decrement;
 	}
 
 	public void setLp(int lp) {

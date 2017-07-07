@@ -22,6 +22,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -35,6 +36,7 @@ import dm.constants.Log;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
 import dm.exceptions.CardNotFoundException;
+import dm.exceptions.LpZeroException;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -228,16 +230,24 @@ public class FieldViewMelhorado extends JPanel {
 						else
 							cursor = MIN_CURSOR + 10;
 						fieldActionView.dispose();
+						
 					}
 				});
 			}
 		} else {
+			try{
 			System.out.println("atacou");
 			if (cursor >= MIN_CURSOR + 20)
 				player1.attack(attackingCard, player2, (MonsterCard) getCard(cursor % 10));
 			else
 				player2.attack(attackingCard, player1, (MonsterCard) getCard(cursor % 10));
 			attackingCard = null;
+	
+			}catch (LpZeroException ex) {
+				JOptionPane.showMessageDialog(null, ex.getMessage(), ex.getClass().getName(),
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+			getParent().revalidate();
 			Log.messageLog(TAG,"LP 1 - " + player1.getLP());
 			Log.messageLog(TAG,"LP 2 - " + player2.getLP());
 			repaint();

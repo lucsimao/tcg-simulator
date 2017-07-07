@@ -100,10 +100,10 @@ public class MainFrame extends JFrame {
 					public void actionPerformed(ActionEvent e) {
 
 						try {
-
+							GameView gameView = builder.getGameView();
 							JPanel localContentPane = defaultContentPane();
 							setContentPane(localContentPane);
-							GameView gameView = builder.getGameView();
+							
 							getContentPane().add(gameView);
 							setBounds(0,0,800,660);
 							validate();
