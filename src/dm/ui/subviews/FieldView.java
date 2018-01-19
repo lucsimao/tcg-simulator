@@ -34,9 +34,7 @@ import dm.constants.CardState;
 import dm.constants.FilesConstants;
 import dm.constants.Log;
 import dm.exceptions.CardNotFoundException;
-import dm.exceptions.LpZeroException;
 import dm.fields.Field;
-import dm.fields.elements.decks.Deck;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
@@ -97,6 +95,9 @@ public class FieldView extends JPanel {
 
 	private MonsterCard attackingCard;
 
+	private ImageIcon screen;
+	
+	
 	public static void main(String args[]) throws IOException {
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -112,6 +113,7 @@ public class FieldView extends JPanel {
 		fv.setFocusable(true);
 		fv.requestFocusInWindow();
 		f.setBounds(0, 0, width, height);
+
 		// try {
 		// Thread.sleep(1000);
 		// fv.getField1().summonMonster((MonsterCard) card);
@@ -144,6 +146,7 @@ public class FieldView extends JPanel {
 		field2 = player2.getField();
 		this.player1 = player1;
 		this.player2 = player2;
+		this.screen = null;
 		try {
 			bufferedImage = ImageIO.read(new File(FilesConstants.TEXTURES_PATH + background_path));
 			// bufferedImage = ImageIO.read(new
@@ -152,7 +155,6 @@ public class FieldView extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		loadDeckImagesResized();
 		
 		// ImageIcon image = new ImageIcon(getBufferedImage());
@@ -167,7 +169,6 @@ public class FieldView extends JPanel {
 		setFocusable(true);
 		this.requestFocusInWindow();
 		addKeyListener(getKeyListener());
-
 		repaint();
 
 	}
@@ -177,44 +178,35 @@ public class FieldView extends JPanel {
 		BufferedImage bufferedImage;
 		try {
 			bufferedImage = ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD));
-			imageTransform.scaleImage(bufferedImage,card_dim.getWidth()/bufferedImage.getWidth() , card_dim.getHeight()/bufferedImage.getWidth(),AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+			bufferedImage = imageTransform.scaleImage(bufferedImage,card_dim.getWidth()*1.0/bufferedImage.getWidth() , card_dim.getHeight()*1.0/bufferedImage.getHeight(),AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 			imageTransform.saveBufferedImageToFile(bufferedImage,FilesConstants.CARDS_IMG_DIR_RESIZED + FilesConstants.FACE_DOWN_CARD,"png");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
-		ArrayList<NormalDeckCard> deck = (ArrayList<NormalDeckCard>) player1.getDeck().getCardsList();
-		for(NormalDeckCard card : deck) {
-			try {
-				bufferedImage = ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + ((Card)card).getPicture()));
-				imageTransform.scaleImage(bufferedImage,card_dim.getWidth()/bufferedImage.getWidth() , card_dim.getHeight()/bufferedImage.getWidth(),AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-				imageTransform.saveBufferedImageToFile(bufferedImage,FilesConstants.CARDS_IMG_DIR_RESIZED +((Card)card).getPicture(),"png");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-			
-		deck = (ArrayList<NormalDeckCard>) player2.getDeck().getCardsList();
-		for(NormalDeckCard card : deck) {
-			try {
-				bufferedImage = ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + ((Card)card).getPicture()));
-				imageTransform.scaleImage(bufferedImage,card_dim.getWidth()/bufferedImage.getWidth() , card_dim.getHeight()/bufferedImage.getWidth(),AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-				imageTransform.saveBufferedImageToFile(bufferedImage,FilesConstants.CARDS_IMG_DIR_RESIZED +((Card)card).getPicture(),"png");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-		
-		
-		
+		saveDeckResized(player1.getDeck());
+		saveDeckResized(player2.getDeck());
 	}
 	
+	public void saveDeckResized(NormalDeck deck) {
+		ImageTransform imageTransform = new ImageTransform();
+		BufferedImage bufferedImage;
+		ArrayList<NormalDeckCard> deck_list = (ArrayList<NormalDeckCard>) deck.getCardsList();
+		for(NormalDeckCard card : deck_list) {
+			try {
+				bufferedImage = ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + ((Card)card).getPicture()));
+				double scaleX = card_dim.getWidth()*1.0/bufferedImage.getWidth();
+				double scaleY = card_dim.getHeight()*1.0/bufferedImage.getHeight();
+				System.out.println("SCALE x = " + scaleX);
+				bufferedImage = imageTransform.scaleImage(bufferedImage, scaleX,scaleY ,AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+				imageTransform.saveBufferedImageToFile(bufferedImage,FilesConstants.CARDS_IMG_DIR_RESIZED +((Card)card).getPicture(),"png");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}	
+	}
 	
 	private KeyListener getKeyListener() {
 		return new KeyAdapter() {
@@ -335,9 +327,10 @@ public class FieldView extends JPanel {
 	public void paint(Graphics g) {
 
 		try {
+			screen = new ImageIcon(it.perspectiveTransform(getBufferedImage(), 6, width, height * 3 / 5));
 			// lblNewLabel.setIcon(new ImageIcon(getBufferedImage()));
-			lblField.setIcon(new ImageIcon(it.perspectiveTransform(getBufferedImage(), 6, width, height * 3 / 5)));
-		} catch (IOException e) {
+			lblField.setIcon(screen);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		super.paint(g);
