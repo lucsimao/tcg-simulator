@@ -17,6 +17,7 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -35,9 +36,11 @@ import dm.constants.Log;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.LpZeroException;
 import dm.fields.Field;
+import dm.fields.elements.decks.Deck;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
+import dm.interfaces.NormalDeckCard;
 import simao.image.ImageMixer;
 import simao.image.ImageTransform;
 
@@ -129,15 +132,14 @@ public class FieldView extends JPanel {
 	 */
 	public FieldView(Player player1, Player player2) {
 		super();
-
-		player1.shuffleDeck();
-		player2.shuffleDeck();
 		this.attackingCard = null;
 		it = new ImageTransform();
 		setPreferredSize(new Dimension(width, height));
 		setMaximumSize(new Dimension(width, height));
 		setLayout(new BorderLayout(0, 0));
-
+		
+		player1.shuffleDeck();
+		player2.shuffleDeck();
 		field1 = player1.getField();
 		field2 = player2.getField();
 		this.player1 = player1;
@@ -151,6 +153,8 @@ public class FieldView extends JPanel {
 			e.printStackTrace();
 		}
 
+		loadDeckImagesResized();
+		
 		// ImageIcon image = new ImageIcon(getBufferedImage());
 		lblField = new JLabel();
 		lblField.setBounds(0, 0, width, height);
@@ -168,6 +172,50 @@ public class FieldView extends JPanel {
 
 	}
 
+	public void loadDeckImagesResized() {
+		ImageTransform imageTransform = new ImageTransform();
+		BufferedImage bufferedImage;
+		try {
+			bufferedImage = ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD));
+			imageTransform.scaleImage(bufferedImage,card_dim.getWidth()/bufferedImage.getWidth() , card_dim.getHeight()/bufferedImage.getWidth(),AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+			imageTransform.saveBufferedImageToFile(bufferedImage,FilesConstants.CARDS_IMG_DIR_RESIZED + FilesConstants.FACE_DOWN_CARD,"png");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		ArrayList<NormalDeckCard> deck = (ArrayList<NormalDeckCard>) player1.getDeck().getCardsList();
+		for(NormalDeckCard card : deck) {
+			try {
+				bufferedImage = ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + ((Card)card).getPicture()));
+				imageTransform.scaleImage(bufferedImage,card_dim.getWidth()/bufferedImage.getWidth() , card_dim.getHeight()/bufferedImage.getWidth(),AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+				imageTransform.saveBufferedImageToFile(bufferedImage,FilesConstants.CARDS_IMG_DIR_RESIZED +((Card)card).getPicture(),"png");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+			
+		deck = (ArrayList<NormalDeckCard>) player2.getDeck().getCardsList();
+		for(NormalDeckCard card : deck) {
+			try {
+				bufferedImage = ImageIO.read(new File(FilesConstants.CARDS_IMG_DIR + ((Card)card).getPicture()));
+				imageTransform.scaleImage(bufferedImage,card_dim.getWidth()/bufferedImage.getWidth() , card_dim.getHeight()/bufferedImage.getWidth(),AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+				imageTransform.saveBufferedImageToFile(bufferedImage,FilesConstants.CARDS_IMG_DIR_RESIZED +((Card)card).getPicture(),"png");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+		
+	}
+	
+	
 	private KeyListener getKeyListener() {
 		return new KeyAdapter() {
 			@Override
@@ -354,8 +402,8 @@ public class FieldView extends JPanel {
 				if (this.cursor == 30 + i)
 					selected = true;
 				NonMonsterCard card = field2.getNonMonsterCard(i);
-				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
-				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
+				File file = new File(FilesConstants.CARDS_IMG_DIR_RESIZED + card.getPicture());
+				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR_RESIZED + FilesConstants.FACE_DOWN_CARD);
 				// boolean selected = false;
 				// System.out.println("STATE " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
@@ -385,8 +433,8 @@ public class FieldView extends JPanel {
 				if (this.cursor == MIN_CURSOR + i)
 					selected = true;
 				NonMonsterCard card = field1.getNonMonsterCard(i);
-				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
-				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
+				File file = new File(FilesConstants.CARDS_IMG_DIR_RESIZED + card.getPicture());
+				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR_RESIZED + FilesConstants.FACE_DOWN_CARD);
 				// System.out.println("STATE " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
 					bufferedImage = im.mixImages(selected, bufferedImage, file, new Dimension(width, height), card_dim,
@@ -418,8 +466,8 @@ public class FieldView extends JPanel {
 				if (this.cursor == MIN_CURSOR + 20 + i)
 					selected = true;
 				MonsterCard card = field2.getMonsterCard(i);
-				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
-				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
+				File file = new File(FilesConstants.CARDS_IMG_DIR_RESIZED + card.getPicture());
+				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR_RESIZED + FilesConstants.FACE_DOWN_CARD);
 				// System.out.println("STATE " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
 					bufferedImage = im.mixImages(selected, bufferedImage,
@@ -454,7 +502,7 @@ public class FieldView extends JPanel {
 				if (this.cursor == MIN_CURSOR + 10 + i)
 					selected = true;
 				MonsterCard card = field1.getMonsterCard(i);
-				File file = new File(FilesConstants.CARDS_IMG_DIR + card.getPicture());
+				File file = new File(FilesConstants.CARDS_IMG_DIR_RESIZED + card.getPicture());
 				File face_down_file = new File(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD);
 				// System.out.println("STATE " + card.getState());
 				if (card.getState() == CardState.FACE_UP_ATTACK)
