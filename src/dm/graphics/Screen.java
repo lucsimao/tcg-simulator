@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
+
+import javaxt.io.Image;
 
 public class Screen {
     Graphics2D g;
@@ -83,5 +86,45 @@ public class Screen {
                     xa, ya, xa + larg, ya + alt, null);
         g.setTransform(trans);
     }
+   
+    public void imageScaled(String arquivo, int xa, int ya, int larg, int alt, double dir, double x, double y) {
+        if(!sprites.containsKey(arquivo)) {
+            try {
+                sprites.put(arquivo, ImageIO.read(new File(arquivo)));
+            } catch(java.io.IOException ioex) {
+                throw new RuntimeException(ioex);
+            }
+        }
+        BufferedImage image = sprites.get(arquivo);
+    	AffineTransform trans = g.getTransform();
+    	ImageManip imageManip = new ImageManip();
+    	image = imageManip.scaleTransform(image, larg*1.0/image.getWidth(),alt*1.0/image.getHeight());
+    	g.drawImage(image,(int)Math.round(x),(int)Math.round(y),null);
+        g.setTransform(trans);
+    }
+    
+    public void imageScaledPerspective(String arquivo, int xa, int ya, int larg, int alt, double dir, double x, double y) {
+        if(!sprites.containsKey(arquivo)) {
+            try {
+                sprites.put(arquivo, ImageIO.read(new File(arquivo)));
+            } catch(java.io.IOException ioex) {
+                throw new RuntimeException(ioex);
+            }
+        }
+        ImageManip imageManip = new ImageManip();
+        
+        BufferedImage image = sprites.get(arquivo);
+    	AffineTransform trans = g.getTransform();
+	    trans.scale(larg*1.0/image.getWidth(),alt*1.0/image.getHeight());
+	    image = new AffineTransformOp(trans, AffineTransformOp.TYPE_BICUBIC).filter(image, null);
+//    	image = trans.scaleImage(image,x*1.0/image.getWidth() , y*1.0/image.getHeight(),AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+	    image = imageManip.perspectiveTransform(image,6, image.getWidth(), image.getHeight());
+        g.rotate(dir, x + larg/2, y + alt/2);
+        g.drawImage(image, (int)Math.round(x), (int)Math.round(y), (int)Math.round(x) + larg, (int)Math.round(y) + alt,
+                    xa, ya, xa + larg, ya + alt, null);
+        g.setTransform(trans);
+    }
+    
+
     
 }

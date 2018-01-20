@@ -24,25 +24,28 @@ public class Engine {
 	private Canvas canvas;
 	private BufferStrategy strategy;
     private Game game;
+    private JPanel panel;
+    private JFrame container;
     
     public TreeSet<String> keySet = new TreeSet<String>();
 	public Engine(Game game) {
 		this.game = game;
 		canvas = new Canvas();
-		JFrame container = new JFrame("YU GI OH");
-        JPanel panel = (JPanel) container.getContentPane();
+		container = new JFrame("YU GI OH");
+        panel = (JPanel) container.getContentPane();
         panel.setPreferredSize(new Dimension(
                 game.getWidth(),game.getHeight()));
         panel.setLayout(null);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] gs = ge.getScreenDevices();
         Rectangle bounds = gs[gs.length-1].getDefaultConfiguration().getBounds();
-        container.setResizable(false);
+        container.setExtendedState(container.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+//        container.setResizable(false);
         container.setBounds(bounds.x+(bounds.width - game.getWidth())/2,
                 bounds.y+(bounds.height - game.getHeight())/2,
                 game.getWidth(),game.getHeight());
         canvas.setBounds(0,0,game.getWidth(),game.getHeight());
-        panel.add(canvas);        
+        panel.add(canvas);                 
         canvas.setIgnoreRepaint(true);
         container.pack();
         container.setVisible(true);
@@ -68,6 +71,8 @@ public class Engine {
         canvas.createBufferStrategy(2);
         strategy = canvas.getBufferStrategy();
         canvas.requestFocus();
+        game.setHeight(panel.getHeight());
+        game.setWidth(panel.getWidth());
         mainLoop();
 	}
 	
@@ -130,6 +135,15 @@ public class Engine {
 	            }
 	        }
 	    }
+	
+	public int getWidth() {
+		return panel.getWidth();
+	}
+	
+	public int getHeight() {
+		return panel.getHeight();
+	}
+	
 }
 
 
