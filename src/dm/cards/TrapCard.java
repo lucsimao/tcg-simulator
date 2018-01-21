@@ -3,6 +3,7 @@ package dm.cards;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardType;
 import dm.constants.ColorPicture;
+import dm.constants.FilesConstants;
 import dm.constants.TrapType;
 import dm.exceptions.NoEffectException;
 import dm.interfaces.NormalDeckCard;
@@ -28,7 +29,7 @@ public class TrapCard extends NonMonsterCard implements NormalDeckCard {
 	}
 
 	public TrapCard() throws NoEffectException {
-		super(nameGenerator(), "Teste de descrição", CardType.TRAP, ColorPicture.TRAP, null, new Effect(), 3);
+		super(nameGenerator(), "Teste de descrição", CardType.TRAP, ColorPicture.TRAP, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, new Effect(), 3);
 		this.type = TrapType.NORMAL;
 	}
 }

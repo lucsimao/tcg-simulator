@@ -2,6 +2,7 @@ package dm.cards;
 
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
+import dm.constants.FilesConstants;
 import dm.interfaces.NormalDeckCard;
 
 /**
@@ -25,12 +26,12 @@ public class MonsterNormalCard extends MonsterCard implements NormalDeckCard {
 	}
 
 	public MonsterNormalCard() {
-		super(nameGenerator(), "Carta padrão para testes", ColorPicture.NORMAL, null, 0, 0, 0, 0, null, 3);
+		super(nameGenerator(), "Carta padrão para testes", ColorPicture.NORMAL, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, 0, 0, 0, 0, null, 3);
 		// System.out.println("carta criada " + nameGenerator());
 	}
 
 	public MonsterNormalCard(int copies_number) {
-		super(nameGenerator(), "Carta padrão para testes", ColorPicture.NORMAL, null, 0, 0, 0, 0, null, copies_number);
+		super(nameGenerator(), "Carta padrão para testes", ColorPicture.NORMAL, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, 0, 0, 0, 0, null, copies_number);
 	}
 
 }

@@ -2,6 +2,7 @@ package dm.cards;
 
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
+import dm.constants.FilesConstants;
 import dm.exceptions.EffectMonsterWithNoEffectException;
 import dm.interfaces.NormalDeckCard;
 
@@ -28,7 +29,7 @@ public class MonsterEffectCard extends MonsterCard implements NormalDeckCard {
 	}
 
 	public MonsterEffectCard() {
-		super(nameGenerator(), "Texto padrão", ColorPicture.NORMAL, null, 0, 0, 0, 0, new Effect(), 3);
+		super(nameGenerator(), "Texto padrão", ColorPicture.NORMAL, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, 0, 0, 0, 0, new Effect(), 3);
 	}
 
 }

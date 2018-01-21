@@ -3,6 +3,7 @@ package dm.cards;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardType;
 import dm.constants.ColorPicture;
+import dm.constants.FilesConstants;
 import dm.constants.SpellType;
 import dm.exceptions.NoEffectException;
 import dm.interfaces.NormalDeckCard;
@@ -28,7 +29,7 @@ public class SpellCard extends NonMonsterCard implements NormalDeckCard {
 	}
 
 	public SpellCard() throws NoEffectException {
-		super(nameGenerator(), "Carta mágica padrão para testes", CardType.SPELL, ColorPicture.SPELL, null,
+		super(nameGenerator(), "Carta mágica padrão para testes", CardType.SPELL, ColorPicture.SPELL, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE,
 				new Effect(), 3);
 		this.type = SpellType.NORMAL;
 	}
