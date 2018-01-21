@@ -52,8 +52,18 @@ public class Yugioh implements Game{
 
 	@Override
 	public void draw(Screen screen) {
-		screen.imageScaled("images/textures/background2.jpg", 0, 0, getWidth(), getHeight(), 0,0, 0);
-		screen.imageScaledPerspective("images/textures/field2.png", 0, 0, getWidth()*2/3, getHeight()/2, 0,getWidth()/2 - getWidth()/3, getHeight()/4);
+		
+		int card_width  = Math.round(getWidth()/27.69f);
+		int card_height = Math.round(getHeight()/11.7f) ;
+		int card_dis_x  = Math.round(getWidth()/15.16f);
+		
+		screen.imageScaled("images/textures/background.jpg", 0, 0, getWidth(), getHeight(), 0,0, 0);
+//		screen.imageScaledPerspective("images/textures/field2.png", 0, 0, getWidth()*2/3, getHeight()/2, 0,getWidth()/2 - getWidth()/3, getHeight()/4);
+		System.out.println("TAMANHO DA TELA: WIDTH: "+ getWidth() + "  HEIGHT: " + getHeight());
+		screen.imageScaled("images/textures/field2.png", 0, 0, getWidth()*3/5, getHeight()*2/3, 0,getWidth()/2 - getWidth()*3/10, getHeight()/2 - getHeight()/3);
+		for(int i=0;i<5;i++) {
+			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/1.7445));
+		}
 	}
 
 	public static void main(String args[]) {

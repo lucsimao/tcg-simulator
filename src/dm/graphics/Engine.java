@@ -39,7 +39,7 @@ public class Engine {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] gs = ge.getScreenDevices();
         Rectangle bounds = gs[gs.length-1].getDefaultConfiguration().getBounds();
-        container.setExtendedState(container.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+//        container.setExtendedState(container.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 //        container.setResizable(false);
         container.setBounds(bounds.x+(bounds.width - game.getWidth())/2,
                 bounds.y+(bounds.height - game.getHeight())/2,
@@ -80,6 +80,9 @@ public class Engine {
         Timer t = new Timer(5, new ActionListener() {
             public long t0;
             public void actionPerformed(ActionEvent evt) {
+                game.setHeight(panel.getHeight());
+                game.setWidth(panel.getWidth());
+            	
                 long t1 = System.currentTimeMillis();
                 if(t0 == 0)
                     t0 = t1;
