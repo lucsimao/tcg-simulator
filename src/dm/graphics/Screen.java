@@ -1,5 +1,6 @@
 package dm.graphics;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -10,8 +11,6 @@ import java.io.File;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
-
-import javaxt.io.Image;
 
 public class Screen {
     Graphics2D g;
@@ -52,14 +51,15 @@ public class Screen {
                 lado, color);
     }
 
-    public void rectangle(int x, int y, int largura, int altura, Color color) {
+    public void rectangle(int x, int y, int largura, int altura, Color color,float alpha) {
+    	g.setComposite(AlphaComposite.SrcOver.derive(alpha));
         g.setColor(color);
         g.fillRect(x, y, largura, altura);
     }
 
-    public void rectangle(double x, double y, int largura, int altura, Color color) {
+    public void rectangle(double x, double y, int largura, int altura, Color color,float alpha) {
         rectangle((int)Math.round(x), (int)Math.round(y),
-                   largura, altura, color);
+                   largura, altura, color,alpha);
     }
 
     public void text(String text, int x, int y, int tamanho, Color color) {
@@ -87,7 +87,7 @@ public class Screen {
         g.setTransform(trans);
     }
    
-    public void imageScaled(String arquivo, int xa, int ya, int larg, int alt, double dir, double x, double y) {
+    public void imageScaled(String arquivo, int xa, int ya, int larg, int alt, double dir, double x, double y, float alpha) {
         if(!sprites.containsKey(arquivo)) {
             try {
                 sprites.put(arquivo, ImageIO.read(new File(arquivo)));
@@ -99,6 +99,7 @@ public class Screen {
     	AffineTransform trans = g.getTransform();
     	ImageManip imageManip = new ImageManip();
     	image = imageManip.scaleTransform(image, larg*1.0/image.getWidth(),alt*1.0/image.getHeight());
+    	g.setComposite(AlphaComposite.SrcOver.derive(alpha));
     	g.drawImage(image,(int)Math.round(x),(int)Math.round(y),null);
         g.setTransform(trans);
     }

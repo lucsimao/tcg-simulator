@@ -4,12 +4,10 @@ import java.awt.event.MouseEvent;
 
 import dm.cards.abstracts.Card;
 
-public class CardGraphicField extends ElementGraphic {
+public class ButtonGraphic extends ElementGraphic {
 
-
-	public CardGraphicField(Card card, int x, int y, int width, int height) {
+	public ButtonGraphic(Card card, int x, int y, int width, int height) {
 		super(card, x, y, width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -23,7 +21,5 @@ public class CardGraphicField extends ElementGraphic {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 	
 }

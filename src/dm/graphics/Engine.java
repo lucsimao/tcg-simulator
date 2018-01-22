@@ -43,7 +43,7 @@ public class Engine {
         GraphicsDevice[] gs = ge.getScreenDevices();
         Rectangle bounds = gs[gs.length-1].getDefaultConfiguration().getBounds();
 //        container.setExtendedState(container.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-//        container.setResizable(false);
+        container.setResizable(false);
         container.setBounds(bounds.x+(bounds.width - game.getWidth())/2,
                 bounds.y+(bounds.height - game.getHeight())/2,
                 game.getWidth(),game.getHeight());
@@ -68,7 +68,7 @@ public class Engine {
             }
             @Override
             public void keyTyped(KeyEvent evt) {
-//                game.tecla(keyString(evt));
+                game.key(keyString(evt));
             }
         });           
         

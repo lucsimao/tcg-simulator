@@ -1,69 +1,64 @@
 package dm.graphics;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Set;
 
 import dm.cards.MonsterEffectCard;
 import dm.cards.abstracts.Card;
+import dm.fields.Field;
+import dm.fields.elements.decks.ExtraDeck;
+import dm.fields.elements.decks.NormalDeck;
+import dm.game.Player;
 
-public class Yugioh implements Game{
+public class Yugioh extends Game{
 
-	private int width;
-	private int height;
-	CardGraphic card;
+	private final int card_width  = Math.round(getWidth()/27.69f);
+	private final int card_height = Math.round(getHeight()/11.7f) ;
+	private final int card_dis_x  = Math.round(getWidth()/15.16f);
+	private final int padding = Math.round(getWidth()/144);
+	private final int card_view_width = Math.round(getWidth()/8.136f);
+	private final int card_view_height = Math.round(getHeight()/3.469f);
 	
-	public Yugioh() {
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		this.width = (int) screenSize.getWidth();
-		this.height = (int) screenSize.getHeight();
+	private Player player1;
+	private Player player2;
+	
+	ElementGraphic card;
+	private Field field1;
+	private Field field2;
+	ArrayList<Card> hand;
+	private ArrayList<ElementGraphic> elements;
+	
+	public Yugioh(Player player1, Player player2) {
+//		super((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+		super(900,650);
 		
-		int card_width  = Math.round(getWidth()/27.69f);
-		int card_height = Math.round(getHeight()/11.7f) ;
-		int card_dis_x  = Math.round(getWidth()/15.16f);
-		int padding = Math.round(getWidth()/144);
-		int card_view_width = Math.round(getWidth()/8.136f);
-		int card_view_height = Math.round(getHeight()/3.469f);
-		Card c = new MonsterEffectCard();
-		card = new CardGraphicHand(c, padding + 460,padding + 700,card_view_width/2, card_view_height/2);
+//		Card c = new MonsterEffectCard();
+//		card = new CardGraphicHand(c, padding + 460,padding + 700,card_view_width/2, card_view_height/2);
+		this.player1 = player1;
+		this.player2 = player2;
 		
+		field1 = player1.getField();
+		field2 = player2.getField();
+		player1.firstDraw();
+		
+		this.elements = new ArrayList<ElementGraphic>();
+		
+		hand = (ArrayList<Card>) player1.getField().getHand().getCardsList();
+		createCards(hand, padding + Math.round(getWidth()/3.13f),Math.round(getHeight() -  card_view_height*2/5), card_view_width/2, card_view_height/2, card_dis_x);
 	}
 	
-	@Override
-	public String getTitle() {
-		return "Yu-gi-oh!";
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	@Override
-	public int getWidth() {
-		return this.width;
-	}
-
-	@Override
-	public int getHeight() {
-		return height;
-	}
-
-	@Override
-	public void tick(Set<String> teclas, double dt) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void key(String tecla) {
-		// TODO Auto-generated method stub
-		
+		if(tecla.equals(" ")){
+			player1.draw();
+//			scorenumber.setScore(0);
+//			proxCena().executa();
+		}
 	}
 
 	@Override
@@ -78,39 +73,75 @@ public class Yugioh implements Game{
 	@Override
 	public void move(MouseEvent mouseEvent) {
 		try {
-			card.ClickAction(mouseEvent);
+			for(ElementGraphic e : elements)
+				e.hoverAction(mouseEvent);
 //		else
 //			System.out.println("FORA");
 		}catch (Exception e) {
-			System.out.println("EXCEPTION");
+			e.printStackTrace();
 		}
 	}
 	
-	public void varrerField() {
-		//TODO
+	public void createCards(ArrayList<Card> cards,int x,int y,int width,int height, int distance) {
+		for(int i = 0;i<cards.size();i++) {
+			card = new CardGraphicHand(cards.get(i), x + i*distance,y,width,height);
+			if(!elements.contains(card))
+				elements.add(card);
+//			card.drawItself(screen);
+		}
 	}
 	
-	public void varrerMao() {
-		 
+	private void drawCards(Screen screen,ArrayList<ElementGraphic> elements) {
+		for(ElementGraphic e : elements)
+			e.drawItself(screen);
 	}
+
 	
 	@Override
-	public void draw(Screen screen) {
+	public void draw(Screen screen) {		
+		//		c, padding + 460,padding + 700,card_view_width/2, card_view_height/2
 		
-		int card_width  = Math.round(getWidth()/27.69f);
-		int card_height = Math.round(getHeight()/11.7f) ;
-		int card_dis_x  = Math.round(getWidth()/15.16f);
-		int padding = Math.round(getWidth()/144);
-		int card_view_width = Math.round(getWidth()/8.136f);
-		int card_view_height = Math.round(getHeight()/3.469f);
-		screen.imageScaled("images/textures/background.jpg", 0, 0, getWidth(), getHeight(), 0,0, 0);
+		
+//		int padding = Math.round(getWidth()/144);
+//		int card_view_width = Math.round(getWidth()/8.136f);
+//		int card_view_height = Math.round(getHeight()/3.469f);
+		screen.imageScaled("images/textures/background.jpg", 0, 0, getWidth(), getHeight(), 0,0, 0,1);
 //		screen.imageScaledPerspective("images/textures/field2.png", 0, 0, getWidth()*2/3, getHeight()/2, 0,getWidth()/2 - getWidth()/3, getHeight()/4);
 //		System.out.println("TAMANHO DA TELA: WIDTH: "+ getWidth() + "  HEIGHT: " + getHeight());
-		screen.imageScaled("images/textures/field2.png", 0, 0, getWidth()*3/5, getHeight()*2/3, 0,getWidth()/2 - getWidth()*3/10, getHeight()/2 - getHeight()/3);
+		screen.imageScaled("images/textures/field2.png", 0, 0, getWidth()*3/5, getHeight()*2/3, 0,getWidth()/2 - getWidth()*3/10, getHeight()/2 - getHeight()/3,1);
 		
-		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width, card_view_height,0, padding,padding);
-		screen.text("EXODIA O CAPIROTEX", 10,290, 20, Color.WHITE);
-//		for(int i=0;i<5;i++) {
+		/**Magicas player 1 */
+		screen.rectangle(299,434, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 60,434, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 120,434, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 179,434, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 239,434, 58, 66, Color.WHITE,0.4f);
+		
+		/**Monstros player 1 */
+		screen.rectangle(299,369, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 60,369, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 120,369, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 179,369, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 239,369, 58, 66, Color.WHITE,0.4f);
+		
+		/**Monstros player 2 */
+		screen.rectangle(299,218, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 60,218, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 120,218, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 179,218, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 239,218, 58, 66, Color.WHITE,0.4f);
+		/**Magias player 2 */
+		screen.rectangle(299,153, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 60,153, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 120,153, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 179,153, 58, 66, Color.WHITE,0.4f);
+		screen.rectangle(299 + 239,153, 58, 66, Color.WHITE,0.4f);
+		
+//		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width, card_view_height,0, padding,padding);
+//		screen.text("EXODIA O CAPIROTEX", 10,290, 20, Color.WHITE);
+		
+		
+		//		for(int i=0;i<5;i++) {
 //			
 //			Card c = new MonsterEffectCard();
 //			card = new CardGraphicField(c,Math.round(getWidth()/2.89f) + card_dis_x * i ,Math.round(getHeight()/2.94f), card_width ,card_height);
@@ -130,7 +161,9 @@ public class Yugioh implements Game{
 //		}
 //		Card c = new MonsterEffectCard();
 //		card = new CardGraphicHand(c, padding + 460,padding + 700,card_view_width/2, card_view_height/2);
-		card.drawItself(screen);
+//		card.drawItself(screen);
+		
+		drawCards(screen,elements);
 		
 //		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width/2, card_view_height/2,0, padding + 460,padding + 700);
 //		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width/2, card_view_height/2,0, padding + 560,padding + 700);
@@ -138,10 +171,18 @@ public class Yugioh implements Game{
 //		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width/2, card_view_height/2,0, padding + 760,padding + 700);
 //		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width/2, card_view_height/2,0, padding + 860,padding + 700);
 //		System.out.println("TAMANHO: " + (Math.round(getHeight()/1.7445) + 89));
-	}
+	}	
 	
+	@Override
+	public void tick(Set<String> teclas, double dt) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public static void main(String args[]) {
-		new Engine(new Yugioh());
+		Player player1 = new Player("teste1", null, new NormalDeck(50), new ExtraDeck());
+		Player player2 = new Player("teste2", null, new NormalDeck(50), new ExtraDeck());
+		new Engine(new Yugioh(player1,player2));
 	}
 	
 }
