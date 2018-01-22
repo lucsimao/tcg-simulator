@@ -27,12 +27,12 @@ public class Yugioh extends Game{
 	private Player player1;
 	private Player player2;
 	
-	ElementGraphic card;
+	CardGraphic card;
 	private Field field1;
 	private Field field2;
 	ArrayList<Card> hand;
 	private ArrayList<ElementGraphic> elements;
-	
+	private SelectionGraphicElement selectionGraphicElement;
 	public Yugioh(Player player1, Player player2) {
 //		super((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		super(900,650);
@@ -50,6 +50,9 @@ public class Yugioh extends Game{
 		
 		hand = (ArrayList<Card>) player1.getField().getHand().getCardsList();
 		createCards(hand, padding + Math.round(getWidth()/3.13f),Math.round(getHeight() -  card_view_height*2/5), card_view_width/2, card_view_height/2, card_dis_x);
+		selectionGraphicElement = new SelectionGraphicElement(58, 66, 299,2,
+				434,153,369,218);
+		elements.add(selectionGraphicElement);
 	}
 	
 	@Override
@@ -91,8 +94,8 @@ public class Yugioh extends Game{
 		}
 	}
 	
-	private void drawCards(Screen screen,ArrayList<ElementGraphic> elements) {
-		for(ElementGraphic e : elements)
+	private void drawCards(Screen screen,ArrayList<ElementGraphic> elements2) {
+		for(ElementGraphic e : elements2)
 			e.drawItself(screen);
 	}
 
@@ -111,31 +114,33 @@ public class Yugioh extends Game{
 		screen.imageScaled("images/textures/field2.png", 0, 0, getWidth()*3/5, getHeight()*2/3, 0,getWidth()/2 - getWidth()*3/10, getHeight()/2 - getHeight()/3,1);
 		
 		/**Magicas player 1 */
-		screen.rectangle(299,434, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 60,434, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 120,434, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 179,434, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 239,434, 58, 66, Color.WHITE,0.4f);
+
 		
-		/**Monstros player 1 */
-		screen.rectangle(299,369, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 60,369, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 120,369, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 179,369, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 239,369, 58, 66, Color.WHITE,0.4f);
-		
-		/**Monstros player 2 */
-		screen.rectangle(299,218, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 60,218, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 120,218, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 179,218, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 239,218, 58, 66, Color.WHITE,0.4f);
-		/**Magias player 2 */
-		screen.rectangle(299,153, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 60,153, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 120,153, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 179,153, 58, 66, Color.WHITE,0.4f);
-		screen.rectangle(299 + 239,153, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299,434, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 60,434, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 120,434, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 179,434, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 239,434, 58, 66, Color.WHITE,0.4f);
+//		
+//		/**Monstros player 1 */
+//		screen.rectangle(299,369, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 60,369, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 120,369, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 179,369, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 239,369, 58, 66, Color.WHITE,0.4f);
+//		
+//		/**Monstros player 2 */
+//		screen.rectangle(299,218, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 60,218, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 120,218, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 179,218, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 239,218, 58, 66, Color.WHITE,0.4f);
+//		/**Magias player 2 */
+//		screen.rectangle(299,153, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 60,153, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 120,153, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 179,153, 58, 66, Color.WHITE,0.4f);
+//		screen.rectangle(299 + 239,153, 58, 66, Color.WHITE,0.4f);
 		
 //		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width, card_view_height,0, padding,padding);
 //		screen.text("EXODIA O CAPIROTEX", 10,290, 20, Color.WHITE);
@@ -162,7 +167,7 @@ public class Yugioh extends Game{
 //		Card c = new MonsterEffectCard();
 //		card = new CardGraphicHand(c, padding + 460,padding + 700,card_view_width/2, card_view_height/2);
 //		card.drawItself(screen);
-		
+		selectionGraphicElement.drawItself(screen);
 		drawCards(screen,elements);
 		
 //		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width/2, card_view_height/2,0, padding + 460,padding + 700);

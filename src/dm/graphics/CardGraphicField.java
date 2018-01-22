@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 
 import dm.cards.abstracts.Card;
 
-public class CardGraphicField extends ElementGraphic {
+public class CardGraphicField extends CardGraphic {
 
 
 	public CardGraphicField(Card card, int x, int y, int width, int height) {

@@ -2,32 +2,35 @@ package dm.graphics;
 
 import java.awt.event.MouseEvent;
 
-import dm.cards.abstracts.Card;
-
-public abstract class ElementGraphic {
-
+public abstract class ElementGraphic{
 	private int x;
 	private int y;
 	private int width;
 	private int height;
 	private float alpha;
-	private Card card;
-
-	public ElementGraphic(Card card,int x, int y, int width, int height) {
-		super();
+	
+	public ElementGraphic(int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.card = card;
+
 		this.alpha = 1;
 	}
 	
 	
+	public ElementGraphic(int x, int y, int width, int height,float alpha) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+
+		this.alpha = alpha;
+	}
+	
 	public float getAlpha() {
 		return alpha;
 	}
-
 
 	public void setAlpha(float alpha) {
 		this.alpha = alpha;
@@ -54,10 +57,6 @@ public abstract class ElementGraphic {
 	public void setY(int y) {
 		this.y = y;
 	}
-
-	public void drawItself(Screen screen){
-		screen.imageScaled(card.getPicture(), 0, 0,width ,height, 0,x,y,this.alpha);
-	}
 	
 	boolean isOverIt(int x,int y) {
 		if(x>=this.x && x<=this.x+width && y>=this.y&&y<=this.y + height)
@@ -65,6 +64,7 @@ public abstract class ElementGraphic {
 		return false;
 	}
 	
+	public abstract void drawItself(Screen screen);
 	public abstract void hoverAction(MouseEvent mouseEvent);
 	public abstract void ClickAction(MouseEvent mouseEvent);
 }

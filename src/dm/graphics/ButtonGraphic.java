@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 
 import dm.cards.abstracts.Card;
 
-public class ButtonGraphic extends ElementGraphic {
+public class ButtonGraphic extends CardGraphic {
 
 	public ButtonGraphic(Card card, int x, int y, int width, int height) {
 		super(card, x, y, width, height);

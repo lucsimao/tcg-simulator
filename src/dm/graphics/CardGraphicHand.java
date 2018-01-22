@@ -5,7 +5,7 @@ import java.lang.Thread.State;
 
 import dm.cards.abstracts.Card;
 
-public class CardGraphicHand extends ElementGraphic {
+public class CardGraphicHand extends CardGraphic {
 
 	private int x_temp;
 	private int y_temp;
@@ -15,7 +15,7 @@ public class CardGraphicHand extends ElementGraphic {
 		super(card, x, y, width, height);
 		this.x_temp = x;
 		this.y_temp = y;
-		blinkAnimation();
+		t = new Thread();
 	}
 
 	@Override
