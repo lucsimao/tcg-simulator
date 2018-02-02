@@ -50,8 +50,9 @@ public class Yugioh extends Game{
 		
 		hand = (ArrayList<Card>) player1.getField().getHand().getCardsList();
 		createCards(hand, padding + Math.round(getWidth()/3.13f),Math.round(getHeight() -  card_view_height*2/5), card_view_width/2, card_view_height/2, card_dis_x);
-		selectionGraphicElement = new SelectionGraphicElement(58, 66, 299,2,
-				434,153,369,218);
+		selectionGraphicElement = new SelectionGraphicElement(54, 61, 302,5,
+				434,155,369,221,295,299 + 61,299 + 61 + 121);
+		selectionGraphicElement.setColor(Color.RED);
 		elements.add(selectionGraphicElement);
 	}
 	
@@ -111,13 +112,35 @@ public class Yugioh extends Game{
 		screen.imageScaled("images/textures/background.jpg", 0, 0, getWidth(), getHeight(), 0,0, 0,1);
 //		screen.imageScaledPerspective("images/textures/field2.png", 0, 0, getWidth()*2/3, getHeight()/2, 0,getWidth()/2 - getWidth()/3, getHeight()/4);
 //		System.out.println("TAMANHO DA TELA: WIDTH: "+ getWidth() + "  HEIGHT: " + getHeight());
-		screen.imageScaled("images/textures/field2.png", 0, 0, getWidth()*3/5, getHeight()*2/3, 0,getWidth()/2 - getWidth()*3/10, getHeight()/2 - getHeight()/3,1);
+		screen.imageScaled("images/textures/field3.png", 0, 0, getWidth()*3/5, getHeight()*2/3, 0,getWidth()/2 - getWidth()*3/10 , getHeight()/2 - getHeight()/3,1);
 		
 		/**Magicas player 1 */
 
 		
-//		screen.rectangle(299,434, 58, 66, Color.WHITE,0.4f);
-//		screen.rectangle(299 + 60,434, 58, 66, Color.WHITE,0.4f);
+		int special_zone_x = 608;
+		int special_zone_height = 59;
+		int special_zone_width = 39;
+		int deck_1_y = 473;
+		//DECK 1
+		screen.rectangle(special_zone_x,474, special_zone_width, special_zone_height, Color.RED,0.4f);
+		//PENDULUM
+		screen.rectangle(special_zone_x,404, special_zone_width, special_zone_height, Color.RED,0.4f);
+		//GRAVE1
+		screen.rectangle(special_zone_x,332, special_zone_width, special_zone_height, Color.RED,0.4f);
+		//BAN2 
+		screen.rectangle(special_zone_x,188, special_zone_width, special_zone_height, Color.RED,0.4f);
+		//BAN2 
+		screen.rectangle(special_zone_x,118, special_zone_width, special_zone_height, Color.RED,0.4f);
+		//DECK2
+		screen.rectangle(special_zone_x - 360,118, special_zone_width, special_zone_height, Color.RED,0.4f);
+		
+		
+		//		screen.rectangle(299 + 60,434, 58, 64, Color.RED,0.4f);
+//		//EXTRA ZONE1
+//		screen.rectangle(299 + 61,295, 54, 61, Color.RED,0.4f);
+//		//EXTRA ZONE2
+//		screen.rectangle(299 + 61 + 121,295, 54, 61, Color.RED,0.4f);
+		
 //		screen.rectangle(299 + 120,434, 58, 66, Color.WHITE,0.4f);
 //		screen.rectangle(299 + 179,434, 58, 66, Color.WHITE,0.4f);
 //		screen.rectangle(299 + 239,434, 58, 66, Color.WHITE,0.4f);
@@ -155,9 +178,9 @@ public class Yugioh extends Game{
 ////			screen.imageScaled("images/cards/default.jpg", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/2.94));
 //		}
 		
-//		for(int i=0;i<5;i++) {
-//			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/4.15));
-//		}
+		for(int i=0;i<5;i++) {
+			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/4.15),1);
+		}
 //		for(int i=0;i<5;i++) {
 //			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/1.7445));
 //		}
