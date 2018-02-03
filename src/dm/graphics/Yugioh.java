@@ -10,6 +10,7 @@ import java.util.Set;
 
 import dm.cards.MonsterEffectCard;
 import dm.cards.abstracts.Card;
+import dm.constants.FilesConstants;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -27,7 +28,7 @@ public class Yugioh extends Game{
 	private Player player1;
 	private Player player2;
 	
-	CardGraphic card;
+	CardGraphicHand card;
 	private Field field1;
 	private Field field2;
 	ArrayList<Card> hand;
@@ -52,8 +53,22 @@ public class Yugioh extends Game{
 		createCards(hand, padding + Math.round(getWidth()/3.13f),Math.round(getHeight() -  card_view_height*2/5), card_view_width/2, card_view_height/2, card_dis_x);
 		selectionGraphicElement = new SelectionGraphicElement(54, 61, 302,5,
 				434,155,369,221,295,299 + 61,299 + 61 + 121);
-		selectionGraphicElement.setColor(Color.RED);
+//		selectionGraphicElement.setColor(Color.RED);
+		
+		ButtonGraphic draw = new ButtonGraphic("DRAW",getWidth() - 130,60 + 100,100, 50);
+		ButtonGraphic M1 = new ButtonGraphic("M1",getWidth() - 130,60 + 160,100, 50);
+		ButtonGraphic BP = new ButtonGraphic("BP",getWidth() - 130,60 + 220,100, 50);
+		ButtonGraphic M2 = new ButtonGraphic("M2",getWidth() - 130,60 + 280,100, 50);
+		ButtonGraphic EP = new ButtonGraphic("EP",getWidth() - 130,60 + 340,100, 50);
+		
 		elements.add(selectionGraphicElement);
+		elements.add(draw);
+		elements.add(M1);
+		elements.add(BP);
+		elements.add(M2);
+		elements.add(EP);
+		
+		
 	}
 	
 	@Override
@@ -67,11 +82,21 @@ public class Yugioh extends Game{
 
 	@Override
 	public void mouse(MouseEvent mouseEvent) {
-		if(mouseEvent.getButton()== MouseEvent.BUTTON1)
-			if(card.isOverIt(mouseEvent.getX(),mouseEvent.getY()))
-				System.out.println("EM CIMA");
-			else
-				System.out.println("FORA");
+//		if(mouseEvent.getButton()== MouseEvent.BUTTON1)
+//		{
+//		
+//			if(mouseEvent.is) {
+//				System.out.println("MOUSE");
+			try {
+				for(ElementGraphic e : elements)
+					e.clickAction(mouseEvent);
+//			else
+//				System.out.println("FORA");
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+//			}
+//		}
 	}
 	
 	@Override
@@ -190,9 +215,21 @@ public class Yugioh extends Game{
 //		Card c = new MonsterEffectCard();
 //		card = new CardGraphicHand(c, padding + 460,padding + 700,card_view_width/2, card_view_height/2);
 //		card.drawItself(screen);
+		WindowGraphic w = new WindowGraphic(0, 0, getWidth()*2/9,getHeight());
+		w.drawItself(screen);
+//		WindowGraphic w2 = new WindowGraphic(750, 0, getWidth()/4,getHeight());
+//		w2.drawItself(screen);
+		screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE,0,0,178,250,0,10,45,1);
 		selectionGraphicElement.drawItself(screen);
 		drawCards(screen,elements);
+
+
 		
+//		draw.drawItself(screen);
+//		M1.drawItself(screen);
+//		BP.drawItself(screen);
+//		M2.drawItself(screen);
+//		EP.drawItself(screen);
 //		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width/2, card_view_height/2,0, padding + 460,padding + 700);
 //		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width/2, card_view_height/2,0, padding + 560,padding + 700);
 //		screen.imageScaled("images/cards/default.jpg", 0, 0, card_view_width/2, card_view_height/2,0, padding + 660,padding + 700);
