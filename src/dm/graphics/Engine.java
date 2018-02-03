@@ -81,9 +81,10 @@ public class Engine {
 			}
 			
 			@Override
-			public void mousePressed(MouseEvent arg0) {
+			public void mousePressed(MouseEvent mouseEvent) {
 				// TODO Auto-generated method stub
-				
+				System.out.println("PRESSIONOU");
+				game.mouse(mouseEvent);
 			}
 			
 			@Override

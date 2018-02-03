@@ -3,28 +3,28 @@ package dm.graphics;
 import java.awt.event.MouseEvent;
 
 public abstract class ElementGraphic{
+	private String picture;
 	private int x;
 	private int y;
 	private int width;
 	private int height;
 	private float alpha;
 	
-	public ElementGraphic(int x, int y, int width, int height) {
+	public ElementGraphic(String picture,int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
-
+		this.picture = picture;
 		this.alpha = 1;
 	}
 	
-	
-	public ElementGraphic(int x, int y, int width, int height,float alpha) {
+	public ElementGraphic(String picture,int x, int y, int width, int height,float alpha) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
-
+		this.picture = picture;
 		this.alpha = alpha;
 	}
 	
@@ -58,13 +58,24 @@ public abstract class ElementGraphic{
 		this.y = y;
 	}
 	
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
 	boolean isOverIt(int x,int y) {
 		if(x>=this.x && x<=this.x+width && y>=this.y&&y<=this.y + height)
 			return true;
 		return false;
 	}
 	
-	public abstract void drawItself(Screen screen);
+	public void drawItself(Screen screen){
+		screen.imageScaled(getPicture(), 0, 0,getWidth() ,getHeight(), 0,getX(),getY(),getAlpha());
+	}
 	public abstract void hoverAction(MouseEvent mouseEvent);
-	public abstract void ClickAction(MouseEvent mouseEvent);
+	public abstract void clickAction(MouseEvent mouseEvent);
+	public abstract void pressedAction(MouseEvent mouseEvent);
 }

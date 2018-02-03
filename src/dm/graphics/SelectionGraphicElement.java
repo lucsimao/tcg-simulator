@@ -26,7 +26,7 @@ public class SelectionGraphicElement extends ElementGraphic {
 	public SelectionGraphicElement(int width, int height, int card_x, int card_distance, int spell_player1_y,
 			int spell_player2_y, int monster_player1_y, int monster_player2_y, int extra_y, int extra1_x,
 			int extra2_x) {
-		super(-width, -height, width, height, 1);
+		super(null,-width, -height, width, height, 1);
 		this.spell_player1_y = spell_player1_y;
 		this.spell_player2_y = spell_player2_y;
 		this.monster_player1_y = monster_player1_y;
@@ -172,7 +172,7 @@ public class SelectionGraphicElement extends ElementGraphic {
 	}
 
 	@Override
-	public void ClickAction(MouseEvent mouseEvent) {
+	public void clickAction(MouseEvent mouseEvent) {
 		// TODO Auto-generated method stub
 
 	}
@@ -180,6 +180,12 @@ public class SelectionGraphicElement extends ElementGraphic {
 	@Override
 	public void drawItself(Screen screen) {
 		screen.rectangle(getX(), getY(), getWidth(), getHeight(), color, getAlpha());
+	}
+
+	@Override
+	public void pressedAction(MouseEvent mouseEvent) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

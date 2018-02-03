@@ -25,4 +25,10 @@ public class FilesConstants {
 	public static final int HAND_CARD_HEIGHT = CARD_HEIGHT * 5 / 9;
 	public static final int HAND_CARD_WIDTH = CARD_WIDTH * 5 / 9;
 
+	public static final String THEME_PATH = "images/theme/";
+	public static final String BUTTON_IMAGE = "button.png";
+	public static final String BUTTON_HOVER_IMAGE = "buttonHover.png";
+	public static final String BUTTON_PRESSED_IMAGE = "buttonPressed.png";
+	public static final String WINDOW_IMAGE = "window.png";
+
 }

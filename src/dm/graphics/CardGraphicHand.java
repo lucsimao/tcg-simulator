@@ -5,14 +5,14 @@ import java.lang.Thread.State;
 
 import dm.cards.abstracts.Card;
 
-public class CardGraphicHand extends CardGraphic {
+public class CardGraphicHand extends ElementGraphic {
 
 	private int x_temp;
 	private int y_temp;
 	private int DELAY = 71;
 	private Thread t;
 	public CardGraphicHand(Card card, int x, int y, int width, int height) {
-		super(card, x, y, width, height);
+		super(card.getPicture(), x, y, width, height);
 		this.x_temp = x;
 		this.y_temp = y;
 		t = new Thread();
@@ -78,7 +78,13 @@ public class CardGraphicHand extends CardGraphic {
 	}
 	
 	@Override
-	public void ClickAction(MouseEvent mouseEvent) {
+	public void clickAction(MouseEvent mouseEvent) {
+		
+	}
+
+	@Override
+	public void pressedAction(MouseEvent mouseEvent) {
+		// TODO Auto-generated method stub
 		
 	}
 
