@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.lang.Thread.State;
 
 import dm.cards.abstracts.Card;
+import dm.constants.FilesConstants;
 
 public class CardGraphicHand extends ElementGraphic {
 
@@ -75,6 +76,11 @@ public class CardGraphicHand extends ElementGraphic {
 			}
 		});
 		t.start();
+	}
+	
+	@Override
+	public void drawItself(Screen screen) {
+		screen.imageScaled(FilesConstants.CARDS_IMG_DIR + getPicture(), 0, 0,getWidth() ,getHeight(), 0,getX(),getY(),getAlpha());
 	}
 	
 	@Override
