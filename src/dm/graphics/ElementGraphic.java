@@ -50,6 +50,14 @@ public abstract class ElementGraphic{
 		return height;
 	}
 
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
 	public void setX(int x) {
 		this.x = x;
 	}

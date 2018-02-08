@@ -61,7 +61,6 @@ public class ButtonGraphic extends ElementGraphic {
 
 	@Override
 	public void clickAction(MouseEvent mouseEvent) {
-		System.out.println("BATATA");
 		if(isOverIt(mouseEvent.getX(),mouseEvent.getY())) {
 			setPicture(FilesConstants.BUTTON_PRESSED_IMAGE);
 		}else
