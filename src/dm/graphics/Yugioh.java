@@ -5,8 +5,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
+
+import javax.swing.JOptionPane;
 
 import dm.cards.MonsterEffectCard;
 import dm.cards.abstracts.Card;
@@ -14,6 +19,7 @@ import dm.constants.FilesConstants;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
+import dm.files.DeckDao;
 import dm.game.Player;
 
 public class Yugioh extends Game{
@@ -22,8 +28,14 @@ public class Yugioh extends Game{
 	private final int card_height = Math.round(getHeight()/11.7f) ;
 	private final int card_dis_x  = Math.round(getWidth()/15.16f);
 	private final int padding = Math.round(getWidth()/144);
-	private final int card_view_width = Math.round(getWidth()/8.136f);
+	private final int card_view_width = Math.round(getWidth()/6.836f);
 	private final int card_view_height = Math.round(getHeight()/3.469f);
+	//Botões laterais
+	private final int panel_button_x = Math.round(getWidth()/1.16788f);
+	private final int panel_button_y = Math.round(getHeight()/3.4625f);
+	private final int panel_distance = Math.round(getHeight()/10.833333f);
+	private final int button_width = Math.round(getWidth()/9f);
+	private final int button_height = Math.round(getHeight()/13f);
 	
 	private Player player1;
 	private Player player2;
@@ -34,10 +46,15 @@ public class Yugioh extends Game{
 	ArrayList<Card> hand;
 	private ArrayList<ElementGraphic> elements;
 	private SelectionGraphicElement selectionGraphicElement;
+	
+	WindowGraphic w;
+	private int x_offset;
+	
 	public Yugioh(Player player1, Player player2) {
+		
 //		super((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		super(900,650);
-		
+		x_offset = 0;
 //		Card c = new MonsterEffectCard();
 //		card = new CardGraphicHand(c, padding + 460,padding + 700,card_view_width/2, card_view_height/2);
 		this.player1 = player1;
@@ -49,17 +66,22 @@ public class Yugioh extends Game{
 		
 		this.elements = new ArrayList<ElementGraphic>();
 		
-		hand = (ArrayList<Card>) player1.getField().getHand().getCardsList();
-		createCards(hand, padding + Math.round(getWidth()/3.13f),Math.round(getHeight() -  card_view_height*2/5), card_view_width/2, card_view_height/2, card_dis_x);
-		selectionGraphicElement = new SelectionGraphicElement(54, 61, 302,5,
-				434,155,369,221,295,299 + 61,299 + 61 + 121);
+
 //		selectionGraphicElement.setColor(Color.RED);
 		
-		ButtonGraphic draw = new ButtonGraphic("DRAW",getWidth() - 130,60 + 100,100, 50);
-		ButtonGraphic M1 = new ButtonGraphic("M1",getWidth() - 130,60 + 160,100, 50);
-		ButtonGraphic BP = new ButtonGraphic("BP",getWidth() - 130,60 + 220,100, 50);
-		ButtonGraphic M2 = new ButtonGraphic("M2",getWidth() - 130,60 + 280,100, 50);
-		ButtonGraphic EP = new ButtonGraphic("EP",getWidth() - 130,60 + 340,100, 50);
+		w = new WindowGraphic(0, 0, getWidth()*2/9,getHeight());
+	
+		ButtonGraphic draw = new ButtonGraphic("DRAW",panel_button_x ,panel_button_y + 0*panel_distance,button_width,button_height);
+		ButtonGraphic M1 = new ButtonGraphic("M1",panel_button_x ,panel_button_y + 1*panel_distance,button_width,button_height);
+		ButtonGraphic BP = new ButtonGraphic("BP",panel_button_x ,panel_button_y + 2*panel_distance,button_width,button_height);
+		ButtonGraphic M2 = new ButtonGraphic("M2",panel_button_x ,panel_button_y + 3*panel_distance,button_width,button_height);
+		ButtonGraphic EP = new ButtonGraphic("EP",panel_button_x ,panel_button_y + 4*panel_distance,button_width,button_height);
+		x_offset = w.getWidth()/2 - draw.getWidth()/2;
+		
+		hand = (ArrayList<Card>) player1.getField().getHand().getCardsList();
+		createCards(hand, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
+		selectionGraphicElement = new SelectionGraphicElement(54, 61, 302 + x_offset,5,
+				434,155,369,221,295,299 + 61 + x_offset,299 + 61 + 121 + x_offset);
 		
 		elements.add(selectionGraphicElement);
 		elements.add(draw);
@@ -134,31 +156,42 @@ public class Yugioh extends Game{
 //		int padding = Math.round(getWidth()/144);
 //		int card_view_width = Math.round(getWidth()/8.136f);
 //		int card_view_height = Math.round(getHeight()/3.469f);
+		//IMAGEM DE FUNDO
 		screen.imageScaled("images/textures/background.jpg", 0, 0, getWidth(), getHeight(), 0,0, 0,1);
 //		screen.imageScaledPerspective("images/textures/field2.png", 0, 0, getWidth()*2/3, getHeight()/2, 0,getWidth()/2 - getWidth()/3, getHeight()/4);
 //		System.out.println("TAMANHO DA TELA: WIDTH: "+ getWidth() + "  HEIGHT: " + getHeight());
-		screen.imageScaled("images/textures/field3.png", 0, 0, getWidth()*3/5, getHeight()*2/3, 0,getWidth()/2 - getWidth()*3/10 , getHeight()/2 - getHeight()/3,1);
+		//FIELD
+//		screen.rectangle(getWidth()*23/90 , getHeight()/2 - getHeight()/3,getWidth()*3/5, getHeight()*2/3, Color.BLACK,0.65f);
+//		screen.imageScaled("images/theme/summon.png", 0, 0, getWidth()*3/5, getHeight()*2/3, 0,getWidth()*23/90 , getHeight()/2 - getHeight()/3,1f);
+		screen.imageScaled("images/textures/field3.png", 0, 0, getWidth()*3/5, getHeight()*2/3, 0,getWidth()*23/90 , getHeight()/2 - getHeight()/3,0.7f);
 		
 		/**Magicas player 1 */
 
 		
-		int special_zone_x = 608;
+		int special_zone_x = 608 + x_offset;
 		int special_zone_height = 59;
 		int special_zone_width = 39;
 		int deck_1_y = 473;
 		//DECK 1
-		screen.rectangle(special_zone_x,474, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//PENDULUM
-		screen.rectangle(special_zone_x,404, special_zone_width, special_zone_height, Color.RED,0.4f);
+		screen.rectangle(special_zone_x ,474, special_zone_width, special_zone_height, Color.RED,0.4f);
 		//GRAVE1
+		screen.rectangle(special_zone_x,404, special_zone_width, special_zone_height, Color.RED,0.4f);
+		//BAN1
 		screen.rectangle(special_zone_x,332, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//BAN2 
+		//FIELD2 
 		screen.rectangle(special_zone_x,188, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//BAN2 
+		//EXTRA2
 		screen.rectangle(special_zone_x,118, special_zone_width, special_zone_height, Color.RED,0.4f);
 		//DECK2
 		screen.rectangle(special_zone_x - 360,118, special_zone_width, special_zone_height, Color.RED,0.4f);
-		
+		//GRAVE2
+		screen.rectangle(special_zone_x - 360,188, special_zone_width, special_zone_height, Color.RED,0.4f);
+		//BAN2
+		screen.rectangle(special_zone_x - 360,260, special_zone_width, special_zone_height, Color.RED,0.4f);
+		//FIELD1
+		screen.rectangle(special_zone_x - 360,404, special_zone_width, special_zone_height, Color.RED,0.4f);
+		//EXTRA1
+		screen.rectangle(special_zone_x - 360,474, special_zone_width, special_zone_height, Color.RED,0.4f);
 		
 		//		screen.rectangle(299 + 60,434, 58, 64, Color.RED,0.4f);
 //		//EXTRA ZONE1
@@ -204,8 +237,8 @@ public class Yugioh extends Game{
 //		}
 		
 		for(int i=0;i<5;i++) {
-			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/4.15),1);
-		}
+			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89)+ x_offset + card_dis_x * i,Math.round(getHeight()/4.12),1);
+		}	
 //		for(int i=0;i<5;i++) {
 //			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/1.7445));
 //		}
@@ -215,14 +248,29 @@ public class Yugioh extends Game{
 //		Card c = new MonsterEffectCard();
 //		card = new CardGraphicHand(c, padding + 460,padding + 700,card_view_width/2, card_view_height/2);
 //		card.drawItself(screen);
-		WindowGraphic w = new WindowGraphic(0, 0, getWidth()*2/9,getHeight());
+		
+//		CardGraphic g = new CardGraphic(FilesConstants.DEFAULT_MONTER_CARD_IMAGE, 0,0, 177, 256);
+//		w.addElement(g);
 		w.drawItself(screen);
 //		WindowGraphic w2 = new WindowGraphic(750, 0, getWidth()/4,getHeight());
 //		w2.drawItself(screen);
 		screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE,0,0,178,250,0,10,45,1);
+		screen.imageScaled(FilesConstants.THEME_PATH + "tabControl.png",0,0,getWidth()*2/9 - 10,340,0,5,300,1);
+		screen.imageScaled(FilesConstants.THEME_PATH + "darkTab.png",0,0,getWidth()*2/9 - 10,35,0,5,300,1);
+		screen.text("EXODIA, THE FORBIDDEN ONE",15,322,12,Color.WHITE);
+		screen.text("Spellcaster/Effect",15,350,12,Color.BLACK);
+		screen.text("Attribute DARK",15,361,12,Color.BLACK);
+		screen.text("Level 3",15,372,12,Color.BLACK);
+		screen.text("1000 / 1000",15,383,12,Color.BLACK);
+//		screen.textMultiLine();
+		screen.textMultiLine("When you have \"Right Arm of the Forbidden One\",\"Left Arm of the Forbidden One\",\"Right Leg of the Forbidden One\",\"Left Leg of the Forbidden One\", in addition to this card in your hand, you win the duel. ",15,404,12,getWidth()*2/9 - 30,Color.BLACK);
 		selectionGraphicElement.drawItself(screen);
 		drawCards(screen,elements);
-
+		//EFEITOS DE CARTA
+//		screen.imageScaled(FilesConstants.THEME_PATH + "normalSummon.jpg",0,0,28,38,0,280,535,1);
+//		screen.imageScaled(FilesConstants.THEME_PATH + "setCard.png",0,0,28,38,0,310,535,1);
+//		screen.imageScaled(FilesConstants.THEME_PATH + "summon.png",0,0,35,35,0,340,535,1);
+//		screen.text("SUMMON",292,557,12,Color.WHITE);
 
 		
 //		draw.drawItself(screen);
@@ -238,16 +286,32 @@ public class Yugioh extends Game{
 //		System.out.println("TAMANHO: " + (Math.round(getHeight()/1.7445) + 89));
 	}	
 	
+//	protected NormalDeck loadDeck(File deckName) {
+//		DeckDao deckDao = new DeckDao();
+//		try {
+//			return deckDao.loadDeck(deckName);
+//		} catch (ClassNotFoundException | IOException ex) {
+//			JOptionPane.showMessageDialog(null, ex.getMessage(), ex.getClass().getName(),
+//					JOptionPane.INFORMATION_MESSAGE);
+//		}
+//		return null;
+//	}
+//	
 	@Override
 	public void tick(Set<String> teclas, double dt) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public static void main(String args[]) {
-		Player player1 = new Player("teste1", null, new NormalDeck(50), new ExtraDeck());
+	public static void main(String args[]) throws FileNotFoundException, ClassNotFoundException, IOException {
+		DeckDao deckDao = new DeckDao();
+		File file = new File("deck/deck.ygo");
+		NormalDeck deck = deckDao.loadDeck(file);
+		Player player1 = new Player("teste1", null, deck, new ExtraDeck());
 		Player player2 = new Player("teste2", null, new NormalDeck(50), new ExtraDeck());
 		new Engine(new Yugioh(player1,player2));
 	}
+	
+
 	
 }
