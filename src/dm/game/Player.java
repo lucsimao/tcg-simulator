@@ -48,6 +48,7 @@ public class Player {
 	}
 
 	public void firstDraw() {
+		shuffleDeck();
 		for (int i = 0; i < NUMBER_INITIAL_HAND; i++) {
 			field.draw();
 		}
