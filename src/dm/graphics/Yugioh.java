@@ -101,18 +101,19 @@ public class Yugioh extends Game{
 		
 		
 		fieldSelectionElement = new FieldSelectionElement();
-		fieldSelectionElement.addSelectionGraphicElement(extra1);
-		fieldSelectionElement.addSelectionGraphicElement(extra2);
-		fieldSelectionElement.addSelectionGraphicElement(deck1);
-		fieldSelectionElement.addSelectionGraphicElement(grave1);
-		fieldSelectionElement.addSelectionGraphicElement(banned1);
-		fieldSelectionElement.addSelectionGraphicElement(field2);
-		fieldSelectionElement.addSelectionGraphicElement(extra_deck2);
-		fieldSelectionElement.addSelectionGraphicElement(deck2);
-		fieldSelectionElement.addSelectionGraphicElement(grave2);
-		fieldSelectionElement.addSelectionGraphicElement(banned2);
-		fieldSelectionElement.addSelectionGraphicElement(field1);
-		fieldSelectionElement.addSelectionGraphicElement(extra_deck1);
+		fieldSelectionElement.addSelectionElements(x_offset);
+//		fieldSelectionElement.addSelectionGraphicElement(extra1);
+//		fieldSelectionElement.addSelectionGraphicElement(extra2);
+//		fieldSelectionElement.addSelectionGraphicElement(deck1);
+//		fieldSelectionElement.addSelectionGraphicElement(grave1);
+//		fieldSelectionElement.addSelectionGraphicElement(banned1);
+//		fieldSelectionElement.addSelectionGraphicElement(field2);
+//		fieldSelectionElement.addSelectionGraphicElement(extra_deck2);
+//		fieldSelectionElement.addSelectionGraphicElement(deck2);
+//		fieldSelectionElement.addSelectionGraphicElement(grave2);
+//		fieldSelectionElement.addSelectionGraphicElement(banned2);
+//		fieldSelectionElement.addSelectionGraphicElement(field1);
+//		fieldSelectionElement.addSelectionGraphicElement(extra_deck1);
 		
 		
 		elements.add(fieldSelectionElement);
