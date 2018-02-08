@@ -45,7 +45,7 @@ public class Yugioh extends Game{
 	private Field field2;
 	ArrayList<Card> hand;
 	private ArrayList<ElementGraphic> elements;
-	private SelectionGraphicElement selectionGraphicElement;
+	private FieldSelectionElement fieldSelectionElement;
 	
 	WindowGraphic w;
 	private int x_offset;
@@ -80,10 +80,42 @@ public class Yugioh extends Game{
 		
 		hand = (ArrayList<Card>) player1.getField().getHand().getCardsList();
 		createCards(hand, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
-		selectionGraphicElement = new SelectionGraphicElement(54, 61, 302 + x_offset,5,
-				434,155,369,221,295,299 + 61 + x_offset,299 + 61 + 121 + x_offset);
 		
-		elements.add(selectionGraphicElement);
+		
+		int special_zone_x = 608 + x_offset;
+		int special_zone_height = 59;
+		int special_zone_width = 39;
+		
+		SelectionGraphicElement extra1 = new SelectionGraphicElement(299 + 61 + x_offset,295, 54, 61);
+		SelectionGraphicElement extra2 = new SelectionGraphicElement(298 + 61 + 121 + x_offset,295, 54, 61);
+		SelectionGraphicElement deck1 = new SelectionGraphicElement(special_zone_x,474, special_zone_width, special_zone_height);
+		SelectionGraphicElement grave1 = new SelectionGraphicElement(special_zone_x,404, special_zone_width, special_zone_height);
+		SelectionGraphicElement banned1 = new SelectionGraphicElement(special_zone_x,332, special_zone_width, special_zone_height);
+		SelectionGraphicElement field2 = new SelectionGraphicElement(special_zone_x,188, special_zone_width, special_zone_height);
+		SelectionGraphicElement extra_deck2 = new SelectionGraphicElement(special_zone_x,118, special_zone_width, special_zone_height);
+		SelectionGraphicElement deck2 = new SelectionGraphicElement(special_zone_x- 360,118, special_zone_width, special_zone_height);
+		SelectionGraphicElement grave2 = new SelectionGraphicElement(special_zone_x- 360,188, special_zone_width, special_zone_height);
+		SelectionGraphicElement	banned2 = new SelectionGraphicElement(special_zone_x- 360,260, special_zone_width, special_zone_height);
+		SelectionGraphicElement field1 = new SelectionGraphicElement(special_zone_x- 360,404, special_zone_width, special_zone_height);
+		SelectionGraphicElement extra_deck1 = new SelectionGraphicElement(special_zone_x- 360,474, special_zone_width, special_zone_height);
+		
+		
+		fieldSelectionElement = new FieldSelectionElement();
+		fieldSelectionElement.addSelectionGraphicElement(extra1);
+		fieldSelectionElement.addSelectionGraphicElement(extra2);
+		fieldSelectionElement.addSelectionGraphicElement(deck1);
+		fieldSelectionElement.addSelectionGraphicElement(grave1);
+		fieldSelectionElement.addSelectionGraphicElement(banned1);
+		fieldSelectionElement.addSelectionGraphicElement(field2);
+		fieldSelectionElement.addSelectionGraphicElement(extra_deck2);
+		fieldSelectionElement.addSelectionGraphicElement(deck2);
+		fieldSelectionElement.addSelectionGraphicElement(grave2);
+		fieldSelectionElement.addSelectionGraphicElement(banned2);
+		fieldSelectionElement.addSelectionGraphicElement(field1);
+		fieldSelectionElement.addSelectionGraphicElement(extra_deck1);
+		
+		
+		elements.add(fieldSelectionElement);
 		elements.add(draw);
 		elements.add(M1);
 		elements.add(BP);
@@ -167,35 +199,35 @@ public class Yugioh extends Game{
 		
 		/**Magicas player 1 */
 
-		
-		int special_zone_x = 608 + x_offset;
-		int special_zone_height = 59;
-		int special_zone_width = 39;
-		int deck_1_y = 473;
-		//DECK 1
-		screen.rectangle(special_zone_x ,474, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//GRAVE1
-		screen.rectangle(special_zone_x,404, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//BAN1
-		screen.rectangle(special_zone_x,332, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//FIELD2 
-		screen.rectangle(special_zone_x,188, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//EXTRA2
-		screen.rectangle(special_zone_x,118, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//DECK2
-		screen.rectangle(special_zone_x - 360,118, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//GRAVE2
-		screen.rectangle(special_zone_x - 360,188, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//BAN2
-		screen.rectangle(special_zone_x - 360,260, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//FIELD1
-		screen.rectangle(special_zone_x - 360,404, special_zone_width, special_zone_height, Color.RED,0.4f);
-		//EXTRA1
-		screen.rectangle(special_zone_x - 360,474, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		
+//		int special_zone_x = 608 + x_offset;
+//		int special_zone_height = 59;
+//		int special_zone_width = 39;
+//		int deck_1_y = 473;
+//		//DECK 1
+//		screen.rectangle(special_zone_x ,474, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		//GRAVE1
+//		screen.rectangle(special_zone_x,404, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		//BAN1
+//		screen.rectangle(special_zone_x,332, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		//FIELD2 
+//		screen.rectangle(special_zone_x,188, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		//EXTRA2
+//		screen.rectangle(special_zone_x,118, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		//DECK2
+//		screen.rectangle(special_zone_x - 360,118, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		//GRAVE2
+//		screen.rectangle(special_zone_x - 360,188, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		//BAN2
+//		screen.rectangle(special_zone_x - 360,260, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		//FIELD1
+//		screen.rectangle(special_zone_x - 360,404, special_zone_width, special_zone_height, Color.RED,0.4f);
+//		//EXTRA1
+//		screen.rectangle(special_zone_x - 360,474, special_zone_width, special_zone_height, Color.RED,0.4f);
 		
 		//		screen.rectangle(299 + 60,434, 58, 64, Color.RED,0.4f);
 //		//EXTRA ZONE1
-//		screen.rectangle(299 + 61,295, 54, 61, Color.RED,0.4f);
+//		screen.rectangle(299 + 61 + x_offset,295, 54, 61, Color.RED,0.4f);
 //		//EXTRA ZONE2
 //		screen.rectangle(299 + 61 + 121,295, 54, 61, Color.RED,0.4f);
 		
@@ -264,7 +296,7 @@ public class Yugioh extends Game{
 		screen.text("1000 / 1000",15,383,12,Color.BLACK);
 //		screen.textMultiLine();
 		screen.textMultiLine("When you have \"Right Arm of the Forbidden One\",\"Left Arm of the Forbidden One\",\"Right Leg of the Forbidden One\",\"Left Leg of the Forbidden One\", in addition to this card in your hand, you win the duel. ",15,404,12,getWidth()*2/9 - 30,Color.BLACK);
-		selectionGraphicElement.drawItself(screen);
+		fieldSelectionElement.drawItself(screen);
 		drawCards(screen,elements);
 		//EFEITOS DE CARTA
 //		screen.imageScaled(FilesConstants.THEME_PATH + "normalSummon.jpg",0,0,28,38,0,280,535,1);

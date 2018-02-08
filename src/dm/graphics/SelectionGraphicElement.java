@@ -4,171 +4,58 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.lang.Thread.State;
 
-import dm.cards.abstracts.Card;
-
 public class SelectionGraphicElement extends ElementGraphic {
 
-	private int spell_player1_y;
-	private int spell_player2_y;
-	private int monster_player1_y;
-	private int monster_player2_y;
-	private int card_x;
-	private int card_distance;
-	private int deck_x;
-	private int extra_y;
-	private int extra1_x;
-	private int extra2_x;
-
-	private Thread t;
-	private final int DELAY = 70;
+	private final int DELAY = 71;
+	private Thread thread;
 	private Color color;
 
-	public SelectionGraphicElement(int width, int height, int card_x, int card_distance, int spell_player1_y,
-			int spell_player2_y, int monster_player1_y, int monster_player2_y, int extra_y, int extra1_x,
-			int extra2_x) {
-		super(null,-width, -height, width, height, 1);
-		this.spell_player1_y = spell_player1_y;
-		this.spell_player2_y = spell_player2_y;
-		this.monster_player1_y = monster_player1_y;
-		this.monster_player2_y = monster_player2_y;
-		this.card_x = card_x;
-		this.card_distance = card_distance;
-		this.color = Color.WHITE;
-
-		this.extra_y = extra_y;
-		this.extra2_x = extra2_x;
-		this.extra1_x = extra1_x;
-
-		t = new Thread();
+	public SelectionGraphicElement(int x, int y, int width, int height, float alpha, Color color) {
+		super(null, x, y, width, 0);
+		this.color = color;
+		thread = new Thread();
 	}
 
-	@Override
-	public void hoverAction(MouseEvent mouseEvent) {
+	public SelectionGraphicElement(int x, int y, int width, int height) {
+		super(null, x, y, width, height, 0);
+		this.color = Color.white;
+		thread = new Thread();
+	}
 
-		int x = mouseEvent.getX();
-		int y = mouseEvent.getY();
+	public void setThread(Thread thread) {
+		this.thread = thread;
+	}
 
-		// setY(spell_player1_y);
-		// if(x>=card_x && x<=((card_x + getWidth())))
-		// {
-		// setX(card_x);
-		//
-		// if(t.getState().equals(State.NEW)||t.getState().equals(State.TERMINATED))
-		// {
-		// blinkAnimation();
-		// }
-		// }else
-		// if(x>=(card_x + getWidth()+ card_distance) && x<=(card_x + 2*getWidth() +
-		// card_distance)) {
-		// setX(card_x +getWidth() + card_distance);
-		// if(t.getState().equals(State.NEW)||t.getState().equals(State.TERMINATED))
-		// {
-		// blinkAnimation();
-		// }
-		// }else {
-		//
-		// t.stop();
-		// setAlpha(0);}
-		varrerY(x, y);
-		// varrerY(x,y);
+	public Color getColor() {
+		return color;
 	}
 
 	public void setColor(Color color) {
 		this.color = color;
 	}
 
-	private void varrerY(int x, int y) {
-		if (y >= spell_player2_y && y <= spell_player2_y + getHeight())
-			animar(x, spell_player2_y);
-		else if (y >= monster_player2_y && y <= monster_player2_y + getHeight())
-			animar(x, monster_player2_y);
-		else if (y >= monster_player1_y && y <= monster_player1_y + getHeight())
-			animar(x, monster_player1_y);
-		else if (y >= spell_player1_y && y <= spell_player1_y + getHeight())
-			animar(x, spell_player1_y);
-		else if (y >= extra_y && y <= extra_y + getHeight()) {
-			animarExtra(x, extra_y);
-		} else {
-			setAlpha(0);
-			t.stop();
-		}
-	}
+	@Override
+	public void hoverAction(MouseEvent mouseEvent) {
+		System.out.println(thread.getState());
+		int x = mouseEvent.getX();
+		int y = mouseEvent.getY();
 
-	public void animar(int x, int y) {
-		setY(y);
-		varrerX(x, y);
-	}
-
-	public void animarExtra(int x, int y) {
-		setY(y);
-		if (x >= extra1_x && x <= extra1_x + getWidth()) {
-			setX(extra1_x);
-			if (t.getState().equals(State.NEW) || t.getState().equals(State.TERMINATED)) {
-				blinkAnimation();
-			}
-		} else if (x >= extra2_x && x <= extra2_x + getWidth()) {
-			setX(extra2_x);
-			if (t.getState().equals(State.NEW) || t.getState().equals(State.TERMINATED)) {
-				blinkAnimation();
-			}
-		} else {
-			t.stop();
-			setAlpha(0);
-		}
-	}
-
-	int varrerX(int x, int y) {
-		for (int i = 0; i < 5; i++) {
-			if (x >= card_x + i * (card_distance + getWidth())
-					&& x <= card_x + (i + 1) * (getWidth()) + i * card_distance) {
-				setX(card_x + i * (getWidth() + card_distance));
-				if (t.getState().equals(State.NEW) || t.getState().equals(State.TERMINATED)) {
+		if (x >= getX() && x <= getX() + getWidth()) {
+			if ((y >= getY() && y <= getY() + getHeight())) {
+				if (thread.getState().equals(State.NEW) || thread.getState().equals(State.TERMINATED)) {
+					System.out.println("SELECTIONGRAPHIC - Chamando thread");
 					blinkAnimation();
 				}
-				i = 10;
-				return 0;
+			}else {
+				setAlpha(0);
+				thread.stop();
 			}
+				
+		} else {
+			System.out.println("SELECTIONGRAPHIC - Parando Thread");
+			setAlpha(0);
+			thread.stop();
 		}
-		// if(x>= card_x + i * (card_distance + getWidth()) && x<= card_x + (i+1) *
-		// (getWidth()) + i * card_distance)
-		t.stop();
-		setAlpha(0);
-		return 0;
-	}
-
-	public void blinkAnimation() {
-		t = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				while (true) {
-					setAlpha(1);
-					if (getAlpha() > 0) {
-						while (getAlpha() > 0.1) {
-							setAlpha((float) (getAlpha() - 0.1));
-							System.out.println("ALPHA: " + getAlpha());
-							try {
-								Thread.sleep(DELAY);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-						while (getAlpha() < 0.8) {
-							setAlpha((float) (getAlpha() + 0.1));
-							try {
-								Thread.sleep(DELAY);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-					}
-
-				}
-			}
-		});
-		t.start();
 	}
 
 	@Override
@@ -178,14 +65,50 @@ public class SelectionGraphicElement extends ElementGraphic {
 	}
 
 	@Override
-	public void drawItself(Screen screen) {
-		screen.rectangle(getX(), getY(), getWidth(), getHeight(), color, getAlpha());
+	public void pressedAction(MouseEvent mouseEvent) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void blinkAnimation() {
+		thread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					setAlpha(0);
+//					if (getAlpha() == 0) {
+						while (getAlpha() < 0.8) {
+							setAlpha((float) (getAlpha() + 0.1));
+							try {
+								Thread.sleep(DELAY);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						while (getAlpha() > 0.1) {
+							setAlpha((float) (getAlpha() - 0.1));
+							// System.out.println("ALPHA: " + getAlpha());
+							try {
+								Thread.sleep(DELAY);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+
+					}
+
+				}
+//			}
+		});
+		thread.start();
 	}
 
 	@Override
-	public void pressedAction(MouseEvent mouseEvent) {
-		// TODO Auto-generated method stub
-		
+	public void drawItself(Screen screen) {
+		screen.rectangle(getX(), getY(), getWidth(), getHeight(), color, getAlpha());
 	}
 
 }
