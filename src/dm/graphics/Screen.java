@@ -10,6 +10,7 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
+import java.util.StringTokenizer;
 
 import javax.imageio.ImageIO;
 
@@ -88,6 +89,34 @@ public class Screen {
 //        g.setTransform(trans);
 //    }
    
+    public void textMultiLine(String text,int x, int y, int size,int maxWidth, Color color) {
+    	String str = new String( "This is a very long message that i will attempt to split into several smaller sections that will all fit on the Canvas" );
+    	str = text;
+        g.setFont(new Font("Arial", Font.BOLD, size));
+        g.setColor(color);
+    	FontMetrics fm = g.getFontMetrics();
+//    	int ypos = fm.getLeading() + fm.getAscent(); // the initial y position to draw the String at
+    	int ypos = y; // the initial y position to draw the String at
+    	StringTokenizer st = new StringTokenizer( str ); // Split sentence into words
+    	StringBuffer oneLine = new StringBuffer();
+    	while( st.hasMoreTokens() )// while there are words left
+    	{  String word = st.nextToken(); // get the next word
+    	   if( word != null ) // error checking
+    	   {  if( fm.stringWidth( oneLine.toString() + word ) < maxWidth )// is the width of the line i have + the next word small enough to fit on the canvas
+    	      {  oneLine.append( word + " " ); //append word to current line
+    	      }
+    	      else
+    	      {  g.drawString( oneLine.toString(), x, ypos ); // draw current line
+    	         oneLine = new StringBuffer( word + " " ); //start a new line with the current word
+    	         ypos += fm.getHeight(); // increment the y position for the drawing of the new line
+    	      }
+    	   }
+    	}
+    	if( oneLine.length() > 0 ) // if there is more text in the current line
+    	{  g.drawString( oneLine.toString(), x, ypos ); // draw it!
+    	}
+    }
+    
     public void image(String arquivo, int xa, int ya, int larg, int alt, double dir, double x, double y, float alpha) {
         if(!sprites.containsKey(arquivo)) {
             try {
