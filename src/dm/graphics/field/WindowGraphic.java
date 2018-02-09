@@ -1,9 +1,10 @@
-package dm.graphics;
+package dm.graphics.field;
 
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import dm.constants.FilesConstants;
+import dm.graphics.Screen;
 
 public class WindowGraphic extends ElementGraphic{
 

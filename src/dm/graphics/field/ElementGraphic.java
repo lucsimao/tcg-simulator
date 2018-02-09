@@ -1,6 +1,8 @@
-package dm.graphics;
+package dm.graphics.field;
 
 import java.awt.event.MouseEvent;
+
+import dm.graphics.Screen;
 
 public abstract class ElementGraphic{
 	private String picture;

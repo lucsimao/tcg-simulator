@@ -1,10 +1,11 @@
-package dm.graphics;
+package dm.graphics.field;
 
 import java.awt.event.MouseEvent;
 import java.lang.Thread.State;
 
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
+import dm.graphics.Screen;
 
 public class CardGraphicHand extends ElementGraphic {
 

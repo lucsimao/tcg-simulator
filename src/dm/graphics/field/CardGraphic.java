@@ -1,8 +1,9 @@
-package dm.graphics;
+package dm.graphics.field;
 
 import java.awt.event.MouseEvent;
 
 import dm.constants.FilesConstants;
+import dm.graphics.Screen;
 
 public class CardGraphic extends ElementGraphic {
 

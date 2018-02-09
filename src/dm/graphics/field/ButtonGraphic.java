@@ -1,4 +1,4 @@
-package dm.graphics;
+package dm.graphics.field;
 
 import java.awt.event.MouseEvent;
 
@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 
 import dm.constants.FilesConstants;
+import dm.graphics.Screen;
 
 public class ButtonGraphic extends ElementGraphic {
 
