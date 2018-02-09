@@ -1,9 +1,6 @@
 package dm.graphics;
 
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,9 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
 
-import javax.swing.JOptionPane;
-
-import dm.cards.MonsterEffectCard;
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
 import dm.fields.Field;
@@ -21,11 +15,15 @@ import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.files.DeckDao;
 import dm.game.Player;
+import dm.graphics.field.ButtonGraphic;
+import dm.graphics.field.CardGraphicHand;
+import dm.graphics.field.ElementGraphic;
+import dm.graphics.field.FieldSelectionElement;
+import dm.graphics.field.SelectionGraphicElement;
+import dm.graphics.field.WindowGraphic;
 
 public class Yugioh extends Game{
 
-	private final int card_width  = Math.round(getWidth()/27.69f);
-	private final int card_height = Math.round(getHeight()/11.7f) ;
 	private final int card_dis_x  = Math.round(getWidth()/15.16f);
 	private final int padding = Math.round(getWidth()/144);
 	private final int card_view_width = Math.round(getWidth()/6.836f);
@@ -269,9 +267,9 @@ public class Yugioh extends Game{
 ////			screen.imageScaled("images/cards/default.jpg", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/2.94));
 //		}
 		
-		for(int i=0;i<5;i++) {
-			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89)+ x_offset + card_dis_x * i,Math.round(getHeight()/4.12),1);
-		}	
+//		for(int i=0;i<5;i++) {
+//			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89)+ x_offset + card_dis_x * i,Math.round(getHeight()/4.12),1);
+//		}	
 //		for(int i=0;i<5;i++) {
 //			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/1.7445));
 //		}
