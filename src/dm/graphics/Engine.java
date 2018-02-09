@@ -72,8 +72,7 @@ public class Engine {
             }
         });           
         
-        canvas.addMouseListener(new MouseListener() {
-			
+        canvas.addMouseListener(new MouseListener() {			
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
@@ -83,8 +82,8 @@ public class Engine {
 			@Override
 			public void mousePressed(MouseEvent mouseEvent) {
 				// TODO Auto-generated method stub
-				System.out.println("PRESSIONOU");
-				game.mouse(mouseEvent);
+//				System.out.println("PRESSIONOU");
+//				game.mouse(mouseEvent);
 			}
 			
 			@Override
@@ -101,7 +100,7 @@ public class Engine {
 			
 			@Override
 			public void mouseClicked(MouseEvent mouseEvent) {
-				System.out.println("CLICOU");
+//				System.out.println("CLICOU");
 				game.mouse(mouseEvent);
 				
 			}

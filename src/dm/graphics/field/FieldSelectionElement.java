@@ -4,19 +4,21 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import dm.fields.elements.zones.MonsterZone;
-import dm.fields.elements.zones.SpellTrapZone;
+import dm.game.Player;
 import dm.graphics.Screen;
 
 
 public class FieldSelectionElement extends ElementGraphic {
 	
 	private List<SelectionGraphicElement> selectionGraphics;
+	private Player player1;
+	private Player player2;
 	
-	
-	public FieldSelectionElement() {
+	public FieldSelectionElement(Player player1, Player player2) {
 		super(null, 0, 0, 0, 0, 0);
 		this.selectionGraphics = new ArrayList<SelectionGraphicElement>();
+		this.player1 = player1;
+		this.player2 = player2;
 	}
 
 	public void addSelectionGraphicElement(SelectionGraphicElement s) {
@@ -71,15 +73,15 @@ public class FieldSelectionElement extends ElementGraphic {
 		//MONSTERSPELLZONE
 		//MONSTER1
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(zone_x + (zone_width + zone_distance)*i, zone_monster1_y, zone_width, zone_height,new MonsterZone(2),i));
+			this.selectionGraphics.add(new SelectionGraphicZoneElement(zone_x + (zone_width + zone_distance)*i, zone_monster1_y, zone_width, zone_height,player1.getMonsterZone(),i));
 		}
 		//MONSTER2
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(zone_x + (zone_width + zone_distance)*i, zone_monster2_y, zone_width, zone_height,new MonsterZone(2),i));
+			this.selectionGraphics.add(new SelectionGraphicZoneElement(zone_x + (zone_width + zone_distance)*i, zone_monster2_y, zone_width, zone_height,player2.getMonsterZone(),i));
 		}
 		//SPELL1
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(zone_x + (zone_width + zone_distance)*i, zone_spell1_y, zone_width, zone_height,new SpellTrapZone(4),i));
+			this.selectionGraphics.add(new SelectionGraphicZoneElement(zone_x + (zone_width + zone_distance)*i, zone_spell1_y, zone_width, zone_height,player1.getSpellTrapZone(),i));
 		}
 		//SPELL2
 		for(int i=0;i<5;i++) {

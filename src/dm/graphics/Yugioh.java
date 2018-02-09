@@ -6,9 +6,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
+import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
+import dm.cards.abstracts.MonsterCard;
 import dm.constants.FilesConstants;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
@@ -19,6 +22,7 @@ import dm.graphics.field.ButtonGraphic;
 import dm.graphics.field.CardGraphicHand;
 import dm.graphics.field.ElementGraphic;
 import dm.graphics.field.FieldSelectionElement;
+import dm.graphics.field.HandGraphic;
 import dm.graphics.field.SelectionGraphicElement;
 import dm.graphics.field.WindowGraphic;
 
@@ -42,6 +46,7 @@ public class Yugioh extends Game{
 	private Field field1;
 	private Field field2;
 	ArrayList<Card> hand;
+	private HandGraphic handGraphic;	
 	private ArrayList<ElementGraphic> elements;
 	private FieldSelectionElement fieldSelectionElement;
 	
@@ -58,9 +63,18 @@ public class Yugioh extends Game{
 		this.player1 = player1;
 		this.player2 = player2;
 		
+
+		
 		field1 = player1.getField();
 		field2 = player2.getField();
+//		player1.shuffleDeck();
 		player1.firstDraw();
+		
+//		List<Card> list = player1.getHand().getCardsList();
+//		for(Card c : list) {
+//			if(c instanceof MonsterCard)
+//				player1.summon((MonsterNormalCard) c);
+//		}
 		
 		this.elements = new ArrayList<ElementGraphic>();
 		
@@ -75,9 +89,9 @@ public class Yugioh extends Game{
 		ButtonGraphic M2 = new ButtonGraphic("M2",panel_button_x ,panel_button_y + 3*panel_distance,button_width,button_height);
 		ButtonGraphic EP = new ButtonGraphic("EP",panel_button_x ,panel_button_y + 4*panel_distance,button_width,button_height);
 		x_offset = w.getWidth()/2 - draw.getWidth()/2;
-		
-		hand = (ArrayList<Card>) player1.getField().getHand().getCardsList();
-		createCards(hand, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
+		this.handGraphic = new HandGraphic(player1, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
+//		hand = (ArrayList<Card>) player1.getField().getHand();
+//		createCards(hand, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
 		
 		
 		int special_zone_x = 608 + x_offset;
@@ -98,7 +112,7 @@ public class Yugioh extends Game{
 		SelectionGraphicElement extra_deck1 = new SelectionGraphicElement(special_zone_x- 360,474, special_zone_width, special_zone_height);
 		
 		
-		fieldSelectionElement = new FieldSelectionElement();
+		fieldSelectionElement = new FieldSelectionElement(player1,player2);
 		fieldSelectionElement.addSelectionElements(x_offset);
 //		fieldSelectionElement.addSelectionGraphicElement(extra1);
 //		fieldSelectionElement.addSelectionGraphicElement(extra2);
@@ -120,7 +134,7 @@ public class Yugioh extends Game{
 		elements.add(BP);
 		elements.add(M2);
 		elements.add(EP);
-		
+		elements.add(handGraphic);
 		
 	}
 	
@@ -157,8 +171,6 @@ public class Yugioh extends Game{
 		try {
 			for(ElementGraphic e : elements)
 				e.hoverAction(mouseEvent);
-//		else
-//			System.out.println("FORA");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -166,10 +178,9 @@ public class Yugioh extends Game{
 	
 	public void createCards(ArrayList<Card> cards,int x,int y,int width,int height, int distance) {
 		for(int i = 0;i<cards.size();i++) {
-			card = new CardGraphicHand(cards.get(i), x + i*distance,y,width,height);
+			card = new CardGraphicHand(player1,cards.get(i), x + i*distance,y,width,height);
 			if(!elements.contains(card))
 				elements.add(card);
-//			card.drawItself(screen);
 		}
 	}
 	

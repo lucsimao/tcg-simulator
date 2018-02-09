@@ -10,6 +10,7 @@ import dm.fields.elements.Hand;
 import dm.fields.elements.RemoveFromPlay;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
+import dm.fields.elements.zones.CardZone;
 import dm.fields.elements.zones.MonsterZone;
 import dm.fields.elements.zones.SpellTrapZone;
 import dm.interfaces.ExtraDeckCard;
@@ -307,4 +308,12 @@ public class Field {
 		
 	}
 
+	public CardZone getMonsterZone() {
+		return this.monsterZone;
+	}
+
+	public CardZone getSpellTrapZone() {
+		return this.spellTrapZone;
+	}
+	
 }

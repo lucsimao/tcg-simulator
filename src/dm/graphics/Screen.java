@@ -134,7 +134,7 @@ public class Screen {
                    xa, ya, xa + larg, ya + alt, null);
         g.setTransform(trans);
     }
-    
+        
     public void imageScaled(String arquivo, int xa, int ya, int larg, int alt, double dir, double x, double y, float alpha) {
         if(!sprites.containsKey(arquivo)) {
             try {
@@ -147,6 +147,7 @@ public class Screen {
     	AffineTransform trans = g.getTransform();
     	ImageManip imageManip = new ImageManip();
     	image = imageManip.scaleTransform(image, larg*1.0/image.getWidth(),alt*1.0/image.getHeight());
+    	g.rotate(dir, x + larg/2, y + alt/2);
     	g.setComposite(AlphaComposite.SrcOver.derive(alpha));
     	g.drawImage(image,(int)Math.round(x),(int)Math.round(y),null);
         g.setTransform(trans);

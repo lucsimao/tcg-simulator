@@ -45,7 +45,7 @@ public class SelectionGraphicElement extends ElementGraphic {
 		if (x >= getX() && x <= getX() + getWidth()) {
 			if ((y >= getY() && y <= getY() + getHeight())) {
 				if (thread.getState().equals(State.NEW) || thread.getState().equals(State.TERMINATED)) {
-					System.out.println("SELECTIONGRAPHIC - Chamando thread");
+//					System.out.println("SELECTIONGRAPHIC - Chamando thread");
 					blinkAnimation();
 				}
 			}else {
@@ -54,7 +54,7 @@ public class SelectionGraphicElement extends ElementGraphic {
 			}
 				
 		} else {
-			System.out.println("SELECTIONGRAPHIC - Parando Thread");
+//			System.out.println("SELECTIONGRAPHIC - Parando Thread");
 			setAlpha(0);
 			thread.stop();
 		}

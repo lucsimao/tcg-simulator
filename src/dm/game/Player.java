@@ -11,8 +11,10 @@ import dm.exceptions.InvalidDeckException;
 import dm.exceptions.InvalidTextAttributeException;
 import dm.exceptions.LpZeroException;
 import dm.fields.Field;
+import dm.fields.elements.Hand;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
+import dm.fields.elements.zones.CardZone;
 
 /**
  * Classe jogador. Ela possui os pontos de vida do jogados e gerencia o campo do
@@ -48,12 +50,12 @@ public class Player {
 	}
 
 	public void firstDraw() {
-		shuffleDeck();
 		for (int i = 0; i < NUMBER_INITIAL_HAND; i++) {
 			field.draw();
 		}
 	}
 
+	
 	public void draw() {
 		field.draw();
 	}
@@ -121,7 +123,7 @@ public class Player {
 			attacked.setState(CardState.FACE_UP_DEFENSE_POS);
 			if (attacking.getCurrentAttack() > attacked.getCurrentDefense()) {
 				player.destroy(attacked);
-				System.out.println("MESSAGE: " + player.getField().getGraveyard().top().getName());
+//				System.out.println("MESSAGE: " + player.getField().getGraveyard().top().getName());
 			} else if (attacking.getCurrentAttack() < attacked.getCurrentDefense())
 				decreaseLp(attacked.getCurrentDefense() - attacking.getCurrentAttack());
 		} else if (attacked.getState() == CardState.FACE_UP_ATTACK) {
@@ -201,4 +203,15 @@ public class Player {
 		
 	}
 
+	public CardZone getMonsterZone() {
+		return field.getMonsterZone();
+	}
+	
+	public CardZone getSpellTrapZone() {
+		return field.getSpellTrapZone();
+	}
+
+	public Hand getHand() {
+		return  this.getField().getHand();
+	}
 }
