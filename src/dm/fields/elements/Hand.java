@@ -69,5 +69,4 @@ public class Hand extends FieldElement<Card> {
 		return removeFromTop();
 
 	}
-
 }

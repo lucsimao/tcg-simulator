@@ -6,12 +6,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
-import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
-import dm.cards.abstracts.MonsterCard;
 import dm.constants.FilesConstants;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
@@ -67,9 +64,12 @@ public class Yugioh extends Game{
 		
 		field1 = player1.getField();
 		field2 = player2.getField();
-//		player1.shuffleDeck();
+		player1.shuffleDeck();
 		player1.firstDraw();
-		
+//		player1.activate((NonMonsterCard) player1.getHand().getCardsList().get(4));
+//		player1.set((NonMonsterCard) player1.getHand().getCardsList().get(3));
+//		System.out.println(player1.getField().getSpellTrapZone().getCard(0).getState());
+//		System.out.println(player1.getField().getSpellTrapZone().getCard(1).getState());
 //		List<Card> list = player1.getHand().getCardsList();
 //		for(Card c : list) {
 //			if(c instanceof MonsterCard)
@@ -347,7 +347,7 @@ public class Yugioh extends Game{
 
 	public static void main(String args[]) throws FileNotFoundException, ClassNotFoundException, IOException {
 		DeckDao deckDao = new DeckDao();
-		File file = new File("deck/deck.ygo");
+		File file = new File("deck/baralho.ygo");
 		NormalDeck deck = deckDao.loadDeck(file);
 		Player player1 = new Player("teste1", null, deck, new ExtraDeck());
 		Player player2 = new Player("teste2", null, new NormalDeck(50), new ExtraDeck());

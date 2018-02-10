@@ -20,7 +20,7 @@ public class FieldSelectionElement extends ElementGraphic {
 		this.player1 = player1;
 		this.player2 = player2;
 	}
-
+	
 	public void addSelectionGraphicElement(SelectionGraphicElement s) {
 		this.selectionGraphics.add(s);
 	}

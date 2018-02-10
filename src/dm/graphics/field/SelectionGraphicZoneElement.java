@@ -32,21 +32,23 @@ public class SelectionGraphicZoneElement extends SelectionGraphicElement {
 		super.drawItself(screen);
 		try {
 			switch (cardZone.getCard(index).getState()) {
-			case CardState.FACE_UP_ATTACK :
-				screen.imageScaled(FilesConstants.CARDS_IMG_DIR + cardZone.getCard(index).getPicture(), 0, 0, getWidth()*8/9, getHeight()*8/9, 0, getX() + getWidth()/18 , getY() + getHeight()/18,
-						1f);
-				break;
-			case CardState.FACE_UP_DEFENSE_POS : 
-				screen.imageScaled(FilesConstants.CARDS_IMG_DIR + cardZone.getCard(index).getPicture(), 0, 0, getWidth()*8/9, getHeight()*8/9, Math.PI*3/2, getX() + getWidth()/18 , getY() + getHeight()/18,
-						1f);
-			case CardState.FACE_DOWN: 
-				if(cardZone.getCard(index) instanceof MonsterCard) {
-					screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD, 0, 0, getWidth()*8/9, getHeight()*8/9, Math.PI*3/2, getX() + getWidth()/18 , getY() + getHeight()/18,
-						1f);
-				}
-				else 
-					screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD, 0, 0, getWidth()*8/9, getHeight()*8/9,0, getX() + getWidth()/18 , getY() + getHeight()/18,
+				case CardState.FACE_UP_ATTACK :
+					screen.imageScaled(FilesConstants.CARDS_IMG_DIR + cardZone.getCard(index).getPicture(), 0, 0, getWidth()*8/9, getHeight()*8/9, 0, getX() + getWidth()/18 , getY() + getHeight()/18,
 							1f);
+					break;
+				case CardState.FACE_UP_DEFENSE_POS : 
+					screen.imageScaled(FilesConstants.CARDS_IMG_DIR + cardZone.getCard(index).getPicture(), 0, 0, getWidth()*8/9, getHeight()*8/9, Math.PI*3/2, getX() + getWidth()/18 , getY() + getHeight()/18,
+							1f);
+					break;
+				case CardState.FACE_DOWN: 
+					if(cardZone.getCard(index) instanceof MonsterCard) {
+						screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD, 0, 0, getWidth()*8/9, getHeight()*8/9, Math.PI*3/2, getX() + getWidth()/18 , getY() + getHeight()/18,
+							1f);
+					}
+					else 
+						screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD, 0, 0, getWidth()*8/9, getHeight()*8/9,0, getX() + getWidth()/18 , getY() + getHeight()/18,
+								1f);
+					break;
 			}
 				
 		

@@ -126,7 +126,7 @@ public class CardGraphicHand extends ElementGraphic {
 ////			t.stop();
 ////			setAlpha(1);
 //		}
-			
+		
 	}
 
 	@Override

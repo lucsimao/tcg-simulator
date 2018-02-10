@@ -38,7 +38,7 @@ public class SelectionGraphicElement extends ElementGraphic {
 
 	@Override
 	public void hoverAction(MouseEvent mouseEvent) {
-		System.out.println(thread.getState());
+//		System.out.println(thread.getState());
 		int x = mouseEvent.getX();
 		int y = mouseEvent.getY();
 
@@ -59,7 +59,7 @@ public class SelectionGraphicElement extends ElementGraphic {
 			thread.stop();
 		}
 	}
-
+	
 	@Override
 	public void clickAction(MouseEvent mouseEvent) {
 		// TODO Auto-generated method stub

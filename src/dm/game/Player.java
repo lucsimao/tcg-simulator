@@ -9,7 +9,6 @@ import dm.constants.CardState;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.InvalidDeckException;
 import dm.exceptions.InvalidTextAttributeException;
-import dm.exceptions.LpZeroException;
 import dm.fields.Field;
 import dm.fields.elements.Hand;
 import dm.fields.elements.decks.ExtraDeck;
@@ -137,7 +136,6 @@ public class Player {
 				destroy(attacking);
 				player.destroy(attacked);
 			}
-
 		}
 	}
 

@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.Effect;
+import dm.cards.MonsterFusionCard;
+import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.CardType;
 import dm.constants.MonsterAttribute;
@@ -88,6 +90,5 @@ public abstract class CardMonsterTests extends CardTests<MonsterCard> {
 	public void checkIfCurrentAttackAndDefAreEqualsOriginal() {
 		assertEquals(getCard().getOriginalAttack(), getCard().getCurrentAttack());
 		assertEquals(getCard().getOriginalDefense(), getCard().getCurrentDefense());
-	}
-
+	}	
 }

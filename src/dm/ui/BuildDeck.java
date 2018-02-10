@@ -79,10 +79,13 @@ public class BuildDeck extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {
 					try {
-						deckView.addSelected((NormalDeckCard) listView.getSelected());
+						deckView.addSelected((NormalDeckCard) ((NormalDeckCard) listView.getSelected()).clone());
 					} catch (MaxCardCopiesException ex) {
 						JOptionPane.showMessageDialog(null, ex.getMessage(), ex.getClass().getName(),
 								JOptionPane.INFORMATION_MESSAGE);
+					} catch (CloneNotSupportedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
 					System.out.println("DEBUG? " + deckView.getDeckSize());
 				}

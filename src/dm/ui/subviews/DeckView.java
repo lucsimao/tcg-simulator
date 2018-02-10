@@ -37,7 +37,7 @@ import dm.fields.elements.decks.NormalDeck;
 import dm.files.DeckDao;
 import dm.interfaces.NormalDeckCard;
 
-public class DeckView extends JPanel {
+public class DeckView extends JPanel{
 
 	private final static int height = 480;
 	private final static int width = 480;

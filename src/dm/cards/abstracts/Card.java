@@ -16,7 +16,7 @@ import dm.exceptions.InvalidTextAttributeException;
  * @author Simão
  */
 
-public abstract class Card implements Serializable {
+public abstract class Card implements Serializable,Cloneable {
 
 	private static final long serialVersionUID = -7720833260489417219L;
 
@@ -121,4 +121,9 @@ public abstract class Card implements Serializable {
 		s = s + r.nextInt();
 		return s;
 	}
+	
+	public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+	
 }
