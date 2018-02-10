@@ -15,11 +15,14 @@ public class HandGraphic extends ElementGraphic {
 	private List<CardGraphicHand> elements;
 	private int distance;
 	
-	public HandGraphic(Player player,int x,int y,int width,int height, int distance) {
+	private CardDetailsGraphic cardDetailsGraphic;
+	
+	public HandGraphic(CardDetailsGraphic cardDetailsGraphic, Player player,int x,int y,int width,int height, int distance) {
 		super(null, x,y,width,height);
 		this.player = player;
 		this.elements = new ArrayList<CardGraphicHand>();
 		this.distance = distance;
+		this.cardDetailsGraphic = cardDetailsGraphic;
 		updateHand();
 	}
 	
@@ -28,7 +31,7 @@ public class HandGraphic extends ElementGraphic {
 	private void updateHand() {
 		elements = new ArrayList<CardGraphicHand>();
 		for(int i = 0;i<player.getHand().size();i++) {
-			CardGraphicHand card = new CardGraphicHand(player,player.getHand().getCardsList().get(i), getX() + i*distance,getY(),getWidth(),getHeight());
+			CardGraphicHand card = new CardGraphicHand(cardDetailsGraphic,player,player.getHand().getCardsList().get(i), getX() + i*distance,getY(),getWidth(),getHeight());
 			if(!elements.contains(card))
 				elements.add(card);
 		}

@@ -21,13 +21,16 @@ public class CardGraphicHand extends ElementGraphic {
 	private Thread t;
 	private Player player;
 	private Card card;
-	public CardGraphicHand(Player player, Card card, int x, int y, int width, int height) {
+	private CardDetailsGraphic cardDetailsGraphic;
+	
+	public CardGraphicHand(CardDetailsGraphic cardDetailsGraphic, Player player, Card card, int x, int y, int width, int height) {
 		super(card.getPicture(), x, y, width, height);
 		this.x_temp = x;
 		this.y_temp = y;
 		t = new Thread();
 		this.player = player;
 		this.card = card;
+		this.cardDetailsGraphic = cardDetailsGraphic;
 	}
 
 	@Override
@@ -37,6 +40,7 @@ public class CardGraphicHand extends ElementGraphic {
 				setY(getY()-20);	
 				if(t.getState().equals(State.NEW)||t.getState().equals(State.TERMINATED))
 				{
+					this.cardDetailsGraphic.setCard(card);
 					blinkAnimation();
 				}
 //			}

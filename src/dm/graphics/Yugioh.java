@@ -1,6 +1,8 @@
 package dm.graphics;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,6 +18,7 @@ import dm.fields.elements.decks.NormalDeck;
 import dm.files.DeckDao;
 import dm.game.Player;
 import dm.graphics.field.ButtonGraphic;
+import dm.graphics.field.CardDetailsGraphic;
 import dm.graphics.field.CardGraphicHand;
 import dm.graphics.field.ElementGraphic;
 import dm.graphics.field.FieldSelectionElement;
@@ -88,8 +91,14 @@ public class Yugioh extends Game{
 		ButtonGraphic BP = new ButtonGraphic("BP",panel_button_x ,panel_button_y + 2*panel_distance,button_width,button_height);
 		ButtonGraphic M2 = new ButtonGraphic("M2",panel_button_x ,panel_button_y + 3*panel_distance,button_width,button_height);
 		ButtonGraphic EP = new ButtonGraphic("EP",panel_button_x ,panel_button_y + 4*panel_distance,button_width,button_height);
+		draw.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				player1.draw();
+			}
+		});
 		x_offset = w.getWidth()/2 - draw.getWidth()/2;
-		this.handGraphic = new HandGraphic(player1, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
 //		hand = (ArrayList<Card>) player1.getField().getHand();
 //		createCards(hand, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
 		
@@ -111,7 +120,8 @@ public class Yugioh extends Game{
 		SelectionGraphicElement field1 = new SelectionGraphicElement(special_zone_x- 360,404, special_zone_width, special_zone_height);
 		SelectionGraphicElement extra_deck1 = new SelectionGraphicElement(special_zone_x- 360,474, special_zone_width, special_zone_height);
 		
-		
+		CardDetailsGraphic cardDetailsGraphic = new CardDetailsGraphic(0,0,getWidth(),getHeight());
+		this.handGraphic = new HandGraphic(cardDetailsGraphic,player1, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
 		fieldSelectionElement = new FieldSelectionElement(player1,player2);
 		fieldSelectionElement.addSelectionElements(x_offset);
 //		fieldSelectionElement.addSelectionGraphicElement(extra1);
@@ -135,6 +145,7 @@ public class Yugioh extends Game{
 		elements.add(M2);
 		elements.add(EP);
 		elements.add(handGraphic);
+		elements.add(cardDetailsGraphic);
 		
 	}
 	
@@ -176,13 +187,13 @@ public class Yugioh extends Game{
 		}
 	}
 	
-	public void createCards(ArrayList<Card> cards,int x,int y,int width,int height, int distance) {
-		for(int i = 0;i<cards.size();i++) {
-			card = new CardGraphicHand(player1,cards.get(i), x + i*distance,y,width,height);
-			if(!elements.contains(card))
-				elements.add(card);
-		}
-	}
+//	public void createCards(ArrayList<Card> cards,int x,int y,int width,int height, int distance) {
+//		for(int i = 0;i<cards.size();i++) {
+//			card = new CardGraphicHand(player1,cards.get(i), x + i*distance,y,width,height);
+//			if(!elements.contains(card))
+//				elements.add(card);
+//		}
+//	}
 	
 	private void drawCards(Screen screen,ArrayList<ElementGraphic> elements2) {
 		for(ElementGraphic e : elements2)
@@ -296,16 +307,16 @@ public class Yugioh extends Game{
 		w.drawItself(screen);
 //		WindowGraphic w2 = new WindowGraphic(750, 0, getWidth()/4,getHeight());
 //		w2.drawItself(screen);
-		screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE,0,0,178,250,0,10,45,1);
-		screen.imageScaled(FilesConstants.THEME_PATH + "tabControl.png",0,0,getWidth()*2/9 - 10,340,0,5,300,1);
-		screen.imageScaled(FilesConstants.THEME_PATH + "darkTab.png",0,0,getWidth()*2/9 - 10,35,0,5,300,1);
-		screen.text("EXODIA, THE FORBIDDEN ONE",15,322,12,Color.WHITE);
-		screen.text("Spellcaster/Effect",15,350,12,Color.BLACK);
-		screen.text("Attribute DARK",15,361,12,Color.BLACK);
-		screen.text("Level 3",15,372,12,Color.BLACK);
-		screen.text("1000 / 1000",15,383,12,Color.BLACK);
-//		screen.textMultiLine();
-		screen.textMultiLine("When you have \"Right Arm of the Forbidden One\",\"Left Arm of the Forbidden One\",\"Right Leg of the Forbidden One\",\"Left Leg of the Forbidden One\", in addition to this card in your hand, you win the duel. ",15,404,12,getWidth()*2/9 - 30,Color.BLACK);
+//		screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE,0,0,178,250,0,10,45,1);
+//		screen.imageScaled(FilesConstants.THEME_PATH + "tabControl.png",0,0,getWidth()*2/9 - 10,340,0,5,300,1);
+//		screen.imageScaled(FilesConstants.THEME_PATH + "darkTab.png",0,0,getWidth()*2/9 - 10,35,0,5,300,1);
+//		screen.text("EXODIA, THE FORBIDDEN ONE",15,322,12,Color.WHITE);
+//		screen.text("Spellcaster/Effect",15,350,12,Color.BLACK);
+//		screen.text("Attribute DARK",15,361,12,Color.BLACK);
+//		screen.text("Level 3",15,372,12,Color.BLACK);
+//		screen.text("1000 / 1000",15,383,12,Color.BLACK);
+////		screen.textMultiLine();
+//		screen.textMultiLine("When you have \"Right Arm of the Forbidden One\",\"Left Arm of the Forbidden One\",\"Right Leg of the Forbidden One\",\"Left Leg of the Forbidden One\", in addition to this card in your hand, you win the duel. ",15,404,12,getWidth()*2/9 - 30,Color.BLACK);
 		fieldSelectionElement.drawItself(screen);
 		drawCards(screen,elements);
 		//EFEITOS DE CARTA

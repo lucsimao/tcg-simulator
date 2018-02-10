@@ -1,6 +1,9 @@
 package dm.graphics.field;
 
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,12 +17,15 @@ public class ButtonGraphic extends ElementGraphic {
 	private String text;
 	private Color color;
 	private int textSize;
+	private ActionListener actionListener;
+	
 	
 	public ButtonGraphic(int x, int y, int width, int height) {
 		super(FilesConstants.BUTTON_IMAGE,x, y, width, height);
 		this.text = "BUTTON";
 		this.color = Color.BLACK;
 		this.textSize = 12;
+		this.actionListener = null;
 	}
 
 	public ButtonGraphic(String text,int x, int y, int width, int height) {
@@ -27,6 +33,7 @@ public class ButtonGraphic extends ElementGraphic {
 		this.text = text;
 		this.color = Color.BLACK;
 		this.textSize = 12;
+		this.actionListener = null;
 	}
 
 	
@@ -64,9 +71,12 @@ public class ButtonGraphic extends ElementGraphic {
 	public void clickAction(MouseEvent mouseEvent) {
 		if(isOverIt(mouseEvent.getX(),mouseEvent.getY())) {
 			setPicture(FilesConstants.BUTTON_PRESSED_IMAGE);
+			if(actionListener != null)
+				actionListener.actionPerformed(null);
 		}else
 			setPicture(FilesConstants.BUTTON_IMAGE);
-		
+	
+
 	}
 
 	@Override
@@ -75,7 +85,10 @@ public class ButtonGraphic extends ElementGraphic {
 		
 	}
 
-
+	public void addActionListener(ActionListener actionListener) {
+		this.actionListener = actionListener;
+	}
+	
 
 
 	
