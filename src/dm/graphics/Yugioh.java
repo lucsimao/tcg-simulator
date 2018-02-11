@@ -54,7 +54,6 @@ public class Yugioh extends Game{
 	private int x_offset;
 	
 	public Yugioh(Player player1, Player player2) {
-		
 //		super((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		super(900,650);
 		x_offset = 0;
