@@ -13,12 +13,17 @@ public class FieldSelectionElement extends ElementGraphic {
 	private List<SelectionGraphicElement> selectionGraphics;
 	private Player player1;
 	private Player player2;
+	private int screenWidth;
+	private int screenHeight;
 	
-	public FieldSelectionElement(Player player1, Player player2) {
+	
+	public FieldSelectionElement(Player player1, Player player2, int screenWidth, int screenHeight) {
 		super(null, 0, 0, 0, 0, 0);
 		this.selectionGraphics = new ArrayList<SelectionGraphicElement>();
 		this.player1 = player1;
 		this.player2 = player2;
+		this.screenWidth = screenWidth;
+		this.screenHeight = screenHeight;
 	}
 	
 	public void addSelectionGraphicElement(SelectionGraphicElement s) {
@@ -31,22 +36,44 @@ public class FieldSelectionElement extends ElementGraphic {
 	}
 	
 	public void addSelectionElements(int x_offset) {
-		int special_zone_x = 608 + x_offset;
-		int special_zone_height = 59;
-		int special_zone_width = 39;
+		int special_zone_x = (Math.round(screenWidth*607f/900) + x_offset);
+		int special_zone_padding = Math.round(screenWidth*(360f)/900);
+
+		int special_zone_height = Math.round(screenHeight*59f/650);
+		int special_zone_width = Math.round(screenWidth*40f/900);
+		
+		int extra_zone_x_1 = Math.round(screenWidth*(299f+61)/900);
+		int extra_zone_x_2 = Math.round(screenWidth*(299f+61+120)/900);
+		int extra_zone_y = Math.round(screenHeight*(295f)/650);
+
+		
+		
+		
+		
+		
+		int zone_x =  Math.round(screenWidth*302f/900)+ x_offset;
+		int zone_distance = Math.round(screenWidth*5f/900);
+		int zone_spell1_y =  Math.round(screenHeight*434f/650);
+		int zone_spell2_y =  Math.round(screenHeight*155f/650);
+		int zone_monster1_y =  Math.round(screenHeight*369f/650);
+		int zone_monster2_y =  Math.round(screenHeight*221f/650);
+		int zone_height = Math.round(screenHeight*61f/650);
+		int zone_width = Math.round(screenWidth*54f/900);
+		
+		
 		//ADDING
-		SelectionGraphicElement extra1 = new SelectionGraphicElement(299 + 61 + x_offset,295, 54, 61);
-		SelectionGraphicElement extra2 = new SelectionGraphicElement(298 + 61 + 121 + x_offset,295, 54, 61);
-		SelectionGraphicElement deck1 = new SelectionGraphicElement(special_zone_x,474, special_zone_width, special_zone_height);
-		SelectionGraphicElement grave1 = new SelectionGraphicElement(special_zone_x,404, special_zone_width, special_zone_height);
-		SelectionGraphicElement banned1 = new SelectionGraphicElement(special_zone_x,332, special_zone_width, special_zone_height);
-		SelectionGraphicElement field2 = new SelectionGraphicElement(special_zone_x,188, special_zone_width, special_zone_height);
-		SelectionGraphicElement extra_deck2 = new SelectionGraphicElement(special_zone_x,118, special_zone_width, special_zone_height);
-		SelectionGraphicElement deck2 = new SelectionGraphicElement(special_zone_x- 360,118, special_zone_width, special_zone_height);
-		SelectionGraphicElement grave2 = new SelectionGraphicElement(special_zone_x- 360,188, special_zone_width, special_zone_height);
-		SelectionGraphicElement	banned2 = new SelectionGraphicElement(special_zone_x- 360,260, special_zone_width, special_zone_height);
-		SelectionGraphicElement field1 = new SelectionGraphicElement(special_zone_x- 360,404, special_zone_width, special_zone_height);
-		SelectionGraphicElement extra_deck1 = new SelectionGraphicElement(special_zone_x- 360,474, special_zone_width, special_zone_height);	
+		SelectionGraphicElement extra1 = new SelectionGraphicElement(extra_zone_x_1 + x_offset,extra_zone_y, zone_width, zone_height);
+		SelectionGraphicElement extra2 = new SelectionGraphicElement(extra_zone_x_2 + x_offset,extra_zone_y, zone_width, zone_height);
+		SelectionGraphicElement deck1 = new SelectionGraphicElement(special_zone_x,Math.round(screenHeight*(474f)/650), special_zone_width, special_zone_height);
+		SelectionGraphicElement grave1 = new SelectionGraphicElement(special_zone_x,Math.round(screenHeight*(404f)/650), special_zone_width, special_zone_height);
+		SelectionGraphicElement banned1 = new SelectionGraphicElement(special_zone_x,Math.round(screenHeight*(332f)/650), special_zone_width, special_zone_height);
+		SelectionGraphicElement field2 = new SelectionGraphicElement(special_zone_x,Math.round(screenHeight*(188f)/650), special_zone_width, special_zone_height);
+		SelectionGraphicElement extra_deck2 = new SelectionGraphicElement(special_zone_x,Math.round(screenHeight*(118f)/650), special_zone_width, special_zone_height);
+		SelectionGraphicElement deck2 = new SelectionGraphicElement(special_zone_x - special_zone_padding,Math.round(screenHeight*(118f)/650), special_zone_width, special_zone_height);
+		SelectionGraphicElement grave2 = new SelectionGraphicElement(special_zone_x - special_zone_padding,Math.round(screenHeight*(188f)/650), special_zone_width, special_zone_height);
+		SelectionGraphicElement	banned2 = new SelectionGraphicElement(special_zone_x - special_zone_padding,Math.round(screenHeight*(260f)/650), special_zone_width, special_zone_height);
+		SelectionGraphicElement field1 = new SelectionGraphicElement(special_zone_x - special_zone_padding,Math.round(screenHeight*(404f)/650), special_zone_width, special_zone_height);
+		SelectionGraphicElement extra_deck1 = new SelectionGraphicElement(special_zone_x - special_zone_padding,Math.round(screenHeight*(474f)/650), special_zone_width, special_zone_height);	
 		
 		addSelectionGraphicElement(extra1);
 		addSelectionGraphicElement(extra2);
@@ -61,14 +88,6 @@ public class FieldSelectionElement extends ElementGraphic {
 		addSelectionGraphicElement(field1);
 		addSelectionGraphicElement(extra_deck1);
 		
-		int zone_x = 302 + x_offset;
-		int zone_distance = 5;
-		int zone_spell1_y = 434;
-		int zone_spell2_y = 155;
-		int zone_monster1_y = 369;
-		int zone_monster2_y = 221;
-		int zone_width = 54;
-		int zone_height = 61;
 		
 		//MONSTERSPELLZONE
 		//MONSTER1

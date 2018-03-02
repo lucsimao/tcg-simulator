@@ -39,6 +39,8 @@ public class Yugioh extends Game{
 	private final int button_width = Math.round(getWidth()/9f);
 	private final int button_height = Math.round(getHeight()/13f);
 	
+	
+	
 	private Player player1;
 	private Player player2;
 	
@@ -102,26 +104,29 @@ public class Yugioh extends Game{
 //		createCards(hand, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
 		
 		
-		int special_zone_x = 608 + x_offset;
-		int special_zone_height = 59;
-		int special_zone_width = 39;
+//		int special_zone_x = w.getWidth()*608/900 + x_offset;
+////		int special_zone_x = 608 + x_offset;
+//		int special_zone_height = w.getHeight()*59/600;
+//		int special_zone_width = w.getWidth()*39/900;
+//		int normal_zone_height = w.getHeight()*61/600;
+//		int normal_zone_width = w.getWidth()*54/900;
 		
-		SelectionGraphicElement extra1 = new SelectionGraphicElement(299 + 61 + x_offset,295, 54, 61);
-		SelectionGraphicElement extra2 = new SelectionGraphicElement(298 + 61 + 121 + x_offset,295, 54, 61);
-		SelectionGraphicElement deck1 = new SelectionGraphicElement(special_zone_x,474, special_zone_width, special_zone_height);
-		SelectionGraphicElement grave1 = new SelectionGraphicElement(special_zone_x,404, special_zone_width, special_zone_height);
-		SelectionGraphicElement banned1 = new SelectionGraphicElement(special_zone_x,332, special_zone_width, special_zone_height);
-		SelectionGraphicElement field2 = new SelectionGraphicElement(special_zone_x,188, special_zone_width, special_zone_height);
-		SelectionGraphicElement extra_deck2 = new SelectionGraphicElement(special_zone_x,118, special_zone_width, special_zone_height);
-		SelectionGraphicElement deck2 = new SelectionGraphicElement(special_zone_x- 360,118, special_zone_width, special_zone_height);
-		SelectionGraphicElement grave2 = new SelectionGraphicElement(special_zone_x- 360,188, special_zone_width, special_zone_height);
-		SelectionGraphicElement	banned2 = new SelectionGraphicElement(special_zone_x- 360,260, special_zone_width, special_zone_height);
-		SelectionGraphicElement field1 = new SelectionGraphicElement(special_zone_x- 360,404, special_zone_width, special_zone_height);
-		SelectionGraphicElement extra_deck1 = new SelectionGraphicElement(special_zone_x- 360,474, special_zone_width, special_zone_height);
+//		SelectionGraphicElement extra1 = new SelectionGraphicElement(299 + 61 + x_offset,295, normal_zone_width,normal_zone_height);
+//		SelectionGraphicElement extra2 = new SelectionGraphicElement(298 + 61 + 121 + x_offset,295, 54, 61);
+//		SelectionGraphicElement deck1 = new SelectionGraphicElement(special_zone_x,474, special_zone_width, special_zone_height);
+//		SelectionGraphicElement grave1 = new SelectionGraphicElement(special_zone_x,404, special_zone_width, special_zone_height);
+//		SelectionGraphicElement banned1 = new SelectionGraphicElement(special_zone_x,332, special_zone_width, special_zone_height);
+//		SelectionGraphicElement field2 = new SelectionGraphicElement(special_zone_x,188, special_zone_width, special_zone_height);
+//		SelectionGraphicElement extra_deck2 = new SelectionGraphicElement(special_zone_x,118, special_zone_width, special_zone_height);
+//		SelectionGraphicElement deck2 = new SelectionGraphicElement(special_zone_x- 360,118, special_zone_width, special_zone_height);
+//		SelectionGraphicElement grave2 = new SelectionGraphicElement(special_zone_x- 360,188, special_zone_width, special_zone_height);
+//		SelectionGraphicElement	banned2 = new SelectionGraphicElement(special_zone_x- 360,260, special_zone_width, special_zone_height);
+//		SelectionGraphicElement field1 = new SelectionGraphicElement(special_zone_x- 360,404, special_zone_width, special_zone_height);
+//		SelectionGraphicElement extra_deck1 = new SelectionGraphicElement(special_zone_x- 360,474, special_zone_width, special_zone_height);
 		
 		CardDetailsGraphic cardDetailsGraphic = new CardDetailsGraphic(0,0,getWidth(),getHeight());
 		this.handGraphic = new HandGraphic(cardDetailsGraphic,player1, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
-		fieldSelectionElement = new FieldSelectionElement(player1,player2);
+		fieldSelectionElement = new FieldSelectionElement(player1,player2,getWidth(),getHeight());
 		fieldSelectionElement.addSelectionElements(x_offset);
 //		fieldSelectionElement.addSelectionGraphicElement(extra1);
 //		fieldSelectionElement.addSelectionGraphicElement(extra2);

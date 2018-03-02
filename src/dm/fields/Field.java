@@ -65,6 +65,7 @@ public class Field {
 	/** Sobrecarga de setCard */
 	public void setCard(MonsterCard monsterCard) {
 		monsterZone.setMonster(monsterCard);
+		monsterCard.resetAttacksCount();
 	}
 
 	/** Sobrecarga de setCard */
@@ -80,11 +81,13 @@ public class Field {
 	/** Métodos para summonar um monstro em modo de ataque */
 	public void summonMonster(MonsterCard monsterCard, int index) {
 		monsterZone.summonMonster(monsterCard, index);
+		monsterCard.resetAttacksCount();
 	}
 
 	/** Sobracarda de summonMonster */
 	public void summonMonster(MonsterCard monsterCard) {
 		monsterZone.summonMonster(monsterCard);
+		monsterCard.resetAttacksCount();
 	}
 
 	/**

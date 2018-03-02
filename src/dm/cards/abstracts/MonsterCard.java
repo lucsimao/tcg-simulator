@@ -22,7 +22,9 @@ public abstract class MonsterCard extends Card {
 	private int originalDefense;
 	private int currentAttack;
 	private int currentDefense;
-
+	private int attacks_count;
+	private int max_attacks;
+	
 	public MonsterCard(String name, String description, int colorPicture, String picture, int type, int atribute,
 			int originalAttack, int originalDeffense, Effect effect, int copies_number) {
 		super(name, description, CardType.MONSTER, colorPicture, picture, effect, copies_number);
@@ -32,9 +34,30 @@ public abstract class MonsterCard extends Card {
 		this.originalDefense = originalDeffense;
 		this.currentAttack = originalAttack;
 		this.currentDefense = originalDeffense;
-
+		this.attacks_count = 0;
+		this.max_attacks = 1;
+	}	
+	
+	public void setMaxAttacks(int max_attacks) {
+		this.max_attacks = max_attacks;
 	}
 
+	public boolean canAttack() {
+		return max_attacks > attacks_count;
+	}
+	
+	public void incrementAttacksCount() {
+		this.attacks_count++;
+	}
+	
+	public void resetAttacksCount(){
+		this.attacks_count = 0;
+	}
+	
+	public int getAttacksCount() {
+		return this.attacks_count;
+	}
+	
 	/**
 	 * Aumenta o ataque em certa quantidade
 	 * 

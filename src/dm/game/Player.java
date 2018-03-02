@@ -118,6 +118,7 @@ public class Player {
 
 		MonsterCard attacking = getMonsterCard(index_attacking);
 		MonsterCard attacked = player.getMonsterCard(index_attacked);
+		attacking.incrementAttacksCount();
 		if (attacked.getState() == CardState.FACE_UP_DEFENSE_POS || attacked.getState() == CardState.FACE_DOWN) {
 			attacked.setState(CardState.FACE_UP_DEFENSE_POS);
 			if (attacking.getCurrentAttack() > attacked.getCurrentDefense()) {
@@ -147,8 +148,8 @@ public class Player {
 		field.sendToGraveyard(spellTrapCard);
 	}
 
-	public void attack(MonsterCard attacking, Player player, MonsterCard attacked) throws CardNotFoundException {
-		attack(field.getMonsterCardIndex(attacking), player, player.getMonsterCardIndex(attacked));
+	public void attack(MonsterCard attacking, Player player_attacked, MonsterCard attacked) throws CardNotFoundException {
+		attack(field.getMonsterCardIndex(attacking), player_attacked, player_attacked.getMonsterCardIndex(attacked));
 	}
 
 	public int getMonsterCardIndex(MonsterCard card) {
@@ -159,7 +160,7 @@ public class Player {
 		return field.getMonsterCard(index);
 	}
 
-	public void summon(MonsterNormalCard monsterCard) {
+	public void summon(MonsterCard monsterCard) {
 		field.summonMonster(monsterCard);
 		field.getHand().remove(monsterCard);
 	}
@@ -168,7 +169,7 @@ public class Player {
 		field.getHand().remove(nonMonsterCard);
 	}
 
-	public void set(MonsterNormalCard monsterCard) {
+	public void set(MonsterCard monsterCard) {
 		field.setCard(monsterCard);
 		field.getHand().remove(monsterCard);
 	}
