@@ -64,6 +64,7 @@ public class SelectionGraphicZoneElement extends SelectionGraphicElement {
 			e.printStackTrace();
 		}
 	}
+	@SuppressWarnings("deprecation")
 	@Override
 	public void hoverAction(MouseEvent mouseEvent) {
 //		System.out.println(thread.getState());

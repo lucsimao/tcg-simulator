@@ -7,15 +7,10 @@ package dm.ui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.TextComponent;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -28,13 +23,9 @@ import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import dm.constants.FilesConstants;
-import dm.exceptions.MaxCardCopiesException;
 import dm.fields.elements.decks.NormalDeck;
 import dm.files.DeckDao;
 import dm.game.Player;
-import dm.interfaces.NormalDeckCard;
-import dm.ui.subviews.DeckView;
-import dm.ui.subviews.ListCards;
 
 public class PlayerBuilder extends JPanel {
 
@@ -43,8 +34,8 @@ public class PlayerBuilder extends JPanel {
 	private final static int height = 480;
 	private final static int width = 900;
 
-	private ListCards listView;
-	private DeckView deckView;
+//	private ListCards listView;
+//	private DeckView deckView;
 
 	private JButton btnBack;
 	private JButton btnStart;

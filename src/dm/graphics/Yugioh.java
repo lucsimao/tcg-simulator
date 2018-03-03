@@ -1,6 +1,5 @@
 package dm.graphics;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import dm.cards.abstracts.Card;
-import dm.constants.FilesConstants;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -23,7 +21,6 @@ import dm.graphics.field.CardGraphicHand;
 import dm.graphics.field.ElementGraphic;
 import dm.graphics.field.FieldSelectionElement;
 import dm.graphics.field.HandGraphic;
-import dm.graphics.field.SelectionGraphicElement;
 import dm.graphics.field.WindowGraphic;
 
 public class Yugioh extends Game{

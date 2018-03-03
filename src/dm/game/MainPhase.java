@@ -1,6 +1,5 @@
 package dm.game;
 
-import dm.cards.SpellCard;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.exceptions.ActivateException;

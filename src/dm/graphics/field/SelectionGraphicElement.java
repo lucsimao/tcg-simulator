@@ -36,6 +36,7 @@ public class SelectionGraphicElement extends ElementGraphic {
 		this.color = color;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void hoverAction(MouseEvent mouseEvent) {
 //		System.out.println(thread.getState());

@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.Effect;
-import dm.cards.MonsterFusionCard;
-import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.CardType;
 import dm.constants.MonsterAttribute;
