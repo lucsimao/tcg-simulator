@@ -126,7 +126,7 @@ public class Yugioh extends Game{
 		
 		CardDetailsGraphic cardDetailsGraphic = new CardDetailsGraphic(0,0,getWidth(),getHeight());
 		this.handGraphic = new HandGraphic(cardDetailsGraphic,player1, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
-		fieldSelectionElement = new FieldSelectionElement(player1,player2,getWidth(),getHeight());
+		fieldSelectionElement = new FieldSelectionElement(cardDetailsGraphic,player1,player2,getWidth(),getHeight());
 		fieldSelectionElement.addSelectionElements(x_offset);
 //		fieldSelectionElement.addSelectionGraphicElement(extra1);
 //		fieldSelectionElement.addSelectionGraphicElement(extra2);

@@ -30,11 +30,19 @@ public class HandGraphic extends ElementGraphic {
 	
 	private void updateHand() {
 		elements = new ArrayList<CardGraphicHand>();
+//		try {
+//			distance = (600-player.getHand().size()*getWidth()/2)/(player.getHand().size());
+//			System.out.println(getWidth());
+//		}catch (Exception e) {
+//			// TODO: handle exception
+//		}
 		for(int i = 0;i<player.getHand().size();i++) {
 			CardGraphicHand card = new CardGraphicHand(cardDetailsGraphic,player,player.getHand().getCardsList().get(i), getX() + i*distance,getY(),getWidth(),getHeight());
 			if(!elements.contains(card))
 				elements.add(card);
 		}
+
+		
 	}
 
 

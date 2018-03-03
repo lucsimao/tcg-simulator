@@ -15,15 +15,16 @@ public class FieldSelectionElement extends ElementGraphic {
 	private Player player2;
 	private int screenWidth;
 	private int screenHeight;
+	private CardDetailsGraphic cardDetailsGraphic;
 	
-	
-	public FieldSelectionElement(Player player1, Player player2, int screenWidth, int screenHeight) {
+	public FieldSelectionElement(CardDetailsGraphic cardDetailsGraphic,Player player1, Player player2, int screenWidth, int screenHeight) {
 		super(null, 0, 0, 0, 0, 0);
 		this.selectionGraphics = new ArrayList<SelectionGraphicElement>();
 		this.player1 = player1;
 		this.player2 = player2;
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
+		this.cardDetailsGraphic = cardDetailsGraphic;
 	}
 	
 	public void addSelectionGraphicElement(SelectionGraphicElement s) {
@@ -92,19 +93,19 @@ public class FieldSelectionElement extends ElementGraphic {
 		//MONSTERSPELLZONE
 		//MONSTER1
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(zone_x + (zone_width + zone_distance)*i, zone_monster1_y, zone_width, zone_height,player1.getMonsterZone(),i));
+			this.selectionGraphics.add(new SelectionGraphicZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_monster1_y, zone_width, zone_height,player1.getMonsterZone(),i));
 		}
 		//MONSTER2
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(zone_x + (zone_width + zone_distance)*i, zone_monster2_y, zone_width, zone_height,player2.getMonsterZone(),i));
+			this.selectionGraphics.add(new SelectionGraphicZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_monster2_y, zone_width, zone_height,player2.getMonsterZone(),i));
 		}
 		//SPELL1
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(zone_x + (zone_width + zone_distance)*i, zone_spell1_y, zone_width, zone_height,player1.getSpellTrapZone(),i));
+			this.selectionGraphics.add(new SelectionGraphicZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_spell1_y, zone_width, zone_height,player1.getSpellTrapZone(),i));
 		}
 		//SPELL2
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicElement(zone_x + (zone_width + zone_distance)*i, zone_spell2_y, zone_width, zone_height));
+			this.selectionGraphics.add(new SelectionGraphicZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_spell2_y, zone_width, zone_height,player2.getSpellTrapZone(),i));
 		}
 	}
 	

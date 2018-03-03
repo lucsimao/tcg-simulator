@@ -9,7 +9,7 @@ import dm.graphics.Screen;
 public class SelectionGraphicElement extends ElementGraphic {
 
 	private final int DELAY = 71;
-	private Thread thread;
+	protected Thread thread;
 	private Color color;
 	
 	public SelectionGraphicElement(int x, int y, int width, int height, float alpha, Color color) {
