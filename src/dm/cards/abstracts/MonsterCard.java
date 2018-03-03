@@ -2,6 +2,7 @@ package dm.cards.abstracts;
 
 import dm.cards.Effect;
 import dm.constants.CardType;
+import dm.constants.MonsterAttribute;
 
 /**
  * Classe Monstro Classe abstrata para tratar os monstros do jogo. Eles possuem
@@ -17,7 +18,7 @@ public abstract class MonsterCard extends Card {
 	private static final long serialVersionUID = 1160252849178277811L;
 
 	private int type;
-	private int atribute;
+	private MonsterAttribute atribute;
 	private int originalAttack;
 	private int originalDefense;
 	private int currentAttack;
@@ -25,11 +26,11 @@ public abstract class MonsterCard extends Card {
 	private int attacks_count;
 	private int max_attacks;
 	
-	public MonsterCard(String name, String description, int colorPicture, String picture, int type, int atribute,
+	public MonsterCard(String name, String description, int colorPicture, String picture, int type, MonsterAttribute dark,
 			int originalAttack, int originalDeffense, Effect effect, int copies_number) {
 		super(name, description, CardType.MONSTER, colorPicture, picture, effect, copies_number);
 		this.type = type;
-		this.atribute = atribute;
+		this.atribute = dark;
 		this.originalAttack = originalAttack;
 		this.originalDefense = originalDeffense;
 		this.currentAttack = originalAttack;
@@ -133,11 +134,11 @@ public abstract class MonsterCard extends Card {
 		this.type = type;
 	}
 
-	public int getAtribute() {
+	public MonsterAttribute getAtribute() {
 		return atribute;
 	}
 
-	public void setAtribute(int atribute) {
+	public void setAtribute(MonsterAttribute atribute) {
 		this.atribute = atribute;
 	}
 

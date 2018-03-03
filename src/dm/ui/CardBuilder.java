@@ -41,6 +41,7 @@ import dm.cards.SpellCard;
 import dm.cards.TrapCard;
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
+import dm.constants.MonsterAttribute;
 import dm.files.CardDAO;
 import dm.ui.subviews.CardImage;
 
@@ -99,6 +100,7 @@ public class CardBuilder extends JPanel {
 		f.setBounds(0, 0, width, height);
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CardBuilder() {
 		setLayout(new BorderLayout(10, 10));
 		setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -160,7 +162,7 @@ public class CardBuilder extends JPanel {
 
 		monsterAtributeCB = new JComboBox<String>();
 		monsterAtributeCB.setModel(
-				new DefaultComboBoxModel<String>(new String[] { "WATER", "FIRE", "LIGHT", "DARK", "WIND", "EARTH" }));
+				new DefaultComboBoxModel(MonsterAttribute.values()));
 		panelFields.add(monsterAtributeCB);
 
 		lblSpellType = new JLabel("Spell Type");
@@ -269,7 +271,7 @@ public class CardBuilder extends JPanel {
 			if (cardTypeCB.getSelectedItem().toString().equals("MONSTER")) {
 				System.out.println("Você criou um monstro!" + cardTypeCB.getSelectedIndex());
 				card = new MonsterNormalCard(nameTF.getText(), descriptionTA.getText(), pictureTF.getText(),
-						monsterTypeCB.getSelectedIndex(), monsterAtributeCB.getSelectedIndex(),
+						monsterTypeCB.getSelectedIndex(), (MonsterAttribute)monsterAtributeCB.getSelectedItem(),
 						(int) attackSPN.getValue(), (int) defenseSPN.getValue(), 0);
 			} else if (cardTypeCB.getSelectedItem().toString().equals("SPELL")) {
 				System.out.println("Você criou uma magia!" + cardTypeCB.getSelectedIndex());

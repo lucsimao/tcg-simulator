@@ -3,6 +3,7 @@ package dm.cards;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
 import dm.constants.FilesConstants;
+import dm.constants.MonsterAttribute;
 import dm.exceptions.EffectMonsterWithNoEffectException;
 import dm.interfaces.NormalDeckCard;
 
@@ -19,7 +20,7 @@ public class MonsterEffectCard extends MonsterCard implements NormalDeckCard {
 
 	private static final long serialVersionUID = 5346230125931311515L;
 
-	public MonsterEffectCard(String name, String description, String picture, int type, int atribute,
+	public MonsterEffectCard(String name, String description, String picture, int type, MonsterAttribute atribute,
 			int originalAttack, int originalDeffense, Effect effect, int copies_number)
 			throws EffectMonsterWithNoEffectException {
 		super(name, description, ColorPicture.NORMAL, picture, type, atribute, originalAttack, originalDeffense, effect,
@@ -29,7 +30,7 @@ public class MonsterEffectCard extends MonsterCard implements NormalDeckCard {
 	}
 
 	public MonsterEffectCard() {
-		super(nameGenerator(), "Texto padrão", ColorPicture.NORMAL, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, 0, 0, 0, 0, new Effect(), 3);
+		super(nameGenerator(), "Texto padrão", ColorPicture.NORMAL, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, 0, MonsterAttribute.DARK, 0, 0, new Effect(), 3);
 	}
 
 }

@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.MonsterNormalCard;
+import dm.constants.MonsterAttribute;
 import dm.exceptions.CardsOutException;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
@@ -25,10 +26,10 @@ public class DuelDeckTests {
 	@Before
 	public void initDeck() {
 		deck = new NormalDeck();
-		unlimitedCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, 0, 0, 0, 3);
-		semiLimitedCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, 0, 0, 0, 2);
-		limitedCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, 0, 0, 0, 1);
-		forbbidenCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, 0, 0, 0, 0);
+		unlimitedCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, MonsterAttribute.DARK, 0, 0, 3);
+		semiLimitedCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, MonsterAttribute.DARK, 0, 0, 2);
+		limitedCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, MonsterAttribute.DARK, 0, 0, 1);
+		forbbidenCard = new MonsterNormalCard("Teste", "Teste", "Teste", 0, MonsterAttribute.DARK, 0, 0, 0);
 	}
 
 	@Test
