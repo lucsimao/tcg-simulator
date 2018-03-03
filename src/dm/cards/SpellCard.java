@@ -20,9 +20,9 @@ public class SpellCard extends NonMonsterCard implements NormalDeckCard {
 
 	private static final long serialVersionUID = 511682576858461550L;
 
-	public int type;
+	public SpellType type;
 
-	public SpellCard(String name, String description, String picture, Effect effect, int type, int copies_number)
+	public SpellCard(String name, String description, String picture, Effect effect, SpellType type, int copies_number)
 			throws NoEffectException {
 		super(name, description, CardType.SPELL, ColorPicture.SPELL, picture, effect, copies_number);
 		this.type = type;
@@ -34,7 +34,7 @@ public class SpellCard extends NonMonsterCard implements NormalDeckCard {
 		this.type = SpellType.NORMAL;
 	}
 
-	public int getType() {
+	public SpellType getType() {
 		return type;
 	}
 

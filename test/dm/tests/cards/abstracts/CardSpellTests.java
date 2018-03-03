@@ -16,13 +16,13 @@ public abstract class CardSpellTests extends CardTests<SpellCard> {
 
 	protected static String name = "Dark Hole";
 	protected static String description = "The ultimate wizard in terms of attack and defense";
-	protected static int type = SpellType.NORMAL;
+	protected static SpellType type = SpellType.NORMAL;
 	protected static int copies_number = 3;
 	protected static Effect effect = new Effect();
 	protected static String picture = null;
 
-	protected static int cardType = CardType.SPELL;
-	protected static int colorPicture = ColorPicture.SPELL;
+	protected static CardType cardType = CardType.SPELL;
+	protected static ColorPicture colorPicture = ColorPicture.SPELL;
 
 	@Override
 	@Before

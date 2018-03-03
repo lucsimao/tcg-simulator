@@ -4,6 +4,7 @@ import dm.cards.abstracts.MonsterCard;
 import dm.constants.ColorPicture;
 import dm.constants.FilesConstants;
 import dm.constants.MonsterAttribute;
+import dm.constants.MonsterType;
 import dm.interfaces.ExtraDeckCard;
 
 /**
@@ -19,18 +20,18 @@ public class MonsterFusionCard extends MonsterCard implements ExtraDeckCard {
 
 	private static final long serialVersionUID = -7850575761434909539L;
 
-	public MonsterFusionCard(String name, String description, String picture, int type, MonsterAttribute atribute,
+	public MonsterFusionCard(String name, String description, String picture, MonsterType type, MonsterAttribute atribute,
 			int originalAttack, int originalDeffense, int state, Effect effect, int copies_number) {
 		super(name, description, ColorPicture.FUSION, picture, type, atribute, originalAttack, originalDeffense, effect,
 				copies_number);
 	}
 
 	public MonsterFusionCard() {
-		super(nameGenerator(), "Texto padrão gerado", ColorPicture.FUSION, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, 0, MonsterAttribute.DARK, 0, 0, null, 3);
+		super(nameGenerator(), "Texto padrão gerado", ColorPicture.FUSION, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, MonsterType.AQUA, MonsterAttribute.DARK, 0, 0, null, 3);
 	}
 
 	public MonsterFusionCard(int copies_number) {
-		super(nameGenerator(), "Texto padrão gerado", ColorPicture.FUSION, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, 0,MonsterAttribute.DARK, 0, 0, null, copies_number);
+		super(nameGenerator(), "Texto padrão gerado", ColorPicture.FUSION, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, MonsterType.AQUA,MonsterAttribute.DARK, 0, 0, null, copies_number);
 	}
 
 }

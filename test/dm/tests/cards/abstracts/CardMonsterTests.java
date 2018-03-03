@@ -15,9 +15,9 @@ public abstract class CardMonsterTests extends CardTests<MonsterCard> {
 
 	protected static String name = "Dark Magician";
 	protected static String description = "The ultimate wizard in terms of attack and defense";
-	protected static int type = MonsterType.SPELLCASTER;
+	protected static MonsterType type = MonsterType.SPELLCASTER;
 	protected static MonsterAttribute atribute = MonsterAttribute.DARK;
-	protected static int cardType = CardType.MONSTER;
+	protected static CardType cardType = CardType.MONSTER;
 	protected static int copies_number = 0;
 	protected static int originalAttack = 2500;
 	protected static int originalDefense = 2100;

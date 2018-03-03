@@ -40,9 +40,14 @@ import dm.cards.MonsterNormalCard;
 import dm.cards.SpellCard;
 import dm.cards.TrapCard;
 import dm.cards.abstracts.Card;
+import dm.constants.CardType;
 import dm.constants.FilesConstants;
 import dm.constants.MonsterAttribute;
+import dm.constants.MonsterType;
+import dm.constants.SpellType;
+import dm.constants.TrapType;
 import dm.files.CardDAO;
+import dm.tests.cards.abstracts.CardTests;
 import dm.ui.subviews.CardImage;
 
 public class CardBuilder extends JPanel {
@@ -155,7 +160,7 @@ public class CardBuilder extends JPanel {
 
 		cardTypeCB = new JComboBox<String>();
 		panelFields.add(cardTypeCB);
-		cardTypeCB.setModel(new DefaultComboBoxModel<String>(new String[] { "MONSTER", "SPELL", "TRAP" }));
+		cardTypeCB.setModel(new DefaultComboBoxModel(CardType.values()));
 
 		lblMonsterAtribute = new JLabel("Monster Atribute");
 		panelFields.add(lblMonsterAtribute);
@@ -269,34 +274,38 @@ public class CardBuilder extends JPanel {
 		try {
 			Card card = null;
 			if (cardTypeCB.getSelectedItem().toString().equals("MONSTER")) {
-				System.out.println("Você criou um monstro!" + cardTypeCB.getSelectedIndex());
+				System.out.println(MonsterAttribute.valueOf(monsterAtributeCB.getSelectedItem().toString()) instanceof MonsterAttribute);
 				card = new MonsterNormalCard(nameTF.getText(), descriptionTA.getText(), pictureTF.getText(),
-						monsterTypeCB.getSelectedIndex(), (MonsterAttribute)monsterAtributeCB.getSelectedItem(),
+						MonsterType.valueOf(monsterTypeCB.getSelectedItem().toString()),MonsterAttribute.valueOf(monsterAtributeCB.getSelectedItem().toString()),
 						(int) attackSPN.getValue(), (int) defenseSPN.getValue(), 0);
+				card.setPicture(card.getName() + ".jpg");
+				System.out.println("Você criou um monstro!" + cardTypeCB.getSelectedIndex());
 			} else if (cardTypeCB.getSelectedItem().toString().equals("SPELL")) {
 				System.out.println("Você criou uma magia!" + cardTypeCB.getSelectedIndex());
 
 				card = new SpellCard(nameTF.getText(), descriptionTA.getText(), pictureTF.getText(), new Effect(),
-						cbSpellType.getSelectedIndex(), 3);
+						SpellType.valueOf(cbSpellType.getSelectedItem().toString()), 3);
 
 			} else if (cardTypeCB.getSelectedItem().toString().equals("TRAP")) {
 				System.out.println("Você criou uma armadilha!" + cardTypeCB.getSelectedIndex());
 				card = new TrapCard(nameTF.getText(), descriptionTA.getText(), pictureTF.getText(), new Effect(),
-						cbTrapType.getSelectedIndex(), 3);
+						TrapType.valueOf(cbTrapType.getSelectedItem().toString()), 3);
 			}
 			// Copia a carta para a pasta de imagens
 
 			CardDAO cardDAO = new CardDAO();
-			cardDAO.saveCard(card);
 			Files.copy(chooser.getSelectedFile().toPath(),
 					new File(FilesConstants.CARDS_IMG_DIR + card.getName() + ".jpg").toPath(),
 					StandardCopyOption.REPLACE_EXISTING);
+			cardDAO.saveCard(card);
 
-			JOptionPane.showMessageDialog(null, "Your have saved sucefully your card", "SUUUCESSO",
+
+			JOptionPane.showMessageDialog(null, "Your have saved succefully your card" + card.getName(), "SUUUCESSO",
 					JOptionPane.INFORMATION_MESSAGE);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getSimpleName(),
 					JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
 		}
 	}
 
