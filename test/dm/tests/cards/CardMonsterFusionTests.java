@@ -10,7 +10,7 @@ public class CardMonsterFusionTests extends CardMonsterTests {
 	@Override
 	@Before
 	public void initCard() {
-		setCard(new MonsterFusionCard(name, description, null, type, atribute, originalAttack, originalDefense, 0,
+		setCard(new MonsterFusionCard(name, description, null, type, atribute, level,originalAttack, originalDefense, 0,
 				new Effect(), copies_number));
 	}
 }

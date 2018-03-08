@@ -56,43 +56,43 @@ public class FileTests {
 		// 0, new Effect(), 0);
 		cardList = new ArrayList<>();
 		cardList.add(new MonsterNormalCard("Island Turtle", "A hope turtle that is often mistaken with a island",
-				"Island Turtle.jpg", MonsterType.AQUA, MonsterAttribute.WATER, 1100, 2000, 3));
+				"Island Turtle.jpg", MonsterType.AQUA, MonsterAttribute.WATER,2, 1100, 2000, 3));
 		cardList.add(new MonsterNormalCard("Dark Magician", "The ultimate Wizard in therms of attack and deffense",
-				"Dark Magician.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500, 2100, 3));
+				"Dark Magician.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2,2500, 2100, 3));
 		cardList.add(new MonsterNormalCard("Summoned Skull", "A fiend with dark powers for confusing the enemy. Among the Fiend-Type monsters, this monster boasts considerable force.",
-				"Summoned Skull.jpg", MonsterType.FIEND, MonsterAttribute.DARK, 2500, 1200, 3));
+				"Summoned Skull.jpg", MonsterType.FIEND, MonsterAttribute.DARK, 2500,2, 1200, 3));
 		cardList.add(new MonsterNormalCard("Hane-Hane", "FLIP: Return 1 monster on the field to its owner's hand.",
-				"Hane-hane.jpg", MonsterType.BEAST, MonsterAttribute.EARTH, 450, 500, 3));
+				"Hane-hane.jpg", MonsterType.BEAST, MonsterAttribute.EARTH,2, 450, 500, 3));
 		cardList.add(new MonsterNormalCard("Gamma The Magnet Warrior", "Alpha, Beta, and Gamma meld as one to form a powerful monster.",
-				"Gamma The Magnet Warrior.jpg", MonsterType.ROCK, MonsterAttribute.EARTH, 1500, 1800, 3));
+				"Gamma The Magnet Warrior.jpg", MonsterType.ROCK, MonsterAttribute.EARTH,2, 1500, 1800, 3));
 		cardList.add(new MonsterNormalCard("Gearfried The Iron Knight", "When an Equip Card(s) is equipped to this card: Destroy that Equip Card(s).",
-				"Gearfried The Iron Knight.jpg", MonsterType.WARRIOR, MonsterAttribute.EARTH, 1800, 1600, 3));
+				"Gearfried The Iron Knight.jpg", MonsterType.WARRIOR, MonsterAttribute.EARTH,2, 1800, 1600, 3));
 		cardList.add(new MonsterNormalCard("Suijin", "During damage calculation in your opponent's turn, if this card is being attacked: You can target the attacking monster; make that target's ATK 0 during damage calculation only (this is a Quick Effect). This effect can only be used once while this card is face-up on the field.",
-				"Suijin.jpg", MonsterType.AQUA, MonsterAttribute.WATER, 2500, 2400, 3));
+				"Suijin.jpg", MonsterType.AQUA, MonsterAttribute.WATER,2, 2500, 2400, 3));
 		cardList.add(new MonsterNormalCard("Shapesnatch", "A bow with handler power",
-				"Shapesnatch.jpg", MonsterType.MACHINE, MonsterAttribute.DARK, 1200, 1700, 3));
+				"Shapesnatch.jpg", MonsterType.MACHINE, MonsterAttribute.DARK,2, 1200, 1700, 3));
 		cardList.add(new MonsterNormalCard("Ryu-Ran", "A vicious little dragon.",
-				"Ryu-Ran.jpg", MonsterType.DRAGON, MonsterAttribute.FIRE, 2200, 2600, 3));
+				"Ryu-Ran.jpg", MonsterType.DRAGON, MonsterAttribute.FIRE,2, 2200, 2600, 3));
 		cardList.add(new MonsterNormalCard("Skull Mariner", "A pirate ship",
-				"Skull Mariner.jpg", MonsterType.WARRIOR, MonsterAttribute.WATER, 1600, 900, 3));
+				"Skull Mariner.jpg", MonsterType.WARRIOR, MonsterAttribute.WATER,2, 1600, 900, 3));
 		cardList.add(new MonsterNormalCard("The Drdek", "A card that I don't know what does",
-				"The Drdek.jpg", MonsterType.FIEND, MonsterAttribute.DARK, 700, 800, 3));
+				"The Drdek.jpg", MonsterType.FIEND, MonsterAttribute.DARK,2, 700, 800, 3));
 		cardList.add(new MonsterNormalCard("Time Wizard", " O Mago do tempo",
-				"Time Wizard.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 500,400, 3));
+				"Time Wizard.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK,2, 500,400, 3));
 		cardList.add(new MonsterNormalCard("Luster Dragon", "O Dragão do Lustre",
-				"Luster Dragon.jpg", MonsterType.BEAST, MonsterAttribute.EARTH, 1900, 1600, 3));
+				"Luster Dragon.jpg", MonsterType.BEAST, MonsterAttribute.EARTH,2, 1900, 1600, 3));
 	
 		cardList.add(new MonsterNormalCard("Exodia the Forbidden One", "The most powerfull card in the game",
-				"Exodia the Forbidden One.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 1000, 1000, 1));
+				"Exodia the Forbidden One.jpg", MonsterType.SPELLCASTER,MonsterAttribute.DARK, 2, 1000, 1000, 1));
 		
 		cardList.add(new MonsterNormalCard("Left Leg of the Forbidden One", "Left Leg of The most powerfull card in the game",
-				"Left Leg of the Forbidden One.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 200, 300, 1));
+				"Left Leg of the Forbidden One.jpg", MonsterType.SPELLCASTER,MonsterAttribute.DARK, 2, 200, 300, 1));
 		cardList.add(new MonsterNormalCard("Right Leg of the Forbidden One", "Right Leg of The most powerfull card in the game",
-				"Right Leg of the Forbidden One.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 200, 300, 1));
+				"Right Leg of the Forbidden One.jpg", MonsterType.SPELLCASTER,MonsterAttribute.DARK, 2, 200, 300, 1));
 		cardList.add(new MonsterNormalCard("Right Arm of the Forbidden One", "Right Arm of The most powerfull card in the game",
-				"Right Arm of the Forbidden One.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 200, 300, 1));
+				"Right Arm of the Forbidden One.jpg", MonsterType.SPELLCASTER,MonsterAttribute.DARK, 2, 200, 300, 1));
 		cardList.add(new MonsterNormalCard("Left Arm of the Forbidden One", "Left Arm of The most powerfull card in the game",
-				"Left Arm of the Forbidden One.jpg", MonsterType.SPELLCASTER, MonsterAttribute.DARK, 200, 300, 1));
+				"Left Arm of the Forbidden One.jpg", MonsterType.SPELLCASTER,MonsterAttribute.DARK, 2, 200, 300, 1));
 		try {
 			cardList.add(new SpellCard("Change of Heart",
 					"Choose a monster of the adversary field", "Change of Heart.jpg",

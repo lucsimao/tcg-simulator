@@ -31,11 +31,11 @@ public class FieldMonsterTests {
 	@Before
 	public void initCards() {
 		monsterCard = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",
-				null, MonsterType.SPELLCASTER, MonsterAttribute.DARK, 2500, 2100, 3);
+				null, MonsterType.SPELLCASTER, MonsterAttribute.DARK,7, 2500, 2100, 3);
 		monsterFusionCard = new MonsterFusionCard("Gaia, The Dragon Champion", "The gaia dragon", null,
-				MonsterType.WARRIOR, MonsterAttribute.EARTH, 2600, 2100, 0, null, 3);
+				MonsterType.WARRIOR, MonsterAttribute.EARTH,7, 2600, 2100, 0, null, 3);
 		monsterEffectCard = new MonsterEffectCard("Penguin Soldier", "[FLIP] return one card to your hand", null,
-				MonsterType.AQUA, MonsterAttribute.WATER, 500, 300, new Effect(), 3);
+				MonsterType.AQUA, MonsterAttribute.WATER,2, 500, 300, new Effect(), 3);
 		field = new Field(new NormalDeck(50),new ExtraDeck(10));
 		// deckSize = field.countDeckCards();
 		// handSize = field.countHandCards();
