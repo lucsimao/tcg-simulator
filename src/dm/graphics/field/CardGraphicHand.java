@@ -106,12 +106,12 @@ public class CardGraphicHand extends ElementGraphic {
 //			}
 //			System.out.println("Clicou no " + card.getName());
 			try {
-				if(card instanceof MonsterCard) {
+				if(card instanceof MonsterCard) { 
 					if(mouseEvent.getButton()== MouseEvent.BUTTON1)
-						player.summon((MonsterNormalCard) card);
+						player.summon((MonsterCard) card);
 					else
 						if(mouseEvent.getButton()== MouseEvent.BUTTON3)
-							player.set((MonsterNormalCard) card);
+							player.set((MonsterCard) card);
 				}
 				else if (card instanceof NonMonsterCard) {
 					if(mouseEvent.getButton()== MouseEvent.BUTTON1)
