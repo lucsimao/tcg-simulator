@@ -59,7 +59,7 @@ public abstract class Card implements Serializable,Cloneable {
 			this.copies_number = copies_number;
 		this.state = CardState.NONE;// Diz que a carta não está no campo ainda.
 	}
-
+	
 	// Getters and Setters
 	public String getName() {
 		return name;

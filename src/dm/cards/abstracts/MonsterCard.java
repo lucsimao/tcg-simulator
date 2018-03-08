@@ -21,6 +21,7 @@ public abstract class MonsterCard extends Card {
 
 	private MonsterType type;
 	private MonsterAttribute atribute;
+	private int level;
 	private int originalAttack;
 	private int originalDefense;
 	private int currentAttack;
@@ -28,9 +29,10 @@ public abstract class MonsterCard extends Card {
 	private int attacks_count;
 	private int max_attacks;
 	
-	public MonsterCard(String name, String description, ColorPicture normal, String picture, MonsterType spellcaster, MonsterAttribute dark,
+	public MonsterCard(String name, String description, ColorPicture normal, String picture, MonsterType spellcaster, MonsterAttribute dark,int level,
 			int originalAttack, int originalDeffense, Effect effect, int copies_number) {
 		super(name, description, CardType.MONSTER, normal, picture, effect, copies_number);
+		this.level = level;
 		this.type = spellcaster;
 		this.atribute = dark;
 		this.originalAttack = originalAttack;
@@ -168,4 +170,11 @@ public abstract class MonsterCard extends Card {
 		return originalDefense;
 	}
 
+	public int getLevel() {
+		return this.level;
+	}
+	
+	public void setLevel(int level) {
+		this.level = level;
+	}
 }

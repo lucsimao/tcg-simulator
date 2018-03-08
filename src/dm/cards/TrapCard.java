@@ -4,7 +4,6 @@ import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardType;
 import dm.constants.ColorPicture;
 import dm.constants.FilesConstants;
-import dm.constants.SpellType;
 import dm.constants.TrapType;
 import dm.exceptions.NoEffectException;
 import dm.interfaces.NormalDeckCard;
@@ -29,6 +28,13 @@ public class TrapCard extends NonMonsterCard implements NormalDeckCard {
 		this.type = type;
 	}
 
+	public TrapCard(String name, String description, Effect effect, TrapType type, int copies_number)
+			throws NoEffectException {
+		this(name, description,name+".jpg", effect,type, copies_number);
+		this.type = type;
+	}
+
+	
 	public TrapCard() throws NoEffectException {
 		super(nameGenerator(), "Teste de descrição", CardType.TRAP, ColorPicture.TRAP, FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE, new Effect(), 3);
 		this.type = TrapType.NORMAL;

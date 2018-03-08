@@ -36,8 +36,7 @@ public class Yugioh extends Game{
 	private final int button_width = Math.round(getWidth()/9f);
 	private final int button_height = Math.round(getHeight()/13f);
 	
-	
-	
+	private final static java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(Yugioh.class.getName());
 	private Player player1;
 	private Player player2;
 	

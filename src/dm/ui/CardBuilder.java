@@ -276,7 +276,7 @@ public class CardBuilder extends JPanel {
 			if (cardTypeCB.getSelectedItem().toString().equals("MONSTER")) {
 				System.out.println(MonsterAttribute.valueOf(monsterAtributeCB.getSelectedItem().toString()) instanceof MonsterAttribute);
 				card = new MonsterNormalCard(nameTF.getText(), descriptionTA.getText(), pictureTF.getText(),
-						MonsterType.valueOf(monsterTypeCB.getSelectedItem().toString()),MonsterAttribute.valueOf(monsterAtributeCB.getSelectedItem().toString()),
+						MonsterType.valueOf(monsterTypeCB.getSelectedItem().toString()),MonsterAttribute.valueOf(monsterAtributeCB.getSelectedItem().toString()),4,
 						(int) attackSPN.getValue(), (int) defenseSPN.getValue(), 0);
 				card.setPicture(card.getName() + ".jpg");
 				System.out.println("Você criou um monstro!" + cardTypeCB.getSelectedIndex());
