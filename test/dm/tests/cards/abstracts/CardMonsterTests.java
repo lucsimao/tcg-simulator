@@ -21,13 +21,28 @@ public abstract class CardMonsterTests extends CardTests<MonsterCard> {
 	protected static int copies_number = 0;
 	protected static int originalAttack = 2500;
 	protected static int originalDefense = 2100;
-	protected static int level = 8;
+	protected static int level = 4;
 	protected static Effect effect = null;
 
 	@Override
 	@Before
 	public abstract void initCard();
 
+	
+	/* Ver se a carta instanciada está recebendo os atributos corretamente */
+	@Test
+	public void checkAttributesOnInitialCondition() {
+		assertEquals(name, getCard().getName());
+		assertEquals(description, getCard().getDescription());
+		assertEquals(type, getCard().getType());
+		assertEquals(atribute, getCard().getAtribute());
+		assertEquals(cardType, getCard().getCardType());
+		assertEquals(copies_number, getCard().getCopiesNumber());
+		System.out.println("CARD " + getCard().getOriginalAttack());
+		assertEquals(originalAttack, getCard().getOriginalAttack());
+		assertEquals(originalDefense, getCard().getOriginalDefense());
+	}
+	
 	/* Teste para aumentar o ataque e a defesa do monstro */
 	public void increaseAttackAndDefense(int value) {
 		int lastAttack = getCard().getCurrentAttack();
@@ -69,19 +84,6 @@ public abstract class CardMonsterTests extends CardTests<MonsterCard> {
 		getCard().turnBackOriginalAttack();
 		assertEquals(getCard().getOriginalAttack(), getCard().getCurrentAttack());
 		assertEquals(getCard().getOriginalDefense(), getCard().getCurrentDefense());
-	}
-
-	/* Ver se a carta instanciada está recebendo os atributos corretamente */
-	@Test
-	public void checkAttributesOnInitialCondition() {
-		assertEquals(name, getCard().getName());
-		assertEquals(description, getCard().getDescription());
-		assertEquals(type, getCard().getType());
-		assertEquals(atribute, getCard().getAtribute());
-		assertEquals(cardType, getCard().getCardType());
-		assertEquals(copies_number, getCard().getCopiesNumber());
-		assertEquals(originalAttack, getCard().getOriginalAttack());
-		assertEquals(originalDefense, getCard().getOriginalDefense());
 	}
 
 	/* Ver se o current attack está sendo inicializado corretamente */

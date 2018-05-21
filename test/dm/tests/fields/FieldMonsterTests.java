@@ -31,7 +31,7 @@ public class FieldMonsterTests {
 	@Before
 	public void initCards() {
 		monsterCard = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",
-				null, MonsterType.SPELLCASTER, MonsterAttribute.DARK,7, 2500, 2100, 3);
+				null, MonsterType.SPELLCASTER, MonsterAttribute.DARK,4, 2500, 2100, 3);
 		monsterFusionCard = new MonsterFusionCard("Gaia, The Dragon Champion", "The gaia dragon", null,
 				MonsterType.WARRIOR, MonsterAttribute.EARTH,7, 2600, 2100, 0, null, 3);
 		monsterEffectCard = new MonsterEffectCard("Penguin Soldier", "[FLIP] return one card to your hand", null,
