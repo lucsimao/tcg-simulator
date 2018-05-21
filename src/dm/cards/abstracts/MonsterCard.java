@@ -1,5 +1,8 @@
 package dm.cards.abstracts;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import dm.cards.Effect;
 import dm.constants.CardType;
 import dm.constants.ColorPicture;
@@ -28,6 +31,8 @@ public abstract class MonsterCard extends Card {
 	private int currentDefense;
 	private int attacks_count;
 	private int max_attacks;
+	private int tributes_needed;
+	private ArrayList<MonsterCard> tributed_monsters;
 	
 	public MonsterCard(String name, String description, ColorPicture normal, String picture, MonsterType spellcaster, MonsterAttribute dark,int level,
 			int originalAttack, int originalDeffense, Effect effect, int copies_number) {
@@ -41,6 +46,13 @@ public abstract class MonsterCard extends Card {
 		this.currentDefense = originalDeffense;
 		this.attacks_count = 0;
 		this.max_attacks = 1;
+		if(level<5)
+			tributes_needed =0;
+		else if(level <7)
+			tributes_needed = 1;
+		else 
+			tributes_needed = 2;
+		tributed_monsters = new ArrayList<>();
 	}	
 	
 	public void setMaxAttacks(int max_attacks) {
@@ -129,6 +141,22 @@ public abstract class MonsterCard extends Card {
 		this.currentDefense = originalDefense;
 	}
 
+	/**
+	 * Identifica se um monstro vai poder ser invocado, ou seja, tem os sacrifícios necessários
+	 */
+	public boolean canBeSummoned() {
+		return tributed_monsters.size() == tributes_needed;
+	}
+	
+	public void resetStatus() {
+		resetAttacksCount();
+		resetTributedMonsters();
+	}
+	
+	public void resetTributedMonsters() {
+		this.tributed_monsters = new ArrayList<>();		
+	}
+
 	// Getters and Setters
 	public MonsterType getType() {
 		return type;
@@ -177,4 +205,21 @@ public abstract class MonsterCard extends Card {
 	public void setLevel(int level) {
 		this.level = level;
 	}
+	
+	public void addTributedMonster(MonsterCard monsterCard) {
+		this.tributed_monsters.add(monsterCard);
+	}
+	
+	public ArrayList<MonsterCard> getTributedMonsters() {
+		return new ArrayList<>(this.tributed_monsters);
+	}
+	
+	public void setTributesNeeded(int tributes_needed) {
+		this.tributes_needed = tributes_needed;
+	}
+	
+	public int getTributesNeeded() {
+		return this.tributes_needed;
+	}
+	
 }

@@ -5,6 +5,7 @@ import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.exceptions.CardNotFoundException;
+import dm.exceptions.MonsterCannotBeSummonedException;
 import dm.fields.elements.Graveyard;
 import dm.fields.elements.Hand;
 import dm.fields.elements.RemoveFromPlay;
@@ -78,18 +79,43 @@ public class Field {
 		spellTrapZone.setCard(spellTrapCard);
 	}
 
-	/** Métodos para summonar um monstro em modo de ataque */
-	public void summonMonster(MonsterCard monsterCard, int index) {
-		monsterZone.summonMonster(monsterCard, index);
-		monsterCard.resetAttacksCount();
+	/** Métodos para summonar um monstro em modo de ataque 
+	 * @throws MonsterCannotBeSummonedException */
+	public void summonMonster(MonsterCard monsterCard, int index) throws MonsterCannotBeSummonedException {
+		if(monsterCard.canBeSummoned()) {
+			monsterZone.summonMonster(monsterCard, index);
+			monsterCard.resetAttacksCount();
+		}else
+			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
 	}
 
-	/** Sobracarda de summonMonster */
-	public void summonMonster(MonsterCard monsterCard) {
-		monsterZone.summonMonster(monsterCard);
-		monsterCard.resetAttacksCount();
+	/** Sobracarda de summonMonster 
+	 * @throws MonsterCannotBeSummonedException */
+	public void summonMonster(MonsterCard monsterCard) throws MonsterCannotBeSummonedException {
+		if(monsterCard.canBeSummoned()) {
+			monsterZone.summonMonster(monsterCard);
+			monsterCard.resetAttacksCount();
+		}else
+			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
 	}
 
+	
+	public void tributeSummonMonster(MonsterCard monsterCard, MonsterCard... tributes)  throws MonsterCannotBeSummonedException {
+		for(MonsterCard tribute : tributes) {
+			monsterCard.addTributedMonster(tribute);
+		}
+		
+		if(monsterCard.canBeSummoned()) {
+			for(MonsterCard tribute : tributes) {
+				monsterZone.remove(tribute);
+			}	
+			monsterZone.summonMonster(monsterCard);
+			monsterCard.resetStatus();
+		}else
+				throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+	
+	}
+	
 	/**
 	 * Métodos para enviar uma carta ao cemitério
 	 */
