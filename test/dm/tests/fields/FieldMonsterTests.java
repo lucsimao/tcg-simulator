@@ -133,4 +133,24 @@ public class FieldMonsterTests {
 		assertEquals(remFPlaySize + 3, field.countRemovedFromPlayCards());
 	}
 
+
+	@Test
+	public void clearMonstersDestroying() {
+		setCardsOnMonsterField();
+		field.clearMonstersDestroying();
+		assertEquals(field.countMonsters(),0);
+	}
+	
+	
+	@Test
+	public void clearMonstersDestroyingNotFull() {
+		field.setCard(monsterCard);
+		field.setCard(monsterFusionCard);
+		field.setCard(monsterEffectCard);
+		field.setCard(monsterCard);
+		field.clearMonstersDestroying();
+		assertEquals(field.countMonsters(),0);
+	}
+
+	
 }

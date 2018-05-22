@@ -4,6 +4,7 @@ import dm.cards.MonsterFusionCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
+import dm.constants.RulesConstants;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.MonsterCannotBeSummonedException;
 import dm.fields.elements.Graveyard;
@@ -106,9 +107,14 @@ public class Field {
 		}
 		
 		if(monsterCard.canBeSummoned()) {
-			for(MonsterCard tribute : tributes) {
-				monsterZone.remove(tribute);
-			}	
+			try {
+				for(MonsterCard tribute : tributes) {
+					monsterZone.remove(tribute);
+				}	
+			} catch (Exception e) {
+				throw new MonsterCannotBeSummonedException("Tribute is not in the field.");
+			}
+		
 			monsterZone.summonMonster(monsterCard);
 			monsterCard.resetStatus();
 		}else
@@ -129,6 +135,19 @@ public class Field {
 		graveyard.putCard(card);
 	}
 
+	
+	public void clearMonstersDestroying() {
+		for(int i=0;i<RulesConstants.ZONE_SIZE;i++)
+		{
+			try {
+				monsterZone.remove(i);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+		}
+	}
+	
 	/**
 	 * Método para retornar uma carta à mão
 	 * 
@@ -208,7 +227,7 @@ public class Field {
 		Card card = spellTrapZone.remove(spellCard);
 		removeFromPlay.putCard(card);
 	}
-
+	
 	/**
 	 * Métodos de Contagem:
 	 * 
