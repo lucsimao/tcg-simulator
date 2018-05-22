@@ -1,6 +1,7 @@
-package dm.game;
+package dm.game.phases;
 
 import dm.exceptions.PlayerCannotDrawException;
+import dm.game.Player;
 
 public class DrawPhase extends Phase {
 	

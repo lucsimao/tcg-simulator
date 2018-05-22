@@ -1,4 +1,4 @@
-package dm.game;
+package dm.game.phases;
 
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
@@ -6,6 +6,7 @@ import dm.exceptions.ActivateException;
 import dm.exceptions.NormalSummonException;
 import dm.exceptions.SetException;
 import dm.exceptions.SpecialSummonException;
+import dm.game.Player;
 
 public class MainPhase extends Phase {
 
@@ -21,9 +22,8 @@ public class MainPhase extends Phase {
 	private boolean can_set_monster;
 	private boolean can_set_non_monster;
 	
-	
-	public MainPhase() {
-		super();
+	public MainPhase(Player player) {
+		super(player);
 		this.normal_summon_count = 0;
 		this.special_summon_count = 0;
 		this.set_monster_count = 0;

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import dm.exceptions.PlayerCannotDrawException;
-import dm.game.DrawPhase;
+import dm.game.phases.DrawPhase;
 
 public class DrawPhaseTests extends PhaseTests {
 

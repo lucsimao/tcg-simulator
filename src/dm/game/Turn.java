@@ -1,5 +1,8 @@
 package dm.game;
 
+import dm.game.phases.DrawPhase;
+import dm.game.phases.Phase;
+
 /**
  * Classe Jogada 
  * 

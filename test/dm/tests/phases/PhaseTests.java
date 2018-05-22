@@ -13,8 +13,8 @@ import dm.constants.MonsterType;
 import dm.exceptions.CardNotFoundException;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
-import dm.game.Phase;
 import dm.game.Player;
+import dm.game.phases.Phase;
 
 public class PhaseTests {
 
