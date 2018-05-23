@@ -148,4 +148,22 @@ public class PlayerTests {
 		player.getMonsterCardIndex(card2);
 	}
 
+	@Test
+	public void bringToHandFromDeck() {
+		int size = player.getHand().size();
+		MonsterNormalCard card = (MonsterNormalCard) player2.getField().getDeck().getCardsList().get(0);
+		player.bringCardToHand(card);
+		assertEquals(size + 1,player.getHand().size());
+		assertEquals(card,player.getHand().getCardsList().get(0));
+	}
+	
+	@Test (expected = CardNotFoundException.class)
+	public void bringToHandACardThatIsNotInTheDeck() {
+		int size = player.getHand().size();
+		MonsterNormalCard card = new MonsterNormalCard();
+		player.bringCardToHand(card);
+		assertEquals(size + 1,player.getHand().size());
+		assertEquals(card,player.getHand().getCardsList().get(0));
+	}
+	
 }

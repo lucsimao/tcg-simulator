@@ -6,20 +6,22 @@ import dm.exceptions.ActivateException;
 import dm.exceptions.NormalSummonException;
 import dm.exceptions.SetException;
 import dm.exceptions.SpecialSummonException;
+import dm.exceptions.TributeSummonException;
 import dm.game.Player;
 
 public class MainPhase extends Phase {
 
 	private int normal_summon_count;
+	private int tribute_summon_count;
 	private int special_summon_count;
 	private int set_monster_count;
 	private int activate_non_monster_count;
 	private int set_non_monster_count;
 	
-	private boolean can_normal_summon;
+	private boolean can_tribute_summon;
+	private int max_normal_summon;
 	private boolean can_special_summon;
 	private boolean can_activate_non_monster;
-	private boolean can_set_monster;
 	private boolean can_set_non_monster;
 	
 	public MainPhase(Player player) {
@@ -30,22 +32,29 @@ public class MainPhase extends Phase {
 		this.activate_non_monster_count = 0;
 		this.set_non_monster_count = 0;
 		
-		this.can_normal_summon = true;
+		this.max_normal_summon = 1;
 		this.can_activate_non_monster = true;
 		this.can_special_summon = true;
-		this.can_set_monster = true;
 		this.can_set_non_monster = true;
 	}
 	
 	public void normalSummon(MonsterCard monsterCard) throws NormalSummonException{
-		if(can_normal_summon) {
+		if(can_normal_summon()) {
 			getPlayer().summon(monsterCard);
-			can_normal_summon = false;
-			can_set_monster = false;
 			normal_summon_count ++;
 		}
 		else
 			throw new NormalSummonException("Normal summon já realizada");
+	}
+	
+	private boolean can_normal_summon() {
+		if(normal_summon_count + set_monster_count < max_normal_summon)
+			return true;
+		return false;
+	}
+
+	private boolean can_tribute_summon() {
+		return can_normal_summon();
 	}
 	
 	public void activateCard( NonMonsterCard card) throws ActivateException {
@@ -67,10 +76,8 @@ public class MainPhase extends Phase {
 	}
 	
 	public void setCard(MonsterCard card) throws SetException{
-		if(can_set_monster) {
+		if(can_normal_summon()) {
 			getPlayer().set(card);
-			can_set_monster = false;
-			can_normal_summon = false;
 			set_monster_count ++;
 		}
 		else
@@ -84,5 +91,28 @@ public class MainPhase extends Phase {
 		}else
 			throw new SpecialSummonException("Special Summon não permitida");
 	}
+
+	public void tributeSummon(MonsterCard monsterCard, MonsterCard... tributes) {
+		if(can_tribute_summon())
+			getPlayer().tributeSummon(monsterCard, tributes);		
+		else
+			throw new TributeSummonException("Tribute Summon não permitida");
+	}
+	
+	public int getMax_normal_summon() {
+		return max_normal_summon;
+	}
+
+	public void setMax_normal_summon(int max_normal_summon) {
+		this.max_normal_summon = max_normal_summon;
+	}
+
+	public boolean isCan_special_summon() {
+		return can_special_summon;
+	}
+
+	public void setCan_special_summon(boolean can_special_summon) {
+		this.can_special_summon = can_special_summon;
+	}	
 	
 }

@@ -2,6 +2,7 @@ package dm.game;
 
 import java.awt.Image;
 
+import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.CardState;
@@ -13,6 +14,7 @@ import dm.fields.elements.Hand;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.fields.elements.zones.CardZone;
+import dm.interfaces.NormalDeckCard;
 
 /**
  * Classe jogador. Ela possui os pontos de vida do jogados e gerencia o campo do
@@ -163,6 +165,11 @@ public class Player {
 		field.summonMonster(monsterCard);
 		field.getHand().remove(monsterCard);
 	}
+	
+	public void tributeSummon(MonsterCard monsterCard, MonsterCard... tributes) {
+		field.tributeSummonMonster(monsterCard, tributes);
+	}
+	
 	public void activate(NonMonsterCard nonMonsterCard) {
 		field.activate(nonMonsterCard);
 		field.getHand().remove(nonMonsterCard);
@@ -212,4 +219,14 @@ public class Player {
 	public Hand getHand() {
 		return  this.getField().getHand();
 	}
+	
+	/**
+	 * Uma regra importante, pois o jogador de Yu-gi-oh pode escolher trazer uma carta para sua mão. 
+	 * A restrição é que esta carta é obrigada a pertencer ao deck
+	 * */
+	public void bringCardToHand(NormalDeckCard card) {
+		this.getDeck().remove(card);
+		this.getHand().putCard((Card) card);
+	}
+	
 }

@@ -1,13 +1,13 @@
 package dm.exceptions;
 
-public class SpecialSummonException extends RuntimeException {
+public class TributeSummonException extends RuntimeException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public SpecialSummonException(String string) {
+	public TributeSummonException(String string) {
 		super(string);
 	}
 

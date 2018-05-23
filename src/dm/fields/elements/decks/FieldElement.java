@@ -96,7 +96,7 @@ public abstract class FieldElement<GenericCard> implements Serializable {
 			getCards().remove(card);
 			return card;
 		}
-		throw new CardNotFoundException("This card does not exist in this deck");
+		throw new CardNotFoundException("This card does not exist in the " + this.getClass().getSimpleName());
 	}
 
 	// Método que remove uma carta do início da pilha (pop)
