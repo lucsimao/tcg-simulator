@@ -45,7 +45,7 @@ public abstract class MonsterCard extends Card {
 		this.currentAttack = originalAttack;
 		this.currentDefense = originalDeffense;
 		this.attacks_count = 0;
-		this.max_attacks = 1;
+		this.setMaxAttacks(1);
 		if(level<5)
 			tributes_needed =0;
 		else if(level <7)
@@ -59,9 +59,9 @@ public abstract class MonsterCard extends Card {
 		this.max_attacks = max_attacks;
 	}
 
-	public boolean canAttack() {
-		return max_attacks > attacks_count;
-	}
+//	public boolean canAttack() {
+//		return max_attacks > attacks_count;
+//	}
 	
 	public void incrementAttacksCount() {
 		this.attacks_count++;
@@ -221,5 +221,10 @@ public abstract class MonsterCard extends Card {
 	public int getTributesNeeded() {
 		return this.tributes_needed;
 	}
+
+	public int getMaxAttacks() {
+		return this.max_attacks;
+	}
+
 	
 }

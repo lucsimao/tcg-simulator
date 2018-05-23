@@ -119,7 +119,7 @@ public class Player {
 
 		MonsterCard attacking = getMonsterCard(index_attacking);
 		MonsterCard attacked = player.getMonsterCard(index_attacked);
-		attacking.incrementAttacksCount();
+//		attacking.incrementAttacksCount();
 		if (attacked.getState() == CardState.FACE_UP_DEFENSE_POS || attacked.getState() == CardState.FACE_DOWN) {
 			attacked.setState(CardState.FACE_UP_DEFENSE_POS);
 			if (attacking.getCurrentAttack() > attacked.getCurrentDefense()) {
