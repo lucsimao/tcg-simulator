@@ -3,7 +3,6 @@ package dm.graphics.field;
 import java.awt.event.MouseEvent;
 import java.lang.Thread.State;
 
-import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;

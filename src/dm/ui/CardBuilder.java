@@ -47,7 +47,6 @@ import dm.constants.MonsterType;
 import dm.constants.SpellType;
 import dm.constants.TrapType;
 import dm.files.CardDAO;
-import dm.tests.cards.abstracts.CardTests;
 import dm.ui.subviews.CardImage;
 
 public class CardBuilder extends JPanel {

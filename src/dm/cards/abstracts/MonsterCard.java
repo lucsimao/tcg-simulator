@@ -1,6 +1,5 @@
 package dm.cards.abstracts;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import dm.cards.Effect;

@@ -3,7 +3,6 @@ package dm.tests.files;
 import static org.junit.Assert.assertEquals;
 
 import java.awt.Image;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.Effect;
-import dm.cards.MonsterEffectCard;
 import dm.cards.MonsterNormalCard;
 import dm.cards.SpellCard;
 import dm.cards.TrapCard;

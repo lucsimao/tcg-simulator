@@ -30,7 +30,8 @@ public class MainPhase extends Phase {
 		this.special_summon_count = 0;
 		this.set_monster_count = 0;
 		this.activate_non_monster_count = 0;
-		this.set_non_monster_count = 0;
+		this.set_monster_count=0;
+		this.tribute_summon_count = 0;
 		
 		this.max_normal_summon = 1;
 		this.can_activate_non_monster = true;
@@ -60,7 +61,7 @@ public class MainPhase extends Phase {
 	public void activateCard( NonMonsterCard card) throws ActivateException {
 		if(can_activate_non_monster) {
 			getPlayer().activate(card);
-			activate_non_monster_count++;
+			inscreaseActivate_non_monster_count();
 		}
 		else
 			throw new ActivateException("Ativação não permitida");
@@ -70,7 +71,7 @@ public class MainPhase extends Phase {
 	public void setCard(NonMonsterCard card) throws SetException  {
 		if (can_set_non_monster) {
 			getPlayer().set(card);
-			set_non_monster_count++;
+			inscreaseSet_non_monster_count();
 		} else
 			throw new SetException("Colocação não permitida");
 	}
@@ -87,7 +88,7 @@ public class MainPhase extends Phase {
 	public void specialSummon(MonsterCard card) throws SpecialSummonException {
 		if(can_special_summon) {
 			getPlayer().summon(card);
-			special_summon_count ++;
+			inscreaseSpecial_summon_count();
 		}else
 			throw new SpecialSummonException("Special Summon não permitida");
 	}
@@ -113,6 +114,46 @@ public class MainPhase extends Phase {
 
 	public void setCan_special_summon(boolean can_special_summon) {
 		this.can_special_summon = can_special_summon;
+	}
+
+	public int getTribute_summon_count() {
+		return tribute_summon_count;
+	}
+
+	public void increaseTribute_summon_count() {
+		this.tribute_summon_count++;
+	}
+
+	public int getSpecial_summon_count() {
+		return special_summon_count;
+	}
+
+	public void inscreaseSpecial_summon_count() {
+		this.special_summon_count++;
+	}
+
+	public int getActivate_non_monster_count() {
+		return activate_non_monster_count;
+	}
+
+	public void inscreaseActivate_non_monster_count() {
+		this.activate_non_monster_count++;
+	}
+
+	public int getSet_non_monster_count() {
+		return set_non_monster_count;
+	}
+
+	public void inscreaseSet_non_monster_count() {
+		this.set_non_monster_count++;
+	}
+
+	public boolean isCan_tribute_summon() {
+		return can_tribute_summon;
+	}
+
+	public void setCan_tribute_summon(boolean can_tribute_summon) {
+		this.can_tribute_summon = can_tribute_summon;
 	}	
 	
 }
