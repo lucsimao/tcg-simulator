@@ -19,6 +19,7 @@ import java.util.List;
 
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
+import dm.exceptions.CardExistsException;
 
 public class CardDAO {
 

@@ -58,7 +58,7 @@ public class SelectionGraphicZoneElement extends SelectionGraphicElement {
 				
 		
 		} catch (CardNotFoundException e2) {
-			System.out.println("Zona " + index + " não possui cartas no momento");
+//			System.out.println("Zona " + index + " não possui cartas no momento");
 		} catch (Exception e) {
 			System.out.println("SELECTIONGRAPHIC - Exceção não esperada " + cardZone.getCard(index).getPicture());
 			e.printStackTrace();

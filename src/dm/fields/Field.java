@@ -61,13 +61,21 @@ public class Field {
 	 * uma com os monstros e outra com as armadilhas ou traps.
 	 */
 	public void setCard(MonsterCard monsterCard, int index) {
-		monsterZone.setMonster(monsterCard, index);
+		if(monsterCard.canBeSummoned()) {
+			monsterZone.setMonster(monsterCard, index);
+			monsterCard.resetAttacksCount();
+		}else
+			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
 	}
 
 	/** Sobrecarga de setCard */
 	public void setCard(MonsterCard monsterCard) {
-		monsterZone.setMonster(monsterCard);
-		monsterCard.resetAttacksCount();
+		if(monsterCard.canBeSummoned()) {
+			monsterZone.setMonster(monsterCard);
+			monsterCard.resetAttacksCount();
+		}else
+			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+	
 	}
 
 	/** Sobrecarga de setCard */
@@ -97,7 +105,7 @@ public class Field {
 			monsterZone.summonMonster(monsterCard);
 			monsterCard.resetAttacksCount();
 		}else
-			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+			throw new MonsterCannotBeSummonedException("Monster cannot be Summoned");
 	}
 
 	
@@ -121,6 +129,28 @@ public class Field {
 				throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
 	
 	}
+	
+	public void tributeSetMonster(MonsterCard monsterCard, MonsterCard... tributes)  throws MonsterCannotBeSummonedException {
+		for(MonsterCard tribute : tributes) {
+			monsterCard.addTributedMonster(tribute);
+		}
+		
+		if(monsterCard.canBeSummoned()) {
+			try {
+				for(MonsterCard tribute : tributes) {
+					monsterZone.remove(tribute);
+				}	
+			} catch (Exception e) {
+				throw new MonsterCannotBeSummonedException("Tribute is not in the field.");
+			}
+		
+			monsterZone.setMonster(monsterCard);
+			monsterCard.resetStatus();
+		}else
+				throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+	
+	}
+	
 	
 	/**
 	 * Métodos para enviar uma carta ao cemitério

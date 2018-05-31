@@ -52,12 +52,27 @@ public class TributeTests {
 		}
 	}
 
+	@Test
+	public void setMonsterLv4WithoutTribute() {
+		for (int i = 1; i <= 4; i++) {
+			monsterCard_lv4.setLevel(i);
+			field.setCard(monsterCard_lv4);
+			assertEquals(monstersSize + i, field.countMonsters());
+		}
+	}
+	
 	@Test(expected = MonsterCannotBeSummonedException.class)
 	public void summonMonsterLv6WithoutTribute() {
 		field.summonMonster(monsterCard_lv6);
 		assertNotEquals(monstersSize + 1, field.countMonsters());
 	}
 
+	@Test(expected = MonsterCannotBeSummonedException.class)
+	public void setMonsterLv6WithoutTribute() {
+		field.setCard(monsterCard_lv6);
+		assertNotEquals(monstersSize + 1, field.countMonsters());
+	}
+	
 	@Test(expected = MonsterCannotBeSummonedException.class)
 	public void summonMonsterLv5WithoutTribute() {
 		monsterCard_lv6.setLevel(5);
@@ -76,6 +91,15 @@ public class TributeTests {
 
 	}
 
+	@Test
+	public void setMonsterLv6WithTribute() {
+		field.summonMonster(tribute);
+		assertEquals(monstersSize + 1, field.countMonsters());
+		field.tributeSetMonster(monsterCard_lv6, tribute);
+		assertEquals(monstersSize + 1, field.countMonsters());
+		assertEquals(field.getMonsterCard(0), monsterCard_lv6);
+	}
+	
 	@Test(expected = MonsterCannotBeSummonedException.class)
 	public void summonMonsterLv7WithOneTribute() {
 		field.summonMonster(tribute);
@@ -85,6 +109,15 @@ public class TributeTests {
 		assertEquals(field.getMonsterCard(0), monsterCard_lv8);
 	}
 
+	@Test(expected = MonsterCannotBeSummonedException.class)
+	public void setMonsterLv7WithOneTribute() {
+		field.summonMonster(tribute);
+		assertEquals(monstersSize + 1, field.countMonsters());
+		field.tributeSetMonster(monsterCard_lv8, tribute);
+		assertEquals(monstersSize + 1, field.countMonsters());
+		assertEquals(field.getMonsterCard(0), monsterCard_lv8);
+	}
+	
 	@Test
 	public void summonMonsterLv7WithTwoTributes() {
 		for (int i = 7; i <= 12; i++) {
@@ -99,6 +132,20 @@ public class TributeTests {
 		}
 	}
 
+	@Test
+	public void setMonsterLv7WithTwoTributes() {
+		for (int i = 7; i <= 12; i++) {
+			monsterCard_lv8.setLevel(i);
+			field.summonMonster(tribute);
+			field.summonMonster(tribute2);
+			assertEquals(monstersSize + 2, field.countMonsters());
+			field.tributeSetMonster(monsterCard_lv8, tribute, tribute2);
+			assertEquals(monstersSize + 1, field.countMonsters());
+			assertEquals(field.getMonsterCard(0), monsterCard_lv8);
+			field.sendToGraveyard(monsterCard_lv8);
+		}
+	}
+	
 	@Test(expected = MonsterCannotBeSummonedException.class)
 	public void tributeAMonsterThatIsNotInTheField() {
 		monsterCard_lv6.setLevel(6);
@@ -106,5 +153,5 @@ public class TributeTests {
 		assertEquals(monstersSize + 1, field.countMonsters());
 		assertEquals(field.getMonsterCard(0), monsterCard_lv6);
 	}
-
+	
 }

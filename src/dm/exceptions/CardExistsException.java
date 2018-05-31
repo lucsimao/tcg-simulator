@@ -3,7 +3,7 @@
 * @version 0.1 - 26 de jun de 2017
 * 
 */
-package dm.files;
+package dm.exceptions;
 
 public class CardExistsException extends Exception {
 
