@@ -19,23 +19,23 @@ import dm.interfaces.ExtraDeckCard;
 import dm.interfaces.NormalDeckCard;
 
 /**
- * Classe campo para inserir as cartas Obs: ClasseNonMonsterCard está
- * relacionada às SpellTrapCards O campo possui removedfromplay, graveyard,
+ * Classe campo para inserir as cartas Obs: ClasseNonMonsterCard estï¿½
+ * relacionada ï¿½s SpellTrapCards O campo possui removedfromplay, graveyard,
  * zones, deck e hand
  * 
- * @author Simão
+ * @author Simï¿½o
  */
 
 public class Field {
-	private Hand hand;// Mão do jogador
-	private Graveyard graveyard;// Cemitério do jogador
+	private Hand hand;// Mï¿½o do jogador
+	private Graveyard graveyard;// Cemitï¿½rio do jogador
 	private MonsterZone monsterZone;// Zona de monstros do jogador
-	private SpellTrapZone spellTrapZone;// Zone de cartas mágicas ou armadilhas
+	private SpellTrapZone spellTrapZone;// Zone de cartas mï¿½gicas ou armadilhas
 	private RemoveFromPlay removeFromPlay;// Monstros removidos de jogo
 	private NormalDeck deck;// Deck do jogador
 	private ExtraDeck extraDeck;// Extra deck do jogador
 
-	// Métodos contrutores
+	// Mï¿½todos contrutores
 	public Field() {
 		this.hand = new Hand(5);
 		this.graveyard = new Graveyard(20);
@@ -57,7 +57,7 @@ public class Field {
 	}
 
 	/**
-	 * Setar uma carta qualquer virada para baixo, nós teremos duas sobrecargas:
+	 * Setar uma carta qualquer virada para baixo, nï¿½s teremos duas sobrecargas:
 	 * uma com os monstros e outra com as armadilhas ou traps.
 	 */
 	public void setCard(MonsterCard monsterCard, int index) {
@@ -65,7 +65,7 @@ public class Field {
 			monsterZone.setMonster(monsterCard, index);
 			monsterCard.resetAttacksCount();
 		}else
-			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+			throw new MonsterCannotBeSummonedException(monsterCard);
 	}
 
 	/** Sobrecarga de setCard */
@@ -74,7 +74,7 @@ public class Field {
 			monsterZone.setMonster(monsterCard);
 			monsterCard.resetAttacksCount();
 		}else
-			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+			throw new MonsterCannotBeSummonedException(monsterCard);
 	
 	}
 
@@ -88,14 +88,14 @@ public class Field {
 		spellTrapZone.setCard(spellTrapCard);
 	}
 
-	/** Métodos para summonar um monstro em modo de ataque 
+	/** Mï¿½todos para summonar um monstro em modo de ataque 
 	 * @throws MonsterCannotBeSummonedException */
 	public void summonMonster(MonsterCard monsterCard, int index) throws MonsterCannotBeSummonedException {
 		if(monsterCard.canBeSummoned()) {
 			monsterZone.summonMonster(monsterCard, index);
 			monsterCard.resetAttacksCount();
 		}else
-			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+			throw new MonsterCannotBeSummonedException(monsterCard);
 	}
 
 	/** Sobracarda de summonMonster 
@@ -105,7 +105,7 @@ public class Field {
 			monsterZone.summonMonster(monsterCard);
 			monsterCard.resetAttacksCount();
 		}else
-			throw new MonsterCannotBeSummonedException("Monster cannot be Summoned");
+			throw new MonsterCannotBeSummonedException(monsterCard);
 	}
 
 	
@@ -153,7 +153,7 @@ public class Field {
 	
 	
 	/**
-	 * Métodos para enviar uma carta ao cemitério
+	 * Mï¿½todos para enviar uma carta ao cemitï¿½rio
 	 */
 	public void sendToGraveyard(MonsterCard monsterCard) {
 		Card card = monsterZone.remove(monsterCard);
@@ -179,7 +179,7 @@ public class Field {
 	}
 	
 	/**
-	 * Método para retornar uma carta à mão
+	 * Mï¿½todo para retornar uma carta ï¿½ mï¿½o
 	 * 
 	 * @param monsterCard
 	 */
@@ -189,7 +189,7 @@ public class Field {
 	}
 
 	/**
-	 * Método para retornar uma carta à mão
+	 * Mï¿½todo para retornar uma carta ï¿½ mï¿½o
 	 * 
 	 * @param nonMonsterCard
 	 */
@@ -199,7 +199,7 @@ public class Field {
 	}
 
 	/**
-	 * Método para retornar uma carta à mão
+	 * Mï¿½todo para retornar uma carta ï¿½ mï¿½o
 	 * 
 	 * @param monsterFusionCard
 	 */
@@ -209,7 +209,7 @@ public class Field {
 	}
 
 	/**
-	 * Método para retornar uma carta ao deck
+	 * Mï¿½todo para retornar uma carta ao deck
 	 * 
 	 * @param monsterCard
 	 */
@@ -219,7 +219,7 @@ public class Field {
 	}
 
 	/**
-	 * Método para retornar uma carta ao deck
+	 * Mï¿½todo para retornar uma carta ao deck
 	 * 
 	 * @param spellCard
 	 */
@@ -229,7 +229,7 @@ public class Field {
 	}
 
 	/**
-	 * Método para retornar uma carta ao deck
+	 * Mï¿½todo para retornar uma carta ao deck
 	 * 
 	 * @param monsterFusionCard
 	 */
@@ -239,7 +239,7 @@ public class Field {
 	}
 
 	/**
-	 * Métodos para remover de jogo
+	 * Mï¿½todos para remover de jogo
 	 * 
 	 * @param monsterCard
 	 */
@@ -249,7 +249,7 @@ public class Field {
 	}
 
 	/**
-	 * Métodos para remover de jogo
+	 * Mï¿½todos para remover de jogo
 	 * 
 	 * @param spellCard
 	 */
@@ -259,72 +259,72 @@ public class Field {
 	}
 	
 	/**
-	 * Métodos de Contagem:
+	 * Mï¿½todos de Contagem:
 	 * 
-	 * @return o número de monstros
+	 * @return o nï¿½mero de monstros
 	 */
 	public int countMonsters() {
 		return monsterZone.countCards();
 	}
 
 	/**
-	 * Métodos de Contagem:
+	 * Mï¿½todos de Contagem:
 	 * 
-	 * @return o número de cartas no deck
+	 * @return o nï¿½mero de cartas no deck
 	 */
 	public int countDeckCards() {
 		return deck.size();
 	}
 
 	/**
-	 * Métodos de Contagem:
+	 * Mï¿½todos de Contagem:
 	 * 
-	 * @return o número de cartas no extra deck
+	 * @return o nï¿½mero de cartas no extra deck
 	 */
 	public int countExtraDeckCards() {
 		return extraDeck.size();
 	}
 
 	/**
-	 * Métodos de Contagem:
+	 * Mï¿½todos de Contagem:
 	 * 
-	 * @return o número cartas na mão
+	 * @return o nï¿½mero cartas na mï¿½o
 	 */
 	public int countHandCards() {
 		return hand.size();
 	}
 
 	/**
-	 * Métodos de Contagem:
+	 * Mï¿½todos de Contagem:
 	 * 
-	 * @return o número de cartas no cemitério
+	 * @return o nï¿½mero de cartas no cemitï¿½rio
 	 */
 	public int countGraveCards() {
 		return graveyard.size();
 	}
 
 	/**
-	 * Métodos de Contagem:
+	 * Mï¿½todos de Contagem:
 	 * 
-	 * @return o número de cartas removidas de jogo
+	 * @return o nï¿½mero de cartas removidas de jogo
 	 */
 	public int countRemovedFromPlayCards() {
 		return removeFromPlay.size();
 	}
 
 	/**
-	 * Métodos de Contagem:
+	 * Mï¿½todos de Contagem:
 	 * 
-	 * @return o número de cartas mágicas e armadilha
+	 * @return o nï¿½mero de cartas mï¿½gicas e armadilha
 	 */
 	public int countNonMonsters() {
 		return spellTrapZone.countCards();
 	}
 
 	/**
-	 * Método de Contagem:
+	 * Mï¿½todo de Contagem:
 	 * 
-	 * @return o deck que está no campo
+	 * @return o deck que estï¿½ no campo
 	 */
 	public NormalDeck getDeck() {
 		NormalDeck deck = this.deck;
@@ -337,7 +337,7 @@ public class Field {
 		return extraDeck;
 	}
 
-	/** Método de sacar uma carta */
+	/** Mï¿½todo de sacar uma carta */
 	public void draw() {
 		NormalDeckCard card = deck.drawCard();
 		hand.putCard((Card) card);
@@ -351,7 +351,7 @@ public class Field {
 		return (NonMonsterCard) spellTrapZone.getCard(index);
 	}
 
-	/** Retorna o índice do monstro, se existir. */
+	/** Retorna o ï¿½ndice do monstro, se existir. */
 	public int getMonsterCardIndex(Card card) throws CardNotFoundException {
 		return monsterZone.getCardIndex(card);
 	}
@@ -362,7 +362,7 @@ public class Field {
 
 	}
 
-	/** Retorna o índice do monstro, se existir. */
+	/** Retorna o ï¿½ndice do monstro, se existir. */
 	public int getNonMonsterCardIndex(Card card) throws CardNotFoundException {
 		return spellTrapZone.getCardIndex(card);
 	}

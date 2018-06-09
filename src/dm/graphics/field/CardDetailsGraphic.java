@@ -41,7 +41,7 @@ public class CardDetailsGraphic extends ElementGraphic {
 		int text_x = Math.round(getWidth()*15f/900);
 //		int text_y;
 		
-		screen.imageScaled(FilesConstants.THEME_PATH + "tabControl.png",0,0,getWidth()*2/9 - 10,Math.round(getHeight()*340f/650),0,Math.round(getWidth()*5f/900),Math.round(getHeight()*300f/650),1);
+		screen.imageScaled(FilesConstants.THEME_PATH + "TabControl.png",0,0,getWidth()*2/9 - 10,Math.round(getHeight()*340f/650),0,Math.round(getWidth()*5f/900),Math.round(getHeight()*300f/650),1);
 		screen.imageScaled(FilesConstants.THEME_PATH + "darkTab.png",0,0,getWidth()*2/9 - 10,Math.round(getHeight()*35f/650),0,Math.round(getWidth()*5f/900),Math.round(getHeight()*300f/650),1);
 		if(card == null || card.getPicture() == null) {
 			screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.FACE_DOWN_CARD,0,0,card_width,card_height,0,card_x,card_y,1);
@@ -51,18 +51,11 @@ public class CardDetailsGraphic extends ElementGraphic {
 
 			screen.text(card.getName().toUpperCase(),text_x,Math.round(getHeight()*322f/650),12,Color.WHITE);
 			if(card instanceof MonsterCard) {
-//				screen.text(((MonsterCard)card).getType(),15,350,12,Color.BLACK);
 				screen.text("Attribute " + ((MonsterCard)card).getAtribute().name(),15,361,12,Color.BLACK);
-//				screen.text("Level " + ((MonsterCard)card),15,372,12,Color.BLACK);
 				screen.text(((MonsterCard)card).getOriginalAttack() + " / " + ((MonsterCard)card).getOriginalDefense(), text_x,Math.round(getHeight()*383f/650),12,Color.BLACK);
 			}
 			screen.textMultiLine(card.getDescription(),text_x,Math.round(getHeight()*404f/650),12,getWidth()*2/9 - 30,Color.BLACK);
 		}
-
-		
-
-//		screen.textMultiLine();
-//		screen.textMultiLine("When you have \"Right Arm of the Forbidden One\",\"Left Arm of the Forbidden One\",\"Right Leg of the Forbidden One\",\"Left Leg of the Forbidden One\", in addition to this card in your hand, you win the duel. ",15,404,12,getWidth()*2/9 - 30,Color.BLACK);
 
 	}
 	

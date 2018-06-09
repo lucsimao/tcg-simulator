@@ -74,21 +74,6 @@ public class Screen {
         text(text, (int)Math.round(x), (int)Math.round(y), tamanho, color);
     }
     
-//    public void image(String arquivo, int xa, int ya, int larg, int alt, double dir, double x, double y) {
-//        if(!sprites.containsKey(arquivo)) {
-//            try {
-//                sprites.put(arquivo, ImageIO.read(new File(arquivo)));
-//            } catch(java.io.IOException ioex) {
-//                throw new RuntimeException(ioex);
-//            }
-//        }
-//        AffineTransform trans = g.getTransform();
-//        g.rotate(dir, x + larg/2, y + alt/2);
-//        g.drawImage(sprites.get(arquivo), (int)Math.round(x), (int)Math.round(y), (int)Math.round(x) + larg, (int)Math.round(y) + alt,
-//                    xa, ya, xa + larg, ya + alt, null);
-//        g.setTransform(trans);
-//    }
-   
     public void textMultiLine(String text,int x, int y, int size,int maxWidth, Color color) {
     	String str = new String( "This is a very long message that i will attempt to split into several smaller sections that will all fit on the Canvas" );
     	str = text;
@@ -125,10 +110,7 @@ public class Screen {
                 throw new RuntimeException(ioex);
             }
         }
-//        BufferedImage image = sprites.get(arquivo);
     	AffineTransform trans = g.getTransform();
-//    	ImageManip imageManip = new ImageManip();
-//    	image = imageManip.scaleTransform(image, larg*1.0/image.getWidth(),alt*1.0/image.getHeight());
     	g.setComposite(AlphaComposite.SrcOver.derive(alpha));
     	   g.drawImage(sprites.get(arquivo), (int)Math.round(x), (int)Math.round(y), (int)Math.round(x) + larg, (int)Math.round(y) + alt,
                    xa, ya, xa + larg, ya + alt, null);
@@ -158,6 +140,7 @@ public class Screen {
             try {
                 sprites.put(arquivo, ImageIO.read(new File(arquivo)));
             } catch(java.io.IOException ioex) {
+            	System.err.println("READ ERROR : " + arquivo);
                 throw new RuntimeException(ioex);
             }
         }
