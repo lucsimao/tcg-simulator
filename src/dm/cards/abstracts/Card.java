@@ -12,10 +12,10 @@ import dm.constants.RulesConstants;
 import dm.exceptions.InvalidTextAttributeException;
 
 /**
- * Classe abstrata Card, ela contém contrutor e métodos que toda carta deverá
+ * Classe abstrata Card, ela contï¿½m contrutor e mï¿½todos que toda carta deverï¿½
  * conter.
  * 
- * @author Simão
+ * @author Simï¿½o
  */
 
 public abstract class Card implements Serializable,Cloneable {
@@ -51,13 +51,13 @@ public abstract class Card implements Serializable,Cloneable {
 		this.colorPicture = normal;
 		this.picture = picture;
 		this.effect = effect;
-		// Esse pedaço de código protege de ter mais cópias do que o permitido
+		// Esse pedaï¿½o de cï¿½digo protege de ter mais cï¿½pias do que o permitido
 		// nas regras do jogo.
 		if (copies_number >= RulesConstants.MAX_CARDS_REPEATED)
 			this.copies_number = RulesConstants.MAX_CARDS_REPEATED;
 		else
 			this.copies_number = copies_number;
-		this.state = CardState.NONE;// Diz que a carta não está no campo ainda.
+		this.state = CardState.NONE;// Diz que a carta nï¿½o estï¿½ no campo ainda.
 	}
 	
 	// Getters and Setters
@@ -109,8 +109,7 @@ public abstract class Card implements Serializable,Cloneable {
 		return copies_number;
 	}
 
-	@Override
-	public boolean equals(Object card) throws NullPointerException {
+	public boolean hasSameNameAs(Object card) throws NullPointerException {
 		try {
 
 			if (this.name.equals(((Card) card).getName()))
@@ -133,5 +132,6 @@ public abstract class Card implements Serializable,Cloneable {
         return super.clone();
     }
 
+	
 	
 }

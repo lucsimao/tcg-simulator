@@ -122,6 +122,7 @@ public class Screen {
             try {
                 sprites.put(arquivo, ImageIO.read(new File(arquivo)));
             } catch(java.io.IOException ioex) {
+            	System.err.println("READ ERROR:" + arquivo);
                 throw new RuntimeException(ioex);
             }
         }

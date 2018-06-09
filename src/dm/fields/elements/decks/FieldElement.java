@@ -7,14 +7,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
+import dm.cards.abstracts.Card;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.CardsOutException;
 
 /**
- * SuperClasse abstrata Elemento de Campo, ela é a mãe de todos os elementos.
- * Possui os métodos padrão que todos os elementos devem ter.
+ * SuperClasse abstrata Elemento de Campo, ela ï¿½ a mï¿½e de todos os elementos.
+ * Possui os mï¿½todos padrï¿½o que todos os elementos devem ter.
  * 
- * @author Simão
+ * @author Simï¿½o
  */
 public abstract class FieldElement<GenericCard> implements Serializable {
 
@@ -26,7 +27,7 @@ public abstract class FieldElement<GenericCard> implements Serializable {
 	private Stack<GenericCard> cards;// Uma pilha que representas as cartas
 										// contidas nesse elemento
 
-	// Construtor básico de inicialização
+	// Construtor bï¿½sico de inicializaï¿½ï¿½o
 	public FieldElement() {
 		cards = new Stack<>();
 	}
@@ -39,7 +40,7 @@ public abstract class FieldElement<GenericCard> implements Serializable {
 	}
 
 	// Retorna a lista de cartas da pilha.
-	// Ele é protegido, pois somente filhos pode acessá-la.
+	// Ele ï¿½ protegido, pois somente filhos pode acessï¿½-la.
 	protected Stack<GenericCard> getCards() {
 		return cards;
 	}
@@ -63,23 +64,22 @@ public abstract class FieldElement<GenericCard> implements Serializable {
 		return getCards().size();
 	}
 
-	// Verifica se a pilha está vazia
+	// Verifica se a pilha estï¿½ vazia
 	public boolean isEmpty() {
 		return getCards().isEmpty();
 	}
 
-	// Método para contar as cartas na pilha
+	// Mï¿½todo para contar as cartas na pilha
 	public int countCards(GenericCard card) {
-		Iterator<GenericCard> i = getCards().iterator();
-		int number = 0;
-		while (i.hasNext()) {
-			if (i.next().equals(card))
+		int number = 0;		
+		for(GenericCard c : getCards()) {
+			if (((Card) c).hasSameNameAs(card))
 				number++;
 		}
 		return number;
 	}
 
-	// Método que utiliza remove e push para levar uma carta qualquer para o
+	// Mï¿½todo que utiliza remove e push para levar uma carta qualquer para o
 	// topo da pilha
 	public void moveCardToTop(GenericCard card) {
 		Stack<GenericCard> cards = this.getCards();
@@ -90,7 +90,7 @@ public abstract class FieldElement<GenericCard> implements Serializable {
 			throw new CardNotFoundException("Card not found on this deck");
 	}
 
-	// Método que remove uma carta qualquer da pilha
+	// Mï¿½todo que remove uma carta qualquer da pilha
 	public GenericCard remove(GenericCard card) {
 		if (getCards().contains(card)) {
 			getCards().remove(card);
@@ -99,7 +99,7 @@ public abstract class FieldElement<GenericCard> implements Serializable {
 		throw new CardNotFoundException("This card does not exist in the " + this.getClass().getSimpleName());
 	}
 
-	// Método que remove uma carta do início da pilha (pop)
+	// Mï¿½todo que remove uma carta do inï¿½cio da pilha (pop)
 	public GenericCard removeFromTop() {
 		if (getCards().size() == 0)
 			throw new CardsOutException("Empty deck.");
@@ -107,9 +107,9 @@ public abstract class FieldElement<GenericCard> implements Serializable {
 			return getCards().pop();
 	}
 
-	// Método abstrato que representa colocar uma carta na pilha, cada classe
+	// Mï¿½todo abstrato que representa colocar uma carta na pilha, cada classe
 	// deve
-	// implementá-la de forma diferente.
+	// implementï¿½-la de forma diferente.
 	public abstract void putCard(GenericCard card);
 
 }

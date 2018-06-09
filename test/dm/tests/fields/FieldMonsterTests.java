@@ -72,7 +72,7 @@ public class FieldMonsterTests {
 			field.setCard(monsterFusionCard);
 			assertEquals(5, field.countMonsters());
 		} catch (Exception e) {
-			System.out.println("Não consegui setar os monstros");
+			System.out.println("Nï¿½o consegui setar os monstros");
 		}
 
 	}
@@ -111,6 +111,9 @@ public class FieldMonsterTests {
 		
 //		System.out.println("Field Size: " + field.countMonsters());
 		
+		monsterCard = field.getMonsterCard(0);
+		monsterEffectCard = field.getMonsterCard(0);
+		monsterFusionCard = (MonsterFusionCard) field.getMonsterCard(0);
 		field.returnToDeck(monsterCard);
 		field.returnToDeck(monsterEffectCard);
 		field.returnToDeck(monsterFusionCard);

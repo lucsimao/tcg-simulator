@@ -3,6 +3,7 @@ package dm.files;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import dm.cards.Effect;
@@ -16,6 +17,8 @@ import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
 import dm.constants.SpellType;
 import dm.constants.TrapType;
+import dm.fields.elements.decks.NormalDeck;
+import dm.interfaces.NormalDeckCard;
 
 public class Seed {
 
@@ -23,9 +26,41 @@ public class Seed {
 	
 	public static void main(String args[]) {
 		Seed seed = new Seed();
+		CardDAO cardDAO = new CardDAO();
+		try {
+			cardDAO.clearFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		seed.seedDataBase();
+		
+		buildDeck("baralho");
+		
 	}
 	
+	private static void buildDeck(String string) {
+		NormalDeck deck = new NormalDeck();
+		CardDAO cardDAO = new CardDAO();
+		try {
+			List<Card> list = cardDAO.readAllFile();
+			for(Card card : list)
+			{
+				try {
+					while(true)
+						deck.putCard((NormalDeckCard) card);
+				}catch (Exception e) {
+					System.err.println("CARD - :"+card.getName());
+					e.printStackTrace();
+				}
+			}
+			LOGGER.info("Deck Created Sucessfully. " + deck.size() + " cards");
+
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	private ArrayList<Card> cards;
 	
 	public Seed() {
@@ -50,14 +85,14 @@ public class Seed {
 				LOGGER.severe("ERRO AO ADICIONAR CARTA: " + card.getName() + " \n" + e.getMessage() + "\n");
 			}
 		}
-		LOGGER.info("Database seeded succeffully.");
+		LOGGER.info("Database seeded succeffully." + cards.size());
 	}
 	
 	private void fillCards() {
 		cards.add(new MonsterNormalCard("Dark Magician","The ultimate wizard in terms of attack and defense.", MonsterType.SPELLCASTER,MonsterAttribute.DARK,7,2500,2100,3));
 		cards.add(new MonsterNormalCard("Summoned Skull","A fiend with dark powers for confusing the enemy. Among the Fiend-Type monsters, this monster boasts considerable force.\r\n" + 
 				"\r\n" + 
-				"(This card is always treated as an \"Archfiend\" card.)", MonsterType.FIEND,MonsterAttribute.DARK,1,2500,1200,3));
+				"(This card is always treated as an \"Archfiend\" card.)", MonsterType.FIEND,MonsterAttribute.DARK,6,2500,1200,3));
 		cards.add(new MonsterNormalCard("Red-Eyes B Dragon","A ferocious dragon with a deadly attack.", MonsterType.DRAGON,MonsterAttribute.DARK,7,2400,2000,3));
 		cards.add(new MonsterNormalCard("Right Arm of The Forbidden One","A forbidden right arm sealed by magic. Whosoever breaks this seal will know infinite power.", MonsterType.SPELLCASTER,MonsterAttribute.DARK,1,200,300,1));
 		cards.add(new MonsterNormalCard("Right Leg of The Forbidden One","A forbidden right leg sealed by magic. Whosoever breaks this seal will know infinite power.", MonsterType.SPELLCASTER,MonsterAttribute.DARK,1,200,300,1));
@@ -81,7 +116,7 @@ public class Seed {
 		cards.add(new MonsterEffectCard("Atlantean Dragoons","All Level 3 or lower Sea Serpent-Type monsters you control can attack your opponent directly. When this card is sent to the Graveyard to activate a WATER monster's effect: Add 1 Sea Serpent-Type monster from your Deck to your hand, except \"Atlantean Dragoons\".",
 				MonsterType.SEASERPENT,MonsterAttribute.WATER,CardLevel.FOUR,1800,0,new Effect(),2));
 	
-		//Mágicas
+		//Mï¿½gicas
 		cards.add(new SpellCard("A Legendary Ocean", "(This card's name is always treated as \"Umi\".)\r\n" + 
 				"All WATER monsters on the field gain 200 ATK/DEF. Reduce the Level of all WATER monsters in both players' hands and on the field by 1",new Effect(),SpellType.FIELD, 3));
 		cards.add(new SpellCard("Change of Heart","Target 1 monster your opponent controls; take control of it until the End Phase.", new Effect(), SpellType.NORMAL, 0));
