@@ -2,6 +2,7 @@ package dm.fields.elements.decks;
 
 import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.Card;
+import dm.exceptions.CardNotFoundException;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
 import dm.interfaces.NormalDeckCard;
@@ -53,6 +54,13 @@ public class NormalDeck extends Deck<NormalDeckCard> {
 	// Verifica se o deck está dentro do número esperado de cartas
 	public boolean isPlayable() {
 		return (this.size() >= MIN_CARDS && this.size() <= MAX_CARDS);
+	}
+
+	public NormalDeckCard search(String name) {
+		for(NormalDeckCard card : this.getCardsList())
+			if(((Card)card).getName().equals(name))
+				return card;
+		throw new CardNotFoundException("Card was not found in this search");
 	}
 
 }

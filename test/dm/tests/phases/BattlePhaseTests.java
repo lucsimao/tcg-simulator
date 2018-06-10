@@ -32,6 +32,8 @@ public class BattlePhaseTests extends PhaseTests {
 	
 	@Test
 	public void attackAMonsterInAttack() {
+		monsterCard = (MonsterCard) player.getDeck().search(monsterCard.getName());
+		monsterCard2 = (MonsterCard) player2.getDeck().search(monsterCard2.getName());
 		player.bringCardToHand((NormalDeckCard) monsterCard);
 		player2.bringCardToHand((NormalDeckCard) monsterCard2);
 		player.summon(monsterCard);
@@ -45,6 +47,8 @@ public class BattlePhaseTests extends PhaseTests {
 	
 	@Test
 	public void attackAMonsterInDefense() {
+		monsterCard = (MonsterCard) player.getDeck().search(monsterCard.getName());
+		monsterCard2 = (MonsterCard) player2.getDeck().search(monsterCard2.getName());
 		player.bringCardToHand((NormalDeckCard) monsterCard);
 		player2.bringCardToHand((NormalDeckCard) monsterCard2);
 		player.summon(monsterCard);
@@ -57,6 +61,8 @@ public class BattlePhaseTests extends PhaseTests {
 	
 	@Test
 	public void attackAMonsterAttackMorePowerful() {
+		monsterCard = (MonsterCard) player.getDeck().search(monsterCard.getName());
+		monsterCard2 = (MonsterCard) player2.getDeck().search(monsterCard2.getName());
 		player.bringCardToHand((NormalDeckCard) monsterCard);
 		player2.bringCardToHand((NormalDeckCard) monsterCard2);
 		player.summon(monsterCard);
@@ -72,6 +78,8 @@ public class BattlePhaseTests extends PhaseTests {
 	
 	@Test
 	public void attackAMonsterDefenseMorePowerful() {
+		monsterCard = (MonsterCard) player.getDeck().search(monsterCard.getName());
+		monsterCard2 = (MonsterCard) player2.getDeck().search(monsterCard2.getName());
 		player.bringCardToHand((NormalDeckCard) monsterCard);
 		player2.bringCardToHand((NormalDeckCard) monsterCard2);
 		player.summon(monsterCard);
@@ -92,6 +100,8 @@ public class BattlePhaseTests extends PhaseTests {
 	
 	@Test (expected = MonsterCannotAttackException.class)
 	public void tryToAttackTwiceIfMonsterCant() {
+		monsterCard = (MonsterCard) player.getDeck().search(monsterCard.getName());
+		monsterCard2 = (MonsterCard) player2.getDeck().search(monsterCard2.getName());
 		player.bringCardToHand((NormalDeckCard) monsterCard);
 		player2.bringCardToHand((NormalDeckCard) monsterCard2);
 		player.summon(monsterCard);
@@ -108,6 +118,8 @@ public class BattlePhaseTests extends PhaseTests {
 	
 	@Test 
 	public void attackTwiceIfMonsterCan() {
+		monsterCard = (MonsterCard) player.getDeck().search(monsterCard.getName());
+		monsterCard2 = (MonsterCard) player2.getDeck().search(monsterCard2.getName());
 		player.bringCardToHand((NormalDeckCard) monsterCard);
 		player2.bringCardToHand((NormalDeckCard) monsterCard2);
 		player.summon(monsterCard);
@@ -125,6 +137,8 @@ public class BattlePhaseTests extends PhaseTests {
 	
 	@Test (expected = MonsterCannotAttackException.class)
 	public void attackIfMonsterCantAttack() {
+		monsterCard = (MonsterCard) player.getDeck().search(monsterCard.getName());
+		monsterCard2 = (MonsterCard) player2.getDeck().search(monsterCard2.getName());
 		player.bringCardToHand((NormalDeckCard) monsterCard);
 		player2.bringCardToHand((NormalDeckCard) monsterCard2);
 		player.summon(monsterCard);

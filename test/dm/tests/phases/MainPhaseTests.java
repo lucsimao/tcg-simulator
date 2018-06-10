@@ -32,7 +32,7 @@ public class MainPhaseTests extends PhaseTests {
 	
 	@Test
 	public void normalSummonSucessfully() {
-		
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.normalSummon(monsterCard);
 		assertEquals(monsterCard, p1.getField().getMonsterCard(0));
@@ -40,6 +40,7 @@ public class MainPhaseTests extends PhaseTests {
 	
 	@Test (expected = NormalSummonException.class)
 	public void tryTwoNormalSummonFailed() {
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.normalSummon(monsterCard);
 		assertEquals(monsterCard, p1.getField().getMonsterCard(0));
@@ -53,12 +54,14 @@ public class MainPhaseTests extends PhaseTests {
 	@Test
 	public void twoNormalSummonIfPlayerCan() {
 		mainPhase.setMax_normal_summon(2);
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.normalSummon(monsterCard);
 		assertEquals(monsterCard, p1.getField().getMonsterCard(0));
 		monsterCard = new MonsterNormalCard("Dark Magician2", "The ultimate wizard in terms of attack and defense.",
 				null, MonsterType.SPELLCASTER, MonsterAttribute.DARK, 3, 2500, 2100, 3);
 		deck.putCard((NormalDeckCard) monsterCard);
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.normalSummon(monsterCard);
 		assertEquals(monsterCard, p1.getField().getMonsterCard(1));
@@ -66,6 +69,7 @@ public class MainPhaseTests extends PhaseTests {
 	
 	@Test
 	public void specialSummonSucessfully() {
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.specialSummon(monsterCard);
 		assertEquals(monsterCard, p1.getField().getMonsterCard(0));
@@ -74,6 +78,7 @@ public class MainPhaseTests extends PhaseTests {
 	@Test (expected = SpecialSummonException.class)
 	public void specialSummonFailed() {
 		mainPhase.setCan_special_summon(false);
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.specialSummon(monsterCard);
 		assertEquals(monsterCard, p1.getField().getMonsterCard(0));
@@ -82,6 +87,7 @@ public class MainPhaseTests extends PhaseTests {
 	@Test
 	public void tributeSummonSucessfully() {
 		mainPhase.setMax_normal_summon(2);
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.normalSummon(monsterCard);
 		MonsterCard tribute1 = monsterCard;
@@ -89,6 +95,7 @@ public class MainPhaseTests extends PhaseTests {
 				null, MonsterType.SPELLCASTER, MonsterAttribute.DARK, 6, 2500, 2100, 3);
 		mainPhase.setCan_special_summon(false);
 		deck.putCard((NormalDeckCard) monsterCard);
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.tributeSummon(monsterCard,tribute1);
 		assertEquals(monsterCard, p1.getField().getMonsterCard(0));
@@ -96,6 +103,7 @@ public class MainPhaseTests extends PhaseTests {
 	
 	@Test(expected = TributeSummonException.class)
 	public void tributeSummonFailed() {
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.normalSummon(monsterCard);
 		MonsterCard tribute1 = monsterCard;
@@ -103,6 +111,7 @@ public class MainPhaseTests extends PhaseTests {
 				null, MonsterType.SPELLCASTER, MonsterAttribute.DARK, 6, 2500, 2100, 3);
 		mainPhase.setCan_special_summon(false);
 		deck.putCard((NormalDeckCard) monsterCard);
+		monsterCard = (MonsterCard) p1.getDeck().search(monsterCard.getName());
 		p1.bringCardToHand((NormalDeckCard) monsterCard);
 		mainPhase.tributeSummon(monsterCard,tribute1);
 		assertEquals(monsterCard, p1.getField().getMonsterCard(0));

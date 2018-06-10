@@ -228,5 +228,14 @@ public class Player {
 		this.getDeck().remove(card);
 		this.getHand().putCard((Card) card);
 	}
+
+	/**
+	 * Método bring to Hand voltado para a pesquisa por nome. Voltado para os testes.
+	 * */
+	public void bringCardToHand(String name) {
+		NormalDeckCard card = this.getDeck().search(name);
+		this.getDeck().remove(card);
+		this.getHand().putCard((Card) card);
+	}
 	
 }

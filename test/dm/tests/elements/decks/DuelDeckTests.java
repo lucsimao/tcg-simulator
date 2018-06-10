@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.MonsterNormalCard;
+import dm.cards.abstracts.Card;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
 import dm.exceptions.CardsOutException;
@@ -77,7 +78,7 @@ public class DuelDeckTests {
 		int size = deck.size();
 		deck.putCard(unlimitedCard);
 		assertEquals(size + 1, deck.size());
-		assertEquals(unlimitedCard, deck.top());
+		assertEquals(((Card) unlimitedCard).getName(), ((Card) deck.top()).getName());
 	}
 
 	// Testes para o número máximo de cartas
