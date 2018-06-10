@@ -11,6 +11,7 @@ import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
 import dm.constants.FilesConstants;
 import dm.exceptions.MonsterCannotBeSummonedException;
+import dm.exceptions.ZoneOccupedException;
 import dm.game.Player;
 import dm.graphics.Screen;
 
@@ -117,6 +118,11 @@ public class CardGraphicHand extends ElementGraphic {
 				JOptionPane pane = new JOptionPane();
 				pane.setMessage(monsterCannotBeSummonedException.getMessage()); // Configure
 				JDialog dialog = pane.createDialog(monsterCannotBeSummonedException.getClass().getSimpleName());
+				dialog.show();
+			}catch (ZoneOccupedException zoneOccupedException) {
+				JOptionPane pane = new JOptionPane();
+				pane.setMessage(zoneOccupedException.getMessage()); // Configure
+				JDialog dialog = pane.createDialog(zoneOccupedException.getClass().getSimpleName());
 				dialog.show();
 			}
 			catch (Exception e) {

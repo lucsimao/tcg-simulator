@@ -53,6 +53,8 @@ public class Seed {
 					e.printStackTrace();
 				}
 			}
+			DeckDao d = new DeckDao();
+			d.saveDeck(deck,string);
 			LOGGER.info("Deck Created Sucessfully. " + deck.size() + " cards");
 
 		} catch (ClassNotFoundException | IOException e) {
