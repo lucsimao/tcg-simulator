@@ -111,9 +111,9 @@ public class FieldMonsterTests {
 		int deckSize = field.countDeckCards();
 		int extraDeckSize = field.countExtraDeckCards();	
 		MonsterCard monster= field.getMonsterCard(0);
-		field.returnToDeck(monster);
+		field.returnFromFieldToDeck(monster);
 		monster = field.getMonsterCard(1);
-		field.returnToDeck(monster);
+		field.returnFromFieldToDeck(monster);
 		monster = (MonsterFusionCard)field.getMonsterCard(2);
 		field.returnToDeck((MonsterFusionCard)monster);
 		assertEquals(zoneSize - 3, field.countMonsters());

@@ -213,8 +213,28 @@ public class Field {
 	 * 
 	 * @param monsterCard
 	 */
-	public void returnToDeck(MonsterCard monsterCard) {
+	public void returnFromFieldToDeck(MonsterCard monsterCard) {
 		NormalDeckCard card = (NormalDeckCard) monsterZone.remove(monsterCard);
+		deck.putCard(card);
+	}
+
+	/**
+	 * Método para retornar uma carta ao deck
+	 * 
+	 * @param monsterCard
+	 */
+	public void returnFromHandToDeck(MonsterCard monsterCard) {
+		NormalDeckCard card = (NormalDeckCard) hand.remove(monsterCard);
+		deck.putCard(card);
+	}
+	
+	/**
+	 * Método para retornar uma carta ao deck
+	 * 
+	 * @param spellCard
+	 */
+	public void returnFromFieldToDeck(NonMonsterCard spellTrapCard) {
+		NormalDeckCard card = (NormalDeckCard) spellTrapZone.remove(spellTrapCard);
 		deck.putCard(card);
 	}
 
@@ -223,11 +243,11 @@ public class Field {
 	 * 
 	 * @param spellCard
 	 */
-	public void returnToDeck(NonMonsterCard spellTrapCard) {
-		NormalDeckCard card = (NormalDeckCard) spellTrapZone.remove(spellTrapCard);
+	public void returnFromHandToDeck(NonMonsterCard spellTrapCard) {
+		NormalDeckCard card = (NormalDeckCard) hand.remove(spellTrapCard);
 		deck.putCard(card);
 	}
-
+	
 	/**
 	 * Mï¿½todo para retornar uma carta ao deck
 	 * 
@@ -392,6 +412,18 @@ public class Field {
 
 	public CardZone getSpellTrapZone() {
 		return this.spellTrapZone;
+	}
+
+	public void clearNonMonstersDestroying() {
+		for(int i=0;i<RulesConstants.ZONE_SIZE;i++)
+		{
+			try {
+				spellTrapZone.remove(i);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 	}
 	
 }

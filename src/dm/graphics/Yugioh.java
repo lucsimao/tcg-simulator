@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import dm.cards.abstracts.Card;
+import dm.cards.abstracts.MonsterCard;
+import dm.cards.abstracts.NonMonsterCard;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -22,6 +24,7 @@ import dm.graphics.field.ElementGraphic;
 import dm.graphics.field.FieldSelectionElement;
 import dm.graphics.field.HandGraphic;
 import dm.graphics.field.WindowGraphic;
+import dm.interfaces.NormalDeckCard;
 
 public class Yugioh extends Game{
 
@@ -92,11 +95,30 @@ public class Yugioh extends Game{
 		ButtonGraphic BP = new ButtonGraphic("BP",panel_button_x ,panel_button_y + 2*panel_distance,button_width,button_height);
 		ButtonGraphic M2 = new ButtonGraphic("M2",panel_button_x ,panel_button_y + 3*panel_distance,button_width,button_height);
 		ButtonGraphic EP = new ButtonGraphic("EP",panel_button_x ,panel_button_y + 4*panel_distance,button_width,button_height);
+		ButtonGraphic CLR = new ButtonGraphic("Clear",panel_button_x ,panel_button_y + 5*panel_distance,button_width,button_height);
 		draw.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				player1.draw();
+			}
+		});
+		CLR.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for(Card c : player1.getHand().getCardsList())
+				{
+					if(c instanceof MonsterCard)
+						player1.getField().returnFromHandToDeck((MonsterCard) c);
+					else
+						player1.getField().returnFromHandToDeck((NonMonsterCard) c);
+				}
+				player1.getField().clearMonstersDestroying();
+				player1.getField().clearNonMonstersDestroying();
+				
+				player1.shuffleDeck();
+				player1.firstDraw();
 			}
 		});
 		x_offset = w.getWidth()/2 - draw.getWidth()/2;
@@ -148,6 +170,7 @@ public class Yugioh extends Game{
 		elements.add(BP);
 		elements.add(M2);
 		elements.add(EP);
+		elements.add(CLR);
 		elements.add(handGraphic);
 		elements.add(cardDetailsGraphic);
 		

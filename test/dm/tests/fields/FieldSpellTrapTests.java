@@ -82,9 +82,9 @@ public class FieldSpellTrapTests {
 		int zoneSize = field.countNonMonsters();
 		int deckSize = field.countDeckCards();
 
-		field.returnToDeck(spellCard);
-		field.returnToDeck(trapCard);
-		field.returnToDeck(spellCard);
+		field.returnFromFieldToDeck(spellCard);
+		field.returnFromFieldToDeck(trapCard);
+		field.returnFromFieldToDeck(spellCard);
 		assertEquals(zoneSize - 3, field.countNonMonsters());
 		assertEquals(deckSize + 3, field.countDeckCards());
 	}
