@@ -37,7 +37,12 @@ public class NormalDeck extends Deck<NormalDeckCard> {
 	public void putCard(NormalDeckCard card) {
 		if (getCards().size() <= MAX_CARDS)
 			if (countCards(card) < card.getCopiesNumber())
-				getCards().push(card);
+				try {
+					getCards().push((NormalDeckCard) card.clone());
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			else
 				throw new MaxCardCopiesException(
 						"You can only have " + ((Card) card).getCopiesNumber() + " copies of this card");
