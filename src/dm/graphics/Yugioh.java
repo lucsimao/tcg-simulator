@@ -12,6 +12,7 @@ import java.util.Set;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
+import dm.constants.FilesConstants;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -22,9 +23,8 @@ import dm.graphics.field.CardDetailsGraphic;
 import dm.graphics.field.CardGraphicHand;
 import dm.graphics.field.ElementGraphic;
 import dm.graphics.field.FieldSelectionElement;
-import dm.graphics.field.HandGraphic;
+import dm.graphics.field.GraphicHand;
 import dm.graphics.field.WindowGraphic;
-import dm.interfaces.NormalDeckCard;
 
 public class Yugioh extends Game{
 
@@ -51,7 +51,7 @@ public class Yugioh extends Game{
 	@SuppressWarnings("unused")
 	private Field field2;
 	ArrayList<Card> hand;
-	private HandGraphic handGraphic;	
+	private GraphicHand handGraphic;	
 	private ArrayList<ElementGraphic> elements;
 	private FieldSelectionElement fieldSelectionElement;
 	
@@ -147,7 +147,7 @@ public class Yugioh extends Game{
 //		SelectionGraphicElement extra_deck1 = new SelectionGraphicElement(special_zone_x- 360,474, special_zone_width, special_zone_height);
 		
 		CardDetailsGraphic cardDetailsGraphic = new CardDetailsGraphic(0,0,getWidth(),getHeight());
-		this.handGraphic = new HandGraphic(cardDetailsGraphic,player1, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
+		this.handGraphic = new GraphicHand(cardDetailsGraphic,player1, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
 		fieldSelectionElement = new FieldSelectionElement(cardDetailsGraphic,player1,player2,getWidth(),getHeight());
 		fieldSelectionElement.addSelectionElements(x_offset);
 //		fieldSelectionElement.addSelectionGraphicElement(extra1);
@@ -171,9 +171,8 @@ public class Yugioh extends Game{
 		elements.add(M2);
 		elements.add(EP);
 		elements.add(CLR);
-		elements.add(handGraphic);
 		elements.add(cardDetailsGraphic);
-		
+		elements.add(handGraphic);
 	}
 	
 	@Override
@@ -331,11 +330,13 @@ public class Yugioh extends Game{
 		
 //		CardGraphic g = new CardGraphic(FilesConstants.DEFAULT_MONTER_CARD_IMAGE, 0,0, 177, 256);
 //		w.addElement(g);
+//		screen.imageScaled(FilesConstants.THEME_PATH + "summon.png",0,0,getWidth()*2/9 - 10,340,0,5,300,1);
 		w.drawItself(screen);
+		
 //		WindowGraphic w2 = new WindowGraphic(750, 0, getWidth()/4,getHeight());
 //		w2.drawItself(screen);
 //		screen.imageScaled(FilesConstants.CARDS_IMG_DIR + FilesConstants.DEFAULT_MONTER_CARD_IMAGE,0,0,178,250,0,10,45,1);
-//		screen.imageScaled(FilesConstants.THEME_PATH + "tabControl.png",0,0,getWidth()*2/9 - 10,340,0,5,300,1);
+//		screen.imageScaled(FilesConstants.THEME_PATH + "summon.png",0,0,getWidth()*2/9 - 10,340,0,5,300,1);
 //		screen.imageScaled(FilesConstants.THEME_PATH + "darkTab.png",0,0,getWidth()*2/9 - 10,35,0,5,300,1);
 //		screen.text("EXODIA, THE FORBIDDEN ONE",15,322,12,Color.WHITE);
 //		screen.text("Spellcaster/Effect",15,350,12,Color.BLACK);
@@ -349,7 +350,12 @@ public class Yugioh extends Game{
 		//EFEITOS DE CARTA
 //		screen.imageScaled(FilesConstants.THEME_PATH + "normalSummon.jpg",0,0,28,38,0,280,535,1);
 //		screen.imageScaled(FilesConstants.THEME_PATH + "setCard.png",0,0,28,38,0,310,535,1);
-//		screen.imageScaled(FilesConstants.THEME_PATH + "summon.png",0,0,35,35,0,340,535,1);
+		for(int i=0;i<5;i++) {
+//			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/1.4832));
+			screen.imageScaled(FilesConstants.THEME_PATH + "activates.png",0,0,60,60,0,350 + card_dis_x * i,370,1);
+		}
+
+		
 //		screen.text("SUMMON",292,557,12,Color.WHITE);
 
 		

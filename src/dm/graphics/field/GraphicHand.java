@@ -7,7 +7,7 @@ import java.util.List;
 import dm.game.Player;
 import dm.graphics.Screen;
 
-public class HandGraphic extends ElementGraphic {
+public class GraphicHand extends ElementGraphic {
 
 	private Player player;
 	private List<CardGraphicHand> elements;
@@ -15,7 +15,7 @@ public class HandGraphic extends ElementGraphic {
 	
 	private CardDetailsGraphic cardDetailsGraphic;
 	
-	public HandGraphic(CardDetailsGraphic cardDetailsGraphic, Player player,int x,int y,int width,int height, int distance) {
+	public GraphicHand(CardDetailsGraphic cardDetailsGraphic, Player player,int x,int y,int width,int height, int distance) {
 		super(null, x,y,width,height);
 		this.player = player;
 		this.elements = new ArrayList<CardGraphicHand>();
@@ -35,7 +35,8 @@ public class HandGraphic extends ElementGraphic {
 //			// TODO: handle exception
 //		}
 		for(int i = 0;i<player.getHand().size();i++) {
-			CardGraphicHand card = new CardGraphicHand(cardDetailsGraphic,player,player.getHand().getCardsList().get(i), getX() + i*distance,getY(),getWidth(),getHeight());
+			int size = player.getHand().size();
+			CardGraphicHand card = new CardGraphicHand(cardDetailsGraphic,player,player.getHand().getCardsList().get(i), getX() + i*distance - size*15 ,getY(),getWidth(),getHeight());
 			if(!elements.contains(card))
 				elements.add(card);
 		}
