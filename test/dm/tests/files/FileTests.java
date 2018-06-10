@@ -159,17 +159,16 @@ public class FileTests {
 		// else
 		try {
 			cardDAO.saveToEndFile(m);
-
 			// cardDAO.saveToEndFile(monsterEffectCard);
 			// Card m = cardDAO.readFile("cards/cards.ygo");
 			List<Card> list = cardDAO.readAllFile("cards/cards.ygo");
 			int size = list.size();
-			assertEquals(list.contains(m), true);
-			cardDAO.deleteFile("cards/cards.ygo", m);
+			Card m2 = list.get(list.size()-1);
+			assertEquals(true,list.contains(m2));
+			cardDAO.deleteFile("cards/cards.ygo",m2);
 			list = cardDAO.readAllFile("cards/cards.ygo");
-			//
-			for (Card c : list)
-				System.out.println(c);
+//			for (Card c : list)
+//				System.out.println(c);
 			assertEquals(list.contains(m), false);
 			assertEquals(size - 1, list.size());
 		} catch (CardExistsException e) {

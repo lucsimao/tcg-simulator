@@ -33,7 +33,7 @@ public class FieldMonsterTests {
 		monsterCard = new MonsterNormalCard("Dark Magician", "The ultimate wizard in terms of attack and defense.",
 				null, MonsterType.SPELLCASTER, MonsterAttribute.DARK,4, 2500, 2100, 3);
 		monsterFusionCard = new MonsterFusionCard("Gaia, The Dragon Champion", "The gaia dragon", null,
-				MonsterType.WARRIOR, MonsterAttribute.EARTH,7, 2600, 2100, 0, null, 3);
+				MonsterType.WARRIOR, MonsterAttribute.EARTH,4, 2600, 2100, 0, null, 3);
 		monsterEffectCard = new MonsterEffectCard("Penguin Soldier", "[FLIP] return one card to your hand", null,
 				MonsterType.AQUA, MonsterAttribute.WATER,2, 500, 300, new Effect(), 3);
 		field = new Field(new NormalDeck(50),new ExtraDeck(10));
@@ -65,14 +65,16 @@ public class FieldMonsterTests {
 
 	private void setCardsOnMonsterField() {
 		try {
-			field.setCard(monsterCard);
-			field.setCard(monsterFusionCard);
-			field.setCard(monsterEffectCard);
-			field.setCard(monsterCard);
-			field.setCard(monsterFusionCard);
+			field.clearMonstersDestroying();
+			field.setCard(monsterCard,0);
+			field.setCard(monsterFusionCard,2);
+			field.setCard(monsterEffectCard,1);
+			field.setCard(monsterCard,3);
+			field.setCard(monsterFusionCard,4);
 			assertEquals(5, field.countMonsters());
 		} catch (Exception e) {
-			System.out.println("Nï¿½o consegui setar os monstros");
+			e.printStackTrace();
+			System.out.println("Não consegui setar os monstros");
 		}
 
 	}
@@ -107,16 +109,13 @@ public class FieldMonsterTests {
 		setCardsOnMonsterField();
 		int zoneSize = field.countMonsters();
 		int deckSize = field.countDeckCards();
-		int extraDeckSize = field.countExtraDeckCards();
-		
-//		System.out.println("Field Size: " + field.countMonsters());
-		
-		monsterCard = field.getMonsterCard(0);
-		monsterEffectCard = field.getMonsterCard(0);
-		monsterFusionCard = (MonsterFusionCard) field.getMonsterCard(0);
-		field.returnToDeck(monsterCard);
-		field.returnToDeck(monsterEffectCard);
-		field.returnToDeck(monsterFusionCard);
+		int extraDeckSize = field.countExtraDeckCards();	
+		MonsterCard monster= field.getMonsterCard(0);
+		field.returnToDeck(monster);
+		monster = field.getMonsterCard(1);
+		field.returnToDeck(monster);
+		monster = (MonsterFusionCard)field.getMonsterCard(2);
+		field.returnToDeck((MonsterFusionCard)monster);
 		assertEquals(zoneSize - 3, field.countMonsters());
 		assertEquals(deckSize + 2, field.countDeckCards());
 		assertEquals(extraDeckSize + 1, field.countExtraDeckCards());
@@ -148,8 +147,8 @@ public class FieldMonsterTests {
 	@Test
 	public void clearMonstersDestroyingNotFull() {
 		field.setCard(monsterCard);
-		field.setCard(monsterFusionCard);
 		field.setCard(monsterEffectCard);
+		field.setCard(monsterFusionCard);
 		field.setCard(monsterCard);
 		field.clearMonstersDestroying();
 		assertEquals(field.countMonsters(),0);

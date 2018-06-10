@@ -20,6 +20,7 @@ import java.util.List;
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
 import dm.exceptions.CardExistsException;
+import dm.exceptions.CardNotFoundException;
 
 public class CardDAO {
 
@@ -137,15 +138,21 @@ public class CardDAO {
 	public void deleteFile(String file, Card card) throws IOException, FileNotFoundException, ClassNotFoundException, CardExistsException {
 
 		List<Card> cards = readAllFile(file);
-		System.out.println(cards.contains(card));
-		System.out.println(cards.size());
-		cards.remove(card);
-		System.out.println(cards.size());
-
-		clearFile(file);
-		for (Card c : cards) {
-			saveToEndFile(file, c);
-		}
+		for(Card c : cards) {
+			if(c.hasSameNameAs(card)) {
+				System.out.println("Deletando " + card.getName() + " existe?  ");
+				System.out.println(cards.size());
+				cards.remove(c);
+				System.out.println(cards.size());
+				clearFile(file);
+				for (Card c2 : cards) {
+					saveToEndFile(file, c2);
+				}
+				return;
+			}	
+		}	
+		throw new CardNotFoundException("Card Not Found To Delete");
+		
 	}
 
 	public boolean contains(Card card, String file) throws FileNotFoundException, ClassNotFoundException, IOException {
