@@ -5,7 +5,6 @@ import dm.constants.ColorPicture;
 import dm.constants.FilesConstants;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
-import dm.interfaces.ExtraDeckCard;
 
 /**
  * Classe Monstro de Fusão. Representa os monstros de fusão. Eles diferenciam o

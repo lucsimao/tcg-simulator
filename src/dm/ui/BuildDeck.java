@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import dm.cards.NormalDeckCard;
 import dm.exceptions.MaxCardCopiesException;
-import dm.interfaces.NormalDeckCard;
 import dm.ui.subviews.DeckView;
 import dm.ui.subviews.ListCards;
 

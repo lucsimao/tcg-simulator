@@ -6,12 +6,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import dm.cards.ExtraDeckCard;
 import dm.cards.MonsterFusionCard;
 import dm.exceptions.CardsOutException;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
 import dm.fields.elements.decks.ExtraDeck;
-import dm.interfaces.ExtraDeckCard;
 
 public class DuelExtraDeckTests {
 

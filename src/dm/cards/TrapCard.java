@@ -6,7 +6,6 @@ import dm.constants.ColorPicture;
 import dm.constants.FilesConstants;
 import dm.constants.TrapType;
 import dm.exceptions.NoEffectException;
-import dm.interfaces.NormalDeckCard;
 
 /**
  * Classe carta armadilha Classe de Carta armadilha que serve para representar

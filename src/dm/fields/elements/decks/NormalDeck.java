@@ -1,11 +1,11 @@
 package dm.fields.elements.decks;
 
 import dm.cards.MonsterNormalCard;
+import dm.cards.NormalDeckCard;
 import dm.cards.abstracts.Card;
 import dm.exceptions.CardNotFoundException;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
-import dm.interfaces.NormalDeckCard;
 
 /**
  * Deck normal, ele diferencia pois aceita cartas de diversos tipos, menos

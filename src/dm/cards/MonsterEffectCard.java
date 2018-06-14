@@ -6,7 +6,6 @@ import dm.constants.FilesConstants;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
 import dm.exceptions.EffectMonsterWithNoEffectException;
-import dm.interfaces.NormalDeckCard;
 
 /**
  * * Esta classe representa monstros de efeito do jogo de cartas. Sua cor é

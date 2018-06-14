@@ -1,4 +1,4 @@
-package dm.interfaces;
+package dm.cards;
 
 /** @author Simão */
 public interface NormalDeckCard extends Cloneable{

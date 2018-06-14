@@ -1,10 +1,10 @@
 package dm.fields.elements;
 
 import dm.cards.MonsterNormalCard;
+import dm.cards.NormalDeckCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.fields.elements.decks.FieldElement;
-import dm.interfaces.NormalDeckCard;
 
 /**
  * Classe Mão. Ela pode ter um número máximo de cartas na mão. Possui funções de

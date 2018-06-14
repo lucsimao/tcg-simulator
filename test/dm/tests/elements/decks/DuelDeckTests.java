@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.MonsterNormalCard;
+import dm.cards.NormalDeckCard;
 import dm.cards.abstracts.Card;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
@@ -15,7 +16,6 @@ import dm.exceptions.CardsOutException;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
 import dm.fields.elements.decks.NormalDeck;
-import dm.interfaces.NormalDeckCard;
 
 public class DuelDeckTests {
 

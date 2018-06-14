@@ -31,11 +31,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import dm.cards.NormalDeckCard;
 import dm.cards.abstracts.Card;
 import dm.constants.FilesConstants;
 import dm.fields.elements.decks.NormalDeck;
 import dm.files.DeckDao;
-import dm.interfaces.NormalDeckCard;
 
 public class DeckView extends JPanel{
 

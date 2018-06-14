@@ -14,6 +14,8 @@ import java.util.StringTokenizer;
 
 import javax.imageio.ImageIO;
 
+import dm.listeners.ImageManip;
+
 public class Screen {
     Graphics2D g;
     

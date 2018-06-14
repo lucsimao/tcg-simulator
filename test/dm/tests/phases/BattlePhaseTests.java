@@ -6,12 +6,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.MonsterNormalCard;
+import dm.cards.NormalDeckCard;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
 import dm.exceptions.MonsterCannotAttackException;
 import dm.game.phases.BattlePhase;
-import dm.interfaces.NormalDeckCard;
 
 public class BattlePhaseTests extends PhaseTests {
 

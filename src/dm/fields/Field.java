@@ -1,6 +1,8 @@
 package dm.fields;
 
+import dm.cards.ExtraDeckCard;
 import dm.cards.MonsterFusionCard;
+import dm.cards.NormalDeckCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
@@ -15,8 +17,6 @@ import dm.fields.elements.decks.NormalDeck;
 import dm.fields.elements.zones.CardZone;
 import dm.fields.elements.zones.MonsterZone;
 import dm.fields.elements.zones.SpellTrapZone;
-import dm.interfaces.ExtraDeckCard;
-import dm.interfaces.NormalDeckCard;
 
 /**
  * Classe campo para inserir as cartas Obs: ClasseNonMonsterCard est�

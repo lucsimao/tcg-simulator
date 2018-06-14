@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import dm.cards.Effect;
 import dm.cards.MonsterEffectCard;
 import dm.cards.MonsterNormalCard;
+import dm.cards.NormalDeckCard;
 import dm.cards.SpellCard;
 import dm.cards.TrapCard;
 import dm.cards.abstracts.Card;
@@ -18,7 +19,6 @@ import dm.constants.MonsterType;
 import dm.constants.SpellType;
 import dm.constants.TrapType;
 import dm.fields.elements.decks.NormalDeck;
-import dm.interfaces.NormalDeckCard;
 
 public class Seed {
 

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="false" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="false" router="FAN">  
+  <class id="1" language="java" name="dm.graphics.Screen" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/Screen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="847" y="209"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="dm.graphics.field.CardGraphic" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/CardGraphic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="87" x="350" y="405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="dm.graphics.Engine" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/Engine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="87" x="477" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="dm.listeners.ImageManip" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/listeners/ImageManip.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="687" y="179"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="dm.graphics.field.SelectionGraphicElement" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/SelectionGraphicElement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="151" x="329" y="497"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="dm.graphics.Yugioh" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/Yugioh.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="87" x="477" y="221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="dm.graphics.Game" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/Game.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="87" x="477" y="129"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="dm.graphics.field.CardGraphicHand" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/CardGraphicHand.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="108" x="569" y="497"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="dm.graphics.field.GraphicHand" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/GraphicHand.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="87" x="671" y="405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="dm.graphics.field.ButtonGraphic" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/ButtonGraphic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="89" x="179" y="405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="dm.graphics.field.CardDetailsGraphic" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/CardDetailsGraphic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="118" x="529" y="681"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="dm.graphics.field.ElementGraphic" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/ElementGraphic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="100" x="310" y="313"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="dm.graphics.field.SelectionGraphicZoneElement" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/SelectionGraphicZoneElement.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="52" width="179" x="329" y="589"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="dm.graphics.field.FieldSelectionElement" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/FieldSelectionElement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="133" x="477" y="405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="dm.graphics.field.WindowGraphic" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/dm/graphics/field/WindowGraphic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="98" x="41" y="405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <generalization id="16">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="17">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="18">    
+    <bendpoint x="640" y="405"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="20">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="21" name="cardDetailsGraphic"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="24">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="25">    
+    <bendpoint x="298" y="589"/>    
+    <bendpoint x="298" y="497"/>    
+    <bendpoint x="298" y="405"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="26">    
+    <bendpoint x="559" y="589"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="27" name="cardDetailsGraphic"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="30" name="elements"/>      
+      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="32">    
+    <bendpoint x="268" y="313"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="33" name="w"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <generalization id="35">    
+    <bendpoint x="319" y="405"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="36">    
+    <bendpoint x="583" y="313"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="37" name="handGraphic"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="39">    
+    <bendpoint x="788" y="313"/>    
+    <bendpoint x="788" y="405"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="40" name="card"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <generalization id="42">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="43">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="44" name="game"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="47" name="elements"/>      
+      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="49">    
+    <bendpoint x="707" y="497"/>    
+    <bendpoint x="707" y="589"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="50" name="cardDetailsGraphic"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="53" name="elements"/>      
+      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="56">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="57" name="selectionGraphics"/>      
+      <multiplicity id="58" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="59">    
+    <bendpoint x="486" y="313"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="60" name="fieldSelectionElement"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="62">    
+    <bendpoint x="538" y="497"/>    
+    <bendpoint x="538" y="589"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="63" name="cardDetailsGraphic"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+    sort-features="false" accessors="true" visibility="false">    
+    <attributes public="false" package="false" protected="false" private="false" static="false"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="false" multiplicity="false"/>
+</class-diagram>

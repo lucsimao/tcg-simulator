@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.MonsterNormalCard;
+import dm.cards.NormalDeckCard;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
@@ -14,7 +15,6 @@ import dm.exceptions.SpecialSummonException;
 import dm.exceptions.TributeSummonException;
 import dm.game.Player;
 import dm.game.phases.MainPhase;
-import dm.interfaces.NormalDeckCard;
 
 public class MainPhaseTests extends PhaseTests {
 

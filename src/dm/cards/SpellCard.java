@@ -6,7 +6,6 @@ import dm.constants.ColorPicture;
 import dm.constants.FilesConstants;
 import dm.constants.SpellType;
 import dm.exceptions.NoEffectException;
-import dm.interfaces.NormalDeckCard;
 
 /**
  * Classe carta mágica Classe de Carta mágica que serve para representar as

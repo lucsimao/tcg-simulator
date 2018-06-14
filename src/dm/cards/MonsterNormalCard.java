@@ -5,7 +5,6 @@ import dm.constants.ColorPicture;
 import dm.constants.FilesConstants;
 import dm.constants.MonsterAttribute;
 import dm.constants.MonsterType;
-import dm.interfaces.NormalDeckCard;
 
 /**
  * Classe Monstro normal, representa monstros sem efeito. Sua cor é amarelada.

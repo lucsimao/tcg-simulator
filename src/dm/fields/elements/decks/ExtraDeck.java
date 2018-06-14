@@ -1,10 +1,10 @@
 package dm.fields.elements.decks;
 
+import dm.cards.ExtraDeckCard;
 import dm.cards.MonsterFusionCard;
 import dm.cards.abstracts.Card;
 import dm.exceptions.MaxCardCopiesException;
 import dm.exceptions.MaxDeckSizeException;
-import dm.interfaces.ExtraDeckCard;
 
 /**
  * Deck Extra, diferente do deck comum, ela só pode receber monstros de extra

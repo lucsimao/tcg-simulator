@@ -22,7 +22,7 @@ import dm.constants.Log;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
-import dm.interfaces.DisposeListener;
+import dm.listeners.DisposeListener;
 
 public class FieldActionView extends JFrame {
 	private static final long serialVersionUID = 1L;

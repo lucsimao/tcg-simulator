@@ -24,7 +24,7 @@ import dm.fields.elements.Hand;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
-import dm.interfaces.DisposeListener;
+import dm.listeners.DisposeListener;
 
 public class HandView extends JPanel {
 

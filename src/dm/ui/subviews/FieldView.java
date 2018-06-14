@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import dm.cards.NormalDeckCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
@@ -38,7 +39,6 @@ import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
 import dm.game.Player;
-import dm.interfaces.NormalDeckCard;
 import simao.image.ImageMixer;
 import simao.image.ImageTransform;
 
