@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import dm.constants.FilesConstants;
 import dm.graphics.Screen;
 
-public class CardGraphic extends ElementGraphic {
+public class CardGraphic extends GraphicElement {
 
 	public CardGraphic(String picture, int x, int y, int width, int height) {
 		super(picture, x, y, width, height);

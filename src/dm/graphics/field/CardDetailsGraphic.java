@@ -8,7 +8,7 @@ import dm.cards.abstracts.MonsterCard;
 import dm.constants.FilesConstants;
 import dm.graphics.Screen;
 
-public class CardDetailsGraphic extends ElementGraphic {
+public class CardDetailsGraphic extends GraphicElement {
 
 	private Card card;
 	

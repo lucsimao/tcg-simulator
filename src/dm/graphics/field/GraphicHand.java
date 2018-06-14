@@ -7,7 +7,7 @@ import java.util.List;
 import dm.game.Player;
 import dm.graphics.Screen;
 
-public class GraphicHand extends ElementGraphic {
+public class GraphicHand extends GraphicElement {
 
 	private Player player;
 	private List<CardGraphicHand> elements;

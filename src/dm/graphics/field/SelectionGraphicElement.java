@@ -6,7 +6,7 @@ import java.lang.Thread.State;
 
 import dm.graphics.Screen;
 
-public class SelectionGraphicElement extends ElementGraphic {
+public class SelectionGraphicElement extends GraphicElement {
 
 	private final int DELAY = 71;
 	protected Thread thread;

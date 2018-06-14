@@ -21,7 +21,7 @@ import dm.game.Player;
 import dm.graphics.field.ButtonGraphic;
 import dm.graphics.field.CardDetailsGraphic;
 import dm.graphics.field.CardGraphicHand;
-import dm.graphics.field.ElementGraphic;
+import dm.graphics.field.GraphicElement;
 import dm.graphics.field.FieldSelectionElement;
 import dm.graphics.field.GraphicHand;
 import dm.graphics.field.WindowGraphic;
@@ -52,7 +52,7 @@ public class Yugioh extends Game{
 	private Field field2;
 	ArrayList<Card> hand;
 	private GraphicHand handGraphic;	
-	private ArrayList<ElementGraphic> elements;
+	private ArrayList<GraphicElement> elements;
 	private FieldSelectionElement fieldSelectionElement;
 	
 	WindowGraphic w;
@@ -83,7 +83,7 @@ public class Yugioh extends Game{
 //				player1.summon((MonsterNormalCard) c);
 //		}
 		
-		this.elements = new ArrayList<ElementGraphic>();
+		this.elements = new ArrayList<GraphicElement>();
 		
 
 //		selectionGraphicElement.setColor(Color.RED);
@@ -192,7 +192,7 @@ public class Yugioh extends Game{
 //			if(mouseEvent.is) {
 //				System.out.println("MOUSE");
 			try {
-				for(ElementGraphic e : elements)
+				for(GraphicElement e : elements)
 					e.clickAction(mouseEvent);
 //			else
 //				System.out.println("FORA");
@@ -206,7 +206,7 @@ public class Yugioh extends Game{
 	@Override
 	public void move(MouseEvent mouseEvent) {
 		try {
-			for(ElementGraphic e : elements)
+			for(GraphicElement e : elements)
 				e.hoverAction(mouseEvent);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -221,8 +221,8 @@ public class Yugioh extends Game{
 //		}
 //	}
 	
-	private void drawCards(Screen screen,ArrayList<ElementGraphic> elements2) {
-		for(ElementGraphic e : elements2)
+	private void drawCards(Screen screen,ArrayList<GraphicElement> elements2) {
+		for(GraphicElement e : elements2)
 			e.drawItself(screen);
 	}
 
@@ -347,13 +347,15 @@ public class Yugioh extends Game{
 //		screen.textMultiLine("When you have \"Right Arm of the Forbidden One\",\"Left Arm of the Forbidden One\",\"Right Leg of the Forbidden One\",\"Left Leg of the Forbidden One\", in addition to this card in your hand, you win the duel. ",15,404,12,getWidth()*2/9 - 30,Color.BLACK);
 		fieldSelectionElement.drawItself(screen);
 		drawCards(screen,elements);
+		
 		//EFEITOS DE CARTA
 //		screen.imageScaled(FilesConstants.THEME_PATH + "normalSummon.jpg",0,0,28,38,0,280,535,1);
 //		screen.imageScaled(FilesConstants.THEME_PATH + "setCard.png",0,0,28,38,0,310,535,1);
-		for(int i=0;i<5;i++) {
-//			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/1.4832));
-			screen.imageScaled(FilesConstants.THEME_PATH + "activates.png",0,0,60,60,0,350 + card_dis_x * i,370,1);
-		}
+
+		//		for(int i=0;i<5;i++) {
+////			screen.imageScaled("images/cards/facedown.png", 0, 0,card_width ,card_height, 0,Math.round(getWidth()/2.89) + card_dis_x * i,Math.round(getHeight()/1.4832));
+//			screen.imageScaled(FilesConstants.THEME_PATH + "activates.png",0,0,60,60,0,350 + card_dis_x * i,370,1);
+//		}
 
 		
 //		screen.text("SUMMON",292,557,12,Color.WHITE);

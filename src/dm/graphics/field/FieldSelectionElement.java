@@ -8,7 +8,7 @@ import dm.game.Player;
 import dm.graphics.Screen;
 
 
-public class FieldSelectionElement extends ElementGraphic {
+public class FieldSelectionElement extends GraphicElement {
 	
 	private List<SelectionGraphicElement> selectionGraphics;
 	private Player player1;

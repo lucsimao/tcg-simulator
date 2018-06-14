@@ -15,7 +15,7 @@ import dm.exceptions.ZoneOccupedException;
 import dm.game.Player;
 import dm.graphics.Screen;
 
-public class CardGraphicHand extends ElementGraphic {
+public class CardGraphicHand extends GraphicElement {
 
 	// private int x_temp;
 	private int y_temp;

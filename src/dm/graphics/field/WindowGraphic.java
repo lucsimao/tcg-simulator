@@ -6,18 +6,18 @@ import java.util.ArrayList;
 import dm.constants.FilesConstants;
 import dm.graphics.Screen;
 
-public class WindowGraphic extends ElementGraphic{
+public class WindowGraphic extends GraphicElement{
 
 	private int padding;
 	private int margin;
-	private ArrayList<ElementGraphic> elements;
+	private ArrayList<GraphicElement> elements;
 	
 	private boolean center_H;
 	private boolean center_V;
 	
 	public WindowGraphic(int x, int y, int width, int height) {
 		super(FilesConstants.WINDOW_IMAGE,x, y, width, height);
-		this.elements = new ArrayList<ElementGraphic>();
+		this.elements = new ArrayList<GraphicElement>();
 		this.padding = 0;
 		this.margin = 0;
 		center_V = false;
@@ -48,7 +48,7 @@ public class WindowGraphic extends ElementGraphic{
 		this.padding = padding;
 	}
 
-	public void addElement(ElementGraphic element) {
+	public void addElement(GraphicElement element) {
 		this.elements.add(element);
 		fixElements();
 	}
@@ -56,7 +56,7 @@ public class WindowGraphic extends ElementGraphic{
 	private void fixElements() {
 		for(int i=0;i<elements.size();i++) {
 		
-			ElementGraphic e = elements.get(i);
+			GraphicElement e = elements.get(i);
 			if(e.getWidth()>getWidth())
 				e.setWidth(getWidth());
 			if(e.getHeight()>getHeight())
@@ -71,7 +71,7 @@ public class WindowGraphic extends ElementGraphic{
 	@Override
 	public void drawItself(Screen screen) {
 		screen.imageScaled(FilesConstants.THEME_PATH + getPicture(), 0, 0,getWidth() ,getHeight(), 0,getX(),getY(),getAlpha());
-		for(ElementGraphic e : elements) {
+		for(GraphicElement e : elements) {
 			e.drawItself(screen);
 		}
 	}

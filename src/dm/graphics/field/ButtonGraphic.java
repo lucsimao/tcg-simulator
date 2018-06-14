@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import dm.constants.FilesConstants;
 import dm.graphics.Screen;
 
-public class ButtonGraphic extends ElementGraphic {
+public class ButtonGraphic extends GraphicElement {
 
 	private String text;
 	private Color color;

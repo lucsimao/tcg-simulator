@@ -5,7 +5,7 @@
 */
 package dm.exceptions;
 
-public class CardExistsException extends Exception {
+public class CardExistsException extends RuntimeException {
 
 	/**
 	 * 

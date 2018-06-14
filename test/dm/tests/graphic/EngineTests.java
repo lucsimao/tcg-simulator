@@ -1,4 +1,6 @@
-package dm.tests.ui;
+package dm.tests.graphic;
+
+import static org.junit.Assert.assertEquals;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -6,7 +8,10 @@ import javax.swing.WindowConstants;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CardViewTests {
+import dm.graphics.field.ButtonGraphic;
+import junit.framework.Assert;
+
+public class EngineTests {
 
 	private JFrame jframe;
 
@@ -25,4 +30,12 @@ public class CardViewTests {
 //		jframe.add(new CardView(new MonsterEffectCard()));
 //		Thread.sleep(5000);
 	}
+	
+	@Test
+	public void createButton(){
+		ButtonGraphic button = new ButtonGraphic(100, 100, 100,100);
+//		jframe.add(button);
+		assertEquals(true,false);
+	}
+	
 }

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -27,17 +28,20 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Engine {
-	private Canvas canvas;
-	private BufferStrategy strategy;
-    private Game game;
-    private JPanel panel;
-    private JFrame container;
+	protected Canvas canvas;
+	protected BufferStrategy strategy;
+    protected Game game;
+    protected JPanel panel;
+    protected JFrame container;
+    protected Screen screen;
+    private final String FRAME_NAME = "YU GI OH";
     
     public TreeSet<String> keySet = new TreeSet<String>();
-	public Engine(Game game) {
+    
+    public Engine(Game game) {
 		this.game = game;
 		canvas = new Canvas();
-		container = new JFrame("YU GI OH");
+		container = new JFrame(FRAME_NAME);
         panel = (JPanel) container.getContentPane();
         panel.setPreferredSize(new Dimension(
                 game.getWidth(),game.getHeight()));
@@ -46,8 +50,8 @@ public class Engine {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] gs = ge.getScreenDevices();
         Rectangle bounds = gs[gs.length-1].getDefaultConfiguration().getBounds();
-//        container.setExtendedState(container.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-// 	   	container.setUndecorated(true);
+//      setToFullScreen ();
+// 	   	removeBoard();
         container.setResizable(false);
         container.setBounds(bounds.x+(bounds.width - game.getWidth())/2,
                 bounds.y+(bounds.height - game.getHeight())/2,
@@ -60,9 +64,28 @@ public class Engine {
         try {
 			container.setIconImage(ImageIO.read(new File("images/textures/icon.gif")));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+
+        addListeners();
+        
+        canvas.createBufferStrategy(2);
+        strategy = canvas.getBufferStrategy();
+        canvas.requestFocus();
+        game.setHeight(panel.getHeight());
+        game.setWidth(panel.getWidth());
+        mainLoop();
+    }
+    
+    
+    protected void setToFullScreen() {
+    	container.setExtendedState(container.getExtendedState() | JFrame.MAXIMIZED_BOTH); // Para ficar com tela cheia
+    }   
+    protected void removeBoard() {
+    	container.setUndecorated(true);
+    }
+	
+	private void addListeners() {
         
         container.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -84,32 +107,8 @@ public class Engine {
             }
         });           
         
-        canvas.addMouseListener(new MouseListener() {			
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent mouseEvent) {
-				// TODO Auto-generated method stub
-//				System.out.println("PRESSIONOU");
-//				game.mouse(mouseEvent);
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+       
+        canvas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent mouseEvent) {
 //				System.out.println("CLICOU");
@@ -129,46 +128,9 @@ public class Engine {
 			@Override
 			public void mouseDragged(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 			}
 		});
-        
-        canvas.createBufferStrategy(2);
-        strategy = canvas.getBufferStrategy();
-        canvas.requestFocus();
-        game.setHeight(panel.getHeight());
-        game.setWidth(panel.getWidth());
-        mainLoop();
-	}
-	
-    private void mainLoop() {
-        Timer t = new Timer(5, new ActionListener() {
-            public long t0;
-            public void actionPerformed(ActionEvent evt) {
-                game.setHeight(panel.getHeight());
-                game.setWidth(panel.getWidth());
-            	
-                long t1 = System.currentTimeMillis();
-                if(t0 == 0)
-                    t0 = t1;
-                if(t1 > t0) {
-                    double dt = (t1 - t0) / 1000.0;
-                    t0 = t1;
-                    game.tick(keySet, dt);     
-                    Graphics2D g = (Graphics2D)strategy.getDrawGraphics();
-                    g.setColor(Color.black);
-                    g.fillRect(0,0,game.getWidth(),
-                          game.getHeight());
-                    game.draw(new Screen(g));
-                    strategy.show();
-                }
-            }
-        });
-            
-        t.start();
-    }
-
-	
+	}    	
 	private static String keyString(KeyEvent evt) {
 	        if(evt.getKeyChar() != KeyEvent.CHAR_UNDEFINED) {
 	            return String.valueOf(evt.getKeyChar()).toLowerCase();
@@ -206,12 +168,38 @@ public class Engine {
 	
 	public int getWidth() {
 		return panel.getWidth();
-	}
-	
+	}	
 	public int getHeight() {
 		return panel.getHeight();
 	}
 	
+    private void mainLoop() {
+        Timer t = new Timer(5, new ActionListener() {
+            public long t0;
+            public void actionPerformed(ActionEvent evt) {
+                game.setHeight(panel.getHeight());
+                game.setWidth(panel.getWidth());
+            	
+                long t1 = System.currentTimeMillis();
+                if(t0 == 0)
+                    t0 = t1;
+                if(t1 > t0) {
+                    double dt = (t1 - t0) / 1000.0;
+                    t0 = t1;
+                    game.tick(keySet, dt);     
+                    Graphics2D g = (Graphics2D)strategy.getDrawGraphics();
+                    g.setColor(Color.black);
+                    g.fillRect(0,0,game.getWidth(),
+                          game.getHeight());
+                    screen = new Screen(g);
+                    game.draw(screen);
+                    strategy.show();
+                }
+            }
+        });
+            
+        t.start();
+    }
+	
 }
-
 
