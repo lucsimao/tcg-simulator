@@ -11,21 +11,26 @@ import dm.exceptions.CardNotFoundException;
 import dm.fields.elements.zones.CardZone;
 import dm.graphics.Screen;
 
-public class SelectionGraphicZoneElement extends SelectionGraphicElement {
+
+/**
+ * Classe responsável pelo brilho de seleção do campo quando ser passa o mouse em cima.
+ * */
+
+public class GraphicFieldZoneElement extends SelectionGraphicElement {
 
 	private CardZone cardZone;
 	private int index;
 
 	private CardDetailsGraphic cardDetailsGraphic;
 	
-	public SelectionGraphicZoneElement(int x, int y, int width, int height, float alpha, Color color, CardZone cardZone,
+	public GraphicFieldZoneElement(int x, int y, int width, int height, float alpha, Color color, CardZone cardZone,
 			int index) {
 		super(x, y, width, height, alpha, color);
 		this.cardZone = cardZone;
 		this.index = index;
 	}
 
-	public SelectionGraphicZoneElement(CardDetailsGraphic cardDetailsGraphic,int x, int y, int width, int height, CardZone cardZone, int index) {
+	public GraphicFieldZoneElement(CardDetailsGraphic cardDetailsGraphic,int x, int y, int width, int height, CardZone cardZone, int index) {
 		super(x, y, width, height);
 		this.cardZone = cardZone;
 		this.index = index;

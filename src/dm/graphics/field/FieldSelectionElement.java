@@ -7,7 +7,9 @@ import java.util.List;
 import dm.game.Player;
 import dm.graphics.Screen;
 
-
+/**
+ * Classe responsável por mostrar as cartas em campo.
+ * */
 public class FieldSelectionElement extends GraphicElement {
 	
 	private List<SelectionGraphicElement> selectionGraphics;
@@ -93,19 +95,19 @@ public class FieldSelectionElement extends GraphicElement {
 		//MONSTERSPELLZONE
 		//MONSTER1
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_monster1_y, zone_width, zone_height,player1.getMonsterZone(),i));
+			this.selectionGraphics.add(new GraphicFieldZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_monster1_y, zone_width, zone_height,player1.getMonsterZone(),i));
 		}
 		//MONSTER2
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_monster2_y, zone_width, zone_height,player2.getMonsterZone(),i));
+			this.selectionGraphics.add(new GraphicFieldZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_monster2_y, zone_width, zone_height,player2.getMonsterZone(),i));
 		}
 		//SPELL1
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_spell1_y, zone_width, zone_height,player1.getSpellTrapZone(),i));
+			this.selectionGraphics.add(new GraphicFieldZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_spell1_y, zone_width, zone_height,player1.getSpellTrapZone(),i));
 		}
 		//SPELL2
 		for(int i=0;i<5;i++) {
-			this.selectionGraphics.add(new SelectionGraphicZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_spell2_y, zone_width, zone_height,player2.getSpellTrapZone(),i));
+			this.selectionGraphics.add(new GraphicFieldZoneElement(cardDetailsGraphic,zone_x + (zone_width + zone_distance)*i, zone_spell2_y, zone_width, zone_height,player2.getSpellTrapZone(),i));
 		}
 	}
 	

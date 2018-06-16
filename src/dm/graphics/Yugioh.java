@@ -28,7 +28,7 @@ import dm.graphics.field.WindowGraphic;
 
 public class Yugioh extends Game{
 
-	private final int card_dis_x  = Math.round(getWidth()/15.16f);
+	private final int card_dis_x  = Math.round(getWidth()/13.24f);
 	private final int padding = Math.round(getWidth()/144);
 	private final int card_view_width = Math.round(getWidth()/6.836f);
 	private final int card_view_height = Math.round(getHeight()/3.469f);
@@ -39,10 +39,8 @@ public class Yugioh extends Game{
 	private final int button_width = Math.round(getWidth()/9f);
 	private final int button_height = Math.round(getHeight()/13f);
 	
-	@SuppressWarnings("unused")
 	private final static java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(Yugioh.class.getName());
 	private Player player1;
-	@SuppressWarnings("unused")
 	private Player player2;
 	
 	CardGraphicHand card;

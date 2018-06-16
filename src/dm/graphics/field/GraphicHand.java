@@ -36,7 +36,10 @@ public class GraphicHand extends GraphicElement {
 //		}
 		for(int i = 0;i<player.getHand().size();i++) {
 			int size = player.getHand().size();
-			CardGraphicHand card = new CardGraphicHand(cardDetailsGraphic,player,player.getHand().getCardsList().get(i), getX() + i*distance - size*15 ,getY(),getWidth(),getHeight());
+			int handWidth = distance*size;
+//			CardGraphicHand card = new CardGraphicHand(cardDetailsGraphic,player,player.getHand().getCardsList().get(i), getX() + i*distance - size*15 ,getY(),getWidth(),getHeight());
+			//TODO
+			CardGraphicHand card = new CardGraphicHand(cardDetailsGraphic,player,player.getHand().getCardsList().get(i), getX() + 160 + i*distance - handWidth/2  ,getY(),getWidth(),getHeight());
 			if(!elements.contains(card))
 				elements.add(card);
 		}
