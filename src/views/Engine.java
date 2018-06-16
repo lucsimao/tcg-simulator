@@ -51,7 +51,7 @@ public class Engine {
         Rectangle bounds = gs[gs.length-1].getDefaultConfiguration().getBounds();
 //      setToFullScreen ();
 // 	   	removeBoard();
-        container.setResizable(false);
+        container.setResizable(true);
         container.setBounds(bounds.x+(bounds.width - game.getWidth())/2,
                 bounds.y+(bounds.height - game.getHeight())/2,
                 game.getWidth(),game.getHeight());

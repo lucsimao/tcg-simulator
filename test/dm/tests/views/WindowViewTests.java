@@ -12,6 +12,7 @@ import junit.framework.Assert;
 import views.Engine;
 import views.MainView;
 import views.components.ButtonView;
+import views.components.FieldBackgroundView;
 import views.components.WindowView;
 
 public class WindowViewTests {
@@ -26,8 +27,9 @@ public class WindowViewTests {
 
 	@Test
 	public void creatWindowView() throws InterruptedException {
-		MainView mainView = new MainView(900,600);
-		mainView.addElement(new WindowView(0, 0, 100, 100));
+		MainView mainView = new MainView(900,600);	
+		mainView.addElement(new FieldBackgroundView(500, 0,900*2/9, 600),MainView.BACKGROUND);
+		mainView.addElement(new WindowView(0, 0, 900*2/9, 600),MainView.EAST_BAR);
 		new Engine(mainView);
 		Thread.sleep(5000);
 	}

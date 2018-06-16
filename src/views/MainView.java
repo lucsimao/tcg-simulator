@@ -8,6 +8,11 @@ import views.components.ElementView;
 
 public class MainView extends GameView {
 
+	public static final int EAST_BAR = 0;
+	public static final int BACKGROUND = 1;
+	
+	private static final float coef_eastBar = 0.222f;
+	
 	private ArrayList<ElementView> elements;
 
 	public MainView(int width, int height) {
@@ -65,6 +70,27 @@ public class MainView extends GameView {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void addElement(ElementView element, int position) {
+		switch (position)
+		{
+			case 0:
+				element.setWidth(Math.round(getWidth()*coef_eastBar));
+				element.setX(0);
+				element.setY(0);
+				element.setHeight(this.getHeight());
+				break;
+			case 1:
+				element.setWidth(Math.round(getWidth()));
+				element.setX(0);
+				element.setY(0);
+//				element.setX(Math.round(getWidth()*coef_eastBar));
+				element.setHeight(getHeight());
+				break;
+		}
+
+		addElement(element);		
 	}
 
 }
