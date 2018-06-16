@@ -7,15 +7,15 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterNormalCard;
-import dm.cards.NormalDeckCard;
-import dm.cards.abstracts.Card;
-import dm.constants.MonsterAttribute;
-import dm.constants.MonsterType;
-import dm.exceptions.CardsOutException;
-import dm.exceptions.MaxCardCopiesException;
-import dm.exceptions.MaxDeckSizeException;
-import dm.fields.elements.decks.NormalDeck;
+import config.constants.MonsterAttribute;
+import config.constants.MonsterType;
+import config.exceptions.CardsOutException;
+import config.exceptions.MaxCardCopiesException;
+import config.exceptions.MaxDeckSizeException;
+import model.cards.MonsterNormalCard;
+import model.cards.NormalDeckCard;
+import model.cards.abstracts.Card;
+import model.fields.elements.decks.NormalDeck;
 
 public class DuelDeckTests {
 

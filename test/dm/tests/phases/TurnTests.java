@@ -5,16 +5,16 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterNormalCard;
-import dm.exceptions.EndOfTurnException;
-import dm.fields.elements.decks.NormalDeck;
-import dm.game.Player;
-import dm.game.Turn;
-import dm.game.phases.BattlePhase;
-import dm.game.phases.DrawPhase;
-import dm.game.phases.EndPhase;
-import dm.game.phases.MainPhase;
-import dm.game.phases.StandByPhase;
+import config.exceptions.EndOfTurnException;
+import model.cards.MonsterNormalCard;
+import model.fields.elements.decks.NormalDeck;
+import model.game.Player;
+import model.game.Turn;
+import model.game.phases.BattlePhase;
+import model.game.phases.DrawPhase;
+import model.game.phases.EndPhase;
+import model.game.phases.MainPhase;
+import model.game.phases.StandByPhase;
 
 public class TurnTests{
 

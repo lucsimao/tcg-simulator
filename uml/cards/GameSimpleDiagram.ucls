@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="false" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="false" router="FAN">  
-  <class id="1" language="java" name="dm.game.Player" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/game/Player.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="model.game.Player" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/game/Player.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="619" y="535"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -10,8 +10,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="dm.game.phases.DrawPhase" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/game/phases/DrawPhase.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="model.game.phases.DrawPhase" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/game/phases/DrawPhase.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="436" y="221"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -19,8 +19,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="dm.game.phases.StandByPhase" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/game/phases/StandByPhase.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="model.game.phases.StandByPhase" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/game/phases/StandByPhase.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="91" x="305" y="221"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -28,8 +28,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="dm.game.phases.BattlePhase" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/game/phases/BattlePhase.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="model.game.phases.BattlePhase" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/game/phases/BattlePhase.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="584" y="221"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -37,8 +37,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="dm.game.phases.EndPhase" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/game/phases/EndPhase.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="model.game.phases.EndPhase" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/game/phases/EndPhase.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="178" y="221"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -46,8 +46,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="dm.game.phases.MainPhase" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/game/phases/MainPhase.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="model.game.phases.MainPhase" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/game/phases/MainPhase.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="51" y="221"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -55,8 +55,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="dm.game.phases.Phase" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/game/phases/Phase.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="model.game.phases.Phase" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/game/phases/Phase.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="392" y="109"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -64,8 +64,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="dm.game.Turn" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/game/Turn.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="model.game.Turn" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/game/Turn.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="605" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -76,58 +76,74 @@
   <association id="9">    
     <bendpoint x="553" y="221"/>    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="10" name="player"/>      
-      <multiplicity id="11" minimum="0" maximum="1"/>    
+      <attribute id="10" name="player">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
   <generalization id="12">    
-    <end type="SOURCE" refId="5"/>    
+    <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
   <association id="13">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="14" name="phase"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
+      <attribute id="14" name="phase">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <generalization id="16">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <association id="17">    
+  <association id="16">    
     <bendpoint x="701" y="129"/>    
     <bendpoint x="701" y="221"/>    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="18" name="player"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
+      <attribute id="17" name="player">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <generalization id="20">    
-    <end type="SOURCE" refId="3"/>    
+  <generalization id="19">    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
-  <generalization id="21">    
+  <generalization id="20">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <association id="23">    
+  <association id="21">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="24" name="player"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
+      <attribute id="22" name="player">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="23" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
+  <generalization id="24">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
     sort-features="false" accessors="true" visibility="false">    
     <attributes public="false" package="false" protected="false" private="false" static="false"/>    

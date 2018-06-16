@@ -2,9 +2,9 @@ package dm.tests.cards;
 
 import org.junit.Before;
 
-import dm.cards.Effect;
-import dm.cards.MonsterFusionCard;
 import dm.tests.cards.abstracts.CardMonsterTests;
+import model.cards.Effect;
+import model.cards.MonsterFusionCard;
 
 public class CardMonsterFusionTests extends CardMonsterTests {
 	@Override

@@ -5,12 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.Effect;
-import dm.cards.TrapCard;
-import dm.constants.CardType;
-import dm.constants.ColorPicture;
-import dm.constants.TrapType;
-import dm.exceptions.NoEffectException;
+import config.constants.CardType;
+import config.constants.ColorPicture;
+import config.constants.TrapType;
+import config.exceptions.NoEffectException;
+import model.cards.Effect;
+import model.cards.TrapCard;
 
 public abstract class CardTrapTests extends CardTests<TrapCard> {
 

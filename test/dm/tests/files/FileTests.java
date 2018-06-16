@@ -11,22 +11,22 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.Effect;
-import dm.cards.MonsterNormalCard;
-import dm.cards.SpellCard;
-import dm.cards.TrapCard;
-import dm.cards.abstracts.Card;
-import dm.constants.MonsterAttribute;
-import dm.constants.MonsterType;
-import dm.constants.SpellType;
-import dm.constants.TrapType;
-import dm.exceptions.CardExistsException;
-import dm.exceptions.NoEffectException;
-import dm.fields.elements.decks.ExtraDeck;
-import dm.fields.elements.decks.NormalDeck;
-import dm.files.CardDAO;
-import dm.files.DeckDao;
-import dm.game.Player;
+import config.constants.MonsterAttribute;
+import config.constants.MonsterType;
+import config.constants.SpellType;
+import config.constants.TrapType;
+import config.exceptions.CardExistsException;
+import config.exceptions.NoEffectException;
+import model.cards.Effect;
+import model.cards.MonsterNormalCard;
+import model.cards.SpellCard;
+import model.cards.TrapCard;
+import model.cards.abstracts.Card;
+import model.fields.elements.decks.ExtraDeck;
+import model.fields.elements.decks.NormalDeck;
+import model.files.CardDAO;
+import model.files.DeckDao;
+import model.game.Player;
 
 public class FileTests {
 

@@ -5,12 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.Effect;
-import dm.cards.SpellCard;
-import dm.constants.CardType;
-import dm.constants.ColorPicture;
-import dm.constants.SpellType;
-import dm.exceptions.NoEffectException;
+import config.constants.CardType;
+import config.constants.ColorPicture;
+import config.constants.SpellType;
+import config.exceptions.NoEffectException;
+import model.cards.Effect;
+import model.cards.SpellCard;
 
 public abstract class CardSpellTests extends CardTests<SpellCard> {
 

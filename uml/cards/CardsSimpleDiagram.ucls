@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="false" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="false" router="FAN">  
-  <class id="1" language="java" name="dm.cards.SpellCard" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/SpellCard.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="model.cards.SpellCard" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/SpellCard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="518" y="231"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -10,8 +10,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="dm.cards.MonsterFusionCard" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/MonsterFusionCard.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="model.cards.MonsterFusionCard" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/MonsterFusionCard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="119" x="41" y="231"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -19,8 +19,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="dm.cards.TrapCard" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/TrapCard.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="model.cards.TrapCard" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/TrapCard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="645" y="231"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -28,8 +28,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="dm.cards.abstracts.MonsterCard" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/abstracts/MonsterCard.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="model.cards.abstracts.MonsterCard" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/abstracts/MonsterCard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="91" x="281" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -37,8 +37,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="dm.cards.Effect" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/Effect.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="model.cards.Effect" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/Effect.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="154" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -46,8 +46,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="dm.cards.MonsterNormalCard" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/MonsterNormalCard.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="model.cards.MonsterNormalCard" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/MonsterNormalCard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="123" x="200" y="231"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -55,8 +55,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="dm.cards.abstracts.Card" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/abstracts/Card.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="model.cards.abstracts.Card" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/abstracts/Card.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="91" x="281" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -64,8 +64,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="dm.cards.abstracts.NonMonsterCard" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/abstracts/NonMonsterCard.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="model.cards.abstracts.NonMonsterCard" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/abstracts/NonMonsterCard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="107" x="518" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -73,8 +73,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="dm.cards.MonsterEffectCard" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/MonsterEffectCard.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="model.cards.MonsterEffectCard" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/MonsterEffectCard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="115" x="363" y="231"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -82,8 +82,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <interface id="10" language="java" name="dm.cards.NormalDeckCard" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/NormalDeckCard.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="10" language="java" name="model.cards.NormalDeckCard" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/NormalDeckCard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="105" x="431" y="323"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -91,8 +91,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </interface>  
-  <interface id="11" language="java" name="dm.cards.ExtraDeckCard" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/cards/ExtraDeckCard.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="11" language="java" name="model.cards.ExtraDeckCard" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/model/cards/ExtraDeckCard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="103" x="41" y="323"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -104,66 +104,74 @@
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
-  <realization id="13">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <association id="14">    
+  <association id="13">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="15" name="tributed_monsters"/>      
-      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
+      <attribute id="14" name="tributed_monsters">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="6"/>    
+  <generalization id="16">    
+    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
-  <realization id="18">    
+  <generalization id="17">    
     <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="10"/>  
-  </realization>  
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
   <generalization id="19">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
-  <generalization id="20">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <realization id="23">    
+  <realization id="20">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="10"/>  
   </realization>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <realization id="25">    
+  <realization id="21">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="22">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="10"/>  
   </realization>  
+  <realization id="23">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <realization id="24">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
   <association id="26">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="27" name="effect"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
+      <attribute id="27" name="effect">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <realization id="29">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="10"/>  
-  </realization>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
     sort-features="false" accessors="true" visibility="false">    
     <attributes public="false" package="false" protected="false" private="false" static="false"/>    

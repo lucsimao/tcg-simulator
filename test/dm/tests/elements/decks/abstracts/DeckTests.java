@@ -5,8 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import dm.exceptions.CardsOutException;
-import dm.fields.elements.decks.Deck;
+import config.exceptions.CardsOutException;
+import model.fields.elements.decks.Deck;
 
 public abstract class DeckTests<GenericCard> {
 

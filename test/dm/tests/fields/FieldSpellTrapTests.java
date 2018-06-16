@@ -5,13 +5,13 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.Effect;
-import dm.cards.SpellCard;
-import dm.cards.TrapCard;
-import dm.constants.SpellType;
-import dm.constants.TrapType;
-import dm.exceptions.NoEffectException;
-import dm.fields.Field;
+import config.constants.SpellType;
+import config.constants.TrapType;
+import config.exceptions.NoEffectException;
+import model.cards.Effect;
+import model.cards.SpellCard;
+import model.cards.TrapCard;
+import model.fields.Field;
 
 public class FieldSpellTrapTests {
 

@@ -7,11 +7,11 @@ import java.awt.Image;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterNormalCard;
-import dm.fields.elements.decks.ExtraDeck;
-import dm.fields.elements.decks.NormalDeck;
-import dm.game.Player;
-import dm.game.phases.Phase;
+import model.cards.MonsterNormalCard;
+import model.fields.elements.decks.ExtraDeck;
+import model.fields.elements.decks.NormalDeck;
+import model.game.Player;
+import model.game.phases.Phase;
 
 public class PhaseTests {
 

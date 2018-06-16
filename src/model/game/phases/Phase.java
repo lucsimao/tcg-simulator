@@ -1,0 +1,21 @@
+package model.game.phases;
+
+import model.game.Player;
+
+public class Phase {
+
+	private Player player;
+
+	public Phase(Player player) {
+		this.player = player;
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+	
+}

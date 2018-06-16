@@ -5,10 +5,10 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterNormalCard;
-import dm.fields.Field;
-import dm.fields.elements.decks.ExtraDeck;
-import dm.fields.elements.decks.NormalDeck;
+import model.cards.MonsterNormalCard;
+import model.fields.Field;
+import model.fields.elements.decks.ExtraDeck;
+import model.fields.elements.decks.NormalDeck;
 
 public class FieldTests {
 

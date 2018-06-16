@@ -7,13 +7,13 @@ import java.awt.Image;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterNormalCard;
-import dm.constants.MonsterAttribute;
-import dm.constants.MonsterType;
-import dm.exceptions.CardNotFoundException;
-import dm.fields.elements.decks.ExtraDeck;
-import dm.fields.elements.decks.NormalDeck;
-import dm.game.Player;
+import config.constants.MonsterAttribute;
+import config.constants.MonsterType;
+import config.exceptions.CardNotFoundException;
+import model.cards.MonsterNormalCard;
+import model.fields.elements.decks.ExtraDeck;
+import model.fields.elements.decks.NormalDeck;
+import model.game.Player;
 
 public class PlayerTests {
 

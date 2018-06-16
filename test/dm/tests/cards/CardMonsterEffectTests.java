@@ -3,10 +3,10 @@ package dm.tests.cards;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.Effect;
-import dm.cards.MonsterEffectCard;
-import dm.exceptions.EffectMonsterWithNoEffectException;
+import config.exceptions.EffectMonsterWithNoEffectException;
 import dm.tests.cards.abstracts.CardMonsterTests;
+import model.cards.Effect;
+import model.cards.MonsterEffectCard;
 
 public class CardMonsterEffectTests extends CardMonsterTests {
 

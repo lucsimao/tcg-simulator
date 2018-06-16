@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="false" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="false" router="FAN">  
-  <class id="1" language="java" name="dm.graphics.Screen" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/Screen.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="views.Screen" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/Screen.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="225" y="295"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -10,8 +10,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="dm.graphics.Engine" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/Engine.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="views.Engine" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/Engine.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="289" y="203"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -19,8 +19,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="dm.graphics.Yugioh" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/Yugioh.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="views.Yugioh" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/Yugioh.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="352" y="387"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -28,8 +28,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="dm.graphics.Game" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/Game.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="views.GameView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/GameView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="352" y="295"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -39,24 +39,32 @@
   </class>  
   <association id="5">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="6" name="game"/>      
-      <multiplicity id="7" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <generalization id="8">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <association id="9">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="10" name="screen"/>      
-      <multiplicity id="11" minimum="0" maximum="1"/>    
+      <attribute id="6" name="screen">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="7" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
+  <association id="8">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="9" name="game">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="10" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <generalization id="11">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
     sort-features="false" accessors="true" visibility="false">    
     <attributes public="false" package="false" protected="false" private="false" static="false"/>    

@@ -6,14 +6,14 @@ import static org.junit.Assert.assertNotEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterNormalCard;
-import dm.cards.abstracts.MonsterCard;
-import dm.constants.MonsterAttribute;
-import dm.constants.MonsterType;
-import dm.exceptions.MonsterCannotBeSummonedException;
-import dm.fields.Field;
-import dm.fields.elements.decks.ExtraDeck;
-import dm.fields.elements.decks.NormalDeck;
+import config.constants.MonsterAttribute;
+import config.constants.MonsterType;
+import config.exceptions.MonsterCannotBeSummonedException;
+import model.cards.MonsterNormalCard;
+import model.cards.abstracts.MonsterCard;
+import model.fields.Field;
+import model.fields.elements.decks.ExtraDeck;
+import model.fields.elements.decks.NormalDeck;
 
 public class TributeTests {
 

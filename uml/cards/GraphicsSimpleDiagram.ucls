@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="false" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="false" router="FAN">  
-  <class id="1" language="java" name="dm.graphics.field.CardGraphic" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/CardGraphic.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="views.components.CardView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/CardView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="370" y="187"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -10,8 +10,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="dm.graphics.field.SelectionGraphicElement" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/SelectionGraphicElement.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="views.components.ElementSelectionView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/ElementSelectionView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="151" x="586" y="221"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -19,8 +19,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="dm.graphics.field.CardGraphicHand" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/CardGraphicHand.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="views.components.CardInHandView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/CardInHandView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="296" y="451"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -28,8 +28,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="dm.graphics.field.GraphicHand" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/GraphicHand.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="views.components.HandView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/HandView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="227" y="203"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -37,8 +37,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="dm.graphics.field.ButtonGraphic" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/ButtonGraphic.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="views.components.ButtonView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/ButtonView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="498" y="186"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -46,8 +46,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="dm.graphics.field.CardDetailsGraphic" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/CardDetailsGraphic.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="views.components.CardDetailsView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/CardDetailsView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="574" y="491"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -55,8 +55,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="dm.graphics.field.GraphicElement" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/GraphicElement.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="views.components.ElementView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/ElementView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="100" x="543" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -64,8 +64,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="dm.graphics.field.GraphicFieldZoneElement" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/GraphicFieldZoneElement.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="views.components.FieldSelectionView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/FieldSelectionView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="179" x="558" y="313"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -73,8 +73,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="dm.graphics.field.FieldSelectionElement" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/FieldSelectionElement.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="views.components.FieldSelectionElementView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/FieldSelectionElementView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="52" width="133" x="583" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      
@@ -82,8 +82,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="dm.graphics.field.WindowGraphic" project="Trading-Card-Game" 
-    file="/Trading-Card-Game/src/dm/graphics/field/WindowGraphic.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="views.components.WindowView" project="Trading-Card-Game" 
+    file="/Trading-Card-Game/src/views/components/WindowView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="286" y="71"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="false">      

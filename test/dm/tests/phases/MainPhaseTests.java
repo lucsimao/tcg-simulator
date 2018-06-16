@@ -5,16 +5,16 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterNormalCard;
-import dm.cards.NormalDeckCard;
-import dm.cards.abstracts.MonsterCard;
-import dm.constants.MonsterAttribute;
-import dm.constants.MonsterType;
-import dm.exceptions.NormalSummonException;
-import dm.exceptions.SpecialSummonException;
-import dm.exceptions.TributeSummonException;
-import dm.game.Player;
-import dm.game.phases.MainPhase;
+import config.constants.MonsterAttribute;
+import config.constants.MonsterType;
+import config.exceptions.NormalSummonException;
+import config.exceptions.SpecialSummonException;
+import config.exceptions.TributeSummonException;
+import model.cards.MonsterNormalCard;
+import model.cards.NormalDeckCard;
+import model.cards.abstracts.MonsterCard;
+import model.game.Player;
+import model.game.phases.MainPhase;
 
 public class MainPhaseTests extends PhaseTests {
 

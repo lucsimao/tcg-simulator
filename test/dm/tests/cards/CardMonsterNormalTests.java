@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterNormalCard;
 import dm.tests.cards.abstracts.CardMonsterTests;
+import model.cards.MonsterNormalCard;
 
 public class CardMonsterNormalTests extends CardMonsterTests {
 

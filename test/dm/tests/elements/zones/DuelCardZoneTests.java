@@ -5,15 +5,15 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterEffectCard;
-import dm.cards.MonsterFusionCard;
-import dm.cards.SpellCard;
-import dm.cards.TrapCard;
-import dm.cards.abstracts.Card;
-import dm.exceptions.CardNotFoundException;
-import dm.exceptions.NoEffectException;
-import dm.exceptions.ZoneOccupedException;
-import dm.fields.elements.zones.CardZone;
+import config.exceptions.CardNotFoundException;
+import config.exceptions.NoEffectException;
+import config.exceptions.ZoneOccupedException;
+import model.cards.MonsterEffectCard;
+import model.cards.MonsterFusionCard;
+import model.cards.SpellCard;
+import model.cards.TrapCard;
+import model.cards.abstracts.Card;
+import model.fields.elements.zones.CardZone;
 
 public class DuelCardZoneTests {
 

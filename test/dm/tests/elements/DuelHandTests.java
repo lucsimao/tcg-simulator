@@ -6,14 +6,14 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterEffectCard;
-import dm.cards.MonsterFusionCard;
-import dm.cards.MonsterNormalCard;
-import dm.cards.SpellCard;
-import dm.cards.TrapCard;
-import dm.exceptions.CardsOutException;
-import dm.exceptions.NoEffectException;
-import dm.fields.elements.Hand;
+import config.exceptions.CardsOutException;
+import config.exceptions.NoEffectException;
+import model.cards.MonsterEffectCard;
+import model.cards.MonsterFusionCard;
+import model.cards.MonsterNormalCard;
+import model.cards.SpellCard;
+import model.cards.TrapCard;
+import model.fields.elements.Hand;
 
 public class DuelHandTests {
 

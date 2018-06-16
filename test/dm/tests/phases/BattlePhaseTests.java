@@ -5,13 +5,13 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterNormalCard;
-import dm.cards.NormalDeckCard;
-import dm.cards.abstracts.MonsterCard;
-import dm.constants.MonsterAttribute;
-import dm.constants.MonsterType;
-import dm.exceptions.MonsterCannotAttackException;
-import dm.game.phases.BattlePhase;
+import config.constants.MonsterAttribute;
+import config.constants.MonsterType;
+import config.exceptions.MonsterCannotAttackException;
+import model.cards.MonsterNormalCard;
+import model.cards.NormalDeckCard;
+import model.cards.abstracts.MonsterCard;
+import model.game.phases.BattlePhase;
 
 public class BattlePhaseTests extends PhaseTests {
 
