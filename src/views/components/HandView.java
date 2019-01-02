@@ -77,4 +77,27 @@ public class HandView extends ElementView {
 		}
 	}
 	
+	@Override
+	public void setX(int x) {
+		super.setX(x);
+		updateHand();
+	}
+	
+	@Override
+	public void setY(int y) {
+		super.setY(y);
+		updateHand();
+	}
+	
+	@Override
+	public void setHeight(int height) {
+		super.setHeight(height);
+		updateHand();
+	}
+	
+	@Override
+	public void setWidth(int width) {
+		super.setWidth(width);
+		updateHand();
+	}
 }

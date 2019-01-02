@@ -44,7 +44,7 @@ public class CardInHandView extends ElementView {
 				setY(getY() - 20);
 				if (t.getState().equals(State.NEW) || t.getState().equals(State.TERMINATED)) {
 					this.cardDetailsGraphic.setCard(card);
-					blinkAnimation();
+//					blinkAnimation();
 				}
 				// }
 			}

@@ -132,6 +132,7 @@ public class Yugioh extends GameView{
 		this.handGraphic = new HandView(cardDetailsGraphic,player1, padding + Math.round(getWidth()/3.13f) + x_offset,Math.round(getHeight() -  card_view_height*3/8), card_view_width/2, card_view_height/2, card_dis_x);
 		fieldSelectionElement = new FieldSelectionElementView(cardDetailsGraphic,player1,player2,getWidth(),getHeight());
 		fieldSelectionElement.addSelectionElements(x_offset);
+		
 //		fieldSelectionElement.addSelectionGraphicElement(extra1);
 //		fieldSelectionElement.addSelectionGraphicElement(extra2);
 //		fieldSelectionElement.addSelectionGraphicElement(deck1);
