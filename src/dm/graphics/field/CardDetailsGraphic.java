@@ -52,7 +52,7 @@ public class CardDetailsGraphic extends ElementGraphic {
 			screen.text(card.getName().toUpperCase(),text_x,Math.round(getHeight()*322f/650),12,Color.WHITE);
 			if(card instanceof MonsterCard) {
 //				screen.text(((MonsterCard)card).getType(),15,350,12,Color.BLACK);
-//				screen.text("Attribute DARK",15,361,12,Color.BLACK);
+				screen.text("Attribute " + ((MonsterCard)card).getAtribute().name(),15,361,12,Color.BLACK);
 //				screen.text("Level " + ((MonsterCard)card),15,372,12,Color.BLACK);
 				screen.text(((MonsterCard)card).getOriginalAttack() + " / " + ((MonsterCard)card).getOriginalDefense(), text_x,Math.round(getHeight()*383f/650),12,Color.BLACK);
 			}

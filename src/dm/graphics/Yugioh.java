@@ -1,6 +1,5 @@
 package dm.graphics;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import dm.cards.abstracts.Card;
-import dm.constants.FilesConstants;
 import dm.fields.Field;
 import dm.fields.elements.decks.ExtraDeck;
 import dm.fields.elements.decks.NormalDeck;
@@ -23,7 +21,6 @@ import dm.graphics.field.CardGraphicHand;
 import dm.graphics.field.ElementGraphic;
 import dm.graphics.field.FieldSelectionElement;
 import dm.graphics.field.HandGraphic;
-import dm.graphics.field.SelectionGraphicElement;
 import dm.graphics.field.WindowGraphic;
 
 public class Yugioh extends Game{
@@ -39,13 +36,16 @@ public class Yugioh extends Game{
 	private final int button_width = Math.round(getWidth()/9f);
 	private final int button_height = Math.round(getHeight()/13f);
 	
-	
-	
+	@SuppressWarnings("unused")
+	private final static java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(Yugioh.class.getName());
 	private Player player1;
+	@SuppressWarnings("unused")
 	private Player player2;
 	
 	CardGraphicHand card;
+	@SuppressWarnings("unused")
 	private Field field1;
+	@SuppressWarnings("unused")
 	private Field field2;
 	ArrayList<Card> hand;
 	private HandGraphic handGraphic;	

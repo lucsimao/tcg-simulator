@@ -5,6 +5,8 @@ import java.util.Random;
 
 import dm.cards.Effect;
 import dm.constants.CardState;
+import dm.constants.CardType;
+import dm.constants.ColorPicture;
 import dm.constants.FilesConstants;
 import dm.constants.RulesConstants;
 import dm.exceptions.InvalidTextAttributeException;
@@ -22,31 +24,31 @@ public abstract class Card implements Serializable,Cloneable {
 
 	private String name;
 	private String description;
-	private int cardType; // 0 for tokens, 1 for monster, 2 for spells, 3 for
+	private CardType cardType; // 0 for tokens, 1 for monster, 2 for spells, 3 for
 							// traps
-	private int colorPicture;
+	private ColorPicture colorPicture;
 	protected String picture;
 	private Effect effect;
 	private int copies_number;
 	private int state;
 
-	public Card(String name, String description, int cardType, int colorPicture, String picture, Effect effect,
+	public Card(String name, String description, CardType cardType, ColorPicture normal, String picture, Effect effect,
 			int copies_number) {
 		super();
 		if (name == null || name.trim().isEmpty())
 			throw new InvalidTextAttributeException("Name cannot be empty");
 		if (description == null || description.trim().isEmpty())
 			throw new InvalidTextAttributeException("Description cannot be empty");
-		if (cardType < 0)
-			throw new InvalidTextAttributeException("Card Type cannot be negative");
-		if (colorPicture < 0)
-			throw new InvalidTextAttributeException("Color Picture cannot be negative");
+//		if (cardType < 0)
+//			throw new InvalidTextAttributeException("Card Type cannot be negative");
+//		if (normal < 0)
+//			throw new InvalidTextAttributeException("Color Picture cannot be negative");
 		if (description == null || description.trim().isEmpty())
 			throw new InvalidTextAttributeException("Picture cannot be null");
 		this.name = name;
 		this.description = description;
 		this.cardType = cardType;
-		this.colorPicture = colorPicture;
+		this.colorPicture = normal;
 		this.picture = picture;
 		this.effect = effect;
 		// Esse pedaço de código protege de ter mais cópias do que o permitido
@@ -57,7 +59,7 @@ public abstract class Card implements Serializable,Cloneable {
 			this.copies_number = copies_number;
 		this.state = CardState.NONE;// Diz que a carta não está no campo ainda.
 	}
-
+	
 	// Getters and Setters
 	public String getName() {
 		return name;
@@ -71,11 +73,11 @@ public abstract class Card implements Serializable,Cloneable {
 		this.state = state;
 	}
 
-	public int getCardType() {
+	public CardType getCardType() {
 		return cardType;
 	}
 
-	public void setCardType(int cardType) {
+	public void setCardType(CardType cardType) {
 		this.cardType = cardType;
 	}
 
@@ -83,7 +85,7 @@ public abstract class Card implements Serializable,Cloneable {
 		return description;
 	}
 
-	public int getColorPicture() {
+	public ColorPicture getColorPicture() {
 		return colorPicture;
 	}
 
@@ -93,6 +95,11 @@ public abstract class Card implements Serializable,Cloneable {
 		else
 			return FilesConstants.DEFAULT_MONTER_CARD_IMAGE;
 	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	
 
 	public Effect getEffect() {
 		return effect;
@@ -125,5 +132,6 @@ public abstract class Card implements Serializable,Cloneable {
 	public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
+
 	
 }

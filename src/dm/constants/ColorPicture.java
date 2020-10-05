@@ -6,12 +6,12 @@ package dm.constants;
  * @author Simão
  */
 
-public class ColorPicture {
+public enum ColorPicture {
 
-	public static final int NORMAL = 0;// Amarela
-	public static final int EFFECT = 1;// Laranja
-	public static final int FUSION = 2;// Roxa
-	public static final int SPELL = 3;// Verde
-	public static final int TRAP = 4;// Rosa
+	NORMAL, // Amarela
+	EFFECT,// Laranja
+	FUSION,// Roxa
+	SPELL,// Verde
+	TRAP;// Rosa
 
 }

@@ -73,10 +73,10 @@ public class PlayerTests {
 	public void attackAndWin() {
 		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
 				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2500, 2100, 0);
+				MonsterAttribute.DARK,4, 2500, 2100, 0);
 		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
 				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2000, 2100, 0);
+				MonsterAttribute.DARK,4, 2000, 2100, 0);
 		int lp2 = player2.getLP();
 		player.summon(card);
 		player2.summon(card2);
@@ -89,10 +89,10 @@ public class PlayerTests {
 	public void attackAndLose() {
 		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
 				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2500, 2100, 0);
+				MonsterAttribute.DARK,2, 2500, 2100, 0);
 		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
 				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2000, 2100, 0);
+				MonsterAttribute.DARK,2, 2000, 2100, 0);
 		int lp = player.getLP();
 		player.summon(card2);
 		player2.summon(card);
@@ -105,10 +105,10 @@ public class PlayerTests {
 	public void attackADefAndWin() {
 		MonsterNormalCard card = new MonsterNormalCard("Dark Magician",
 				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2500, 2100, 0);
+				MonsterAttribute.DARK,2, 2500, 2100, 0);
 		MonsterNormalCard card2 = new MonsterNormalCard("Dark Magician",
 				"The ultimate wizard in terms of attack and defense.", null, MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2000, 2100, 0);
+				MonsterAttribute.DARK,2, 2000, 2100, 0);
 		int lp2 = player2.getLP();
 		player.summon(card);
 		player2.summon(card2);
@@ -148,4 +148,22 @@ public class PlayerTests {
 		player.getMonsterCardIndex(card2);
 	}
 
+	@Test
+	public void bringToHandFromDeck() {
+		int size = player.getHand().size();
+		MonsterNormalCard card = (MonsterNormalCard) player2.getField().getDeck().getCardsList().get(0);
+		player.bringCardToHand(card);
+		assertEquals(size + 1,player.getHand().size());
+		assertEquals(card,player.getHand().getCardsList().get(0));
+	}
+	
+	@Test (expected = CardNotFoundException.class)
+	public void bringToHandACardThatIsNotInTheDeck() {
+		int size = player.getHand().size();
+		MonsterNormalCard card = new MonsterNormalCard();
+		player.bringCardToHand(card);
+		assertEquals(size + 1,player.getHand().size());
+		assertEquals(card,player.getHand().getCardsList().get(0));
+	}
+	
 }

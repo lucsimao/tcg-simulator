@@ -1,7 +1,12 @@
 package dm.cards.abstracts;
 
+import java.util.ArrayList;
+
 import dm.cards.Effect;
 import dm.constants.CardType;
+import dm.constants.ColorPicture;
+import dm.constants.MonsterAttribute;
+import dm.constants.MonsterType;
 
 /**
  * Classe Monstro Classe abstrata para tratar os monstros do jogo. Eles possuem
@@ -16,35 +21,46 @@ public abstract class MonsterCard extends Card {
 
 	private static final long serialVersionUID = 1160252849178277811L;
 
-	private int type;
-	private int atribute;
+	private MonsterType type;
+	private MonsterAttribute atribute;
+	private int level;
 	private int originalAttack;
 	private int originalDefense;
 	private int currentAttack;
 	private int currentDefense;
 	private int attacks_count;
 	private int max_attacks;
+	private int tributes_needed;
+	private ArrayList<MonsterCard> tributed_monsters;
 	
-	public MonsterCard(String name, String description, int colorPicture, String picture, int type, int atribute,
+	public MonsterCard(String name, String description, ColorPicture normal, String picture, MonsterType spellcaster, MonsterAttribute dark,int level,
 			int originalAttack, int originalDeffense, Effect effect, int copies_number) {
-		super(name, description, CardType.MONSTER, colorPicture, picture, effect, copies_number);
-		this.type = type;
-		this.atribute = atribute;
+		super(name, description, CardType.MONSTER, normal, picture, effect, copies_number);
+		this.level = level;
+		this.type = spellcaster;
+		this.atribute = dark;
 		this.originalAttack = originalAttack;
 		this.originalDefense = originalDeffense;
 		this.currentAttack = originalAttack;
 		this.currentDefense = originalDeffense;
 		this.attacks_count = 0;
-		this.max_attacks = 1;
+		this.setMaxAttacks(1);
+		if(level<5)
+			tributes_needed =0;
+		else if(level <7)
+			tributes_needed = 1;
+		else 
+			tributes_needed = 2;
+		tributed_monsters = new ArrayList<>();
 	}	
 	
 	public void setMaxAttacks(int max_attacks) {
 		this.max_attacks = max_attacks;
 	}
 
-	public boolean canAttack() {
-		return max_attacks > attacks_count;
-	}
+//	public boolean canAttack() {
+//		return max_attacks > attacks_count;
+//	}
 	
 	public void incrementAttacksCount() {
 		this.attacks_count++;
@@ -124,20 +140,36 @@ public abstract class MonsterCard extends Card {
 		this.currentDefense = originalDefense;
 	}
 
+	/**
+	 * Identifica se um monstro vai poder ser invocado, ou seja, tem os sacrifícios necessários
+	 */
+	public boolean canBeSummoned() {
+		return tributed_monsters.size() == tributes_needed;
+	}
+	
+	public void resetStatus() {
+		resetAttacksCount();
+		resetTributedMonsters();
+	}
+	
+	public void resetTributedMonsters() {
+		this.tributed_monsters = new ArrayList<>();		
+	}
+
 	// Getters and Setters
-	public int getType() {
+	public MonsterType getType() {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(MonsterType type) {
 		this.type = type;
 	}
 
-	public int getAtribute() {
+	public MonsterAttribute getAtribute() {
 		return atribute;
 	}
 
-	public void setAtribute(int atribute) {
+	public void setAtribute(MonsterAttribute atribute) {
 		this.atribute = atribute;
 	}
 
@@ -165,4 +197,33 @@ public abstract class MonsterCard extends Card {
 		return originalDefense;
 	}
 
+	public int getLevel() {
+		return this.level;
+	}
+	
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	
+	public void addTributedMonster(MonsterCard monsterCard) {
+		this.tributed_monsters.add(monsterCard);
+	}
+	
+	public ArrayList<MonsterCard> getTributedMonsters() {
+		return new ArrayList<>(this.tributed_monsters);
+	}
+	
+	public void setTributesNeeded(int tributes_needed) {
+		this.tributes_needed = tributes_needed;
+	}
+	
+	public int getTributesNeeded() {
+		return this.tributes_needed;
+	}
+
+	public int getMaxAttacks() {
+		return this.max_attacks;
+	}
+
+	
 }

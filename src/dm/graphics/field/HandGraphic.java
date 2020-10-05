@@ -1,11 +1,9 @@
 package dm.graphics.field;
 
 import java.awt.event.MouseEvent;
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.List;
 
-import dm.cards.abstracts.Card;
 import dm.game.Player;
 import dm.graphics.Screen;
 

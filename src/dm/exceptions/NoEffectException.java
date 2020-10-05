@@ -1,6 +1,6 @@
 package dm.exceptions;
 
-public class NoEffectException extends Exception {
+public class NoEffectException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 

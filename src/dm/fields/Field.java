@@ -4,7 +4,9 @@ import dm.cards.MonsterFusionCard;
 import dm.cards.abstracts.Card;
 import dm.cards.abstracts.MonsterCard;
 import dm.cards.abstracts.NonMonsterCard;
+import dm.constants.RulesConstants;
 import dm.exceptions.CardNotFoundException;
+import dm.exceptions.MonsterCannotBeSummonedException;
 import dm.fields.elements.Graveyard;
 import dm.fields.elements.Hand;
 import dm.fields.elements.RemoveFromPlay;
@@ -59,13 +61,21 @@ public class Field {
 	 * uma com os monstros e outra com as armadilhas ou traps.
 	 */
 	public void setCard(MonsterCard monsterCard, int index) {
-		monsterZone.setMonster(monsterCard, index);
+		if(monsterCard.canBeSummoned()) {
+			monsterZone.setMonster(monsterCard, index);
+			monsterCard.resetAttacksCount();
+		}else
+			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
 	}
 
 	/** Sobrecarga de setCard */
 	public void setCard(MonsterCard monsterCard) {
-		monsterZone.setMonster(monsterCard);
-		monsterCard.resetAttacksCount();
+		if(monsterCard.canBeSummoned()) {
+			monsterZone.setMonster(monsterCard);
+			monsterCard.resetAttacksCount();
+		}else
+			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+	
 	}
 
 	/** Sobrecarga de setCard */
@@ -78,18 +88,70 @@ public class Field {
 		spellTrapZone.setCard(spellTrapCard);
 	}
 
-	/** Métodos para summonar um monstro em modo de ataque */
-	public void summonMonster(MonsterCard monsterCard, int index) {
-		monsterZone.summonMonster(monsterCard, index);
-		monsterCard.resetAttacksCount();
+	/** Métodos para summonar um monstro em modo de ataque 
+	 * @throws MonsterCannotBeSummonedException */
+	public void summonMonster(MonsterCard monsterCard, int index) throws MonsterCannotBeSummonedException {
+		if(monsterCard.canBeSummoned()) {
+			monsterZone.summonMonster(monsterCard, index);
+			monsterCard.resetAttacksCount();
+		}else
+			throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
 	}
 
-	/** Sobracarda de summonMonster */
-	public void summonMonster(MonsterCard monsterCard) {
-		monsterZone.summonMonster(monsterCard);
-		monsterCard.resetAttacksCount();
+	/** Sobracarda de summonMonster 
+	 * @throws MonsterCannotBeSummonedException */
+	public void summonMonster(MonsterCard monsterCard) throws MonsterCannotBeSummonedException {
+		if(monsterCard.canBeSummoned()) {
+			monsterZone.summonMonster(monsterCard);
+			monsterCard.resetAttacksCount();
+		}else
+			throw new MonsterCannotBeSummonedException("Monster cannot be Summoned");
 	}
 
+	
+	public void tributeSummonMonster(MonsterCard monsterCard, MonsterCard... tributes)  throws MonsterCannotBeSummonedException {
+		for(MonsterCard tribute : tributes) {
+			monsterCard.addTributedMonster(tribute);
+		}
+		
+		if(monsterCard.canBeSummoned()) {
+			try {
+				for(MonsterCard tribute : tributes) {
+					monsterZone.remove(tribute);
+				}	
+			} catch (Exception e) {
+				throw new MonsterCannotBeSummonedException("Tribute is not in the field.");
+			}
+		
+			monsterZone.summonMonster(monsterCard);
+			monsterCard.resetStatus();
+		}else
+				throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+	
+	}
+	
+	public void tributeSetMonster(MonsterCard monsterCard, MonsterCard... tributes)  throws MonsterCannotBeSummonedException {
+		for(MonsterCard tribute : tributes) {
+			monsterCard.addTributedMonster(tribute);
+		}
+		
+		if(monsterCard.canBeSummoned()) {
+			try {
+				for(MonsterCard tribute : tributes) {
+					monsterZone.remove(tribute);
+				}	
+			} catch (Exception e) {
+				throw new MonsterCannotBeSummonedException("Tribute is not in the field.");
+			}
+		
+			monsterZone.setMonster(monsterCard);
+			monsterCard.resetStatus();
+		}else
+				throw new MonsterCannotBeSummonedException("Monsters cannot be Summoned");
+	
+	}
+	
+	
 	/**
 	 * Métodos para enviar uma carta ao cemitério
 	 */
@@ -103,6 +165,19 @@ public class Field {
 		graveyard.putCard(card);
 	}
 
+	
+	public void clearMonstersDestroying() {
+		for(int i=0;i<RulesConstants.ZONE_SIZE;i++)
+		{
+			try {
+				monsterZone.remove(i);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+		}
+	}
+	
 	/**
 	 * Método para retornar uma carta à mão
 	 * 
@@ -182,7 +257,7 @@ public class Field {
 		Card card = spellTrapZone.remove(spellCard);
 		removeFromPlay.putCard(card);
 	}
-
+	
 	/**
 	 * Métodos de Contagem:
 	 * 

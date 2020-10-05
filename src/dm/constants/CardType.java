@@ -6,9 +6,9 @@ package dm.constants;
  * @author Simão
  */
 
-public class CardType {
+public enum CardType {
+	
 	// public static final int TOKEN = 0;// Símbolo
-	public static final int MONSTER = 0;// Monstro
-	public static final int SPELL = 1;// Mágica
-	public static final int TRAP = 2;// Armadilha
+	MONSTER, SPELL, TRAP;// Mágica
+//	public static final int TRAP = 2;// Armadilha
 }

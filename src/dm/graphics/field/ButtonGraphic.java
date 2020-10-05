@@ -1,13 +1,8 @@
 package dm.graphics.field;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-
-import javax.swing.JButton;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
 
 import dm.constants.FilesConstants;
 import dm.graphics.Screen;

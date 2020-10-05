@@ -34,7 +34,7 @@ public class CardView extends JPanel {
 		f.setUndecorated(true);
 		f.setVisible(true);
 		Card card2 = new MonsterNormalCard("Exodia", "O guerreiro proibido", "exodia.jpg", MonsterType.SPELLCASTER,
-				MonsterAttribute.DARK, 2500, 2100, 0);
+				MonsterAttribute.DARK,8, 2500, 2100, 0);
 
 		f.getContentPane().add(new CardView(card2));
 		f.setBounds(0, 0, width, height);

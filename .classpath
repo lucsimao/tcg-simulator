@@ -6,5 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="libraries/singleinstancelib.jar"/>
 	<classpathentry kind="lib" path="libraries/imagemanip/imagemanip.jar"/>
+	<classpathentry kind="lib" path="libraries/imagemanip/imagemanip_lib/javaxt-core.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

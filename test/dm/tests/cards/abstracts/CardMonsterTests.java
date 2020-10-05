@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dm.cards.Effect;
-import dm.cards.MonsterFusionCard;
-import dm.cards.MonsterNormalCard;
 import dm.cards.abstracts.MonsterCard;
 import dm.constants.CardType;
 import dm.constants.MonsterAttribute;
@@ -17,18 +15,34 @@ public abstract class CardMonsterTests extends CardTests<MonsterCard> {
 
 	protected static String name = "Dark Magician";
 	protected static String description = "The ultimate wizard in terms of attack and defense";
-	protected static int type = MonsterType.SPELLCASTER;
-	protected static int atribute = MonsterAttribute.DARK;
-	protected static int cardType = CardType.MONSTER;
+	protected static MonsterType type = MonsterType.SPELLCASTER;
+	protected static MonsterAttribute atribute = MonsterAttribute.DARK;
+	protected static CardType cardType = CardType.MONSTER;
 	protected static int copies_number = 0;
 	protected static int originalAttack = 2500;
 	protected static int originalDefense = 2100;
+	protected static int level = 4;
 	protected static Effect effect = null;
 
 	@Override
 	@Before
 	public abstract void initCard();
 
+	
+	/* Ver se a carta instanciada está recebendo os atributos corretamente */
+	@Test
+	public void checkAttributesOnInitialCondition() {
+		assertEquals(name, getCard().getName());
+		assertEquals(description, getCard().getDescription());
+		assertEquals(type, getCard().getType());
+		assertEquals(atribute, getCard().getAtribute());
+		assertEquals(cardType, getCard().getCardType());
+		assertEquals(copies_number, getCard().getCopiesNumber());
+		System.out.println("CARD " + getCard().getOriginalAttack());
+		assertEquals(originalAttack, getCard().getOriginalAttack());
+		assertEquals(originalDefense, getCard().getOriginalDefense());
+	}
+	
 	/* Teste para aumentar o ataque e a defesa do monstro */
 	public void increaseAttackAndDefense(int value) {
 		int lastAttack = getCard().getCurrentAttack();
@@ -70,19 +84,6 @@ public abstract class CardMonsterTests extends CardTests<MonsterCard> {
 		getCard().turnBackOriginalAttack();
 		assertEquals(getCard().getOriginalAttack(), getCard().getCurrentAttack());
 		assertEquals(getCard().getOriginalDefense(), getCard().getCurrentDefense());
-	}
-
-	/* Ver se a carta instanciada está recebendo os atributos corretamente */
-	@Test
-	public void checkAttributesOnInitialCondition() {
-		assertEquals(name, getCard().getName());
-		assertEquals(description, getCard().getDescription());
-		assertEquals(type, getCard().getType());
-		assertEquals(atribute, getCard().getAtribute());
-		assertEquals(cardType, getCard().getCardType());
-		assertEquals(copies_number, getCard().getCopiesNumber());
-		assertEquals(originalAttack, getCard().getOriginalAttack());
-		assertEquals(originalDefense, getCard().getOriginalDefense());
 	}
 
 	/* Ver se o current attack está sendo inicializado corretamente */

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import dm.cards.MonsterFusionCard;
 import dm.cards.MonsterNormalCard;
 import dm.tests.cards.abstracts.CardMonsterTests;
 
@@ -14,7 +13,7 @@ public class CardMonsterNormalTests extends CardMonsterTests {
 	@Override
 	@Before
 	public void initCard() {
-		setCard(new MonsterNormalCard(name, description, null, type, atribute, originalAttack, originalDefense, 0));
+		setCard(new MonsterNormalCard(name, description, null, type, atribute,level, originalAttack, originalDefense, 0));
 	}
 
 	@Test
@@ -29,7 +28,6 @@ public class CardMonsterNormalTests extends CardMonsterTests {
 		try {
 			c = (MonsterNormalCard) getCard().clone();
 		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		assertEquals(c.getName(), getCard().getName());
